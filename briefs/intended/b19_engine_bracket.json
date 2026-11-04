@@ -1,0 +1,317 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "in",
+   "force": "lbf"
+  },
+  "name": "b19 engine bracket",
+  "domain": {
+   "size": [
+    7.0,
+    2.5,
+    4.0
+   ]
+  },
+  "material": {
+   "name": "Ti-6Al-4V",
+   "E": 16500000.0,
+   "nu": 0.34
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "bolt_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "bolt_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "bolt_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "bolt_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "pull",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "force": [
+     0,
+     8000,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "clevis",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 0.05
+  }
+ },
+ "expected": "solve",
+ "source": "adapted from the GE jet-engine bracket challenge (GrabCAD 2013): a box envelope with a distributed vertical load replaces the original geometry, pin load and fixed interfaces",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "Square 0.5 x 0.5 in washer patches at all four specified centres.",
+   "why": "Accept the disclosed footprint approximation consistently with existing b06 square-washer admissibility; not exact circular contact.",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "from_run": "claude_high/T/b19_engine_bracket_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "engine_bracket",
+    "description": "Ti-6Al-4V engine bracket bolted down through four washers on its bottom face (y = 0), carrying an 8000 lbf vertical pull (+y) at a retained solid clevis cylinder.",
+    "units": {
+     "length": "in",
+     "force": "lbf"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      7.0,
+      2.5,
+      4.0
+     ]
+    },
+    "material": {
+     "name": "Ti-6Al-4V",
+     "E": 16500000.0,
+     "nu": 0.34
+    },
+    "volume_fraction": 0.2,
+    "supports": [
+     {
+      "id": "bolt_x0.5_z0.5",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        0.5,
+        0.5
+       ],
+       "size": [
+        0.5,
+        0.5
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "0.5 in washer at x=0.5, z=0.5"
+     },
+     {
+      "id": "bolt_x0.5_z3.5",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        0.5,
+        3.5
+       ],
+       "size": [
+        0.5,
+        0.5
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "0.5 in washer at x=0.5, z=3.5"
+     },
+     {
+      "id": "bolt_x2.5_z0.5",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        2.5,
+        0.5
+       ],
+       "size": [
+        0.5,
+        0.5
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "0.5 in washer at x=2.5, z=0.5"
+     },
+     {
+      "id": "bolt_x2.5_z3.5",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        2.5,
+        3.5
+       ],
+       "size": [
+        0.5,
+        0.5
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "0.5 in washer at x=2.5, z=3.5"
+     }
+    ],
+    "loads": [
+     {
+      "id": "clevis_pull",
+      "region": {
+       "kind": "cylinder",
+       "axis": "z",
+       "center": [
+        6.0,
+        1.75
+       ],
+       "radius": 0.5,
+       "span": [
+        1.25,
+        2.75
+       ]
+      },
+      "force": [
+       0.0,
+       8000.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "8000 lbf vertical pull (+y) carried by the clevis"
+     }
+    ],
+    "passive": [
+     {
+      "id": "clevis",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "z",
+       "center": [
+        6.0,
+        1.75
+       ],
+       "radius": 0.5,
+       "span": [
+        1.25,
+        2.75
+       ]
+      },
+      "note": "Clevis cylinder must be kept"
+     }
+    ],
+    "resolution": {
+     "h": 0.05
+    },
+    "meta": {
+     "up_axis": "y",
+     "washer_diameter_in": 0.5,
+     "washer_modeled_as": "0.5 x 0.5 in square patch"
+    }
+   }
+  }
+ ],
+ "notes": "A spec converted to mm and N is the same problem (the scorer compares in mm and N).",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "Y",
+  "comment": "E=16.5e6 lbf/in^2 is correct. GE/GrabCAD inspiration is supported [S4]; the box/cylinder and single case are an adaptation, not the original challenge geometry."
+ }
+}

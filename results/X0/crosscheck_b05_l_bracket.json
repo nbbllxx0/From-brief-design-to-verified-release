@@ -1,0 +1,25 @@
+{
+ "name": "b05_l_bracket",
+ "grid": [
+  50,
+  50,
+  20
+ ],
+ "n_elem": 50000,
+ "h": 2.0,
+ "status": "converged",
+ "iterations": 76,
+ "final_rel_true": 9.356063313887677e-09,
+ "tol": 1e-08,
+ "compliance_nd": 1568014.8720276663,
+ "compliance_phys": 7.466737485846029,
+ "units": {
+  "length": "mm",
+  "force": "N"
+ },
+ "passive": {
+  "keep_in_ok": true,
+  "keep_out_ok": true,
+  "keep_out_max": 0.0
+ }
+}

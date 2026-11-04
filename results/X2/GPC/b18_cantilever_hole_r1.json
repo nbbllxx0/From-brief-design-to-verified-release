@@ -1,0 +1,211 @@
+{
+ "task": "b18_cantilever_hole",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:04:02",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies mm for lengths and kN for force; use mm and kN."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 200 x 100 x 40 mm in x,y,z; y is up. Domain min corner is the origin."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; isotropic linear elasticity with E = 210 GPa (210 kN/mm^2) and nu = 0.30 is assumed because no grade or elastic constants are given."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief gives volume fraction 0.3; applied to design (non-passive) volume per tool convention."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief gives 1 mm elements; h = 1 mm."
+   },
+   {
+    "key": "support:fixed_end",
+    "source": "stated",
+    "note": "The entire x = 0 face is fully fixed in x,y,z."
+   },
+   {
+    "key": "load:free_end_load",
+    "source": "derived",
+    "note": "Brief states 2 kN downward on a centered 10 x 10 mm free-end pad. y up gives force (0,-2,0) kN; center (y,z) = (100/2,40/2) = (50,20) mm; bounds y=45..55,z=15..25 at x=200. Total force is distributed equally over pad nodes."
+   },
+   {
+    "key": "passive:through_hole",
+    "source": "derived",
+    "note": "Brief states diameter 40 mm, center (x,y)=(100,50), axis z, full thickness. Radius = 40/2 = 20 mm; span z=0..40 mm; passive void."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_passive",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b18_cantilever_hole_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 25.353706100024283,
+ "usage": {
+  "input_tokens": 106595,
+  "cached_input_tokens": 88064,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1003,
+  "reasoning_output_tokens": 109
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumed isotropic linear-elastic steel with E = 210 GPa and \u03bd = 0.30.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Cantilever with a hole",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    100.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_end",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed face at x = 0."
+   }
+  ],
+  "loads": [
+   {
+    "id": "free_end_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -2.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 2 kN downward (-y), uniformly shared by the nodes of the centered 10 x 10 mm pad at x = 200."
+   }
+  ],
+  "passive": [
+   {
+    "id": "through_hole",
+    "kind": "void",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      100.0,
+      50.0
+     ],
+     "radius": 20.0,
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "note": "Diameter 40 mm through the entire z thickness; must remain empty."
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 25.62331709987484,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=1, grid (200, 100, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

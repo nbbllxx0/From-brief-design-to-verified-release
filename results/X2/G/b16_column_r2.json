@@ -1,0 +1,213 @@
+{
+ "task": "b16_column",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T10:57:25",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b16_column_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 20.436564600095153,
+ "usage": {
+  "input_tokens": 79364,
+  "cached_input_tokens": 61056,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 606,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: linear-elastic steel, E = 210 GPa, \u03bd = 0.3; pads modeled as surface patches, with cap force distributed equally among its nodes. Region checks and validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Column under combined load",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    60.0,
+    240.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "foot_xmin_zmin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      5.0,
+      5.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "10 x 10 mm corner footing, fixed in all directions"
+   },
+   {
+    "id": "foot_xmax_zmin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      55.0,
+      5.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "10 x 10 mm corner footing, fixed in all directions"
+   },
+   {
+    "id": "foot_xmin_zmax",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      5.0,
+      55.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "10 x 10 mm corner footing, fixed in all directions"
+   },
+   {
+    "id": "foot_xmax_zmax",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      55.0,
+      55.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "10 x 10 mm corner footing, fixed in all directions"
+   }
+  ],
+  "loads": [
+   {
+    "id": "cap_combined_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     1000.0,
+     -10000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 10 kN downward (-y) and 1 kN sideways (+x), shared equally across cap nodes"
+   }
+  ],
+  "passive": [],
+  "description": "Column, y up. Four 10 x 10 mm fully fixed footing patches at the corners of y=0. Central 20 x 20 mm cap patch at y=240 carries total force (1000,-10000,0) N. Pads treated as surface attachment patches; linear elastic steel E=210000 N/mm^2, nu=0.3; no additional passive volumes.",
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 20.64409100008197,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (30, 120, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

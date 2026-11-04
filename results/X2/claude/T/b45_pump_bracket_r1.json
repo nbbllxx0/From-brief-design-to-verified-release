@@ -1,0 +1,145 @@
+{
+ "task": "b45_pump_bracket",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T15:05:22",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 22.732104299822822,
+ "usage": {
+  "input_tokens": 8605,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7954,
+  "output_tokens": 1276
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"pump_bracket\",\"description\":\"Wall-mounted pump bracket: back face (z=0) bolted over full area, pump weight carried on a 60x40 mm footprint on the top face (y=100) centred at x=80, z=35. Gravity acts in -y.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[160,100,60]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.25,\"supports\":[{\"id\":\"wall_bolted_back_face\",\"region\":{\"kind\":\"face\",\"face\":\"z-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Back face z=0 bolted to wall over its full area\"}],\"loads\":[{\"id\":\"pump_weight\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[80,35],\"size\":[60,40]},\"force\":[0,-1000,0],\"distribution\":\"uniform_nodes\",\"note\":\"NOMINAL magnitude: brief gives no pump mass/force. Direction is gravity (-y, y up). For single-load compliance minimisation the optimal layout is independent of load magnitude, so 1000 N only scales displacements/compliance. Replace with the actual pump weight (plus any dynamic factor) before any stress or deflection check.\"}],\"passive\":[{\"id\":\"pump_mount_pad\",\"kind\":\"solid\",\"region\":{\"kind\":\"box\",\"min\":[50,96,15],\"max\":[110,100,55]},\"note\":\"Keep solid material under the pump footprint so the seat exists in the result (2 elements thick)\"}],\"resolution\":{\"h\":2},\"meta\":{\"assumptions\":[\"Pump load magnitude not specified in brief; nominal 1000 N downward used. Topology is magnitude-invariant for this single linear load case, but compliance/stress values are not meaningful until the real pump weight is supplied.\",\"Load direction taken as pure gravity (-y); no pump vibration, torque or lateral loads included since none were given.\",\"Solid mounting pad added under the footprint so the pump has a seat.\"],\"needs_user_input\":[\"pump mass or design load (N)\"]}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "pump_bracket",
+  "description": "Wall-mounted pump bracket: back face (z=0) bolted over full area, pump weight carried on a 60x40 mm footprint on the top face (y=100) centred at x=80, z=35. Gravity acts in -y.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160,
+    100,
+    60
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "wall_bolted_back_face",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Back face z=0 bolted to wall over its full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "pump_weight",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80,
+      35
+     ],
+     "size": [
+      60,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "NOMINAL magnitude: brief gives no pump mass/force. Direction is gravity (-y, y up). For single-load compliance minimisation the optimal layout is independent of load magnitude, so 1000 N only scales displacements/compliance. Replace with the actual pump weight (plus any dynamic factor) before any stress or deflection check."
+   }
+  ],
+  "passive": [
+   {
+    "id": "pump_mount_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      50,
+      96,
+      15
+     ],
+     "max": [
+      110,
+      100,
+      55
+     ]
+    },
+    "note": "Keep solid material under the pump footprint so the seat exists in the result (2 elements thick)"
+   }
+  ],
+  "resolution": {
+   "h": 2
+  },
+  "meta": {
+   "assumptions": [
+    "Pump load magnitude not specified in brief; nominal 1000 N downward used. Topology is magnitude-invariant for this single linear load case, but compliance/stress values are not meaningful until the real pump weight is supplied.",
+    "Load direction taken as pure gravity (-y); no pump vibration, torque or lateral loads included since none were given.",
+    "Solid mounting pad added under the footprint so the pump has a seat."
+   ],
+   "needs_user_input": [
+    "pump mass or design load (N)"
+   ]
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 22.926582999993116,
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 50, 30)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

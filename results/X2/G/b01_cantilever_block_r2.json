@@ -1,0 +1,135 @@
+{
+ "task": "b01_cantilever_block",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T10:51:22",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b01_cantilever_block_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 16.90241500013508,
+ "usage": {
+  "input_tokens": 78570,
+  "cached_input_tokens": 63616,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 498,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: force distributed equally across pad nodes; no additional passive regions or minimum feature constraint. list_regions and validate_spec passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Bracket design, rev A",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    100.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "Steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "welded_wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Whole x=0 end face fully fixed to wall."
+   }
+  ],
+  "loads": [
+   {
+    "id": "free_end_downward_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 1 kN downward on 10 x 10 mm pad, y=45..55 mm and z=45..55 mm, centered on x=200 mm free end."
+   }
+  ],
+  "passive": [],
+  "description": "200 x 100 x 100 mm bracket. Whole x=0 face welded and fully fixed; total 1000 N in negative y on centered 10 x 10 mm pad at x=200. Load shared equally among pad nodes; no additional passive volumes or minimum feature constraint.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 17.97141809994355,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

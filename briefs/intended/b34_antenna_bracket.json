@@ -1,0 +1,90 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "m",
+   "force": "N"
+  },
+  "name": "b34 antenna bracket",
+  "domain": {
+   "size": [
+    0.4,
+    0.3,
+    0.2
+   ]
+  },
+  "material": {
+   "name": "S355 steel",
+   "E": 210000000000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "antenna",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.33,
+      0.1
+     ],
+     "radius": 0.04,
+     "span": [
+      0.05,
+      0.3
+     ]
+    },
+    "force": [
+     0,
+     -300,
+     1200
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "clamp",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.33,
+      0.1
+     ],
+     "radius": 0.04,
+     "span": [
+      0.05,
+      0.3
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 0.005
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [],
+ "notes": "E = 2.1e11 N/m^2; 5 mm elements = 0.005 m.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "E=2.1e11 N/m^2, h=0.005 m, vertical cylinder and combined (0,-300,1200) N agree."
+ }
+}

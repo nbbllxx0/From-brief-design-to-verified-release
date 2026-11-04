@@ -1,0 +1,155 @@
+{
+ "task": "b02_mbb_half",
+ "cond": "GC",
+ "rep": 2,
+ "t": "2026-10-30T11:10:56",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_load",
+  "ask_clarification",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 1,
+ "oracle_hits": 1,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b02_mbb_half_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 52.92379519995302,
+ "usage": {
+  "input_tokens": 81245,
+  "cached_input_tokens": 66304,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1279,
+  "reasoning_output_tokens": 541
+ },
+ "returncode": 0,
+ "final": "DONE\n\nAssumptions: sideways means z; aluminium 6061 is isotropic with E = 69,000 N/mm\u00b2 and \u03bd = 0.33. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Simply supported aluminium beam \u2014 left symmetric half",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "left_end_support",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Bottom edge at the left end, across full width. Vertical y and sideways z restraint; axial x free."
+   },
+   {
+    "id": "midspan_symmetry",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x"
+    ],
+    "note": "Symmetry plane at x=120 mm: ux=0; uy and uz free."
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_half_load",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120.0,
+      40.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top mid-span line across full width. Half model receives 1000 N of the full 2000 N downward load."
+   }
+  ],
+  "passive": [],
+  "description": "Left half of a 240 \u00d7 40 \u00d7 40 mm beam; y is up. End support at x=0, y=0 restrains y and z only. Mid-span symmetry at x=120 restrains x only. Half of the full 2000 N downward mid-span line load is applied on the top edge at x=120, y=40, across the full z width.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 53.15310310013592,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

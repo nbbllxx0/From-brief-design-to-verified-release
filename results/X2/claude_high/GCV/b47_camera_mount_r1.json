@@ -1,0 +1,141 @@
+{
+ "task": "b47_camera_mount",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:09:07",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 56327,
+  "cached_input_tokens": 50138,
+  "cache_write_input_tokens": 6181,
+  "output_tokens": 1555
+ },
+ "gc_wall_s": 20.34909910010174,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14450,
+  "cached_input_tokens": 8531,
+  "cache_write_input_tokens": 5915,
+  "output_tokens": 750
+ },
+ "verify_wall_s": 12.967675699852407,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 70777,
+  "cached_input_tokens": 58669,
+  "output_tokens": 2305,
+  "cache_write_input_tokens": 12096
+ },
+ "wall_s": 33.316774799954146,
+ "questions": 1,
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Inspection-camera mount",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    60.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061-T6",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "gantry_bolted_face",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "x=0 face bolted to gantry over full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -80.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Camera 80 N downward (-y) on 20x20 pad at centre of x=120 face"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "volume_fraction": 0.15
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 13.414522199891508,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 60)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,183 @@
+{
+ "task": "b09_duct_bridge",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:28:38",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 89173,
+  "cached_input_tokens": 71296,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1234,
+  "reasoning_output_tokens": 449
+ },
+ "gc_wall_s": 40.91047899983823,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17663,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 205,
+  "reasoning_output_tokens": 185
+ },
+ "verify_wall_s": 10.021320700179785,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 634,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1439,
+  "input_tokens": 106836,
+  "cached_input_tokens": 71296
+ },
+ "wall_s": 50.93179970001802,
+ "questions": 1,
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Pedestrian bridge with cable duct",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    60.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_pinned_bearing",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      60.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Pinned bearing on left bottom end edge across full width."
+   },
+   {
+    "id": "right_sliding_bearing",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      300.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      60.0
+     ]
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Full-width right bearing; free along x, restrained vertically and laterally, as clarified."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_downward_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -3000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 3 kN downward distributed across the full top surface."
+   }
+  ],
+  "passive": [
+   {
+    "id": "cable_duct",
+    "kind": "void",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      150.0,
+      20.0
+     ],
+     "radius": 8.0,
+     "span": [
+      0.0,
+      60.0
+     ]
+    },
+    "note": "16 mm diameter cable duct across full width; must remain empty."
+   }
+  ],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "min_feature": 3.0
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 10.310036399867386,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (300, 60, 60)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

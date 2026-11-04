@@ -1,0 +1,10 @@
+\chapter{Script catalogue}\label{app:scripts}
+\chapterintro{Every script in \code{scripts/}, with the first paragraph of its docstring and its usage line. The table is
+generated from the module docstrings; read the full docstring before running a script. Chapter~\ref{ch:reproduce} says
+which scripts need the GPU or a language model.}
+
+All scripts run from the repository root with the Python of the \code{agentto} environment, and put \code{src/} on the
+path themselves. The \code{-B} flag keeps Python from writing bytecode caches. Scripts that solve need
+\code{AGENTTO\_VOXFEM\_SRC} (Section~\ref{sec:voxfem}).
+
+\input{generated/scripts}

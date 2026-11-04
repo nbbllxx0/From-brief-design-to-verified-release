@@ -1,0 +1,173 @@
+{
+ "task": "b24_shear_block",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:45:26",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "mm and kN as given in brief (80 mm, 4 kN)"
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "80 mm cube, y up"
+   },
+   {
+    "key": "material",
+    "source": "stated",
+    "note": "steel; E = 210 kN/mm^2 (210 GPa), nu = 0.3 standard steel values"
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "0.2"
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "1 mm elements"
+   },
+   {
+    "key": "support:bottom_fixed",
+    "source": "stated",
+    "note": "bottom face y=0 fully fixed"
+   },
+   {
+    "key": "load:top_shear",
+    "source": "stated",
+    "note": "4 kN along +x spread uniformly over whole top face y=80"
+   }
+  ],
+  "untagged": [],
+  "assumed": []
+ },
+ "n_tool_calls": 15,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\claude_high\\GPC\\b24_shear_block_r1\\session\\session.jsonl",
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 25.279741700040177,
+ "usage": {
+  "input_tokens": 92288,
+  "cached_input_tokens": 84770,
+  "cache_write_input_tokens": 7506,
+  "output_tokens": 1967
+ },
+ "returncode": 0,
+ "final": "The spec is built and passes validation. The render shows the fixed bottom face and the +x load on the top face where the brief puts them.\n\n- **Domain:** an 80 \u00d7 80 \u00d7 80 mm cube, with y pointing up. Units are mm and kN.\n- **Material:** steel, with E = 210 kN/mm\u00b2 (210 GPa) and \u03bd = 0.3.\n- **Settings:** volume fraction 0.2 and 1 mm elements, which gives an 80\u00b3 grid of 512,000 elements.\n- **Support:** the whole bottom face (y = 0) is fixed in x, y and z, which covers 6,561 nodes.\n- **Load:** 4 kN in +x, spread evenly over the whole top face (y = 80), which also covers 6,561 nodes.\n\nEvery item is tagged as stated. The only values the brief didn't give directly are steel's E and \u03bd, and I used the standard figures.\n\nDONE. No assumptions beyond the standard steel values E = 210 GPa and \u03bd = 0.3.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "shear_block",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bottom_fixed",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_shear",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     4.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 25.611896200105548,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=1, grid (80, 80, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

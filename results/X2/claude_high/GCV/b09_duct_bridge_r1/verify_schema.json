@@ -1,0 +1,1 @@
+{"type": "object", "additionalProperties": false, "required": ["match", "issues"], "properties": {"match": {"type": "boolean"}, "issues": {"type": "array", "items": {"type": "string"}}}}

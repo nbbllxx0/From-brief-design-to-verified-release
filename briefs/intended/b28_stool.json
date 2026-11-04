@@ -1,0 +1,156 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b28 stool",
+  "domain": {
+   "size": [
+    200,
+    200,
+    200
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.1,
+  "supports": [
+   {
+    "id": "foot_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      10,
+      10
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "foot_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      190,
+      10
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "foot_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      10,
+      190
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "foot_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      190,
+      190
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "sitter",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -1200,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "seat",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0,
+      190,
+      0
+     ],
+     "max": [
+      200,
+      200,
+      200
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "leg_room",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      50,
+      0,
+      50
+     ],
+     "max": [
+      150,
+      120,
+      150
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "stool / table problem: top load on a passive seat, four feet (3D benchmark family)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "10 mm seat and central leg-room box agree; active volume excludes both passive solid and void under package convention."
+ }
+}

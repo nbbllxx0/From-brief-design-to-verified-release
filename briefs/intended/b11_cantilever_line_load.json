@@ -1,0 +1,66 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b11 cantilever line load",
+  "domain": {
+   "size": [
+    120,
+    40,
+    20
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip_edge",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120,
+      0
+     ],
+     "span": null
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "3D cantilever with an end line load, the default problem of top3d (Liu & Tovar 2014)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "Y",
+  "comment": "Matches the lower-free-edge load family in top3d section 6.1 [S1]; physical sizes and force are rescaled."
+ }
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "agentto.spec/v0",
+  "name": "Shelf bracket",
+  "units": {
+    "length": "mm",
+    "force": "N"
+  },
+  "domain": {
+    "kind": "box",
+    "size": [150, 150, 20]
+  },
+  "material": {
+    "name": "Aluminium 6061",
+    "E": 69000,
+    "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+    {
+      "id": "lower_screw_washer",
+      "region": {
+        "kind": "cylinder",
+        "axis": "x",
+        "center": [20, 10],
+        "radius": 5,
+        "span": [0, 0.5]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "A positive selection depth smaller than the 1 mm element spacing selects the circular washer footprint on x = 0."
+    },
+    {
+      "id": "upper_screw_washer",
+      "region": {
+        "kind": "cylinder",
+        "axis": "x",
+        "center": [130, 10],
+        "radius": 5,
+        "span": [0, 0.5]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "A positive selection depth smaller than the 1 mm element spacing selects the circular washer footprint on x = 0."
+    }
+  ],
+  "loads": [
+    {
+      "id": "shelf_load",
+      "region": {
+        "kind": "face",
+        "face": "y+"
+      },
+      "force": [0, -600, 0],
+      "distribution": "uniform_nodes"
+    }
+  ],
+  "resolution": {
+    "h": 1
+  },
+  "min_feature": 3
+}

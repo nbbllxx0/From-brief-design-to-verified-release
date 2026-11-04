@@ -1,0 +1,145 @@
+{
+ "task": "b49_hinged_arm",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:58:35",
+ "n_tool_calls": 8,
+ "n_failed_calls": 1,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_support",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b49_hinged_arm_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 41.76012030011043,
+ "usage": {
+  "input_tokens": 79199,
+  "cached_input_tokens": 72320,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1022,
+  "reasoning_output_tokens": 339
+ },
+ "returncode": 0,
+ "final": "REFUSE \u2014 The 400 N load creates an unresisted 76 N\u00b7m moment about the free hinge, so the arm cannot remain in static equilibrium; validation confirms free rotation about z (R003).",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Hinged support arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    40.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "free_hinge_z",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      10.0,
+      20.0
+     ],
+     "radius": 0.1,
+     "span": [
+      0.0,
+      20.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Ideal free revolute hinge. At h=1 mm, the 0.1 mm selection radius selects only the hinge-axis nodes (x=10,y=20); it is a mesh selection tolerance, not a pin diameter. All translations of axis nodes restrained; rotation about z remains free."
+   }
+  ],
+  "loads": [
+   {
+    "id": "far_end_downward",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      20.0,
+      10.0
+     ],
+     "size": [
+      10.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -400.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "400 N total downward (-y), distributed across the full z thickness and y=15..25 mm at x=200 mm."
+   }
+  ],
+  "passive": [],
+  "description": "Arm with a single ideal free revolute hinge along z at x=10 mm, y=20 mm; no other supports. Hinge represented by translational constraints on its axis, leaving rotation about z free. Downward 400 N total force on x=200 mm, y=15..25 mm, z=0..20 mm. Steel assumed isotropic linear elastic, E=210 GPa and nu=0.3. Static equilibrium must be checked; the specified load creates an unresisted moment about the hinge.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 42.33010379993357,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 40, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

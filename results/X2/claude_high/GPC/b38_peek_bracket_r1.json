@@ -1,0 +1,208 @@
+{
+ "task": "b38_peek_bracket",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:52:45",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "mm and N as in brief"
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 80 x 60 x 40 mm"
+   },
+   {
+    "key": "material",
+    "source": "stated",
+    "note": "PEEK, E = 3.6 GPa = 3600 N/mm^2, nu = 0.38"
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "0.25"
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "1 mm elements"
+   },
+   {
+    "key": "support:base",
+    "source": "stated",
+    "note": "Base z=0 bonded to panel over full area -> fixed xyz"
+   },
+   {
+    "key": "load:launch",
+    "source": "stated",
+    "note": "300 N +x and 300 N -z together on the pad, applied over the pad's 30x30 top face"
+   },
+   {
+    "key": "passive:pad",
+    "source": "derived",
+    "note": "30x30 mm, 4 mm thick pad on top face centred (40,30): box x 25-55, y 15-45, z 36-40"
+   }
+  ],
+  "untagged": [],
+  "assumed": []
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\claude_high\\GPC\\b38_peek_bracket_r1\\session\\session.jsonl",
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 32.394259199965745,
+ "usage": {
+  "input_tokens": 110396,
+  "cached_input_tokens": 102055,
+  "cache_write_input_tokens": 8327,
+  "output_tokens": 2454
+ },
+ "returncode": 0,
+ "final": "The bracket spec is set up and `validate_spec` passes with no errors. Every item has a source tag, and none had to be assumed.\n\n- **Domain:** a box 80 \u00d7 60 \u00d7 40 mm, using mm and N (stated).\n- **Material:** PEEK, E = 3600 N/mm\u00b2 (3.6 GPa), \u03bd = 0.38 (stated).\n- **Volume fraction and mesh:** 0.25 and 1 mm elements, which gives an 80 \u00d7 60 \u00d7 40 grid of 192,000 elements (stated).\n- **Base:** the z = 0 face is fixed in x, y and z over its full area, which holds 4,941 nodes (stated).\n- **Pad:** kept solid as a box from x 25\u201355, y 15\u201345, z 36\u201340, which is 3,600 elements (derived from the stated size, thickness and centre).\n- **Launch load:** (300, 0, \u2212300) N on the pad's 30 \u00d7 30 mm top face, shared by 961 nodes (stated).\n\nThe render shows the support on the base and the pad and load at the top, centred, as the brief describes.\n\nDONE. The only reading I chose myself is that the load is spread evenly over the pad's top face; the brief says only that it acts \"on the pad\".",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Satellite equipment bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    60.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "PEEK",
+   "E": 3600.0,
+   "nu": 0.38
+  },
+  "supports": [
+   {
+    "id": "base",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Base bonded to panel over full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "launch",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      40.0,
+      30.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     -300.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Launch load on pad: 300 N +x and 300 N -z combined"
+   }
+  ],
+  "passive": [
+   {
+    "id": "pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      25.0,
+      15.0,
+      36.0
+     ],
+     "max": [
+      55.0,
+      45.0,
+      40.0
+     ]
+    },
+    "note": "30x30x4 interface pad on top face centred (40,30)"
+   }
+  ],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 32.75830680015497,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

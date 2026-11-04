@@ -1,0 +1,497 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b04 torsion shaft",
+  "domain": {
+   "size": [
+    160,
+    80,
+    80
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "gearbox",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "lug_top",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72,
+      40
+     ],
+     "size": [
+      16,
+      16
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     0,
+     625
+    ]
+   },
+   {
+    "id": "lug_bottom",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8,
+      40
+     ],
+     "size": [
+      16,
+      16
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     0,
+     -625
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "voxfem solver benchmark torsion in physical units",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "Two 16 x 16 mm drive lugs retained 4 mm inward, at x=156..160; original +x torque and all other inputs retained.",
+   "why": "Named drive lugs leave depth open. Admit these local 4 mm solids; unchanged 64 mm couple arm gives +/-625 N. Added mass is disclosed, not the acceptance criterion.",
+   "counts": true,
+   "adjudicated": "2026-11-01",
+   "from_run": "GNR/b04_torsion_shaft_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "Shaft bracket in torsion",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      160.0,
+      80.0,
+      80.0
+     ]
+    },
+    "material": {
+     "name": "Steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "gearbox_clamp",
+      "region": {
+       "kind": "face",
+       "face": "x-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Rigid attachment to gearbox across entire x=0 face."
+     }
+    ],
+    "loads": [
+     {
+      "id": "top_lug_force",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        72.0,
+        40.0
+       ],
+       "size": [
+        16.0,
+        16.0
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0.0,
+       0.0,
+       625.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Total +625 N along z over top lug; 64 mm separation gives 40 N m torque about +x."
+     },
+     {
+      "id": "bottom_lug_force",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        8.0,
+        40.0
+       ],
+       "size": [
+        16.0,
+        16.0
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0.0,
+       0.0,
+       -625.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Total -625 N along z over bottom lug; equal and opposite to top lug force."
+     }
+    ],
+    "passive": [
+     {
+      "id": "top_drive_lug",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        156.0,
+        64.0,
+        32.0
+       ],
+       "max": [
+        160.0,
+        80.0,
+        48.0
+       ]
+      },
+      "note": "16 x 16 mm end-face lug; assumed 4 mm axial depth inside envelope."
+     },
+     {
+      "id": "bottom_drive_lug",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        156.0,
+        0.0,
+        32.0
+       ],
+       "max": [
+        160.0,
+        16.0,
+        48.0
+       ]
+      },
+      "note": "16 x 16 mm end-face lug; assumed 4 mm axial depth inside envelope."
+     }
+    ],
+    "description": "160 x 80 x 80 mm shaft bracket; y is up. Entire x=0 face clamped to gearbox. End drive lug patches span y=64..80 and y=0..16, z=32..48 at x=160. Equal/opposite z forces of 625 N at y=72 and y=8 give +40000 N mm torque about x with zero resultant force. Assume each lug extends 4 mm into the envelope as a preserved solid. Volume fraction 0.3 applies to non-passive design volume.",
+    "volume_fraction": 0.3,
+    "resolution": {
+     "h": 2.0,
+     "cells_short_edge": null
+    }
+   }
+  },
+  {
+   "reading": "Two 16 x 16 mm drive lugs retained 2 mm inward, at x=158..160; original +x torque and all other inputs retained.",
+   "why": "Same named-lug interpretation as row 1, with 2 mm depth. Both load footprints and +40 N m torque remain correct; do not generalize to unrelated retained material.",
+   "counts": true,
+   "adjudicated": "2026-11-01",
+   "from_run": "GP/b04_torsion_shaft_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "Shaft bracket in torsion",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      160.0,
+      80.0,
+      80.0
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "gearbox_fixed",
+      "region": {
+       "kind": "face",
+       "face": "x-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Rigidly bolted x=0 end: fix all three translations across the end face."
+     }
+    ],
+    "loads": [
+     {
+      "id": "top_lug",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        72.0,
+        40.0
+       ],
+       "size": [
+        16.0,
+        16.0
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0.0,
+       0.0,
+       625.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Top lug bounds y=64..80, z=32..48 at x=160. F=40000/(72-8)=625 N; top force +z gives +x torque."
+     },
+     {
+      "id": "bottom_lug",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        8.0,
+        40.0
+       ],
+       "size": [
+        16.0,
+        16.0
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0.0,
+       0.0,
+       -625.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Bottom lug bounds y=0..16, z=32..48 at x=160. Equal opposite -z force, net force zero and net torque +40000 N mm."
+     }
+    ],
+    "passive": [
+     {
+      "id": "top_lug_solid",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        158.0,
+        64.0,
+        32.0
+       ],
+       "max": [
+        160.0,
+        80.0,
+        48.0
+       ]
+      },
+      "note": "Preserve the 16 x 16 mm top drive lug footprint; assume 2 mm axial thickness (one element)."
+     },
+     {
+      "id": "bottom_lug_solid",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        158.0,
+        0.0,
+        32.0
+       ],
+       "max": [
+        160.0,
+        16.0,
+        48.0
+       ]
+      },
+      "note": "Preserve the 16 x 16 mm bottom drive lug footprint; assume 2 mm axial thickness (one element)."
+     }
+    ],
+    "description": "160 mm x 80 mm x 80 mm shaft bracket; y up. Fully fixed gearbox interface at x=0. At x=160, 16 x 16 mm top and bottom drive lugs centered at z=40 carry a pure +x torque of 40 N m: +625 N along z on the top lug and -625 N along z on the bottom lug (64 mm centroid separation). Assume isotropic steel E=210000 N/mm^2, nu=0.3 and 2 mm axial depth for solid drive lug pads.",
+    "volume_fraction": 0.3,
+    "resolution": {
+     "h": 2.0,
+     "cells_short_edge": null
+    }
+   }
+  },
+  {
+   "reading": "Two 16 x 16 mm drive lugs retained 4 mm inward, at x=156..160; original +x torque and all other inputs retained.",
+   "why": "Confirms row 1: identical physical specification after ignoring names and descriptive text. Local depth of the named lugs is unspecified.",
+   "counts": true,
+   "adjudicated": "2026-11-01",
+   "from_run": "GP/b04_torsion_shaft_r2",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "Shaft bracket in torsion",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      160.0,
+      80.0,
+      80.0
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "gearbox_clamp",
+      "region": {
+       "kind": "face",
+       "face": "x-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Entire x=0 end rigidly bolted to gearbox; fix all translations."
+     }
+    ],
+    "loads": [
+     {
+      "id": "top_lug_force",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        72.0,
+        40.0
+       ],
+       "size": [
+        16.0,
+        16.0
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0.0,
+       0.0,
+       625.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Top lug y=64..80, z=32..48 at x=160. +625 N along z; pair separation 64 mm gives +40000 N*mm about x."
+     },
+     {
+      "id": "bottom_lug_force",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        8.0,
+        40.0
+       ],
+       "size": [
+        16.0,
+        16.0
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0.0,
+       0.0,
+       -625.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Bottom lug y=0..16, z=32..48 at x=160. -625 N along z, balancing top force and producing +x torque."
+     }
+    ],
+    "passive": [
+     {
+      "id": "top_drive_lug",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        156.0,
+        64.0,
+        32.0
+       ],
+       "max": [
+        160.0,
+        80.0,
+        48.0
+       ]
+      },
+      "note": "Preserve top 16 x 16 mm drive lug; assumed 4 mm axial depth within envelope."
+     },
+     {
+      "id": "bottom_drive_lug",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        156.0,
+        0.0,
+        32.0
+       ],
+       "max": [
+        160.0,
+        16.0,
+        48.0
+       ]
+      },
+      "note": "Preserve bottom 16 x 16 mm drive lug; assumed 4 mm axial depth within envelope."
+     }
+    ],
+    "description": "160 x 80 x 80 mm shaft bracket, y up. Clamp x=0. Apply +40 N*m about x through equal opposite z forces on 16 x 16 mm end-face drive lugs. Assume 4 mm axial solid lug depth within envelope and isotropic linear-elastic steel E=210 GPa, nu=0.3.",
+    "volume_fraction": 0.3,
+    "resolution": {
+     "h": 2.0,
+     "cells_short_edge": null
+    }
+   }
+  }
+ ],
+ "notes": "40 N*m = 40000 N*mm; the lug centres are 64 mm apart, so a 625 N couple in z. M_x = r_y F_z: the top lug (r_y = +32) pushes +z.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "N",
+  "comment": "Lug centres y=72 and 8 give 64 mm separation; +/-625 N gives +40000 N mm. FEAD citation is incomplete."
+ }
+}

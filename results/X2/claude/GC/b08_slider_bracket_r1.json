@@ -1,0 +1,126 @@
+{
+ "task": "b08_slider_bracket",
+ "cond": "GC",
+ "rep": 1,
+ "t": "2026-10-30T14:56:57",
+ "n_tool_calls": 5,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "validate_spec"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\claude\\GC\\b08_slider_bracket_r1\\session\\session.jsonl",
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 17.855350899975747,
+ "usage": {
+  "input_tokens": 40210,
+  "cached_input_tokens": 35835,
+  "cache_write_input_tokens": 4369,
+  "output_tokens": 842
+ },
+ "returncode": 0,
+ "final": "I built the spec and ran validate_spec. It failed with error R003: nothing stops the part moving along x. The rail is the only support, and it holds y and z only. The 300 N push acts along +x, which is exactly the free sliding direction. Nothing reacts that force, so there is no static solution. The brief would need something that holds the part in x, such as an end stop, a clamp or a locking screw. I didn't add one because the brief says the part slides freely, and adding a stop would change the problem.\n\nREFUSE: the rail leaves the part free to slide along x, so nothing can resist the 300 N +x push and the part can't be held still.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "slider_bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "rail",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "push",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 18.058323999866843,
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

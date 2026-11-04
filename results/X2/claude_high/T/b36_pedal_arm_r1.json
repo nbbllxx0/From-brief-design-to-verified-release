@@ -1,0 +1,154 @@
+{
+ "task": "b36_pedal_arm",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:25:38",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 10.60677559999749,
+ "usage": {
+  "input_tokens": 8657,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8006,
+  "output_tokens": 511
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"pedal_arm\",\"description\":\"Aluminium 6061 pedal arm, 200x40x20 mm envelope, keyed to a 16 mm shaft through the thickness at x=15, y=20 (fixed in all directions); 1 kN downward foot load on a 30 mm pad on the top face at the far end, full thickness.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[200,40,20]},\"material\":{\"name\":\"aluminium 6061\",\"E\":69000.0,\"nu\":0.33},\"volume_fraction\":0.25,\"supports\":[{\"id\":\"shaft\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"z\",\"center\":[15,20],\"radius\":8,\"span\":[0,20]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"16 mm keyed shaft through thickness; everything inside the circle fixed\"}],\"loads\":[{\"id\":\"foot\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[185,10],\"size\":[30,20]},\"force\":[0,-1000,0],\"note\":\"1 kN downward on 30 mm pad at far end, full thickness\"}],\"passive\":[{\"id\":\"shaft_boss\",\"kind\":\"solid\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"z\",\"center\":[15,20],\"radius\":8,\"span\":[0,20]},\"note\":\"material inside the shaft circle kept solid\"}],\"resolution\":{\"h\":1.0},\"min_feature\":null,\"meta\":{}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "pedal_arm",
+  "description": "Aluminium 6061 pedal arm, 200x40x20 mm envelope, keyed to a 16 mm shaft through the thickness at x=15, y=20 (fixed in all directions); 1 kN downward foot load on a 30 mm pad on the top face at the far end, full thickness.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200,
+    40,
+    20
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "shaft",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      15,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      0,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "16 mm keyed shaft through thickness; everything inside the circle fixed"
+   }
+  ],
+  "loads": [
+   {
+    "id": "foot",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      185,
+      10
+     ],
+     "size": [
+      30,
+      20
+     ]
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ],
+    "note": "1 kN downward on 30 mm pad at far end, full thickness"
+   }
+  ],
+  "passive": [
+   {
+    "id": "shaft_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      15,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      0,
+      20
+     ]
+    },
+    "note": "material inside the shaft circle kept solid"
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  },
+  "min_feature": null,
+  "meta": {}
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 10.80536220013164,
+ "cwe": {
+  "value": 0.009356583886068082,
+  "c_pred_under_intended": 639.534048488859,
+  "c_intended_opt": 633.6056639434839,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0779999494552612
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 40, 20)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

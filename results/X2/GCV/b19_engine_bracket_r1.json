@@ -1,0 +1,238 @@
+{
+ "task": "b19_engine_bracket",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:30:57",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 192451,
+  "cached_input_tokens": 173184,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1800,
+  "reasoning_output_tokens": 360
+ },
+ "gc_wall_s": 47.31606310000643,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 55037,
+  "cached_input_tokens": 51712,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 952,
+  "reasoning_output_tokens": 756
+ },
+ "verify_wall_s": 34.63350400002673,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 1116,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2752,
+  "input_tokens": 247488,
+  "cached_input_tokens": 224896
+ },
+ "wall_s": 81.94956710003316,
+ "questions": 3,
+ "n_tool_calls": 18,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Engine bracket",
+  "units": {
+   "length": "in",
+   "force": "lbf"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    7.0,
+    2.5,
+    4.0
+   ]
+  },
+  "material": {
+   "name": "Ti-6Al-4V",
+   "E": 16500000.0,
+   "nu": 0.34
+  },
+  "supports": [
+   {
+    "id": "washer_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, per clarification."
+   },
+   {
+    "id": "washer_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, per clarification."
+   },
+   {
+    "id": "washer_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, per clarification."
+   },
+   {
+    "id": "washer_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, per clarification."
+   }
+  ],
+  "loads": [
+   {
+    "id": "clevis_pull",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "force": [
+     0.0,
+     8000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total +y pull distributed uniformly over clevis nodes, per clarification."
+   }
+  ],
+  "passive": [
+   {
+    "id": "clevis",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "note": "Required solid clevis cylinder."
+   }
+  ],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 0.05,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 34.91504759993404,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1.27, grid (140, 50, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

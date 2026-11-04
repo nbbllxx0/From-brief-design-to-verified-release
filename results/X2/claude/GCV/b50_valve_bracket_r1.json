@@ -1,0 +1,158 @@
+{
+ "task": "b50_valve_bracket",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T15:11:01",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 71956,
+  "cached_input_tokens": 65888,
+  "cache_write_input_tokens": 6058,
+  "output_tokens": 2166
+ },
+ "gc_wall_s": 32.443799200002104,
+ "verify": {
+  "match": true,
+  "issues": [
+   "Not a mismatch between the renders and the brief, but a conflict inside the brief itself: the 600 N load pad (x 80\u2013100, z 10\u201330, on the top face at y = 80) sits completely inside the handle keep-out (x > 70, y > 50, full depth). The renders show this exactly as the brief describes it. If the keep-out is enforced as void, no material can touch the pad, so the load has nothing to act on. The keep-out bounds or the pad location need to be fixed in the brief before running the optimization."
+  ]
+ },
+ "verify_usage": {
+  "input_tokens": 14630,
+  "cached_input_tokens": 6305,
+  "cache_write_input_tokens": 8321,
+  "output_tokens": 920
+ },
+ "verify_wall_s": 13.701551400125027,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 3086,
+  "cached_input_tokens": 72193,
+  "cache_write_input_tokens": 14379,
+  "input_tokens": 86586
+ },
+ "wall_s": 46.14535060012713,
+ "questions": 1,
+ "n_tool_calls": 8,
+ "n_failed_calls": 1,
+ "provider": "claude",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Valve actuator bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    80.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "base_bolted",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom face bolted over full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "actuator_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      90.0,
+      20.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -600.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [
+   {
+    "id": "handle_clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      70.0,
+      50.0,
+      0.0
+     ],
+     "max": [
+      120.0,
+      80.0,
+      40.0
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 14.138858399819583,
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,183 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b44 gearbox bracket",
+  "domain": {
+   "size": [
+    160,
+    80,
+    80
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "gearbox",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "lug_top",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72,
+      40
+     ],
+     "size": [
+      16,
+      16
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     0,
+     625
+    ]
+   },
+   {
+    "id": "lug_bottom",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8,
+      40
+     ],
+     "size": [
+      16,
+      16
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     0,
+     -625
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "clarify",
+ "source": "engineering",
+ "oracle": [
+  {
+   "about": "which axis is up, and where the lugs sit",
+   "answer": "y is up. Both lugs sit inside the end face, flush with its top edge (y = 80) and bottom edge (y = 0), centred at z = 40, so their centres are 64 mm apart."
+  },
+  {
+   "about": "the sense of the torque",
+   "answer": "Either sense is fine; take +x by the right-hand rule."
+  }
+ ],
+ "admissible": [
+  {
+   "reading": "torque in the opposite sense (signs swapped)",
+   "why": "the brief gives no sense; the user accepts either",
+   "counts": true,
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "name": "b44 gearbox bracket",
+    "domain": {
+     "size": [
+      160,
+      80,
+      80
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "volume_fraction": 0.3,
+    "supports": [
+     {
+      "id": "gearbox",
+      "region": {
+       "kind": "face",
+       "face": "x-"
+      }
+     }
+    ],
+    "loads": [
+     {
+      "id": "lug_top",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        72,
+        40
+       ],
+       "size": [
+        16,
+        16
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0,
+       0,
+       -625
+      ]
+     },
+     {
+      "id": "lug_bottom",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        8,
+        40
+       ],
+       "size": [
+        16,
+        16
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0,
+       0,
+       625
+      ]
+     }
+    ],
+    "resolution": {
+     "h": 2.0
+    }
+   }
+  }
+ ],
+ "notes": "The draft-1 wording of b04: no up axis, and 'at the top edge' may mean on or inside the edge. In the draft X2 run every condition read it differently from the intended spec (z up, or lugs centred on the edges). Same problem as b04, which states it fully.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Y after oracle: y-up, flush 16 mm patches and either torque sense. Real axis/placement ambiguity exists before clarification. Equal net torque alone does not fix lug locations."
+ }
+}

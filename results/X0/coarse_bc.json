@@ -1,0 +1,154 @@
+{
+ "note": "25 iterations per run (max_outer cap, so status not_converged is expected); mg64, deterministic coarse assembly",
+ "conclusion": "injection is better when it only loses some supports; dilation is required when injection leaves rigid modes free (injection then fails at the first solve)",
+ "rows": [
+  {
+   "case": "b05_l_bracket_h1",
+   "n_elem": 400000,
+   "rule": "inject",
+   "status": "not_converged",
+   "lost_on_injection": [
+    "ceiling"
+   ],
+   "free_modes_on_injection": [],
+   "mg_levels": 4,
+   "coarse_free_dofs": 3042,
+   "pcg_iters_mean": 37.36,
+   "pcg_iters_max": 53,
+   "all_solves_accepted": true,
+   "n_solves": 25,
+   "error": null
+  },
+  {
+   "case": "b05_l_bracket_h1",
+   "n_elem": 400000,
+   "rule": "dilate",
+   "status": "not_converged",
+   "lost_on_injection": [
+    "ceiling"
+   ],
+   "free_modes_on_injection": [],
+   "mg_levels": 4,
+   "coarse_free_dofs": 2592,
+   "pcg_iters_mean": 68.24,
+   "pcg_iters_max": 88,
+   "all_solves_accepted": true,
+   "n_solves": 25,
+   "error": null
+  },
+  {
+   "case": "b09_duct_bridge_h2",
+   "n_elem": 135000,
+   "rule": "inject",
+   "status": "not_converged",
+   "lost_on_injection": [
+    "slide"
+   ],
+   "free_modes_on_injection": [],
+   "mg_levels": 4,
+   "coarse_free_dofs": 900,
+   "pcg_iters_mean": 201.96,
+   "pcg_iters_max": 534,
+   "all_solves_accepted": true,
+   "n_solves": 25,
+   "error": null
+  },
+  {
+   "case": "b09_duct_bridge_h2",
+   "n_elem": 135000,
+   "rule": "dilate",
+   "status": "not_converged",
+   "lost_on_injection": [
+    "slide"
+   ],
+   "free_modes_on_injection": [],
+   "mg_levels": 4,
+   "coarse_free_dofs": 477,
+   "pcg_iters_mean": 572.6,
+   "pcg_iters_max": 1419,
+   "all_solves_accepted": true,
+   "n_solves": 25,
+   "error": null
+  },
+  {
+   "case": "cantilever_k40_control",
+   "n_elem": 128000,
+   "rule": "inject",
+   "status": "not_converged",
+   "lost_on_injection": [],
+   "free_modes_on_injection": [],
+   "mg_levels": 4,
+   "coarse_free_dofs": 1080,
+   "pcg_iters_mean": 9.64,
+   "pcg_iters_max": 16,
+   "all_solves_accepted": true,
+   "n_solves": 25,
+   "error": null
+  },
+  {
+   "case": "cantilever_k40_control",
+   "n_elem": 128000,
+   "rule": "dilate",
+   "status": "not_converged",
+   "lost_on_injection": [],
+   "free_modes_on_injection": [],
+   "mg_levels": 4,
+   "coarse_free_dofs": 1080,
+   "pcg_iters_mean": 9.64,
+   "pcg_iters_max": 16,
+   "all_solves_accepted": true,
+   "n_solves": 25,
+   "error": null
+  },
+  {
+   "case": "bridge_k40_both_odd",
+   "n_elem": 128000,
+   "rule": "inject",
+   "status": "solve_failed",
+   "lost_on_injection": [
+    "pin",
+    "roller"
+   ],
+   "free_modes_on_injection": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "mg_levels": 4,
+   "coarse_free_dofs": 1188,
+   "pcg_iters_mean": null,
+   "pcg_iters_max": null,
+   "all_solves_accepted": true,
+   "n_solves": 0,
+   "error": "SolveFailed('pcg64: non-positive curvature nan at iteration 1')"
+  },
+  {
+   "case": "bridge_k40_both_odd",
+   "n_elem": 128000,
+   "rule": "dilate",
+   "status": "not_converged",
+   "lost_on_injection": [
+    "pin",
+    "roller"
+   ],
+   "free_modes_on_injection": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "mg_levels": 4,
+   "coarse_free_dofs": 1128,
+   "pcg_iters_mean": 21.0,
+   "pcg_iters_max": 46,
+   "all_solves_accepted": true,
+   "n_solves": 25,
+   "error": null
+  }
+ ]
+}

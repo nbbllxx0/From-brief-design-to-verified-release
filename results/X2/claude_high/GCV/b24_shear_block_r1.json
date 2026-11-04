@@ -1,0 +1,132 @@
+{
+ "task": "b24_shear_block",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:02:53",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 54140,
+  "cached_input_tokens": 48676,
+  "cache_write_input_tokens": 5456,
+  "output_tokens": 1105
+ },
+ "gc_wall_s": 19.398000800050795,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14391,
+  "cached_input_tokens": 8472,
+  "cache_write_input_tokens": 5915,
+  "output_tokens": 413
+ },
+ "verify_wall_s": 7.663820799905807,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 68531,
+  "cached_input_tokens": 57148,
+  "output_tokens": 1518,
+  "cache_write_input_tokens": 11371
+ },
+ "wall_s": 27.061821599956602,
+ "questions": 0,
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Block in shear",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bottom_fixed",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_shear",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     4.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 8.06502029998228,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=1, grid (80, 80, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

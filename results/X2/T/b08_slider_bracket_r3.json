@@ -1,0 +1,36 @@
+{
+ "task": "b08_slider_bracket",
+ "cond": "T",
+ "rep": 3,
+ "t": "2026-10-30T11:26:15",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 5.334936199942604,
+ "usage": {
+  "input_tokens": 21942,
+  "cached_input_tokens": 17024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 78,
+  "reasoning_output_tokens": 40
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The rail leaves translation along x unconstrained, so the 300 N force along +x cannot be balanced and no static equilibrium exists.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 5.728104599984363,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": true
+}

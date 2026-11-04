@@ -1,0 +1,54 @@
+{
+ "what": [
+  "assistant"
+ ],
+ "passed": 9,
+ "failed": 0,
+ "results": [
+  {
+   "check": "Enter sends; the run shows 'working'",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Act run asks its question as chips",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "a late answer (80 s) still gets applied",
+   "ok": true,
+   "detail": "([{'id': 'load_2', 'region': {'kind': 'patch', 'face': 'y+', 'center': [50, 25], 'size': [10, 10], 'shape': 'rect'}, 'force': [0, 0, -500], 'distribution': 'uniform_nodes', 'note': ''}], 'follow-up runs: 0')"
+  },
+  {
+   "check": "'Undo this run's edits' reverts the load",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Propose returns cards and leaves the spec untouched",
+   "ok": true,
+   "detail": "2"
+  },
+  {
+   "check": "hovering a card draws its ghost",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Accept applies only that card",
+   "ok": true,
+   "detail": "0.2"
+  },
+  {
+   "check": "Reject marks the other card rejected",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "no uncaught exceptions or console errors",
+   "ok": true,
+   "detail": "[]"
+  }
+ ]
+}

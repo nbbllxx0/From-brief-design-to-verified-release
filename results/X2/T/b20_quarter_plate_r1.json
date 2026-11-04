@@ -1,0 +1,147 @@
+{
+ "task": "b20_quarter_plate",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:29:00",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 14.866065599955618,
+ "usage": {
+  "input_tokens": 21965,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 540,
+  "reasoning_output_tokens": 104
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"quarter_plate\",\n  \"description\": \"Quarter model of a 240 x 24 x 240 mm plate with symmetry at x = 120 mm and z = 120 mm.\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [120, 24, 120]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.25,\n  \"supports\": [\n    {\n      \"id\": \"corner_pin\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [4, 4],\n        \"size\": [8, 8]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"symmetry_x\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x+\"\n      },\n      \"fix\": [\"x\"]\n    },\n    {\n      \"id\": \"symmetry_z\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"z+\"\n      },\n      \"fix\": [\"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"quarter_center_load\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y+\",\n        \"center\": [115, 115],\n        \"size\": [10, 10]\n      },\n      \"force\": [0, -1000, 0],\n      \"distribution\": \"uniform_nodes\",\n      \"note\": \"One quarter of the full 4000 N load on one quarter of the central 20 x 20 mm pad.\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "quarter_plate",
+  "description": "Quarter model of a 240 x 24 x 240 mm plate with symmetry at x = 120 mm and z = 120 mm.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120,
+    24,
+    120
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "corner_pin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      4,
+      4
+     ],
+     "size": [
+      8,
+      8
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "symmetry_x",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x"
+    ]
+   },
+   {
+    "id": "symmetry_z",
+    "region": {
+     "kind": "face",
+     "face": "z+"
+    },
+    "fix": [
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "quarter_center_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      115,
+      115
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "One quarter of the full 4000 N load on one quarter of the central 20 x 20 mm pad."
+   }
+  ],
+  "resolution": {
+   "h": 1
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 14.92319200001657,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 24, 120)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,16 @@
+**Part compliance along the release path, judged at the finest grid**
+
+| Problem | Arm | Elements | Part compliance (N\,mm) | vs cold fine | Compute (s) |
+|---|---|---|---|---|---|
+| span bridge | release path | 0.06M | 2715 | -18.5% | 24 |
+| span bridge | release path | 0.51M | 2506 | -24.8% | 32 |
+| span bridge | release path | 4.10M | 2422 | -27.3% | 124 |
+| span bridge | release path | 32.77M | 2382 | -28.5% | 232 |
+| span bridge | cold fine run | 32.77M | 3333 | 0% | 466 |
+| b06 | release path | 0.14M | 4.012 | +2.6% | 6 |
+| b06 | release path | 1.15M | 3.97 | +1.5% | 8 |
+| b06 | release path | 9.22M | 3.933 | +0.6% | 40 |
+| b06 | release path | 73.73M | 3.915 | +0.1% | 260 |
+| b06 | cold fine run | 73.73M | 3.912 | 0% | 466 |
+
+Source: results/X5/resolution.json.

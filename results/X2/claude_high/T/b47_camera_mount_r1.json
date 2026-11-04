@@ -1,0 +1,148 @@
+{
+ "task": "b47_camera_mount",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:27:53",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 12.856223399983719,
+ "usage": {
+  "input_tokens": 8597,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7946,
+  "output_tokens": 651
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"inspection_camera_mount\",\"description\":\"Cantilever inspection-camera mount, 120 x 60 x 60 mm envelope, y up. x=0 face bolted to gantry over full area; 80 N downward camera load on a 20 x 20 mm pad centred on the x=120 end face.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[120,60,60]},\"material\":{\"name\":\"aluminium 6061\",\"E\":69000.0,\"nu\":0.33},\"volume_fraction\":0.12,\"supports\":[{\"id\":\"gantry_bolted_face\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"x=0 face bolted to gantry over full area\"}],\"loads\":[{\"id\":\"camera_weight\",\"region\":{\"kind\":\"patch\",\"face\":\"x+\",\"center\":[30,30],\"size\":[20,20]},\"force\":[0,-80,0],\"distribution\":\"uniform_nodes\",\"note\":\"80 N downward (-y) on 20 x 20 mm pad at centre of x=120 end face\"}],\"passive\":[{\"id\":\"camera_pad\",\"kind\":\"solid\",\"region\":{\"kind\":\"box\",\"min\":[118,20,20],\"max\":[120,40,40]},\"note\":\"keep solid material under the camera load pad\"}],\"resolution\":{\"h\":1.0},\"meta\":{\"volume_fraction_rationale\":\"brief asks for as light as practical; low fraction chosen for a single-load cantilever\",\"up_axis\":\"y\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "inspection_camera_mount",
+  "description": "Cantilever inspection-camera mount, 120 x 60 x 60 mm envelope, y up. x=0 face bolted to gantry over full area; 80 N downward camera load on a 20 x 20 mm pad centred on the x=120 end face.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120,
+    60,
+    60
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.12,
+  "supports": [
+   {
+    "id": "gantry_bolted_face",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "x=0 face bolted to gantry over full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera_weight",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      30,
+      30
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "force": [
+     0,
+     -80,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "80 N downward (-y) on 20 x 20 mm pad at centre of x=120 end face"
+   }
+  ],
+  "passive": [
+   {
+    "id": "camera_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      118,
+      20,
+      20
+     ],
+     "max": [
+      120,
+      40,
+      40
+     ]
+    },
+    "note": "keep solid material under the camera load pad"
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  },
+  "meta": {
+   "volume_fraction_rationale": "brief asks for as light as practical; low fraction chosen for a single-load cantilever",
+   "up_axis": "y"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 13.05238789995201,
+ "cwe": {
+  "value": 0.26222881795258535,
+  "c_pred_under_intended": 0.34499961590406375,
+  "c_intended_opt": 0.2733257322263287,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 0.8108642101287842
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": false,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 60)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

@@ -1,0 +1,17 @@
+{
+ "task": "b27_eccentric_cantilever",
+ "cond": "R",
+ "rep": 1,
+ "questions": 0,
+ "spec": null,
+ "reason": "load region",
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

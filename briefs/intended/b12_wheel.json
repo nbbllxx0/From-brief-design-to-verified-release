@@ -1,0 +1,127 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b12 wheel",
+  "domain": {
+   "size": [
+    100,
+    50,
+    100
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "corner_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      2.5
+     ],
+     "size": [
+      5,
+      5
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "corner_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      97.5,
+      2.5
+     ],
+     "size": [
+      5,
+      5
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "corner_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      97.5
+     ],
+     "size": [
+      5,
+      5
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "corner_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      97.5,
+      97.5
+     ],
+     "size": [
+      5,
+      5
+     ],
+     "shape": "rect"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "centre",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      50,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -2000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "the 'wheel' problem of top3d (Liu & Tovar 2014): bottom corners fixed, load at the bottom centre",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "Y",
+  "comment": "Matches the wheel problem family [S1], with finite support/load pads as regularizations. Do not infer a support-DOF mismatch solely from the term planar joint."
+ }
+}

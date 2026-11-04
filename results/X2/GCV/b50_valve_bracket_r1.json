@@ -1,0 +1,164 @@
+{
+ "task": "b50_valve_bracket",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:39:29",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 87980,
+  "cached_input_tokens": 65536,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 668,
+  "reasoning_output_tokens": 66
+ },
+ "gc_wall_s": 20.65071229985915,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17664,
+  "cached_input_tokens": 15104,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 116,
+  "reasoning_output_tokens": 96
+ },
+ "verify_wall_s": 6.413348000030965,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 162,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 784,
+  "input_tokens": 105644,
+  "cached_input_tokens": 80640
+ },
+ "wall_s": 27.064060299890116,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Valve actuator bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    80.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "bolted_bottom",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full bottom face y = 0 bolted down."
+   }
+  ],
+  "loads": [
+   {
+    "id": "actuator_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      90.0,
+      20.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -600.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "600 N downward through 20 x 20 mm pad centered at x = 90, z = 20 on y = 80."
+   }
+  ],
+  "passive": [
+   {
+    "id": "valve_handle_clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      70.0,
+      50.0,
+      0.0
+     ],
+     "max": [
+      120.0,
+      80.0,
+      40.0
+     ]
+    },
+    "note": "Required clear region x > 70 mm and y > 50 mm, through full depth; element-center selection preserves strict bounds at h = 1 mm."
+   }
+  ],
+  "description": "Valve actuator bracket; y is up. Full bottom face bolted down. Top pad carries 600 N downward. Handle clearance x > 70 mm, y > 50 mm through full depth.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 6.741688499925658,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

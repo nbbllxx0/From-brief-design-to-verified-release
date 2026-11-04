@@ -1,0 +1,157 @@
+{
+ "task": "b46_sensor_housing",
+ "cond": "GC",
+ "rep": 3,
+ "t": "2026-10-30T11:53:46",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "ask_clarification",
+  "add_passive",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 1,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b46_sensor_housing_r3\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 27.73698200006038,
+ "usage": {
+  "input_tokens": 80761,
+  "cached_input_tokens": 54528,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1005,
+  "reasoning_output_tokens": 18
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: full-area bolting fixes x/y/z; aluminium 6061 uses E = 68.9 GPa, \u03bd = 0.33. Regions checked, validation passed, and render confirmed support/load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Sensor housing bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    50.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "chassis_mount",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full bottom face y=0 bolted to chassis."
+   }
+  ],
+  "loads": [
+   {
+    "id": "sensor_head",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      25.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -200.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 200 N along -x on 10 x 10 mm pad centred on x=80 end face."
+   }
+  ],
+  "passive": [
+   {
+    "id": "connector_clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      20.0,
+      10.0,
+      0.0
+     ],
+     "max": [
+      50.0,
+      30.0,
+      15.0
+     ]
+    },
+    "note": "User-specified connector plug clearance, entering 15 mm from front z=0."
+   }
+  ],
+  "description": "Sensor housing bracket; y up; full y=0 face fixed to chassis; 200 N along -x on central 10 x 10 mm pad at x=80; connector void x=20..50, y=10..30, z=0..15 mm.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 28.21518119983375,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 50, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

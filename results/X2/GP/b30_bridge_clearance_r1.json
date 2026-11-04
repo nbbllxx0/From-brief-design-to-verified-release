@@ -1,0 +1,263 @@
+{
+ "task": "b30_bridge_clearance",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:43:20",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief gives lengths in mm and force in kN; use mm and kN."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 320 mm x span, 80 mm y height, 80 mm z width, origin at left bottom corner."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; assume isotropic linear elasticity E=210 GPa (210 kN/mm^2), nu=0.3 because grade and elastic constants are unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.2; tool applies this to non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 2 mm elements; h=2 mm."
+   },
+   {
+    "key": "support:left_pin",
+    "source": "stated",
+    "note": "Left bottom edge x=0,y=0 across z=0..80 is pinned: restrain translations x,y,z."
+   },
+   {
+    "key": "support:right_roller",
+    "source": "assumed",
+    "note": "Right bottom full-width edge x=320,y=0 and free x translation are stated. Assume roller restrains y and z (guided roller along x)."
+   },
+   {
+    "key": "load:deck_load",
+    "source": "stated",
+    "note": "Total 5 kN downward (-y) over the whole deck surface y=80; shared equally by selected surface nodes."
+   },
+   {
+    "key": "passive:solid_deck",
+    "source": "stated",
+    "note": "Top 4 mm y=76..80, all x and z, must remain solid."
+   },
+   {
+    "key": "passive:clearance",
+    "source": "stated",
+    "note": "Void x=100..220, y=0..40, through full z=0..80 width."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "support:right_roller"
+  ]
+ },
+ "n_tool_calls": 21,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_passive",
+  "add_passive",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b30_bridge_clearance_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 31.927020100178197,
+ "usage": {
+  "input_tokens": 106551,
+  "cached_input_tokens": 93440,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1165,
+  "reasoning_output_tokens": 146
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic steel with E = 210 GPa and \u03bd = 0.30; right roller restrains y and z while allowing x translation; volume fraction applies to non-passive volume. Validation passed, render confirmed placement, and every item is source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Bridge over a clearance",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    320.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      80.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Pinned left bottom edge across the full width."
+   },
+   {
+    "id": "right_roller",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      320.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      80.0
+     ]
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Roller allows x translation; assume it restrains transverse z translation as well as vertical y."
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -5.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 5 kN downward load distributed across the whole top deck surface."
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_deck",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      76.0,
+      0.0
+     ],
+     "max": [
+      320.0,
+      80.0,
+      80.0
+     ]
+    },
+    "note": "Full-width top 4 mm deck remains solid."
+   },
+   {
+    "id": "clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      100.0,
+      0.0,
+      0.0
+     ],
+     "max": [
+      220.0,
+      40.0,
+      80.0
+     ]
+    },
+    "note": "Mid-span clearance through the full width remains empty."
+   }
+  ],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 32.20121300010942,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=2, grid (160, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

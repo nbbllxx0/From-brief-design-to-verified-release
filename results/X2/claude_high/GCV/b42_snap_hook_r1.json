@@ -1,0 +1,142 @@
+{
+ "task": "b42_snap_hook",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:06:54",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 41602,
+  "cached_input_tokens": 35981,
+  "cache_write_input_tokens": 5615,
+  "output_tokens": 1062
+ },
+ "gc_wall_s": 18.348689599893987,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14596,
+  "cached_input_tokens": 8670,
+  "cache_write_input_tokens": 5922,
+  "output_tokens": 482
+ },
+ "verify_wall_s": 9.144902000203729,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 56198,
+  "cached_input_tokens": 44651,
+  "output_tokens": 1544,
+  "cache_write_input_tokens": 11537
+ },
+ "wall_s": 27.493591600097716,
+ "questions": 0,
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "printed_snap_hook",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    40.0,
+    10.0,
+    12.0
+   ]
+  },
+  "material": {
+   "name": "PA12",
+   "E": 1700.0,
+   "nu": 0.4
+  },
+  "supports": [
+   {
+    "id": "root_fixed",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Root end face part of housing, fully fixed"
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip_push",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      38.0,
+      6.0
+     ],
+     "size": [
+      4.0,
+      12.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     15.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Assembly push on tip underside, x 36-40, full width"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.35,
+  "resolution": {
+   "h": 0.25,
+   "cells_short_edge": null
+  },
+  "min_feature": 1.2
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 9.536745300050825,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=0.25, grid (160, 40, 48)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

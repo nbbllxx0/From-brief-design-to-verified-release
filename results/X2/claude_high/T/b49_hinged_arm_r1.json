@@ -1,0 +1,35 @@
+{
+ "task": "b49_hinged_arm",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:28:21",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 6.7672602001111954,
+ "usage": {
+  "input_tokens": 8643,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7992,
+  "output_tokens": 250
+ },
+ "returncode": 0,
+ "final": "{\"refuse\": \"The arm is held only by a single freely-turning hinge pin at x = 10 mm, so the downward 400 N load at x = 200 mm makes an unresisted 76,000 N\u00b7mm moment about the pin, and the arm is a mechanism that just swings, with no static equilibrium to optimize against.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 6.963270999956876,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": true
+}

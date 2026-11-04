@@ -1,0 +1,38 @@
+{
+ "task": "b45_pump_bracket",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:27:09",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 0,
+ "retry_errors": [],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 5.056967899901792,
+ "usage": {
+  "input_tokens": 21937,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 64,
+  "reasoning_output_tokens": 34
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The pump\u2019s weight or applied force magnitude is unspecified, so the required load cannot be defined.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 5.109919799957424,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "clarify",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

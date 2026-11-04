@@ -1,0 +1,212 @@
+{
+ "task": "b38_peek_bracket",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:14:58",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies dimensions in mm and forces in N."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 80 x 60 x 40 mm in x,y,z; base z=0 and top z=40."
+   },
+   {
+    "key": "material",
+    "source": "derived",
+    "note": "Brief gives PEEK, E=3.6 GPa and nu=0.38; convert E=3.6*1000=3600 N/mm^2."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "assumed",
+    "note": "Value 0.25 is stated; assume it applies to the non-passive design volume, excluding the required solid pad, as defined by the tool."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:bonded_base",
+    "source": "stated",
+    "note": "Base z=0 bonded over its full 80 x 60 mm area to panel; constrain x,y,z translations across that face."
+   },
+   {
+    "key": "load:launch_combined",
+    "source": "assumed",
+    "note": "Brief states simultaneous total forces (300,0,-300) N on pad. Assume equal nodal sharing over its entire 30 x 30 mm top surface at z=40; spatial distribution unspecified."
+   },
+   {
+    "key": "passive:interface_pad",
+    "source": "derived",
+    "note": "Required 30 x 30 x 4 mm solid pad on z=40, centred x=40,y=30, inside envelope: x=40 +/-15=[25,55], y=30 +/-15=[15,45], z=[40-4,40]=[36,40]."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "volume_fraction",
+   "load:launch_combined"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b38_peek_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 33.262875200016424,
+ "usage": {
+  "input_tokens": 116972,
+  "cached_input_tokens": 102016,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1199,
+  "reasoning_output_tokens": 241
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: Load shared equally across the pad\u2019s top-surface nodes; volume fraction 0.25 applies to design volume excluding the solid pad.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Satellite equipment bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    60.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "PEEK",
+   "E": 3600.0,
+   "nu": 0.38
+  },
+  "supports": [
+   {
+    "id": "bonded_base",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full-area bond to panel at z=0; fix all translations."
+   }
+  ],
+  "loads": [
+   {
+    "id": "launch_combined",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      40.0,
+      30.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     -300.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Simultaneous +x and -z launch components, each 300 N total, uniformly shared over top pad surface nodes."
+   }
+  ],
+  "passive": [
+   {
+    "id": "interface_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      25.0,
+      15.0,
+      36.0
+     ],
+     "max": [
+      55.0,
+      45.0,
+      40.0
+     ]
+    },
+    "note": "30 x 30 x 4 mm solid pad, centred at (40,30), flush with z=40 inside envelope."
+   }
+  ],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 33.48900639987551,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,129 @@
+{
+ "task": "b13_cantilever_end_traction",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:27:31",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 8.604307999834418,
+ "usage": {
+  "input_tokens": 21950,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 392,
+  "reasoning_output_tokens": 47
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"cantilever_distributed_end_load\",\n  \"description\": \"Steel cantilever with a retained solid end plate and a uniformly distributed downward end load.\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [160, 80, 80]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.12,\n  \"supports\": [\n    {\n      \"id\": \"fixed_root\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"downward_end_shear\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x+\"\n      },\n      \"force\": [0, -4000, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"solid_end_plate\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"box\",\n        \"min\": [156, 0, 0],\n        \"max\": [160, 80, 80]\n      }\n    }\n  ],\n  \"resolution\": {\n    \"h\": 2\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "cantilever_distributed_end_load",
+  "description": "Steel cantilever with a retained solid end plate and a uniformly distributed downward end load.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160,
+    80,
+    80
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.12,
+  "supports": [
+   {
+    "id": "fixed_root",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "downward_end_shear",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "force": [
+     0,
+     -4000,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_end_plate",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156,
+      0,
+      0
+     ],
+     "max": [
+      160,
+      80,
+      80
+     ]
+    }
+   }
+  ],
+  "resolution": {
+   "h": 2
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 8.664428799878806,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

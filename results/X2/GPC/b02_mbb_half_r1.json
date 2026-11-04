@@ -1,0 +1,210 @@
+{
+ "task": "b02_mbb_half",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:55:34",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies mm for dimensions and kN for force; use mm and kN."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Brief explicitly requests the left half x=0..120 mm of a beam 40 mm deep in y and 40 mm wide in z; domain [120,40,40] mm."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Aluminium 6061 is stated. Brief omits elastic constants; assume homogeneous isotropic linear elasticity with E=68.9 kN/mm^2 (68.9 GPa) and Poisson ratio nu=0.33."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.3."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:left_end_bottom",
+    "source": "stated",
+    "note": "Support on bottom edge at left end x=0,y=0 over z=0..40 mm, carrying vertical y and sideways z load only; fix y,z and leave x free."
+   },
+   {
+    "key": "support:midspan_symmetry",
+    "source": "derived",
+    "note": "Brief requests symmetry at mid-span x=120 mm. Reflection symmetry imposes ux=0 on the full cut face, with uy and uz free."
+   },
+   {
+    "key": "load:midspan_top_line",
+    "source": "derived",
+    "note": "Full 2 kN downward line load lies on the symmetry cut at x=120,y=40,z=0..40 mm. Equal symmetric halves each carry 2/2=1 kN; force [0,-1,0] kN."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b02_mbb_half_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 36.23834659997374,
+ "usage": {
+  "input_tokens": 107239,
+  "cached_input_tokens": 87424,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1203,
+  "reasoning_output_tokens": 235
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Assumed homogeneous isotropic linear elasticity with E = 68.9 GPa and \u03bd = 0.33.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Simply supported aluminium beam \u2014 left symmetric half",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68.9,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "left_end_bottom",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Bottom edge at the left end, across the full width; vertical and sideways restraint only."
+   },
+   {
+    "id": "midspan_symmetry",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x"
+    ],
+    "note": "Symmetry at x=120 mm: displacement normal to the cut plane is zero; tangential displacements are free."
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_top_line",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120.0,
+      40.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "force": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Half-model share of the full 2 kN downward mid-span line load: 1 kN total across the full 40 mm width."
+   }
+  ],
+  "passive": [],
+  "description": "Left half of 240 \u00d7 40 \u00d7 40 mm beam; y is up. End support restrains y and z only. Mid-span symmetry restrains x. Half of full 2 kN downward line load is applied at x=120, y=40 across z=0..40. Isotropic linear elasticity assumed.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 36.46667919983156,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": false,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,211 @@
+{
+ "task": "b19_engine_bracket",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T15:04:12",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 11.72043600003235,
+ "usage": {
+  "input_tokens": 8749,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8098,
+  "output_tokens": 1042
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"engine_bracket\",\"description\":\"Ti-6Al-4V engine bracket bolted down on bottom face (y=0) through four 0.5 in washers; 8000 lbf vertical pull (+y) carried by a kept solid clevis cylinder (axis z) at x=6.0, y=1.75.\",\"units\":{\"length\":\"in\",\"force\":\"lbf\"},\"domain\":{\"kind\":\"box\",\"size\":[7.0,2.5,4.0]},\"material\":{\"name\":\"Ti-6Al-4V\",\"E\":16500000.0,\"nu\":0.34},\"volume_fraction\":0.2,\"supports\":[{\"id\":\"bolt_x0.5_z0.5\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[0.5,0.5],\"size\":[0.5,0.5]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"0.5 in washer, square patch approximation\"},{\"id\":\"bolt_x0.5_z3.5\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[0.5,3.5],\"size\":[0.5,0.5]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"0.5 in washer, square patch approximation\"},{\"id\":\"bolt_x2.5_z0.5\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[2.5,0.5],\"size\":[0.5,0.5]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"0.5 in washer, square patch approximation\"},{\"id\":\"bolt_x2.5_z3.5\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[2.5,3.5],\"size\":[0.5,0.5]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"0.5 in washer, square patch approximation\"}],\"loads\":[{\"id\":\"clevis_pull\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"z\",\"center\":[6.0,1.75],\"radius\":0.5,\"span\":[1.25,2.75]},\"force\":[0.0,8000.0,0.0],\"distribution\":\"uniform_nodes\",\"note\":\"8000 lbf vertical pull (+y) carried by the clevis\"}],\"passive\":[{\"id\":\"clevis\",\"kind\":\"solid\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"z\",\"center\":[6.0,1.75],\"radius\":0.5,\"span\":[1.25,2.75]},\"note\":\"solid clevis cylinder that must be kept\"}],\"resolution\":{\"h\":0.05},\"meta\":{\"up_axis\":\"y\",\"washer_diameter_in\":0.5}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "engine_bracket",
+  "description": "Ti-6Al-4V engine bracket bolted down on bottom face (y=0) through four 0.5 in washers; 8000 lbf vertical pull (+y) carried by a kept solid clevis cylinder (axis z) at x=6.0, y=1.75.",
+  "units": {
+   "length": "in",
+   "force": "lbf"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    7.0,
+    2.5,
+    4.0
+   ]
+  },
+  "material": {
+   "name": "Ti-6Al-4V",
+   "E": 16500000.0,
+   "nu": 0.34
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "bolt_x0.5_z0.5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "0.5 in washer, square patch approximation"
+   },
+   {
+    "id": "bolt_x0.5_z3.5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "0.5 in washer, square patch approximation"
+   },
+   {
+    "id": "bolt_x2.5_z0.5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "0.5 in washer, square patch approximation"
+   },
+   {
+    "id": "bolt_x2.5_z3.5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "0.5 in washer, square patch approximation"
+   }
+  ],
+  "loads": [
+   {
+    "id": "clevis_pull",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "force": [
+     0.0,
+     8000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "8000 lbf vertical pull (+y) carried by the clevis"
+   }
+  ],
+  "passive": [
+   {
+    "id": "clevis",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "note": "solid clevis cylinder that must be kept"
+   }
+  ],
+  "resolution": {
+   "h": 0.05
+  },
+  "meta": {
+   "up_axis": "y",
+   "washer_diameter_in": 0.5
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 11.918241400038823,
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1.27, grid (140, 50, 80)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

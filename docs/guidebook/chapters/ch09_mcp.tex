@@ -1,0 +1,149 @@
+\chapter{Connecting external agents through MCP}\label{ch:mcp}
+\chapterintro{The tool contract is exposed as a Model Context Protocol server, \code{agentto.mcp\_server}. Any MCP
+client can drive a design session with it: attached to the live workspace, where its edits appear as you watch, or in a
+session of its own. This chapter covers the server's modes and profiles, configuration for Claude Code and the Codex
+CLI, and the conventions an agent needs to know.}
+
+\section{The server}
+\index{MCP server}
+The server speaks MCP over standard input and output and publishes one MCP tool per contract tool, with the tool's
+docstring as its description and its signature as the argument schema. Every call is forwarded to a
+\code{Session} and validated there, so a malformed call is rejected and logged like any other failed call, and the agent
+receives the error text. Results are compact JSON text; \tool{render} returns its picture as an image.
+
+The server runs in one of two modes:
+\begin{description}
+  \item[Attach] (\code{--attach http://127.0.0.1:8765}). The agent drives the session the workspace has open. Its calls go
+  to the backend's \code{/api/tools/}\meta{name} endpoint with actor \code{agent}, appear in the workspace as they happen,
+  and can be undone like any other step. Solves run on the workspace's GPU worker.
+  \item[Stand-alone] (\code{--session DIR}). The server keeps its own session in a directory, with its own log and its
+  own GPU worker. This is how the paper's benchmarks ran.
+\end{description}
+
+\subsection*{Command-line flags}
+\input{generated/mcp_flags}
+
+\section{Profiles}\label{sec:profiles}
+\index{profile}
+A profile decides which tools the server offers. The default is \code{spec}; give \code{--profile full} for an agent
+that should solve and export.
+
+\input{generated/tools_profiles}
+
+In the paper, \code{spec} was the grounding condition G, \code{clarify} the condition G+C and the Propose assistant, and
+\code{full} the complete sessions from brief to release, Act mode, and attaching to the workspace. The follow-up
+conditions used two further profiles. \code{spec\_prov} adds \tool{set_source} and \tool{list_sources} to \code{spec}
+(condition G+P): the agent tags each specification item as stated, derived, assumed or answered.
+\code{clarify\_prov} does the same for \code{clarify} and limits questions to items tagged assumed (condition G+C+P).
+Under both, \tool{validate_spec} adds an advisory note with code R014 that lists the items tagged assumed and the
+untagged items; it never blocks a solve and is not one of the thirteen rules. The \code{-{}-no-rules} flag gave the
+rule-feedback ablation GNR.
+
+\section{Attach Claude Code to the workspace}
+With the backend running, save this as \code{mcp.json}, replacing the two paths with your Python interpreter of the
+\code{agentto} environment and the repository's \code{src} directory:
+
+\begin{jsoncode}
+{"mcpServers": {"agentto": {
+  "command": "/path/to/envs/agentto/bin/python",
+  "args": ["-B", "-m", "agentto.mcp_server", "--profile", "full",
+           "--attach", "http://127.0.0.1:8765"],
+  "env": {"PYTHONPATH": "/path/to/AgenticTO/src"}}}}
+\end{jsoncode}
+
+\begin{shell}
+claude --mcp-config mcp.json
+\end{shell}
+
+Allow the \code{mcp\_\_agentto} tools when Claude Code asks, or start it with \code{--allowedTools mcp\_\_agentto}.
+Set \code{AGENTTO\_VOXFEM\_SRC} in the environment block too if the server runs stand-alone and must solve.
+
+In Figure~\ref{fig:attach}, Claude Code (\code{claude-opus-5-5} on a claude.ai subscription) was asked to add a 300~N
+load on the top face of the part from Chapter~\ref{ch:assistant} and to validate the specification. It took 13~s. Its
+calls appear in the timeline as \gui{AGENT} records, and the new load appears in the tree and the viewport.
+
+\begin{figure}[t]
+\wideshot{26_attach.png}
+\caption{Claude Code, attached over MCP, added \code{load\_claude} to the live design.}
+\label{fig:attach}
+\end{figure}
+
+\begin{figure}[h]
+\widegraphic[178mm]{27_attach_timeline.png}
+\caption{The timeline after the Claude Code session: its tool calls are tagged \gui{AGENT}.}
+\label{fig:attachtimeline}
+\end{figure}
+
+\needspace{14\baselineskip}
+\section{Attach the Codex CLI}
+Add this to \code{\textasciitilde/.codex/config.toml}:
+
+\begin{tomlcode}
+[mcp_servers.agentto]
+command = "/path/to/envs/agentto/bin/python"
+args = ["-B", "-m", "agentto.mcp_server", "--profile", "full",
+        "--attach", "http://127.0.0.1:8765"]
+env = { PYTHONPATH = "/path/to/AgenticTO/src" }
+startup_timeout_sec = 60
+tool_timeout_sec = 900
+default_tools_approval_mode = "approve"
+\end{tomlcode}
+
+\begin{warnbox}[Approval in non-interactive runs]
+Without \code{default\_tools\_approval\_mode = "approve"}, non-interactive Codex runs (\code{codex exec}) reject every MCP
+call, because they cannot ask you. The AgenticTO tools only touch the session directory. A \code{tool\_timeout\_sec}
+shorter than your longest solve cuts the call off; the solve itself keeps running, and the agent can collect it with
+\tool{wait_job}.
+\end{warnbox}
+
+\needspace{9\baselineskip}
+\section{Stand-alone sessions}
+Without the workspace, the server keeps its own session:
+
+\begin{shell}
+python -B -m agentto.mcp_server --session runs/my_session --profile full
+python -B -m agentto.mcp_server --session runs/b01 --profile clarify --seed spec.json
+python -B -m agentto.mcp_server --session runs/b01 --profile clarify \
+    --answer-url http://127.0.0.1:8765
+\end{shell}
+
+\code{--seed} starts the session from an existing specification (logged as actor \code{system}). \code{--answer-url}
+sends the agent's clarification questions to the user of a running workspace; this is how the Propose assistant asks
+you its questions. \code{--oracle} makes a scripted oracle answer them from a reference reading (the benchmark's
+condition G+C); without an answerer, a question returns at once with the advice to choose the most reasonable reading
+and state it as an assumption.
+
+\section{Conventions an agent needs}\label{sec:agentconventions}
+The server's instructions and the tool descriptions carry most of these; they are listed here so that you can write
+your own prompts.
+
+\begin{description}
+  \item[Coordinates.] Absolute, origin at the domain's minimum corner. Patch centres and sizes are in the face's two
+  in-plane axes in increasing order. \tool{new_spec} and \tool{list_regions} return the in-plane axes of every face.
+  \item[Grounding.] After adding an item, \tool{list_regions} reports how many nodes or elements it selects; an item that
+  selects 0 does nothing. \tool{validate_spec} returns the rule findings. \tool{render} returns a picture to check
+  placement and directions.
+  \item[Long solves.] \tool{solve} blocks until the job finishes or \code{timeout\_s} (default \SolveTimeout~s) passes.
+  On a timeout it returns the job id with a hint; the agent should call \tool{wait_job}, not cancel and resubmit, which
+  would start the run again from zero. \code{wait=False} returns the job id at once; \tool{status} lists the jobs.
+  \item[Rungs.] Ask for a rung by name. The release rung is often finer than the specification's \code{h}, which still
+  satisfies a brief that asks for elements of at most \code{h}. Asking for a rung and an \code{h} that disagree is an
+  error.
+  \item[Certificates.] The agent can read the certificate in every solve result, but no tool can write one. Only a
+  certified release-rung result is a released design; anything else is exported as a draft.
+  \item[Clarification.] One question at a time, with two to four options, each a complete item or parameter values.
+  The call returns once the user has answered.
+\end{description}
+
+The complete tool reference, with every argument, its type and its default, is Appendix~\ref{app:tools}. The summary
+below shows which tools change the specification, which profiles offer them, and how replay treats them.
+
+\input{generated/tools_summary}
+
+\section{The HTTP interface}\label{sec:http}
+\index{HTTP API}
+The backend's own endpoints are listed below, generated from \code{src/agentto/app/server.py}. Attach mode uses only
+\code{POST /api/tools/}\meta{name} with the body \code{\{"args": \{\ldots\}, "actor": "agent"\}}; the workspace uses the
+WebSocket. The backend listens on \code{127.0.0.1} only.
+
+\input{generated/api}

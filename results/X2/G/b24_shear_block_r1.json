@@ -1,0 +1,126 @@
+{
+ "task": "b24_shear_block",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:46:04",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b24_shear_block_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 22.429362900089473,
+ "usage": {
+  "input_tokens": 86035,
+  "cached_input_tokens": 73728,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 477,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: steel E = 210 GPa, \u03bd = 0.30; load shared equally among top-face nodes. Validation passed; render confirmed bottom supports and top +x load.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Block in shear",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_bottom",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Entire bottom face y=0 fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_shear",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     4000.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 4 kN horizontal force along +x, uniformly shared over the whole top face y=80 mm."
+   }
+  ],
+  "passive": [],
+  "description": "80 mm cube, y up. Bottom y=0 fully fixed; total 4000 N along +x uniformly shared over whole top y=80 face.",
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 22.912264300044626,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 80, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

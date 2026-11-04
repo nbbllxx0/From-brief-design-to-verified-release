@@ -1,0 +1,52 @@
+% AgenticTO Guidebook. Build: see README.md in this folder (latexmk -pdf guidebook.tex).
+\documentclass[11pt,a4paper,twoside,openany]{book}
+\usepackage{agentto-guide}
+\input{generated/constants}
+
+\graphicspath{{../user_guide/img/}{figures/}}
+\makeindex[intoc,columns=2,title=Index,options={-s index.ist}]
+\indexsetup{othercode={\setlength{\parskip}{0pt plus 0.3pt}\small}}
+
+\hypersetup{pdftitle={AgenticTO Guidebook},
+  pdfauthor={Shaoliang Yang and Jun Wang},
+  pdfsubject={Agent-assisted, certified 3D topology optimization on one GPU},
+  pdfkeywords={topology optimization, language agents, design specification, certificate, MCP}}
+
+\newcommand\rref[1]{\hyperref[rule:#1]{\textsf{\bfseries #1}}}
+\newcommand\repourl{https://github.com/nbbllxx0/From-brief-design-to-verified-release}
+\newcommand\papertitle{From topology-optimization brief to solver-checked release: separating intent,
+admissibility and acceptance knowledge for language agents}
+
+\begin{document}
+\frontmatter
+\input{chapters/titlepage}
+\input{chapters/preface}
+{\hypersetup{linkcolor=ink}\tableofcontents}
+
+\mainmatter
+\input{chapters/ch01_overview}
+\input{chapters/ch02_install}
+\input{chapters/ch03_quickstart}
+\input{chapters/ch04_workspace}
+\input{chapters/ch05_spec}
+\input{chapters/ch06_rules}
+\input{chapters/ch07_ladder}
+\input{chapters/ch08_assistant}
+\input{chapters/ch09_mcp}
+\input{chapters/ch10_provenance}
+\input{chapters/ch11_reproduce}
+\input{chapters/ch12_limits}
+
+\appendix
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+\input{chapters/appA_spec}
+\input{chapters/appB_tools}
+\input{chapters/appC_certificate}
+\input{chapters/appD_keys}
+\input{chapters/appE_scripts}
+\input{chapters/appF_glossary}
+\input{chapters/quickref}
+
+\backmatter
+\printindex
+\end{document}

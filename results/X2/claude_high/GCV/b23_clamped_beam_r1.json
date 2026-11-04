@@ -1,0 +1,154 @@
+{
+ "task": "b23_clamped_beam",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:02:47",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 54790,
+  "cached_input_tokens": 49012,
+  "cache_write_input_tokens": 5770,
+  "output_tokens": 1105
+ },
+ "gc_wall_s": 18.67528420011513,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14485,
+  "cached_input_tokens": 8557,
+  "cache_write_input_tokens": 5924,
+  "output_tokens": 397
+ },
+ "verify_wall_s": 6.32926889997907,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 69275,
+  "cached_input_tokens": 57569,
+  "output_tokens": 1502,
+  "cache_write_input_tokens": 11694
+ },
+ "wall_s": 25.0045531000942,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Clamped-clamped beam",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    240.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "clamp_x0",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "clamp_x240",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      120.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -3000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 6.735737900016829,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (240, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

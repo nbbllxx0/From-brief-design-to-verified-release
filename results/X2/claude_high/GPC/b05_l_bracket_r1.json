@@ -1,0 +1,217 @@
+{
+ "task": "b05_l_bracket",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:35:31",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "mm and N given in the brief"
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 100 x 100 x 40 mm"
+   },
+   {
+    "key": "material",
+    "source": "stated",
+    "note": "Steel stated; E 210 GPa, nu 0.3 standard steel values"
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "0.3"
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "1 mm elements"
+   },
+   {
+    "key": "support:ceiling_bolt",
+    "source": "stated",
+    "note": "Top face y=100, x 0-40, full depth, bolted -> fixed in x,y,z"
+   },
+   {
+    "key": "load:tip_load",
+    "source": "stated",
+    "note": "500 N in -y on 10x10 pad at x=100 centred y=20, z=20 (mid-depth)"
+   },
+   {
+    "key": "passive:corner_keepout",
+    "source": "stated",
+    "note": "x>40 and y>40, full depth, must stay empty"
+   }
+  ],
+  "untagged": [],
+  "assumed": []
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_passive",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\claude_high\\GPC\\b05_l_bracket_r1\\session\\session.jsonl",
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 27.3956878001336,
+ "usage": {
+  "input_tokens": 82456,
+  "cached_input_tokens": 73773,
+  "cache_write_input_tokens": 8673,
+  "output_tokens": 2682
+ },
+ "returncode": 0,
+ "final": "The L-bracket spec is built and passes validation. The render shows the supports, load and keep-out region where the brief puts them.\n\n- **Domain:** 100 \u00d7 100 \u00d7 40 mm, units mm and N, steel (E = 210 GPa, \u03bd = 0.3).\n- **Mesh:** 1 mm elements, which gives a 100 \u00d7 100 \u00d7 40 grid of 400,000 elements.\n- **Material target:** volume fraction 0.3. That is 30% of the design region, which works out to 19.2% of the whole envelope.\n- **Keep-out (`corner_keepout`):** the box x 40\u2013100, y 40\u2013100, through the full depth, held empty (144,000 elements).\n- **Support (`ceiling_bolt`):** the top face y = 100 over x 0\u201340 and the full depth, fixed in x, y and z (1,681 nodes).\n- **Load (`tip_load`):** 500 N in \u2212y on a 10 \u00d7 10 mm pad on the x = 100 face, centred at y = 20 and z = 20 (121 nodes).\n\nValidation gave two notes and no errors. The first says the support is too small to show up on the coarsest multigrid level, so the solve may need more iterations but stays correct. The second asked for source tags, which are now added. All 8 items are tagged \"stated\", none are untagged, and I didn't need to ask any clarifying questions.\n\nDONE. Assumptions: \"bolted\" is taken as fully fixed in x, y and z, and steel uses the standard E = 210 GPa and \u03bd = 0.3.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "L-bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    100.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "ceiling_bolt",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Top face of vertical arm (y=100, x 0-40, full depth) bolted to ceiling"
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -500.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "500 N downward on 10x10 pad at x=100, y=20, z=20"
+   }
+  ],
+  "passive": [
+   {
+    "id": "corner_keepout",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      40.0,
+      40.0,
+      0.0
+     ],
+     "max": [
+      100.0,
+      100.0,
+      40.0
+     ]
+    },
+    "note": "Upper-right corner occupied by another part, full depth"
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 27.76267830003053,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

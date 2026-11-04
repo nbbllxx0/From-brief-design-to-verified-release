@@ -1,0 +1,307 @@
+{
+ "task": "b06_motor_mount",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T17:59:03",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 60780,
+  "cached_input_tokens": 52047,
+  "cache_write_input_tokens": 8725,
+  "output_tokens": 2608
+ },
+ "gc_wall_s": 36.160927599994466,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14722,
+  "cached_input_tokens": 8794,
+  "cache_write_input_tokens": 5924,
+  "output_tokens": 1541
+ },
+ "verify_wall_s": 20.13550479989499,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 75502,
+  "cached_input_tokens": 60841,
+  "output_tokens": 4149,
+  "cache_write_input_tokens": 14649
+ },
+ "wall_s": 56.296432399889454,
+ "questions": 0,
+ "n_tool_calls": 15,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "motor_mount",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    60.0,
+    120.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "bolt_x20_z20",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "M10 bolt, 24 mm washer"
+   },
+   {
+    "id": "bolt_x140_z20",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      140.0,
+      20.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "M10 bolt, 24 mm washer"
+   },
+   {
+    "id": "bolt_x20_z100",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20.0,
+      100.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "M10 bolt, 24 mm washer"
+   },
+   {
+    "id": "bolt_x140_z100",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      140.0,
+      100.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "M10 bolt, 24 mm washer"
+   }
+  ],
+  "loads": [
+   {
+    "id": "motor_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80.0,
+      60.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     800.0,
+     -2000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "2 kN down + 0.8 kN +x belt tension"
+   }
+  ],
+  "passive": [
+   {
+    "id": "boss_x20_z20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "boss_x140_z20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140.0,
+      20.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "boss_x20_z100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20.0,
+      100.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "boss_x140_z100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140.0,
+      100.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "motor_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      60.0,
+      55.0,
+      40.0
+     ],
+     "max": [
+      100.0,
+      60.0,
+      80.0
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 20.721715799998492,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (160, 60, 120)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

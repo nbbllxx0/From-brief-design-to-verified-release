@@ -1,0 +1,155 @@
+{
+ "task": "b18_cantilever_hole",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T10:58:06",
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_passive",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b18_cantilever_hole_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 19.458792600082234,
+ "usage": {
+  "input_tokens": 78949,
+  "cached_input_tokens": 72064,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 670,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic linear-elastic steel, E = 210 GPa, \u03bd = 0.30; load distributed equally over pad nodes; volume fraction applies to design volume excluding the hole. list_regions checked, validation passed without findings, and render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Cantilever with a hole",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    100.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_x0",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Entire x=0 face fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "free_end_downward",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -2000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 2 kN downward (-y), distributed over centered 10 x 10 mm pad at x=200; y=45..55, z=15..25."
+   }
+  ],
+  "passive": [
+   {
+    "id": "through_hole",
+    "kind": "void",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      100.0,
+      50.0
+     ],
+     "radius": 20.0,
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "note": "40 mm diameter through-hole along z; must remain empty."
+   }
+  ],
+  "description": "200 x 100 x 40 mm cantilever; y up. Fully fixed x=0 face; total 2000 N load in -y on a 10 x 10 mm rectangular pad centered on x=200 face (y=50,z=20). Cylindrical keep-out hole, diameter 40 mm, axis z, center x=100,y=50, spanning z=0..40. Assume linear elastic isotropic steel E=210 GPa, nu=0.3. Volume fraction applies to non-passive design volume.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 19.68821640009992,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 100, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

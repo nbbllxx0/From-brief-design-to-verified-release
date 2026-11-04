@@ -1,0 +1,98 @@
+{
+ "task": "b06_motor_mount",
+ "t": "2026-10-30T02:22:24",
+ "validate": {
+  "n": 30,
+  "p50_ms": 10.13,
+  "p95_ms": 10.44,
+  "max_ms": 860.04
+ },
+ "set_spec": {
+  "n": 10,
+  "p50_ms": 1.14,
+  "p95_ms": 2.04,
+  "max_ms": 2.04
+ },
+ "rungs": [
+  {
+   "rung": "sketch",
+   "h": 2.0,
+   "n_elem": 144000,
+   "call_ms": 3.5,
+   "first_frame_s": 1.6128607001155615,
+   "wall_s": 7.641931500053033,
+   "status": "converged",
+   "compute_s": 6.408831499284133,
+   "iterations": 80,
+   "warm": false,
+   "certified": false,
+   "job": "cf82e448d0bf"
+  },
+  {
+   "rung": "preview",
+   "h": 1.0,
+   "n_elem": 1152000,
+   "call_ms": 11.5,
+   "first_frame_s": 0.4704438999760896,
+   "wall_s": 1.797899500001222,
+   "status": "converged",
+   "compute_s": 1.6559875002130866,
+   "iterations": 12,
+   "warm": true,
+   "certified": false,
+   "job": "9079b0e2d2ef"
+  },
+  {
+   "rung": "refine",
+   "h": 0.5,
+   "n_elem": 9216000,
+   "call_ms": 65.5,
+   "first_frame_s": 2.6695132001768798,
+   "wall_s": 9.945488900179043,
+   "status": "converged",
+   "compute_s": 8.913070800015703,
+   "iterations": 12,
+   "warm": true,
+   "certified": false,
+   "job": "4dd866437014"
+  },
+  {
+   "rung": "release",
+   "h": 0.25,
+   "n_elem": 73728000,
+   "call_ms": 520.6,
+   "first_frame_s": 17.103471499867737,
+   "wall_s": 39.879251499893144,
+   "status": "converged",
+   "compute_s": 35.43450769945048,
+   "iterations": 12,
+   "warm": true,
+   "certified": true,
+   "job": "4a66015770dc"
+  }
+ ],
+ "surface": {
+  "first_s": 0.750896800076589,
+  "cached_s": 0.0020692001562565565,
+  "bytes": 1794780
+ },
+ "export_stl": {
+  "call_s": 1.2517556000966579,
+  "triangles": 1595756,
+  "bytes": 79787884,
+  "t_surface_s": 0.593,
+  "t_write_s": 0.26,
+  "certified": true,
+  "released": true,
+  "closed": true
+ },
+ "export_report": {
+  "call_s": 0.00827029999345541,
+  "ok": true
+ },
+ "edit_to_sketch": {
+  "wall_s": 1.8491082000546157,
+  "compute_s": 1.7802973000798374,
+  "iterations": 21
+ }
+}

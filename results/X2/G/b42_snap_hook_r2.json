@@ -1,0 +1,136 @@
+{
+ "task": "b42_snap_hook",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T11:07:05",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b42_snap_hook_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 18.746680700220168,
+ "usage": {
+  "input_tokens": 78579,
+  "cached_input_tokens": 71424,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 502,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: isotropic linear-elastic PA12; 15 N distributed equally across the strip\u2019s nodes. list_regions and validate_spec passed; render confirmed the fixed root and upward underside tip load.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Printed snap hook",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    40.0,
+    10.0,
+    12.0
+   ]
+  },
+  "material": {
+   "name": "PA12",
+   "E": 1700.0,
+   "nu": 0.4
+  },
+  "supports": [
+   {
+    "id": "fixed_root",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Housing interface: entire root face x=0 fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "assembly_tip_push",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      38.0,
+      6.0
+     ],
+     "size": [
+      4.0,
+      12.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     15.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "15 N total upward (+y) on underside y=0, x=36..40 mm, across full width z=0..12 mm."
+   }
+  ],
+  "passive": [],
+  "description": "Printed PA12 snap hook; x length, y up, z width. Linear elastic isotropic material assumption. Full root face fixed; total assembly force 15 N upward distributed equally over underside strip x=36..40 mm, z=0..12 mm at y=0. Minimum member size 1.2 mm.",
+  "volume_fraction": 0.35,
+  "resolution": {
+   "h": 0.25,
+   "cells_short_edge": null
+  },
+  "min_feature": 1.2
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 18.92696199985221,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=0.25, grid (160, 40, 48)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

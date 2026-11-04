@@ -1,0 +1,138 @@
+{
+ "task": "b04_torsion_shaft",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 160.5927772000432,
+ "usage": {
+  "input_tokens": 478209,
+  "cached_input_tokens": 450560,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1531,
+  "reasoning_output_tokens": 300
+ },
+ "returncode": 0,
+ "final": "DONE, 52d9147d932a, compliance 1.4386109912395393",
+ "n_tool_calls": 21,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "ladder",
+  "render",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "field_stats",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "export_stl",
+  "export_report"
+ ],
+ "questions": 0,
+ "stages": {
+  "spec_s": 16.16100001335144,
+  "solve_h2.0": {
+   "wall_s": 4.43999981880188,
+   "compute_s": 3.070728601422161,
+   "iterations": 76,
+   "n_elem": 128000,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h1.0": {
+   "wall_s": 3.552999973297119,
+   "compute_s": 3.475840300321579,
+   "iterations": 61,
+   "n_elem": 1024000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.5": {
+   "wall_s": 14.144000053405762,
+   "compute_s": 13.684509801212698,
+   "iterations": 61,
+   "n_elem": 8192000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.25": {
+   "wall_s": 87.09100008010864,
+   "compute_s": 84.71403460181318,
+   "iterations": 61,
+   "n_elem": 65536000,
+   "warm": true,
+   "status": "converged",
+   "certified": true
+  },
+  "export_s": 4.789199999999999,
+  "total_s": 140.43299984931946
+ },
+ "released": true,
+ "exports": [
+  {
+   "triangles": 3352876,
+   "bytes": 167643884,
+   "sha256": "cdce7c939e43001835cd65f8dc40fa8cc19f4547b02ba7a5b4066d546149e61f",
+   "path": "results\\X3\\b04_torsion_shaft\\session\\exports\\Shaft_bracket_in_torsion_52d9147d932a.stl",
+   "pool": 1,
+   "vertices": 1676440,
+   "t_surface_s": 1.539,
+   "t_write_s": 1.35,
+   "mesh": {
+    "closed": true,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "volume": 307196.13289281714
+   },
+   "job": "52d9147d932a",
+   "certified": true,
+   "released": true
+  },
+  {
+   "job": "52d9147d932a",
+   "certified": true,
+   "json": "results\\X3\\b04_torsion_shaft\\session\\exports\\Shaft_bracket_in_torsion_52d9147d932a_report.json",
+   "markdown": "results\\X3\\b04_torsion_shaft\\session\\exports\\Shaft_bracket_in_torsion_52d9147d932a_report.md",
+   "stl": "results\\X3\\b04_torsion_shaft\\session\\exports\\Shaft_bracket_in_torsion_52d9147d932a.stl"
+  }
+ ],
+ "release_spec_match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "replay": {
+  "ok": true,
+  "calls": 21,
+  "solves_replayed": 4,
+  "skipped": 5,
+  "mismatches": [],
+  "final_spec_hash": "8833bf4195ff73f0"
+ }
+}

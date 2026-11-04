@@ -1,0 +1,136 @@
+{
+ "task": "b42_snap_hook",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:55:01",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b42_snap_hook_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 25.81822569994256,
+ "usage": {
+  "input_tokens": 109711,
+  "cached_input_tokens": 98304,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 543,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: homogeneous isotropic linear-elastic PA12; rectangular design domain; force shared equally among strip nodes. Validation passed with no findings; render confirmed the fixed root and upward tip load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Printed snap hook",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    40.0,
+    10.0,
+    12.0
+   ]
+  },
+  "material": {
+   "name": "PA12",
+   "E": 1700.0,
+   "nu": 0.4
+  },
+  "supports": [
+   {
+    "id": "fixed_root",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Housing interface: full x=0 end face fixed in all translations."
+   }
+  ],
+  "loads": [
+   {
+    "id": "assembly_tip_push",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      38.0,
+      6.0
+     ],
+     "size": [
+      4.0,
+      12.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     15.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "15 N total upward (+y) across full-width underside strip x=36..40, y=0, z=0..12."
+   }
+  ],
+  "passive": [],
+  "description": "Printed PA12 snap hook; x is length, +y is up, z is width. Fully clamped housing interface at x=0. Assembly force totals 15 N upward, distributed uniformly over underside strip x=36..40, y=0, z=0..12. Assume homogeneous isotropic linear-elastic PA12 and a rectangular design envelope; no additional geometric keep-outs specified.",
+  "volume_fraction": 0.35,
+  "resolution": {
+   "h": 0.25,
+   "cells_short_edge": null
+  },
+  "min_feature": 1.2
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 26.394731299951673,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=0.25, grid (160, 40, 48)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

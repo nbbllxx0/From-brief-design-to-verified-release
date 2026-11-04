@@ -1,0 +1,181 @@
+{
+ "task": "b08_slider_bracket",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:37:16",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "mm and N given in brief"
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "120 x 40 x 40 mm envelope"
+   },
+   {
+    "key": "material",
+    "source": "stated",
+    "note": "steel (E 210 GPa, nu 0.3 standard values)"
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "0.3"
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "1 mm elements"
+   },
+   {
+    "key": "support:rail",
+    "source": "stated",
+    "note": "whole bottom face y=0, fixed y and z, free along x"
+   },
+   {
+    "key": "load:push",
+    "source": "stated",
+    "note": "300 N +x on 10x10 mm pad centred on x=0 face"
+   }
+  ],
+  "untagged": [],
+  "assumed": []
+ },
+ "n_tool_calls": 15,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\claude_high\\GPC\\b08_slider_bracket_r1\\session\\session.jsonl",
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 24.3934939999599,
+ "usage": {
+  "input_tokens": 78855,
+  "cached_input_tokens": 71339,
+  "cache_write_input_tokens": 7506,
+  "output_tokens": 1931
+ },
+ "returncode": 0,
+ "final": "I built the spec exactly as the brief describes, and the brief can't be solved as written. The rail on the whole bottom face (y = 0) holds y and z but leaves x free, and the only load is the 300 N push along +x. Nothing in the setup resists motion along x, so the bracket would just slide along the rail. The validator flags this as an error (R003: \"supports leave rigid-body motion free: translation x\").\n\nThe rest checks out. The rail selects 4,961 nodes and the load pad selects 121 nodes, centred on the left end face. The render shows both where the brief puts them. All seven spec items are tagged stated, so none were assumed, and I couldn't ask you a clarifying question about the missing support.\n\nTo make it solvable, the brief needs something that stops the bracket along x, such as an end stop, a clamp or a locking screw.\n\nREFUSE: The rail leaves the bracket free to slide along x and nothing else holds it, so the +x push has no reaction and the bracket can't be held still.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "slider_bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "rail",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "linear rail: holds vertical and sideways, free along x"
+   }
+  ],
+  "loads": [
+   {
+    "id": "push",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 24.747420100029558,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,177 @@
+{
+ "task": "b17_arch_bridge",
+ "cond": "GC",
+ "rep": 2,
+ "t": "2026-10-30T11:20:56",
+ "n_tool_calls": 11,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_passive",
+  "add_support",
+  "add_support",
+  "add_load",
+  "ask_clarification",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 1,
+ "oracle_hits": 1,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b17_arch_bridge_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 27.951468899846077,
+ "usage": {
+  "input_tokens": 112161,
+  "cached_input_tokens": 88704,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 992,
+  "reasoning_output_tokens": 272
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: steel E = 210 GPa, \u03bd = 0.30. Confirmed volume fraction 0.15 excludes the solid deck. Validation passed; render confirms support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Arch bridge with a solid deck",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    100.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_bottom_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      60.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "All translations fixed along the left bottom end edge, full width."
+   },
+   {
+    "id": "right_bottom_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      300.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      60.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "All translations fixed along the right bottom end edge, full width."
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -6000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "6 kN total downward load distributed uniformly over the whole top deck surface."
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_deck",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      94.0,
+      0.0
+     ],
+     "max": [
+      300.0,
+      100.0,
+      60.0
+     ]
+    },
+    "note": "Top 6 mm of the envelope remains solid."
+   }
+  ],
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  },
+  "volume_fraction": 0.15
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 28.213839100208133,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,136 @@
+{
+ "task": "b25_cantilever_metres",
+ "cond": "GC",
+ "rep": 3,
+ "t": "2026-10-30T11:49:38",
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "ask_clarification",
+  "update_item",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 1,
+ "oracle_hits": 1,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b25_cantilever_metres_r3\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 27.025653599994257,
+ "usage": {
+  "input_tokens": 80904,
+  "cached_input_tokens": 73472,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 900,
+  "reasoning_output_tokens": 111
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Bearing plate represented as a surface load footprint per clarification. Validation passed; render confirmed the fixed x = 0 face and centred downward load at x = 2 m.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Large cantilever \u2014 metres and kilonewtons",
+  "units": {
+   "length": "m",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    2.0,
+    1.0,
+    1.0
+   ]
+  },
+  "material": {
+   "name": "structural steel",
+   "E": 210000000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_root",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed x = 0 face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "free_end_bearing_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.2,
+      0.2
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bearing plate represented as a surface load footprint only, per clarification; total 100 kN in -y."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 0.02,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 27.61164899985306,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=20, grid (100, 50, 50)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

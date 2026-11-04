@@ -1,0 +1,369 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b16 column",
+  "domain": {
+   "size": [
+    60,
+    240,
+    60
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "foot_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      5,
+      5
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "foot_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      55,
+      5
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "foot_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      5,
+      55
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "foot_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      55,
+      55
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "cap",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      30,
+      30
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     1000,
+     -10000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "tower / column under an axial and a lateral top load (3D benchmark family)",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "Retain four 10 x 10 x 2 mm footing pads at y=0..2 and the 20 x 20 x 2 mm cap at y=238..240; same combined load.",
+   "why": "Named footing/cap pads leave depth open. Admit these 2 mm layers; kN conversion is correct. Reported solve_failed means the compliance excess is not reliable validation.",
+   "counts": true,
+   "adjudicated": "2026-11-01",
+   "from_run": "GP/b16_column_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "Column under combined load",
+    "units": {
+     "length": "mm",
+     "force": "kN"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      60.0,
+      240.0,
+      60.0
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "foot_xmin_zmin",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        5.0,
+        5.0
+       ],
+       "size": [
+        10.0,
+        10.0
+       ],
+       "shape": "rect"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Bottom corner 10 x 10 mm footing, fixed in every translation."
+     },
+     {
+      "id": "foot_xmax_zmin",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        55.0,
+        5.0
+       ],
+       "size": [
+        10.0,
+        10.0
+       ],
+       "shape": "rect"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Bottom corner 10 x 10 mm footing, fixed in every translation."
+     },
+     {
+      "id": "foot_xmin_zmax",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        5.0,
+        55.0
+       ],
+       "size": [
+        10.0,
+        10.0
+       ],
+       "shape": "rect"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Bottom corner 10 x 10 mm footing, fixed in every translation."
+     },
+     {
+      "id": "foot_xmax_zmax",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        55.0,
+        55.0
+       ],
+       "size": [
+        10.0,
+        10.0
+       ],
+       "shape": "rect"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Bottom corner 10 x 10 mm footing, fixed in every translation."
+     }
+    ],
+    "loads": [
+     {
+      "id": "cap_combined",
+      "region": {
+       "kind": "patch",
+       "face": "y+",
+       "center": [
+        30.0,
+        30.0
+       ],
+       "size": [
+        20.0,
+        20.0
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       1.0,
+       -10.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Simultaneous 10 kN downward (-y) and 1 kN sideways (+x), total force distributed equally over cap-face nodes."
+     }
+    ],
+    "passive": [
+     {
+      "id": "foot_xmin_zmin_solid",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "max": [
+        10.0,
+        2.0,
+        10.0
+       ]
+      },
+      "note": "Retain footing material to 2 mm depth, one element; thickness assumed."
+     },
+     {
+      "id": "foot_xmax_zmin_solid",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        50.0,
+        0.0,
+        0.0
+       ],
+       "max": [
+        60.0,
+        2.0,
+        10.0
+       ]
+      },
+      "note": "Retain footing material to 2 mm depth, one element; thickness assumed."
+     },
+     {
+      "id": "foot_xmin_zmax_solid",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        0.0,
+        0.0,
+        50.0
+       ],
+       "max": [
+        10.0,
+        2.0,
+        60.0
+       ]
+      },
+      "note": "Retain footing material to 2 mm depth, one element; thickness assumed."
+     },
+     {
+      "id": "foot_xmax_zmax_solid",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        50.0,
+        0.0,
+        50.0
+       ],
+       "max": [
+        60.0,
+        2.0,
+        60.0
+       ]
+      },
+      "note": "Retain footing material to 2 mm depth, one element; thickness assumed."
+     },
+     {
+      "id": "cap_solid",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        20.0,
+        238.0,
+        20.0
+       ],
+       "max": [
+        40.0,
+        240.0,
+        40.0
+       ]
+      },
+      "note": "Retain cap material to 2 mm depth, one element; thickness assumed."
+     }
+    ],
+    "description": "Y-up column with four fixed corner footing pads and a central top cap under simultaneous downward and +x loading. Pads are retained solid to one element (2 mm) depth.",
+    "volume_fraction": 0.2,
+    "resolution": {
+     "h": 2.0,
+     "cells_short_edge": null
+    }
+   }
+  }
+ ],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Four footing patches and simultaneous (1000,-10000,0) N cap load agree. Linear compliance example; no buckling qualification is implied."
+ }
+}

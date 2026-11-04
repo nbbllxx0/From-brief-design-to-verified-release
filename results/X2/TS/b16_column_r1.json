@@ -1,0 +1,187 @@
+{
+ "task": "b16_column",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:21:56",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 0,
+ "retry_errors": [],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 10.143216200172901,
+ "usage": {
+  "input_tokens": 21937,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 575,
+  "reasoning_output_tokens": 73
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Column under combined load\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [60, 240, 60]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.2,\n  \"supports\": [\n    {\n      \"id\": \"footing_1\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [5, 5],\n        \"size\": [10, 10]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"footing_2\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [55, 5],\n        \"size\": [10, 10]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"footing_3\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [5, 55],\n        \"size\": [10, 10]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"footing_4\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [55, 55],\n        \"size\": [10, 10]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"cap_combined_load\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y+\",\n        \"center\": [30, 30],\n        \"size\": [20, 20]\n      },\n      \"force\": [1000, -10000, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 2\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Column under combined load",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    60,
+    240,
+    60
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "footing_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      5,
+      5
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "footing_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      55,
+      5
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "footing_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      5,
+      55
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "footing_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      55,
+      55
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "cap_combined_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      30,
+      30
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "force": [
+     1000,
+     -10000,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "resolution": {
+   "h": 2
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 10.198788899928331,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (30, 120, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

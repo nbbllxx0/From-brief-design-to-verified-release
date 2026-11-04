@@ -1,0 +1,98 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b17 arch bridge",
+  "domain": {
+   "size": [
+    300,
+    100,
+    60
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "abutment_left",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0,
+      0
+     ],
+     "span": null
+    }
+   },
+   {
+    "id": "abutment_right",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      300,
+      0
+     ],
+     "span": null
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -6000,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "deck",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0,
+      94,
+      0
+     ],
+     "max": [
+      300,
+      100,
+      60
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "bridge benchmark with a passive solid deck and pinned abutments (arch-forming)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "6 mm solid deck and both pinned end edges agree. Retained deck is additional to the non-passive design budget under package convention."
+ }
+}

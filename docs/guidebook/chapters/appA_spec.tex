@@ -1,0 +1,22 @@
+\chapter{Specification reference}\label{app:spec}
+\chapterintro{Every object and field of the specification schema \code{agentto.spec/v0}. The tables are generated from
+the live model in \code{src/agentto/spec.py}, which is what the tools validate against.}
+
+All objects reject unknown fields. Vectors are JSON arrays: \code{[number $\times$ 3]} is $[x, y, z]$;
+\code{[number $\times$ 2]} is a pair in the increasing axis order described in Section~\ref{sec:document}. The backend
+serves the same schema as JSON Schema at \code{GET /api/schema}.
+
+\input{generated/schema_drift}
+
+\input{generated/spec_reference}
+
+\section{Validation beyond the field types}
+The model also checks, when a document is loaded:
+\begin{itemize}
+  \item every \code{id} is unique across \code{supports}, \code{loads} and \code{passive};
+  \item a box has \code{min} $<$ \code{max} on every axis, and a cylinder span has start $<$ end;
+  \item every domain size is positive;
+  \item a resolution gives exactly one of \code{h} and \code{cells\_short\_edge}.
+\end{itemize}
+Everything else, such as whether a region selects any nodes or whether the supports remove the rigid-body modes, is the
+job of the rules (Chapter~\ref{ch:rules}).

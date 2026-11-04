@@ -1,0 +1,276 @@
+{
+ "task": "b44_gearbox_bracket",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:15:29",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief uses mm and N*m; consistent model units are mm and N."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "160 mm along x with 80 x 80 mm y,z cross-section."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; unspecified elastic constants assumed isotropic E=210000 N/mm^2 and nu=0.3."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.3; tool applies this to non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 2 mm elements; h=2 mm."
+   },
+   {
+    "key": "support:gearbox_clamp",
+    "source": "stated",
+    "note": "x=0 end bolted rigidly to gearbox, modeled as all x,y,z translations fixed on that face."
+   },
+   {
+    "key": "load:top_drive",
+    "source": "assumed",
+    "note": "16 x 16 mm top end-face lug stated. Assume top is +z and depth is y, and positive x torque, with equal uniform nodal force distribution. Patch center (y,z)=(40,72) derived from edge-flush placement; magnitude 40000/(72-8)=625 N derived from stated torque and dimensions; force (0,-625,0) N."
+   },
+   {
+    "key": "load:bottom_drive",
+    "source": "assumed",
+    "note": "16 x 16 mm bottom end-face lug stated. Assume bottom is -z and depth is y, positive x torque, and equal uniform nodal force distribution. Patch center (y,z)=(40,8) derived from edge-flush placement; force (0,625,0) N, derived magnitude 40000/64=625 N. Paired loads have zero resultant and +40000 N mm moment about x."
+   },
+   {
+    "key": "passive:top_lug_pad",
+    "source": "assumed",
+    "note": "Keep the stated 16 x 16 mm drive interface solid to one 2 mm element depth inside the envelope, x=158..160; lug axial depth and preservation are unspecified."
+   },
+   {
+    "key": "passive:bottom_lug_pad",
+    "source": "assumed",
+    "note": "Keep the stated 16 x 16 mm drive interface solid to one 2 mm element depth inside the envelope, x=158..160; lug axial depth and preservation are unspecified."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "load:top_drive",
+   "load:bottom_drive",
+   "passive:top_lug_pad",
+   "passive:bottom_lug_pad"
+  ]
+ },
+ "n_tool_calls": 21,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "add_passive",
+  "add_passive",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b44_gearbox_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 42.533798600081354,
+ "usage": {
+  "input_tokens": 119206,
+  "cached_input_tokens": 103680,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1544,
+  "reasoning_output_tokens": 289
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: z is vertical; +x torque uses opposite 625 N lug forces distributed uniformly; steel E=210 GPa, \u03bd=0.3; lug pads kept solid for 2 mm axial depth. Validation passed, render checked, all items source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Gearbox output bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigidly bolted x=0 end, modeled as a fully fixed face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_drive",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40.0,
+      72.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -625.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top lug: y=32..48, z=64..80. 625 N in -y; paired with bottom drive gives +40000 N mm torque about x and zero net force."
+   },
+   {
+    "id": "bottom_drive",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40.0,
+      8.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     625.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bottom lug: y=32..48, z=0..16. 625 N in +y; centroid separation 64 mm."
+   }
+  ],
+  "passive": [
+   {
+    "id": "top_lug_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      158.0,
+      32.0,
+      64.0
+     ],
+     "max": [
+      160.0,
+      48.0,
+      80.0
+     ]
+    },
+    "note": "Preserve the top 16 x 16 mm drive interface; assume one element (2 mm) axial depth inside the envelope."
+   },
+   {
+    "id": "bottom_lug_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      158.0,
+      32.0,
+      0.0
+     ],
+     "max": [
+      160.0,
+      48.0,
+      16.0
+     ]
+    },
+    "note": "Preserve the bottom 16 x 16 mm drive interface; assume one element (2 mm) axial depth inside the envelope."
+   }
+  ],
+  "description": "Gearbox output bracket. z is vertical, y is depth. Rigid clamp at x=0; +40 N*m about x applied as a force couple through 16 x 16 mm end-face drive patches at z=8 and z=72, y=40. Terminal 2 mm of each drive pad is kept solid.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 42.8307696999982,
+ "cwe": {
+  "value": 105693840.27874024,
+  "c_pred_under_intended": 151381037.91696703,
+  "c_intended_opt": 1.4322597805650623,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0023328065872192
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

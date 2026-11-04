@@ -1,0 +1,81 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b13 cantilever end traction",
+  "domain": {
+   "size": [
+    160,
+    80,
+    80
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.12,
+  "supports": [
+   {
+    "id": "wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "end",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "force": [
+     0,
+     -4000,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "end_plate",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156,
+      0,
+      0
+     ],
+     "max": [
+      160,
+      80,
+      80
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "2:1:1 cantilever with a distributed end load, the large-scale benchmark of the PETSc TopOpt framework (Aage et al. 2015)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "The solid end plate carries the distributed load; without it the loaded face oscillates and the preview reference does not settle (results/X2/suite_check.json, 2026-10-30).",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "N",
+  "comment": "End plate, -4000 N and 12% design budget agree. Source not cleared as a restatement: current primary PETSc code uses an end-edge line load [S3]; identify the claimed paper figure/version."
+ }
+}

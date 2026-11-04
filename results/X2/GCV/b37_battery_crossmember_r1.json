@@ -1,0 +1,180 @@
+{
+ "task": "b37_battery_crossmember",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:35:49",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 102318,
+  "cached_input_tokens": 82688,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 634,
+  "reasoning_output_tokens": 137
+ },
+ "gc_wall_s": 23.41958240000531,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17695,
+  "cached_input_tokens": 12544,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 145,
+  "reasoning_output_tokens": 125
+ },
+ "verify_wall_s": 7.365681700175628,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 262,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 779,
+  "input_tokens": 120013,
+  "cached_input_tokens": 95232
+ },
+ "wall_s": 30.78526410018094,
+ "questions": 0,
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Battery-tray crossmember",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    600.0,
+    60.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6082-T6",
+   "E": 70.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "left_end_fixed",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "right_end_fixed",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "foot_x200",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      200.0,
+      40.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1.5,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   },
+   {
+    "id": "foot_x400",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      400.0,
+      40.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1.5,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.669483799953014,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (300, 30, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

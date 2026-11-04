@@ -1,0 +1,47 @@
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\markboth{Preface}{Preface}
+
+A topology optimization can converge and still solve the wrong problem. A support may restrain a direction the
+engineer meant to leave free, a load may sit on the wrong face, a pad may be retained that nobody asked for. Neither the
+solver's residual nor a language agent's confident summary reveals such errors. AgenticTO is built around that
+observation. It keeps the design intent in one typed specification, checks it with deterministic rules before anything
+is solved, and lets only the solver issue the certificate that marks a result as released. A language agent can help
+at every step, but it works through the same logged tools as the engineer and cannot write a certificate.
+
+This guidebook explains how to install the software, build and solve designs in its graphical workspace, work with the
+built-in assistant, connect other agents through the Model Context Protocol, read the provenance log, and reproduce the
+results of the companion paper.
+
+\paragraph{Who this book is for.} Two groups of readers. Journal reviewers who want to know what the software actually
+does, which check is responsible for which guarantee, and how each number in the paper can be traced to a file and a
+script: Chapters~\ref{ch:overview}, \ref{ch:ladder}, \ref{ch:reproduce} and \ref{ch:limits} are written for you.
+Engineers who download the public release and want to use it: start with Chapters~\ref{ch:install} and
+\ref{ch:quickstart}, then read the chapters on the workspace, the specification and the rules.
+
+\paragraph{How to read it.} Chapter~\ref{ch:overview} gives the concepts in a few pages. Chapter~\ref{ch:quickstart}
+takes you from a fresh start to a certified, exported design in about ten minutes. The remaining chapters can be read in
+any order. The appendices are reference material: every field of the specification, every tool with its arguments,
+every certificate field, the keyboard map, every script, and a glossary. A one-page quick reference precedes the
+index.
+
+\paragraph{Conventions.}
+\begin{itemize}
+  \item Interface labels are set in bold sans serif: \gui{Optimize release}. Keys look like \keycap{S} or
+        \keycap{Ctrl}+\keycap{K}.
+  \item File names, commands, tool names and JSON fields are set in monospace: \code{scripts/serve.py},
+        \tool{validate_spec}, \code{volume\_fraction}. Tool names link to their reference entry in
+        Appendix~\ref{app:tools}; rule codes such as \rref{R003} link to Chapter~\ref{ch:rules}.
+  \item Commands are shown for a POSIX shell. On Windows, the same commands work in PowerShell except where a box says
+        otherwise.
+  \item A grey bracket such as \claim{C2.3} names the claim in \code{results/claims\_ledger.md} that backs a number.
+\end{itemize}
+
+\begin{tipbox}[Four kinds of boxes]
+Green boxes like this one give practical tips. Blue boxes add background. Vermillion boxes warn about something that
+can cost you a result or mislead you. Amber boxes quote evidence from the paper, with its denominator.
+\end{tipbox}
+
+\paragraph{Acknowledgement of tools.} The software was developed with the help of OpenAI Codex and Claude-based
+coding tools, as stated in the paper's declaration. This guidebook was drafted with AI assistance from the source code, the
+existing user guide and the paper; its reference tables are generated from the code.

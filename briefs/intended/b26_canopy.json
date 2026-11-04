@@ -1,0 +1,118 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b26 canopy",
+  "domain": {
+   "size": [
+    300,
+    40,
+    200
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "column_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      40,
+      40
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "column_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      260,
+      40
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "column_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      40,
+      160
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "column_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      260,
+      160
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "roof",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -8000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "plate on four interior column supports under a uniform load (multi-support slab family)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Four interior support heads, full top load and units agree. Generic family description treated as engineering."
+ }
+}

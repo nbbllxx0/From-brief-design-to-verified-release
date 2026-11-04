@@ -1,0 +1,210 @@
+{
+ "task": "b14_cube_torsion",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:00:31",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 44604,
+  "cached_input_tokens": 37343,
+  "cache_write_input_tokens": 7255,
+  "output_tokens": 2416
+ },
+ "gc_wall_s": 26.469368800055236,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14559,
+  "cached_input_tokens": 8627,
+  "cache_write_input_tokens": 5928,
+  "output_tokens": 2129
+ },
+ "verify_wall_s": 25.108246400021017,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 59163,
+  "cached_input_tokens": 45970,
+  "output_tokens": 4545,
+  "cache_write_input_tokens": 13183
+ },
+ "wall_s": 51.57761520007625,
+ "questions": 0,
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Block in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    100.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "base",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "bottom face bolted down over full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "pad_south",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50.0,
+      5.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     100.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "y=0 edge pad; 100 N x 45 mm lever x 4 = 18 N*m CCW"
+   },
+   {
+    "id": "pad_east",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      95.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "x=100 edge pad"
+   },
+   {
+    "id": "pad_north",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50.0,
+      95.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -100.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "y=100 edge pad"
+   },
+   {
+    "id": "pad_west",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      5.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "x=0 edge pad"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 25.53291100007482,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

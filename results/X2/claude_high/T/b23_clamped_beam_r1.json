@@ -1,0 +1,135 @@
+{
+ "task": "b23_clamped_beam",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:23:31",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 6.727661599870771,
+ "usage": {
+  "input_tokens": 8614,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7963,
+  "output_tokens": 422
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"clamped_clamped_beam\",\"description\":\"240x40x40 mm steel beam, both end faces fully clamped, 3 kN downward load on a 10 mm strip across the full width of the top face at mid-span.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[240,40,40]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.25,\"supports\":[{\"id\":\"clamp_x0\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"fully clamped end at x=0\"},{\"id\":\"clamp_x240\",\"region\":{\"kind\":\"face\",\"face\":\"x+\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"fully clamped end at x=240\"}],\"loads\":[{\"id\":\"midspan_load\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[120,20],\"size\":[10,40]},\"force\":[0,-3000,0],\"distribution\":\"uniform_nodes\",\"note\":\"3 kN downward on strip x 115-125, full width in z\"}],\"passive\":[],\"resolution\":{\"h\":1.0},\"min_feature\":null,\"meta\":{}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "clamped_clamped_beam",
+  "description": "240x40x40 mm steel beam, both end faces fully clamped, 3 kN downward load on a 10 mm strip across the full width of the top face at mid-span.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    240,
+    40,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "clamp_x0",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "fully clamped end at x=0"
+   },
+   {
+    "id": "clamp_x240",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "fully clamped end at x=240"
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      120,
+      20
+     ],
+     "size": [
+      10,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -3000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "3 kN downward on strip x 115-125, full width in z"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1.0
+  },
+  "min_feature": null,
+  "meta": {}
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 6.926308700116351,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (240, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

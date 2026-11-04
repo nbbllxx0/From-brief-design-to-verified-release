@@ -1,0 +1,182 @@
+{
+ "task": "b37_battery_crossmember",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:05:32",
+ "gc_correct": false,
+ "gc_usage": {
+  "input_tokens": 56348,
+  "cached_input_tokens": 49828,
+  "cache_write_input_tokens": 6512,
+  "output_tokens": 1594
+ },
+ "gc_wall_s": 17.697427599923685,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14656,
+  "cached_input_tokens": 8725,
+  "cache_write_input_tokens": 5927,
+  "output_tokens": 989
+ },
+ "verify_wall_s": 14.307743600104004,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 71004,
+  "cached_input_tokens": 58553,
+  "output_tokens": 2583,
+  "cache_write_input_tokens": 12439
+ },
+ "wall_s": 32.00517120002769,
+ "questions": 0,
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "battery_tray_crossmember",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    600.0,
+    60.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6082-T6",
+   "E": 70000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "rail_left",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "End face x=0 bolted to side rail, fully fixed"
+   },
+   {
+    "id": "rail_right",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "End face x=600 bolted to side rail, fully fixed"
+   }
+  ],
+  "loads": [
+   {
+    "id": "foot_1",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      200.0,
+      40.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1.5,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Battery foot 40x40 at x=200, z=40, 1.5 kN down"
+   },
+   {
+    "id": "foot_2",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      400.0,
+      40.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1.5,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Battery foot 40x40 at x=400, z=40, 1.5 kN down"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 14.750081799924374,
+ "cwe": {
+  "value": 0.0,
+  "c_pred_under_intended": 212.9105551677941,
+  "c_intended_opt": 212.9105551677941,
+  "h": 2.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": false,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (300, 30, 40)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

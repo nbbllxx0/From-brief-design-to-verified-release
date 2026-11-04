@@ -1,0 +1,225 @@
+{
+ "task": "b46_sensor_housing",
+ "cond": "GP",
+ "rep": 2,
+ "t": "2026-11-01T01:30:35",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Envelope and elements are given in mm; force is given in N."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "80 x 50 x 40 mm in x,y,z with y up; bottom y=0 and end x=80 fix the origin convention."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Aluminium 6061 is stated. Linear isotropic elastic properties E=69000 N/mm^2 and nu=0.33 are assumed representative values; temper is unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.3; applied to non-passive design volume per tool convention."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements, so h=1 mm."
+   },
+   {
+    "key": "support:chassis_bottom",
+    "source": "stated",
+    "note": "Bottom face y=0 bolted to chassis over its full area; modeled as fixed in x,y,z."
+   },
+   {
+    "key": "load:sensor_push",
+    "source": "derived",
+    "note": "Brief states total force 200 N along -x and a 10 x 10 mm pad at center of x=80. Center (y,z)=(50/2,40/2)=(25,20) mm, bounds y=20..30 and z=15..25; force=(-200,0,0) N."
+   },
+   {
+    "key": "passive:connector_clearance",
+    "source": "assumed",
+    "note": "Connector clearance is requested without size or front axis. Choose front=z=40 and a centered 20 x 16 mm opening with 10 mm inward depth: x=30..50, y=17..33, z=30..40 mm, kept void. Dimensions align with 1 mm elements."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "passive:connector_clearance"
+  ]
+ },
+ "n_tool_calls": 22,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_passive",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "update_item",
+  "set_params",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b46_sensor_housing_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 43.25590769993141,
+ "usage": {
+  "input_tokens": 116463,
+  "cached_input_tokens": 102656,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1721,
+  "reasoning_output_tokens": 286
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic aluminium 6061 with E = 69,000 N/mm\u00b2, \u03bd = 0.33; bolted bottom fully fixed; front = z = 40 mm, with centered 20 \u00d7 16 mm connector clearance extending 10 mm inward. Validation passed, render checked, and every item source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Sensor housing bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    50.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "chassis_bottom",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full bottom face y=0 bolted to chassis, idealized as fixed in all translations."
+   }
+  ],
+  "loads": [
+   {
+    "id": "sensor_push",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      25.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -200.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "200 N total along -x, distributed on 10 x 10 mm pad centered at (80,25,20); y=20..30, z=15..25."
+   }
+  ],
+  "passive": [
+   {
+    "id": "connector_clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      30.0,
+      17.0,
+      30.0
+     ],
+     "max": [
+      50.0,
+      33.0,
+      40.0
+     ]
+    },
+    "note": "Assumed front=z+; centered connector clearance 20 mm in x, 16 mm in y, 10 mm inward in z, aligned to 1 mm element boundaries."
+   }
+  ],
+  "description": "80 x 50 x 40 mm envelope, y up; full bottom y=0 fixed to chassis. Total 200 N in -x over a centered 10 x 10 mm pad on x=80. Connector assumption: front is z=40; centered 20 mm (x) x 16 mm (y) clearance extends 10 mm inward from front, x=30..50, y=17..33, z=30..40. Linear isotropic aluminium 6061 assumed E=69000 N/mm^2 and nu=0.33.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 43.48232510010712,
+ "cwe": {
+  "value": -0.02808398901732989,
+  "c_pred_under_intended": 0.07069460152304866,
+  "c_intended_opt": 0.07273735664830938,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {
+   "keep_out_filled": 0.23644444444444446
+  },
+  "mass_ratio": 1.0384104251861572
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 50, 40)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

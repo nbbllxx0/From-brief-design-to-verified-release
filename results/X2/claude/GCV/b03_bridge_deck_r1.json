@@ -1,0 +1,150 @@
+{
+ "task": "b03_bridge_deck",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T15:06:55",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 42619,
+  "cached_input_tokens": 36414,
+  "cache_write_input_tokens": 6199,
+  "output_tokens": 1572
+ },
+ "gc_wall_s": 19.41197989997454,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14481,
+  "cached_input_tokens": 6279,
+  "cache_write_input_tokens": 8198,
+  "output_tokens": 406
+ },
+ "verify_wall_s": 6.975145700154826,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 1978,
+  "cached_input_tokens": 42693,
+  "cache_write_input_tokens": 14397,
+  "input_tokens": 57100
+ },
+ "wall_s": 26.387125600129366,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Bridge segment",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    400.0,
+    100.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Pinned bearing, bottom-left edge across full width"
+   },
+   {
+    "id": "right_roller",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      400.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Expansion bearing, free along span (x)"
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -5.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Uniform 5 kN downward on top surface"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.366824699798599,
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=2, grid (200, 50, 50)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

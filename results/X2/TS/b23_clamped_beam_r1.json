@@ -1,0 +1,131 @@
+{
+ "task": "b23_clamped_beam",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:22:49",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 0,
+ "retry_errors": [],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 7.0711334000807256,
+ "usage": {
+  "input_tokens": 19972,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 360,
+  "reasoning_output_tokens": 37
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Clamped-clamped beam\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [240, 40, 40]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.25,\n  \"supports\": [\n    {\n      \"id\": \"left_clamp\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"right_clamp\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x+\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"midspan_downward_load\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y+\",\n        \"center\": [120, 20],\n        \"size\": [10, 40]\n      },\n      \"force\": [0, -3000, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Clamped-clamped beam",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    240,
+    40,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "left_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "right_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_downward_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      120,
+      20
+     ],
+     "size": [
+      10,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -3000,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "resolution": {
+   "h": 1
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.127529999939725,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (240, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

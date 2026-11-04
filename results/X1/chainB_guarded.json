@@ -1,0 +1,87 @@
+{
+ "note": "guards on (spill_check_every=10 + end check); desktop shares the GPU",
+ "env": {
+  "device_before": {
+   "name": "NVIDIA GeForce RTX 4090",
+   "clocks.sm": "210",
+   "clocks.mem": "405",
+   "temperature.gpu": "48",
+   "power.draw": "18.10",
+   "memory.used": "2424",
+   "utilization.gpu": "0",
+   "pstate": "P8"
+  },
+  "free_before": {
+   "cuda_free": 24154996736,
+   "total": 25756696576,
+   "others_dedicated": 5321191424,
+   "wddm_free": 20083032064
+  }
+ },
+ "rows": [
+  {
+   "k": 96,
+   "n_elem": 1769472,
+   "solver": "mg64",
+   "warm": false,
+   "setup_s": 2.37,
+   "run_wall_s": 26.27,
+   "compute_s": 7.36,
+   "iterations": 78,
+   "compliance": 0.49711967594941053,
+   "converged": true,
+   "valid": true,
+   "spill": {
+    "max_shared_growth_bytes": 8388608,
+    "spilled": false
+   },
+   "others_dedicated_GiB": [
+    4.96,
+    4.96,
+    4.96,
+    4.96,
+    4.96,
+    4.96,
+    4.96,
+    4.96,
+    4.96
+   ],
+   "memory": {
+    "peak_pool_used_bytes": 382474752,
+    "peak_pool_reserved_bytes": 466271744,
+    "peak_device_used_bytes": 2140667904,
+    "baseline_device_used_bytes": 1654128640
+   },
+   "final_rel_true": 2.7470435714062877e-06
+  },
+  {
+   "k": 192,
+   "n_elem": 14155776,
+   "solver": "mg64",
+   "warm": true,
+   "setup_s": 2.36,
+   "run_wall_s": 9.71,
+   "compute_s": 4.87,
+   "iterations": 16,
+   "compliance": 0.24793009725169762,
+   "converged": true,
+   "valid": true,
+   "spill": {
+    "max_shared_growth_bytes": 67108864,
+    "spilled": false
+   },
+   "others_dedicated_GiB": [
+    4.96,
+    4.96,
+    4.96
+   ],
+   "memory": {
+    "peak_pool_used_bytes": 2813608960,
+    "peak_pool_reserved_bytes": 3537718272,
+    "peak_device_used_bytes": 5219287040,
+    "baseline_device_used_bytes": 1668808704
+   },
+   "final_rel_true": 3.4162174622111514e-06
+  }
+ ]
+}

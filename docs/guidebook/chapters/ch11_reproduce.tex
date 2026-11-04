@@ -1,0 +1,176 @@
+\chapter{Reproducing the paper}\label{ch:reproduce}
+\chapterintro{Every number in the paper comes from a result file, and every table and figure is regenerated from those
+files by a script. This chapter maps each table and figure to its generator, its records and the experiment that
+produced them, marks which steps need the GPU or a language model, and explains the claims ledger.}
+
+\newcommand\needs[1]{%
+  \ifstrequal{#1}{none}{\badge{okgreen}{none}}{%
+  \ifstrequal{#1}{solver}{\badge{guigrey}{solver package}}{%
+  \ifstrequal{#1}{gpu}{\badge{okamber}{GPU}}{%
+  \ifstrequal{#1}{heavy}{\badge{okverm}{GPU, heavy}}{%
+  \ifstrequal{#1}{llm}{\badge{okblue}{LLM}}{#1}}}}}}
+
+\section{Three levels}\label{sec:levels}
+Reproduction works at three levels of cost. Each later level includes the earlier ones.
+
+\begin{description}
+  \item[Rebuild] \needs{none}. Regenerate the claims ledger, every table and every plotted figure from the saved result
+  files. Needs Python with \code{matplotlib}; no solver, no GPU, no language model. Takes seconds.
+  \item[Replay] \needs{gpu}. Re-run a saved session log without a language model (Section~\ref{sec:replay}). Needs the
+  solver and a free GPU; the solves must reproduce bit for bit under the recorded configuration.
+  \item[Re-run] \needs{heavy} \needs{llm}. Repeat an experiment from scratch. The numerical studies need the solver and
+  long, exclusive use of a 24~GB GPU; the agent studies need subscription CLIs logged in as in
+  Section~\ref{sec:agents}. A fresh agent run makes fresh decisions, so its counts can differ from the paper's.
+\end{description}
+
+The badges in the tables mean: \needs{none} plain Python; \needs{solver} imports the \code{voxfem} package but uses no
+GPU; \needs{gpu} minutes of GPU time; \needs{heavy} grids of tens of millions of elements, from minutes to hours per
+run; \needs{llm} Codex or Claude Code sessions on a subscription.
+
+\begin{warnbox}[One GPU job at a time]
+Every GPU script assumes it is alone on the card. A browser with hardware acceleration, a game or another CUDA job
+can push a large solve into shared memory; the spill guard then stops it, and timings taken beside such a job are not
+comparable with the paper's.
+\end{warnbox}
+
+\needspace{8\baselineskip}
+\section{Rebuilding the tables, figures and ledger}\label{sec:rebuild}
+\begin{shell}
+python -B scripts/make_ledger.py      # results/claims_ledger.md
+python -B scripts/make_tables.py      # paper/tables/<name>.tex and .md
+python -B scripts/make_figures.py     # results/figures/<name>.pdf and .png
+\end{shell}
+
+\code{make\_tables.py} writes booktabs tables to \code{paper/tables/}; every number comes from a result file named in the
+table's source line, and only the rule descriptions and condition labels are typed by hand. \code{make\_figures.py} uses
+the project's figure style (Arial, Okabe-Ito colours with fixed meanings, text of at least 6.5~pt at print size). The
+manuscript package freezes copies of these assets and builds with \code{latexmk -pdf}; the repository keeps its figure
+scripts in \code{paper/V5/scripts/}, with their frozen inputs.
+
+\section{Main paper}\label{sec:mainmap}
+
+\begin{reftable}{@{}>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}%
+>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}X@{}}
+Paper item & Rebuilt by & Records & Produced by \\ \midrule
+Table 1, knowledge model & in the manuscript source & -- & -- \\
+Table 2, rule base & \code{make\_tables.py} (\code{t2\_rules}) & \code{src/agentto/rules.py} & -- \needs{none} \\
+Table 3, evaluation studies & in the manuscript source & -- & -- \\
+Table 4, task suite & \code{make\_tables.py} (\code{t1\_suite}) & \code{briefs/}, \code{briefs/intended/} &
+\code{make\_briefs.py} \needs{none} \\
+Table 5, grounding on 50 briefs, with the follow-up conditions & \code{make\_tables.py} (\code{t4\_x2\_conditions}) &
+\code{results/X2/}\meta{cond}\code{/*\_r1.json} &
+\code{x2\_run.py} \needs{llm}; \code{x2\_rules\_baseline.py} \needs{solver}; \code{x2\_rescore.py} \needs{solver} \\
+Table 6, two providers & \code{make\_tables.py} (\code{t7\_providers}) & \code{results/X2/claude\_high/} &
+\code{x2\_run.py --provider claude --effort high} \needs{llm} \\
+Table 7, gates & \code{make\_tables.py} (\code{t12\_gates}) & \code{results/C4/census.json}, \code{rules\_off.json} &
+\code{c4\_gate\_ablation.py census} \needs{none}; \code{rules\_off} \needs{gpu} \\
+Table 8, release policies & \code{make\_tables.py} (\code{t3\_x1\_escalation}) & \code{results/X1/escalation.json} &
+\code{x1\_escalation.py}, \code{x1\_fix\_cold.py} \needs{heavy} \\
+Figure 1, workflow & \code{paper/V5/scripts/ make\_fig1\_workflow.py} & frozen \code{paper/V5/figures/fig1\_data/}, from the
+b06 session in \code{results/X3/} & \code{x3\_run.py} \needs{llm} \needs{gpu} \\
+Figure 2, GUI & \code{paper/V5/scripts/ make\_fig2\_gui.py} & \code{paper/V5/figures/gui\_overview.png} &
+\code{gui\_screenshots.py} \needs{gpu} \\
+Figure 3, outcomes & \code{make\_figures.py} & \code{results/X2/} & as Table 5 \\
+Figure 4, released designs & \code{paper/V5/scripts/ make\_fig\_designs.py} & STLs of the sessions in \code{results/X3/} &
+\code{x3\_run.py} \needs{llm} \needs{gpu}; see the note below \\
+Figure 5, session time & \code{make\_figures.py} & \code{results/X3/}, \code{results/X3\_aware/} & \code{x3\_run.py}
+\needs{llm} \needs{gpu}; \code{x3\_retime\_aware.py} \needs{gpu} \\
+Figure 6, release policies & \code{make\_figures.py} & \code{results/X1/escalation.json} & as Table 8 \\
+Figure 7, resolution path & \code{make\_figures.py} & \code{results/X5/resolution.json} & \code{x5\_resolution.py},
+\code{x5\_chain.py} \needs{heavy} \\
+\end{reftable}
+
+\section{Supplementary material}\label{sec:suppmap}
+
+\begin{reftable}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}%
+>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}X@{}}
+Supplement item & Rebuilt by & Records & Produced by \\ \midrule
+Table S1, studies and records & in the supplement source & -- & -- \\
+Table S2, paired tests & \code{make\_tables.py} (\code{t5}) & \code{results/X2/} & as Table 5 \\
+Table S3, repeats & \code{make\_tables.py} (\code{t6}) & \code{results/X2/}\meta{cond}\code{/*\_r2, *\_r3} & \code{x2\_run.py}
+\needs{llm} \\
+Table S4, adjudication & in the supplement source & \code{paper/adjudication/} & \code{apply\_adjudication.py},
+\code{x2\_rescore.py} \needs{solver} \\
+Table S5, two adjudications & in the supplement source & \code{paper/adjudication/round2/} &
+\code{compare\_adjudications.py} \needs{none} \\
+Table S6, schedules & in the supplement source & \code{src/agentto/escalation.py}, \code{solver.py} & -- (also
+Table~\ref{tab:schedules} of this book) \\
+Table S7, part compliance & \code{make\_tables.py} (\code{t9}) & \code{results/X5/resolution.json} & as Figure 7 \\
+Table S8, sessions & \code{make\_tables.py} (\code{t8}) & \code{results/X3/}, \code{results/X3\_aware/} & as Figure 5 \\
+Table S9, latency & \code{make\_tables.py} (\code{t11}) & \code{results/X6/latency/} & \code{x6a\_latency.py}, with the
+backend running \needs{gpu} \\
+Table S10, interaction model & \code{make\_tables.py} (\code{t10}) & \code{results/X6/klm.json} & \code{x6b\_klm.py}
+\needs{solver} \\
+Table S11, rule findings & in the supplement source & first-repeat tool logs in \code{results/X2/} & \code{x2\_run.py}
+\needs{llm} \\
+Table S12, injected faults & in the supplement source & \code{results/C4/fault\_matrix.json} &
+\code{c4c\_fault\_matrix.py} \needs{solver} \\
+Figures S1--S3, 3D renders & \code{make\_renders.py} (\code{pyvista}) & density fields and STLs of X1, X5, X3 & the studies
+above; see the note below \\
+Figure S4, padding & \code{make\_figures.py} & \code{results/solver/} & \code{mg\_padding\_study.py},
+\code{b19\_release\_aware.py} \needs{gpu} \\
+Figures S5, S6 & \code{make\_figures.py} & \code{results/X6/} & as Tables S9, S10 \\
+\end{reftable}
+
+\begin{notebox}[Density fields and meshes are not in the repository]
+The release package (\code{scripts/make\_release.py}) leaves out density fields (\code{*.npy}), meshes (\code{*.stl},
+\code{*.vtp}) and the render pictures inside session folders: together they are several gigabytes, and they regenerate
+from the session logs by replay. To redraw Figure 4 of the paper and Figures S1--S3, first replay the sessions that produced the fields.
+\end{notebox}
+
+\section{The claims ledger}\label{sec:ledger}
+\index{claims ledger}
+\code{results/claims\_ledger.md} lists every number the paper may state, read from the result files by
+\code{scripts/make\_ledger.py}, with its source file and a status: \emph{supported} (the evidence says what the claim
+says), \emph{partial}, \emph{restate} (the planned wording went beyond the evidence; the row gives the wording to use),
+\emph{pending} or \emph{missing}. Never edit the ledger by hand; rerun the script. The claim identifiers in grey
+brackets throughout this book refer to its rows.
+
+\begin{reftable}{@{}l>{\raggedright\arraybackslash}p{0.3\linewidth}>{\raggedright\arraybackslash}X@{}}
+Group & Topic & Studies and records \\ \midrule
+C1 & Verification and replay & X0 (\code{results/X0/}): identity with the inherited solver, independent cross-check with
+scikit-fem, scripted replay; X3 replays; the rule-parser baseline \\
+C2 & Specification grounding & X2 (\code{results/X2/}): conditions, paired tests, silent errors, repeats, questions, the
+second provider \\
+C3 & Scale and release policies & X1 (\code{results/X1/}), X5 (\code{results/X5/}), padding study
+(\code{results/solver/}) \\
+C4 & Gates & card replay (\code{results/X6/cards.json}), gate census and rule removal (\code{results/C4/}) \\
+C5 & Complete sessions & X3 (\code{results/X3/}) and its padding-aware re-timing (\code{results/X3\_aware/}) \\
+C6 & Interface & interaction model, cards and latency (\code{results/X6/}) \\
+\end{reftable}
+
+Two rows carry the status \emph{restate}, and the paper uses their wording: C3.2 (releases are $2.6$--$7.4\times10^{7}$
+elements, not $1.1\times10^{8}$) and C6.5 (cold sketches miss the 1--3~s target).
+
+\section{Re-running the studies}\label{sec:rerun}
+The experiment scripts write their records into \code{results/}, beside the paper's, and most keep their session
+folders. Before re-running one, read its module docstring (Appendix~\ref{app:scripts} lists them all) and move the
+paper's records aside if you want to compare.
+
+\begin{description}
+  \item[X0, verification] \needs{gpu}. \code{x0\_identity\_gpu.py}, \code{x0\_export\_crosscheck.py} then
+  \code{x0\_crosscheck\_skfem.py} (needs \code{scikit-fem}), \code{x0\_replay.py}, \code{x0\_coarse\_bc.py}.
+  \item[X1, release policies] \needs{heavy}. \code{x1\_escalation.py} runs preview, refine and release rungs with every
+  arm; the release rungs are 26--74 million elements, and a single cold release-rung run took 118--423~s of compute on
+  the paper's workstation.
+  \item[X2, grounding] \needs{llm}. \code{x2\_run.py} with \code{--provider codex} or \code{claude}; then
+  \code{x2\_rescore.py} against the adjudicated readings, and \code{x2\_score.py} \needs{gpu} for the consequence-weighted
+  error.
+  \item[X3, complete sessions] \needs{llm} \needs{heavy}. \code{x3\_run.py} \meta{task} \code{[--provider claude]}: an
+  agent with its own GPU worker takes a brief to a certified release, then the log is replayed.
+  \item[X5, resolution] \needs{heavy}. \code{x5\_resolution.py} and \code{x5\_chain.py}; the finest grid is about 33
+  million elements.
+  \item[X6, interface] \code{x6a\_latency.py} \needs{gpu} with the backend running; \code{x6b\_klm.py} \needs{solver};
+  \code{x6c\_cards.py} \needs{solver}.
+  \item[Gates] \code{c4\_gate\_ablation.py census} \needs{none}; \code{c4\_gate\_ablation.py rules\_off} \needs{gpu}.
+  \item[GUI test] \code{gui\_test.py} \needs{gpu}, against a backend started with \code{--ladder-max 1.2e7}; its
+  \code{assistant} group runs Codex sessions \needs{llm}.
+\end{description}
+
+\begin{notebox}[What a re-run can and cannot match]
+Numerical re-runs on the same hardware and solver configuration should match the recorded iterations and compliances;
+timings vary from run to run. Agent re-runs depend on the model, its version and the CLI; the paper's records name Codex
+CLI 0.165.0 with \code{gpt-6.1-sol} and Claude Code 2.1.312 with \code{claude-opus-5-5}, both at effort high, run on
+30--31 October 2026. Reference readings and the comparator are in \code{briefs/intended/} and
+\code{src/agentto/bench.py}.
+\end{notebox}

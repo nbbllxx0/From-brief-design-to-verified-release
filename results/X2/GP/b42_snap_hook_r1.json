@@ -1,0 +1,194 @@
+{
+ "task": "b42_snap_hook",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:50:15",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies millimetres and newtons; use mm and N."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 40 mm along x, 10 mm along upward y, 12 mm along z; origin at minimum corner."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "PA12, E=1.7 GPa and nu=0.4 are stated. E=1700 N/mm^2 is derived by unit conversion. Isotropic linear elasticity is assumed because no anisotropic or nonlinear properties are supplied."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.35."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies element edge h=0.25 mm and minimum member thickness min_feature=1.2 mm (4.8 element edges). Tool has no standalone min_feature source key; its provenance is recorded here."
+   },
+   {
+    "key": "support:fixed_root",
+    "source": "stated",
+    "note": "Entire root end face x=0 is part of housing and fully fixed in x,y,z."
+   },
+   {
+    "key": "load:assembly_tip",
+    "source": "assumed",
+    "note": "15 N total in +y, underside y=0, x=36..40 and full width z=0..12 are stated. Patch center (38,6) is derived from the bounds. Equal nodal force sharing over the strip is assumed because the pressure distribution is unspecified."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "load:assembly_tip"
+  ]
+ },
+ "n_tool_calls": 21,
+ "n_failed_calls": 1,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "set_source",
+  "render",
+  "get_spec",
+  "list_sources",
+  "set_source",
+  "set_source",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b42_snap_hook_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 44.35468679992482,
+ "usage": {
+  "input_tokens": 129122,
+  "cached_input_tokens": 116096,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1275,
+  "reasoning_output_tokens": 204
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic linear-elastic PA12; 15 N shared equally among nodes on the specified strip.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Printed snap hook",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    40.0,
+    10.0,
+    12.0
+   ]
+  },
+  "material": {
+   "name": "PA12",
+   "E": 1700.0,
+   "nu": 0.4
+  },
+  "supports": [
+   {
+    "id": "fixed_root",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Housing root at x = 0 fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "assembly_tip",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      38.0,
+      6.0
+     ],
+     "size": [
+      4.0,
+      12.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     15.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "15 N total upward (+y) on underside y=0, x=36..40, z=0..12; patch center derived as x=(36+40)/2=38 and z=12/2=6."
+   }
+  ],
+  "passive": [],
+  "description": "Printed snap hook; x is length, y is up, z is width. Minimum member thickness 1.2 mm. Linear isotropic elastic PA12 with the supplied constants; uniform total assembly force over underside strip.",
+  "volume_fraction": 0.35,
+  "resolution": {
+   "h": 0.25,
+   "cells_short_edge": null
+  },
+  "min_feature": 1.2
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 44.54653499997221,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=0.25, grid (160, 40, 48)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

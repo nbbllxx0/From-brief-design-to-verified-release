@@ -1,0 +1,215 @@
+[
+ {
+  "task": "b50_valve_bracket",
+  "case": "G spec, pad inside keep-out (rules off)",
+  "rule_errors": [
+   "R008"
+  ],
+  "h": 2.0,
+  "grid": [
+   60,
+   40,
+   20
+  ],
+  "n_elem": 48000,
+  "status": "converged",
+  "iterations": 76,
+  "certified": true,
+  "compliance": 144855460.55661702,
+  "void_energy_share": 0.9999999653421064,
+  "n_void": 7500,
+  "wall_s": 3.614389699883759
+ },
+ {
+  "task": "b50_valve_bracket",
+  "case": "G spec, pad moved to x = 40 (C4 reference)",
+  "rule_errors": [],
+  "h": 2.0,
+  "grid": [
+   60,
+   40,
+   20
+  ],
+  "n_elem": 48000,
+  "status": "converged",
+  "iterations": 76,
+  "certified": true,
+  "compliance": 0.38173351318586163,
+  "void_energy_share": 2.8766879219164175e-11,
+  "n_void": 7500,
+  "wall_s": 1.8677419000305235
+ },
+ {
+  "task": "b05_l_bracket",
+  "case": "reference reading (solve)",
+  "rule_errors": [],
+  "h": 2.0,
+  "grid": [
+   50,
+   50,
+   20
+  ],
+  "n_elem": 50000,
+  "status": "converged",
+  "iterations": 76,
+  "certified": true,
+  "compliance": 7.466737376790498,
+  "void_energy_share": 2.4392732290281916e-08,
+  "n_void": 18000,
+  "wall_s": 3.541531299939379
+ },
+ {
+  "task": "b09_duct_bridge",
+  "case": "reference reading (solve)",
+  "rule_errors": [],
+  "h": 3.0,
+  "grid": [
+   100,
+   20,
+   20
+  ],
+  "n_elem": 40000,
+  "status": "not_converged",
+  "iterations": 150,
+  "certified": false,
+  "compliance": 30.95390535410201,
+  "void_energy_share": 2.383981217933893e-10,
+  "n_void": 480,
+  "wall_s": 35.85784609988332
+ },
+ {
+  "task": "b18_cantilever_hole",
+  "case": "reference reading (solve)",
+  "rule_errors": [],
+  "h": 2.0,
+  "grid": [
+   100,
+   50,
+   20
+  ],
+  "n_elem": 100000,
+  "status": "converged",
+  "iterations": 76,
+  "certified": true,
+  "compliance": 48.238344380971725,
+  "void_energy_share": 2.089339004565155e-10,
+  "n_void": 6320,
+  "wall_s": 4.466709600063041
+ },
+ {
+  "task": "b28_stool",
+  "case": "reference reading (solve)",
+  "rule_errors": [],
+  "h": 10.0,
+  "grid": [
+   20,
+   20,
+   20
+  ],
+  "n_elem": 8000,
+  "status": "converged",
+  "iterations": 76,
+  "certified": true,
+  "compliance": 1.913855040744958,
+  "void_energy_share": 9.145784986436206e-10,
+  "n_void": 1200,
+  "wall_s": 3.5434898000676185
+ },
+ {
+  "task": "b30_bridge_clearance",
+  "case": "reference reading (solve)",
+  "rule_errors": [],
+  "h": 4.0,
+  "grid": [
+   80,
+   20,
+   20
+  ],
+  "n_elem": 32000,
+  "status": "converged",
+  "iterations": 76,
+  "certified": true,
+  "compliance": 148.43912301094383,
+  "void_energy_share": 1.1048313271556025e-08,
+  "n_void": 6000,
+  "wall_s": 8.622776799835265
+ },
+ {
+  "task": "b41_hinge_bracket",
+  "case": "reference reading (solve)",
+  "rule_errors": [],
+  "h": 1.0,
+  "grid": [
+   140,
+   80,
+   30
+  ],
+  "n_elem": 336000,
+  "status": "converged",
+  "iterations": 76,
+  "certified": true,
+  "compliance": 0.6379640456224729,
+  "void_energy_share": 5.324795680963295e-09,
+  "n_void": 27000,
+  "wall_s": 6.688750399975106
+ },
+ {
+  "task": "b43_press_riser",
+  "case": "reference reading (solve)",
+  "rule_errors": [],
+  "h": 5.0,
+  "grid": [
+   60,
+   20,
+   30
+  ],
+  "n_elem": 36000,
+  "status": "converged",
+  "iterations": 76,
+  "certified": true,
+  "compliance": 25.422858231830173,
+  "void_energy_share": 7.905669530666199e-10,
+  "n_void": 4320,
+  "wall_s": 2.069148999871686
+ },
+ {
+  "task": "b46_sensor_housing",
+  "case": "reference reading (clarify)",
+  "rule_errors": [],
+  "h": 2.0,
+  "grid": [
+   40,
+   25,
+   20
+  ],
+  "n_elem": 20000,
+  "status": "converged",
+  "iterations": 76,
+  "certified": true,
+  "compliance": 0.07447860136050527,
+  "void_energy_share": 1.5592337341988018e-10,
+  "n_void": 1200,
+  "wall_s": 2.383228400023654
+ },
+ {
+  "task": "b50_valve_bracket",
+  "case": "reference reading (refuse)",
+  "rule_errors": [
+   "R008"
+  ],
+  "h": 2.0,
+  "grid": [
+   60,
+   40,
+   20
+  ],
+  "n_elem": 48000,
+  "status": "converged",
+  "iterations": 76,
+  "certified": true,
+  "compliance": 144855460.55661702,
+  "void_energy_share": 0.9999999653421064,
+  "n_void": 7500,
+  "wall_s": 2.8298066998831928
+ }
+]

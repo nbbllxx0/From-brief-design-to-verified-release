@@ -1,0 +1,17 @@
+{
+ "task": "b26_canopy",
+ "cond": "R",
+ "rep": 1,
+ "questions": 0,
+ "spec": null,
+ "reason": "support other than a whole face",
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

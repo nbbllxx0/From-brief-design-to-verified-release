@@ -1,0 +1,75 @@
+{
+  "schema_version": "agentto.spec/v0",
+  "name": "Pillow-block bearing bracket",
+  "units": {
+    "length": "mm",
+    "force": "N"
+  },
+  "domain": {
+    "kind": "box",
+    "size": [120, 60, 40]
+  },
+  "material": {
+    "name": "grey cast iron",
+    "E": 110000,
+    "nu": 0.26
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+    {
+      "id": "left_bolt",
+      "region": {
+        "kind": "cylinder",
+        "axis": "y",
+        "center": [15, 20],
+        "radius": 8,
+        "span": [0, 0.5]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "Circular 16 mm washer footprint; the half-element selection depth includes only y = 0 nodes on the specified 1 mm mesh."
+    },
+    {
+      "id": "right_bolt",
+      "region": {
+        "kind": "cylinder",
+        "axis": "y",
+        "center": [105, 20],
+        "radius": 8,
+        "span": [0, 0.5]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "Circular 16 mm washer footprint; the half-element selection depth includes only y = 0 nodes on the specified 1 mm mesh."
+    }
+  ],
+  "loads": [
+    {
+      "id": "shaft_force",
+      "region": {
+        "kind": "cylinder",
+        "axis": "z",
+        "center": [60, 40],
+        "radius": 15,
+        "span": [0, 40]
+      },
+      "force": [0, -3000, 0],
+      "distribution": "uniform_nodes",
+      "note": "Total downward shaft force distributed over the preserved bearing seat."
+    }
+  ],
+  "passive": [
+    {
+      "id": "bearing_seat",
+      "kind": "solid",
+      "region": {
+        "kind": "cylinder",
+        "axis": "z",
+        "center": [60, 40],
+        "radius": 15,
+        "span": [0, 40]
+      }
+    }
+  ],
+  "resolution": {
+    "h": 1
+  }
+}

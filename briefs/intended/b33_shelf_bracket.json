@@ -1,0 +1,187 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b33 shelf bracket",
+  "domain": {
+   "size": [
+    150,
+    150,
+    20
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "screw_low",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20,
+      10
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "screw_high",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      130,
+      10
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "ellipse"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "shelf",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -600,
+     0
+    ]
+   }
+  ],
+  "min_feature": 3.0,
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "Two square 10 x 10 mm washer support patches, centres unchanged.",
+   "why": "Local fixture-footprint approximation consistent with b06. E=68.9 vs 69 GPa is an ordinary unstated-material default difference.",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "from_run": "claude_high/T/b33_shelf_bracket_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "shelf_bracket",
+    "description": "Wall-mounted shelf bracket, 150 x 150 x 20 mm envelope in aluminium 6061. Fixed by two screws with 10 mm washers on the wall face (x=0) at y=20 and y=130, z=10. The shelf rests on the whole top face (y=150) and applies 600 N downward.",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      150,
+      150,
+      20
+     ]
+    },
+    "material": {
+     "name": "aluminium 6061",
+     "E": 68900.0,
+     "nu": 0.33
+    },
+    "volume_fraction": 0.2,
+    "supports": [
+     {
+      "id": "screw_lower",
+      "region": {
+       "kind": "patch",
+       "face": "x-",
+       "center": [
+        20,
+        10
+       ],
+       "size": [
+        10,
+        10
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Lower screw, 10 mm washer at y=20, z=10 on the wall face"
+     },
+     {
+      "id": "screw_upper",
+      "region": {
+       "kind": "patch",
+       "face": "x-",
+       "center": [
+        130,
+        10
+       ],
+       "size": [
+        10,
+        10
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Upper screw, 10 mm washer at y=130, z=10 on the wall face"
+     }
+    ],
+    "loads": [
+     {
+      "id": "shelf_load",
+      "region": {
+       "kind": "face",
+       "face": "y+"
+      },
+      "force": [
+       0,
+       -600,
+       0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Shelf resting on the whole top face, 600 N total downward"
+     }
+    ],
+    "passive": [],
+    "resolution": {
+     "h": 1.0
+    },
+    "min_feature": 3.0,
+    "meta": {
+     "washer_diameter_mm": 10,
+     "washer_modelled_as": "10 x 10 mm square patch"
+    }
+   }
+  }
+ ],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Wall screw positions, whole top load and 3 mm minimum agree. Square washer patches admitted consistently with b06."
+ }
+}

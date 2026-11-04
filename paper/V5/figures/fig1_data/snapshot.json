@@ -1,0 +1,236 @@
+{
+ "brief": "Motor mount\n\nPlate envelope 160 x 60 x 120 mm (x, y, z), y up, aluminium 6061. It bolts to the machine bed through four M10\nbolts on its bottom face (y = 0) at x = 20 and 140 mm, z = 20 and 100 mm; each bolt clamps through a 24 mm\nwasher. Keep a solid boss of 24 mm diameter and 10 mm height around each bolt.\n\nThe motor sits on a 40 x 40 mm, 5 mm thick solid pad on the top face, centred at x = 80, z = 60. Its\nmounting pad carries 2 kN downward and 0.8 kN sideways (+x) from belt tension.\n\nVolume fraction 0.2, 1 mm elements.\n",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "session": {
+  "tool_calls": 36,
+  "failed": 0,
+  "questions": 4,
+  "logged_s": 176.1619999408722,
+  "cli_wall_s": 201.06201920006424,
+  "replay_calls": 36,
+  "replay_solves": 5,
+  "replay_mismatches": 0
+ },
+ "clarify": {
+  "question": "Does '20% material' mean 20% of the optimizable volume in addition to the mandatory solid bosses and motor pad, or 20% of the complete envelope including those solids?",
+  "options": [
+   [
+    "20% of optimizable volume, with required solid regions additional",
+    0.2
+   ],
+   [
+    "20% of the entire envelope, including the four solid bosses and motor pad",
+    0.1814566
+   ]
+  ],
+  "choice": 0
+ },
+ "validate": {
+  "h": 1.0,
+  "n_design": 1126080,
+  "findings": 0
+ },
+ "rungs": [
+  {
+   "name": "sketch",
+   "h": 2.0,
+   "grid": [
+    80,
+    30,
+    60
+   ],
+   "n_elem": 144000,
+   "iterations": 80,
+   "compute_s": 6.368668200215325,
+   "warm": false,
+   "solver": "mg64",
+   "certified": false,
+   "field": "rho_bd5707dfd706.npy"
+  },
+  {
+   "name": "preview",
+   "h": 1.0,
+   "grid": [
+    160,
+    60,
+    120
+   ],
+   "n_elem": 1152000,
+   "iterations": 12,
+   "compute_s": 1.9020110999699682,
+   "warm": true,
+   "solver": "mg64",
+   "certified": false,
+   "field": "rho_ec1ecb62ff35.npy"
+  },
+  {
+   "name": "refine",
+   "h": 0.5,
+   "grid": [
+    320,
+    120,
+    240
+   ],
+   "n_elem": 9216000,
+   "iterations": 12,
+   "compute_s": 9.108359400415793,
+   "warm": true,
+   "solver": "mg64",
+   "certified": false,
+   "field": "rho_f4c5293a34c9.npy"
+  },
+  {
+   "name": "release",
+   "h": 0.25,
+   "grid": [
+    640,
+    240,
+    480
+   ],
+   "n_elem": 73728000,
+   "iterations": 12,
+   "compute_s": 35.41229010000825,
+   "warm": true,
+   "solver": "mg_ir",
+   "certified": true,
+   "field": "rho_eed25ebf5424.npy"
+  }
+ ],
+ "release": {
+  "checks": {
+   "converged": true,
+   "state_solve_accepted": true,
+   "no_vram_spill": true,
+   "spill_monitored": true,
+   "volume_ok": true,
+   "passive_exact": true
+  },
+  "compliance": 4.011085279834068,
+  "volume": 0.1999999999999975,
+  "spec_hash": "c9bd97c53d933b5b",
+  "triangles": 1595756,
+  "closed": true,
+  "boundary_edges": 0,
+  "nonmanifold_edges": 0
+ },
+ "tools": {
+  "spec": [
+   "add_load",
+   "add_passive",
+   "add_support",
+   "explain_spec",
+   "get_spec",
+   "ladder",
+   "list_regions",
+   "new_spec",
+   "redo",
+   "remove_item",
+   "render",
+   "set_params",
+   "set_spec",
+   "undo",
+   "update_item",
+   "validate_spec"
+  ],
+  "clarify": [
+   "add_load",
+   "add_passive",
+   "add_support",
+   "ask_clarification",
+   "explain_spec",
+   "get_spec",
+   "ladder",
+   "list_regions",
+   "new_spec",
+   "redo",
+   "remove_item",
+   "render",
+   "set_params",
+   "set_spec",
+   "undo",
+   "update_item",
+   "validate_spec"
+  ],
+  "full": [
+   "add_load",
+   "add_passive",
+   "add_support",
+   "ask_clarification",
+   "cancel",
+   "explain_spec",
+   "export_report",
+   "export_stl",
+   "field_stats",
+   "get_spec",
+   "ladder",
+   "list_regions",
+   "load_template",
+   "new_spec",
+   "redo",
+   "remove_item",
+   "render",
+   "set_params",
+   "set_spec",
+   "solve",
+   "status",
+   "undo",
+   "update_item",
+   "validate_spec",
+   "wait_job"
+  ]
+ },
+ "x1": {
+  "n_problems": 5,
+  "n_elem": [
+   25600000,
+   73728000
+  ],
+  "tail": {
+   "dC_pct": [
+    0.004615569902899352,
+    1.3869198943275096
+   ],
+   "compute_pct": [
+    3.1443424040780603,
+    10.99685103216678
+   ]
+  },
+  "reopen_long": {
+   "dC_pct": [
+    -3.0643186876450845,
+    0.06694948536358769
+   ],
+   "compute_pct": [
+    50.81773003410037,
+    68.9752552251863
+   ]
+  }
+ },
+ "census": {
+  "solves": 486,
+  "release_attempts": 54,
+  "release_uncertified": 2,
+  "not_converged": 11
+ },
+ "rules_off": {
+  "task": "b50_valve_bracket",
+  "certified": true,
+  "ratio": 379467496.44191855
+ },
+ "x2": {
+  "n": 50,
+  "G": 44,
+  "GC": 50,
+  "GC_questions": 59,
+  "fixed": 6,
+  "broke": 0,
+  "p": 0.03125
+ },
+ "x3": {
+  "sessions": 15,
+  "released": 14,
+  "replayed": 15,
+  "refused_rule": "R003"
+ }
+}

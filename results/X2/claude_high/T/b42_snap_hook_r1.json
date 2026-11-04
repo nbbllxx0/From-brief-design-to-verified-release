@@ -1,0 +1,124 @@
+{
+ "task": "b42_snap_hook",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:26:45",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 11.007421100046486,
+ "usage": {
+  "input_tokens": 8663,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8012,
+  "output_tokens": 458
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"printed_snap_hook\",\"description\":\"PA12 printed snap hook cantilever: root face x=0 fixed to housing, 15 N upward assembly push on a 4 mm strip of the tip underside across full width.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[40,10,12]},\"material\":{\"name\":\"PA12\",\"E\":1700.0,\"nu\":0.4},\"volume_fraction\":0.35,\"supports\":[{\"id\":\"root_housing\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Root end face x=0 is part of the housing, fully fixed.\"}],\"loads\":[{\"id\":\"assembly_push\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[38,6],\"size\":[4,12]},\"force\":[0,15,0],\"distribution\":\"uniform_nodes\",\"note\":\"15 N upward (+y) on underside strip x=36..40, full width z=0..12.\"}],\"passive\":[],\"resolution\":{\"h\":0.25},\"min_feature\":1.2,\"meta\":{\"up_axis\":\"y\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "printed_snap_hook",
+  "description": "PA12 printed snap hook cantilever: root face x=0 fixed to housing, 15 N upward assembly push on a 4 mm strip of the tip underside across full width.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    40,
+    10,
+    12
+   ]
+  },
+  "material": {
+   "name": "PA12",
+   "E": 1700.0,
+   "nu": 0.4
+  },
+  "volume_fraction": 0.35,
+  "supports": [
+   {
+    "id": "root_housing",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Root end face x=0 is part of the housing, fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "assembly_push",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      38,
+      6
+     ],
+     "size": [
+      4,
+      12
+     ]
+    },
+    "force": [
+     0,
+     15,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "15 N upward (+y) on underside strip x=36..40, full width z=0..12."
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 0.25
+  },
+  "min_feature": 1.2,
+  "meta": {
+   "up_axis": "y"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 11.221995800035074,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=0.25, grid (160, 40, 48)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

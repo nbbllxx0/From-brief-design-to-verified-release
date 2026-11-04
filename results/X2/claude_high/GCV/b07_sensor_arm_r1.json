@@ -1,0 +1,165 @@
+{
+ "task": "b07_sensor_arm",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T17:59:24",
+ "gc_correct": false,
+ "gc_usage": {
+  "input_tokens": 102392,
+  "cached_input_tokens": 85583,
+  "cache_write_input_tokens": 16795,
+  "output_tokens": 2332
+ },
+ "gc_wall_s": 52.70855870004743,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14471,
+  "cached_input_tokens": 8542,
+  "cache_write_input_tokens": 5925,
+  "output_tokens": 510
+ },
+ "verify_wall_s": 8.298906899988651,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 116863,
+  "cached_input_tokens": 94125,
+  "output_tokens": 2842,
+  "cache_write_input_tokens": 22720
+ },
+ "wall_s": 61.007465600036085,
+ "questions": 2,
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Sensor arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150.0,
+    30.0,
+    30.0
+   ]
+  },
+  "material": {
+   "name": "Steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "frame_mount",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "robot frame attachment, full end face clamped"
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      15.0,
+      15.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -20.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "2 kg camera weight"
+   }
+  ],
+  "passive": [
+   {
+    "id": "camera_plate",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      148.0,
+      5.0,
+      5.0
+     ],
+     "max": [
+      150.0,
+      25.0,
+      25.0
+     ]
+    },
+    "note": "keep-in pad under the 20x20 camera mounting plate"
+   }
+  ],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 8.753908999962732,
+ "cwe": {
+  "value": -0.020443334748263542,
+  "c_pred_under_intended": 0.06812032658347116,
+  "c_intended_opt": 0.06954199690526826,
+  "h": 0.5,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0177778005599976
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (150, 30, 30)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

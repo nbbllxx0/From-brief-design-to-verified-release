@@ -1,0 +1,90 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b35 padeye",
+  "domain": {
+   "size": [
+    100,
+    80,
+    30
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "weld",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "sling",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      50,
+      55
+     ],
+     "radius": 15,
+     "span": [
+      0,
+      30
+     ]
+    },
+    "force": [
+     2500,
+     6000,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      50,
+      55
+     ],
+     "radius": 15,
+     "span": [
+      0,
+      30
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "30 mm retained boss and combined (2500,6000,0) N agree; cylinder load is an idealized transfer region."
+ }
+}

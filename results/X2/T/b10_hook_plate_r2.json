@@ -1,0 +1,131 @@
+{
+ "task": "b10_hook_plate",
+ "cond": "T",
+ "rep": 2,
+ "t": "2026-10-30T10:43:49",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 18.641234500100836,
+ "usage": {
+  "input_tokens": 19942,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 623,
+  "reasoning_output_tokens": 244
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"hook_plate\",\n  \"description\": \"Steel hook plate supported along its top face with a downward load at a lower corner.\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [120, 80, 20]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.3,\n  \"supports\": [\n    {\n      \"id\": \"top_attachment\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"y+\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Bolted attachment idealized as a fully fixed top face.\"\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"hanging_load\",\n      \"region\": {\n        \"kind\": \"edge\",\n        \"axis\": \"z\",\n        \"at\": [120, 0],\n        \"span\": [0, 20]\n      },\n      \"force\": [0, -1500, 0],\n      \"distribution\": \"uniform_nodes\",\n      \"note\": \"Lower corner interpreted as x=120, y=0, with force distributed through the plate thickness.\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  },\n  \"meta\": {\n    \"assumptions\": [\n      \"The lower corner is selected at x=120; the opposite lower corner gives a mirror-equivalent problem.\",\n      \"The beam attachment is rigid.\"\n    ]\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "hook_plate",
+  "description": "Steel hook plate supported along its top face with a downward load at a lower corner.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120,
+    80,
+    20
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "top_attachment",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bolted attachment idealized as a fully fixed top face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "hanging_load",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120,
+      0
+     ],
+     "span": [
+      0,
+      20
+     ]
+    },
+    "force": [
+     0,
+     -1500,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Lower corner interpreted as x=120, y=0, with force distributed through the plate thickness."
+   }
+  ],
+  "resolution": {
+   "h": 1
+  },
+  "meta": {
+   "assumptions": [
+    "The lower corner is selected at x=120; the opposite lower corner gives a mirror-equivalent problem.",
+    "The beam attachment is rigid."
+   ]
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 18.70602579996921,
+ "cwe": {
+  "value": 0.059393955186248126,
+  "c_pred_under_intended": 2.7392964889321916,
+  "c_intended_opt": 2.5857203314423347,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 20)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

@@ -1,0 +1,143 @@
+{
+ "task": "b18_cantilever_hole",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:22:36",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 8.895701800007373,
+ "usage": {
+  "input_tokens": 8640,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7989,
+  "output_tokens": 478
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"cantilever_hole\",\"description\":\"Cantilever 200x100x40 mm, fixed at x=0, 2 kN downward load on 10x10 mm pad at centre of x=200 face, 40 mm diameter through-hole along z at (100,50) kept void.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[200,100,40]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.3,\"supports\":[{\"id\":\"fixed_root\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"x=0 face fully fixed\"}],\"loads\":[{\"id\":\"tip_load\",\"region\":{\"kind\":\"patch\",\"face\":\"x+\",\"center\":[50,20],\"size\":[10,10]},\"force\":[0,-2000,0],\"distribution\":\"uniform_nodes\",\"note\":\"2 kN downward (-y) on 10x10 mm pad at centre of free end face\"}],\"passive\":[{\"id\":\"hole\",\"kind\":\"void\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"z\",\"center\":[100,50],\"radius\":20,\"span\":[0,40]},\"note\":\"40 mm diameter through-hole along z, must stay empty\"}],\"resolution\":{\"h\":1.0},\"min_feature\":null,\"meta\":{\"up_axis\":\"y\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "cantilever_hole",
+  "description": "Cantilever 200x100x40 mm, fixed at x=0, 2 kN downward load on 10x10 mm pad at centre of x=200 face, 40 mm diameter through-hole along z at (100,50) kept void.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200,
+    100,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "fixed_root",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "x=0 face fully fixed"
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50,
+      20
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     -2000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "2 kN downward (-y) on 10x10 mm pad at centre of free end face"
+   }
+  ],
+  "passive": [
+   {
+    "id": "hole",
+    "kind": "void",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      100,
+      50
+     ],
+     "radius": 20,
+     "span": [
+      0,
+      40
+     ]
+    },
+    "note": "40 mm diameter through-hole along z, must stay empty"
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  },
+  "min_feature": null,
+  "meta": {
+   "up_axis": "y"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 9.105513300048187,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 100, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,159 @@
+{
+ "task": "b38_peek_bracket",
+ "cond": "GC",
+ "rep": 1,
+ "t": "2026-10-30T10:17:58",
+ "n_tool_calls": 12,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "ask_clarification",
+  "add_load",
+  "ask_clarification",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "get_spec",
+  "render"
+ ],
+ "questions": 2,
+ "oracle_hits": 2,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b38_peek_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 32.03818959998898,
+ "usage": {
+  "input_tokens": 138666,
+  "cached_input_tokens": 130176,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1152,
+  "reasoning_output_tokens": 118
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: rigid bonded panel; pad occupies z = 36\u201340 mm. Confirmed uniform combined pad load and 0.25 volume fraction excluding the pad. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Satellite equipment bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    60.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "PEEK",
+   "E": 3600.0,
+   "nu": 0.38
+  },
+  "supports": [
+   {
+    "id": "bonded_base",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full base bonded to a rigid panel at z = 0."
+   }
+  ],
+  "loads": [
+   {
+    "id": "launch_load",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      40.0,
+      30.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     -300.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Combined launch load uniformly shared over pad top nodes, as clarified."
+   }
+  ],
+  "passive": [
+   {
+    "id": "interface_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      25.0,
+      15.0,
+      36.0
+     ],
+     "max": [
+      55.0,
+      45.0,
+      40.0
+     ]
+    },
+    "note": "Required 30 x 30 x 4 mm solid interface pad, centered at (40,30), flush with z = 40."
+   }
+  ],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "description": "Satellite equipment bracket in PEEK. Rigid full-area bonded base at z=0. Required solid pad x=25..55, y=15..45, z=36..40 mm. One simultaneous launch load (300,0,-300) N uniformly distributed over the pad top, as clarified. Volume fraction 0.25 applies to non-passive design volume, excluding the solid pad, as clarified."
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 32.27129890001379,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,203 @@
+{
+ "task": "b04_torsion_shaft",
+ "cond": "GNR",
+ "rep": 1,
+ "t": "2026-10-31T22:29:04",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_passive",
+  "add_load",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GNR\\b04_torsion_shaft_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 21.483555500162765,
+ "usage": {
+  "input_tokens": 80400,
+  "cached_input_tokens": 70400,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 913,
+  "reasoning_output_tokens": 110
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: steel E = 210 GPa, \u03bd = 0.3; solid lugs extend 4 mm into the envelope; volume fraction applies to non-passive volume. Forces are \u00b1625 N along z, producing +40 N\u00b7m about x. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Shaft bracket in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "Steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid attachment to gearbox across entire x=0 face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_lug_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total +625 N along z over top lug; 64 mm separation gives 40 N m torque about +x."
+   },
+   {
+    "id": "bottom_lug_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     -625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total -625 N along z over bottom lug; equal and opposite to top lug force."
+   }
+  ],
+  "passive": [
+   {
+    "id": "top_drive_lug",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      64.0,
+      32.0
+     ],
+     "max": [
+      160.0,
+      80.0,
+      48.0
+     ]
+    },
+    "note": "16 x 16 mm end-face lug; assumed 4 mm axial depth inside envelope."
+   },
+   {
+    "id": "bottom_drive_lug",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      0.0,
+      32.0
+     ],
+     "max": [
+      160.0,
+      16.0,
+      48.0
+     ]
+    },
+    "note": "16 x 16 mm end-face lug; assumed 4 mm axial depth inside envelope."
+   }
+  ],
+  "description": "160 x 80 x 80 mm shaft bracket; y is up. Entire x=0 face clamped to gearbox. End drive lug patches span y=64..80 and y=0..16, z=32..48 at x=160. Equal/opposite z forces of 625 N at y=72 and y=8 give +40000 N mm torque about x with zero resultant force. Assume each lug extends 4 mm into the envelope as a preserved solid. Volume fraction 0.3 applies to non-passive design volume.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 21.755018399795517,
+ "cwe": {
+  "value": -0.0036352128871500744,
+  "c_pred_under_intended": 1.4270532113530054,
+  "c_intended_opt": 1.4322597805650623,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0046666860580444
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

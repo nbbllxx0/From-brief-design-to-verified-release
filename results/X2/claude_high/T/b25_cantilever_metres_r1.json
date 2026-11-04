@@ -1,0 +1,123 @@
+{
+ "task": "b25_cantilever_metres",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:23:46",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 8.616772200213745,
+ "usage": {
+  "input_tokens": 8649,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7998,
+  "output_tokens": 552
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"large_cantilever_metres\",\"description\":\"2 x 1 x 1 m steel cantilever fixed at x=0, 100 kN downward load on a 0.2 x 0.2 m bearing plate at the centre of the free end face (x=2 m).\",\"units\":{\"length\":\"m\",\"force\":\"kN\"},\"domain\":{\"kind\":\"box\",\"size\":[2.0,1.0,1.0]},\"material\":{\"name\":\"structural steel\",\"E\":210000000.0,\"nu\":0.3},\"volume_fraction\":0.15,\"supports\":[{\"id\":\"fixed_root\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"x = 0 face fully fixed\"}],\"loads\":[{\"id\":\"tip_load\",\"region\":{\"kind\":\"patch\",\"face\":\"x+\",\"center\":[0.5,0.5],\"size\":[0.2,0.2]},\"force\":[0.0,-100.0,0.0],\"distribution\":\"uniform_nodes\",\"note\":\"100 kN downward (-y) on 0.2 x 0.2 m bearing plate at centre of x = 2 m face\"}],\"passive\":[],\"resolution\":{\"h\":0.02},\"meta\":{\"E_conversion\":\"210 GPa = 2.1e8 kN/m^2\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "large_cantilever_metres",
+  "description": "2 x 1 x 1 m steel cantilever fixed at x=0, 100 kN downward load on a 0.2 x 0.2 m bearing plate at the centre of the free end face (x=2 m).",
+  "units": {
+   "length": "m",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    2.0,
+    1.0,
+    1.0
+   ]
+  },
+  "material": {
+   "name": "structural steel",
+   "E": 210000000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "fixed_root",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "x = 0 face fully fixed"
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.2,
+      0.2
+     ]
+    },
+    "force": [
+     0.0,
+     -100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "100 kN downward (-y) on 0.2 x 0.2 m bearing plate at centre of x = 2 m face"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 0.02
+  },
+  "meta": {
+   "E_conversion": "210 GPa = 2.1e8 kN/m^2"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 8.815057499799877,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=20, grid (100, 50, 50)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

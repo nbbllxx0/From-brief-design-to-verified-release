@@ -1,0 +1,179 @@
+{
+ "task": "b43_press_riser",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:26:56",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 13.170055900001898,
+ "usage": {
+  "input_tokens": 8654,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8003,
+  "output_tokens": 977
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"press_riser_block\",\"description\":\"Press riser block 300x100x150 mm (y up), steel. Bottom face bolted to press bed, full-length coolant channel kept void, tool pad load at top centre.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[300,100,150]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.3,\"supports\":[{\"id\":\"bed_bolted_front\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[150,22.5],\"size\":[300,45]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Bottom face bolted to press bed, portion z 0-45 (beside coolant channel opening)\"},{\"id\":\"bed_bolted_back\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[150,127.5],\"size\":[300,45]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Bottom face bolted to press bed, portion z 105-150 (beside coolant channel opening)\"}],\"loads\":[{\"id\":\"tool_pad\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[150,75],\"size\":[100,50]},\"force\":[0,-20000,2000],\"distribution\":\"uniform_nodes\",\"note\":\"Tool pad 100 (x) x 50 (z) mm at top-face centre: 20 kN downward (-y) and 2 kN along +z\"}],\"passive\":[{\"id\":\"coolant_channel\",\"kind\":\"void\",\"region\":{\"kind\":\"box\",\"min\":[0,0,45],\"max\":[300,30,105]},\"note\":\"Coolant channel along full length in x, z 45-105, y 0-30, must stay empty\"}],\"resolution\":{\"cells_short_edge\":50},\"meta\":{\"up_axis\":\"y\",\"pad_orientation_assumption\":\"100 mm along x, 50 mm along z\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "press_riser_block",
+  "description": "Press riser block 300x100x150 mm (y up), steel. Bottom face bolted to press bed, full-length coolant channel kept void, tool pad load at top centre.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300,
+    100,
+    150
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "bed_bolted_front",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      150,
+      22.5
+     ],
+     "size": [
+      300,
+      45
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom face bolted to press bed, portion z 0-45 (beside coolant channel opening)"
+   },
+   {
+    "id": "bed_bolted_back",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      150,
+      127.5
+     ],
+     "size": [
+      300,
+      45
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom face bolted to press bed, portion z 105-150 (beside coolant channel opening)"
+   }
+  ],
+  "loads": [
+   {
+    "id": "tool_pad",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      150,
+      75
+     ],
+     "size": [
+      100,
+      50
+     ]
+    },
+    "force": [
+     0,
+     -20000,
+     2000
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Tool pad 100 (x) x 50 (z) mm at top-face centre: 20 kN downward (-y) and 2 kN along +z"
+   }
+  ],
+  "passive": [
+   {
+    "id": "coolant_channel",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      0,
+      0,
+      45
+     ],
+     "max": [
+      300,
+      30,
+      105
+     ]
+    },
+    "note": "Coolant channel along full length in x, z 45-105, y 0-30, must stay empty"
+   }
+  ],
+  "resolution": {
+   "cells_short_edge": 50
+  },
+  "meta": {
+   "up_axis": "y",
+   "pad_orientation_assumption": "100 mm along x, 50 mm along z"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 13.368696100078523,
+ "cwe": {
+  "value": 1.4431922323865365e-10,
+  "c_pred_under_intended": 26.70124114030883,
+  "c_intended_opt": 26.701241136455327,
+  "h": 2.0,
+  "pred_status": "converged",
+  "passive_violation": {
+   "keep_out_filled": 0.0
+  },
+  "mass_ratio": 1.0
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 75)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

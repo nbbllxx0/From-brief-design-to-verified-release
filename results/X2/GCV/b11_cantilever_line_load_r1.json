@@ -1,0 +1,143 @@
+{
+ "task": "b11_cantilever_line_load",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:28:56",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 79615,
+  "cached_input_tokens": 61952,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 542,
+  "reasoning_output_tokens": 102
+ },
+ "gc_wall_s": 20.982169599970803,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17644,
+  "cached_input_tokens": 12544,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 113,
+  "reasoning_output_tokens": 93
+ },
+ "verify_wall_s": 7.185517699923366,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 195,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 655,
+  "input_tokens": 97259,
+  "cached_input_tokens": 74496
+ },
+ "wall_s": 28.16768729989417,
+ "questions": 0,
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Cantilever with an end line load",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_x0",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed x = 0 end face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "free_end_bottom_line",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      20.0
+     ]
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 1 kN downward, shared evenly along the full-width bottom edge at x = 120 mm, y = 0."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.448098300024867,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,242 @@
+{
+ "task": "b34_antenna_bracket",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:45:43",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief explicitly specifies metres and newtons (SI)."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope x = 0.40 m, y = 0.30 m up, z = 0.20 m; origin at wall lower corner."
+   },
+   {
+    "key": "material",
+    "source": "derived",
+    "note": "Brief states S355 steel, E = 210 GPa, nu = 0.3; E converted to 210e9 N/m^2 for metre/newton units."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.15; tool applies this to non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "derived",
+    "note": "Brief specifies 5 mm elements; converted to h = 0.005 m."
+   },
+   {
+    "key": "support:welded_wall",
+    "source": "stated",
+    "note": "Entire x = 0 wall face welded, modeled by fixing x, y, z translations at all face nodes."
+   },
+   {
+    "key": "load:antenna_weight",
+    "source": "assumed",
+    "note": "Brief states 300 N downward (-y) on clamp. Attachment distribution unspecified: total force shared uniformly among all clamp nodes, concurrent with wind; no added antenna moment."
+   },
+   {
+    "key": "load:wind",
+    "source": "assumed",
+    "note": "Brief states 1200 N along +z on clamp. Attachment distribution unspecified: total force shared uniformly among all clamp nodes, concurrent with weight; no added antenna moment."
+   },
+   {
+    "key": "passive:mast_clamp",
+    "source": "stated",
+    "note": "Solid cylinder kept: y axis, x = 0.33 m, z = 0.10 m, radius 0.04 m, y from 0.05 m to envelope top 0.30 m."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "load:antenna_weight",
+   "load:wind"
+  ]
+ },
+ "n_tool_calls": 19,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b34_antenna_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 32.5669378999155,
+ "usage": {
+  "input_tokens": 106313,
+  "cached_input_tokens": 87808,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1137,
+  "reasoning_output_tokens": 105
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: weight and wind act simultaneously, each distributed uniformly across the solid clamp\u2019s nodes, with no additional antenna moment. Validation passed; render checked; every item source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Antenna wall bracket",
+  "units": {
+   "length": "m",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    0.4,
+    0.3,
+    0.2
+   ]
+  },
+  "material": {
+   "name": "S355 steel",
+   "E": 210000000000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "welded_wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full wall face at x = 0 welded; all translations fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "antenna_weight",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.33,
+      0.1
+     ],
+     "radius": 0.04,
+     "span": [
+      0.05,
+      0.3
+     ]
+    },
+    "force": [
+     0.0,
+     -300.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Stated total antenna weight; assumed uniformly shared by nodes throughout the solid clamp."
+   },
+   {
+    "id": "wind",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.33,
+      0.1
+     ],
+     "radius": 0.04,
+     "span": [
+      0.05,
+      0.3
+     ]
+    },
+    "force": [
+     0.0,
+     0.0,
+     1200.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Stated total wind force along +z, concurrent with weight; assumed uniformly shared by nodes throughout the solid clamp."
+   }
+  ],
+  "passive": [
+   {
+    "id": "mast_clamp",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.33,
+      0.1
+     ],
+     "radius": 0.04,
+     "span": [
+      0.05,
+      0.3
+     ]
+    },
+    "note": "Required solid vertical mast clamp extending from y = 0.05 m to envelope top."
+   }
+  ],
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 0.005,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 32.80971259996295,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=5, grid (80, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

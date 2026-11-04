@@ -1,0 +1,280 @@
+{
+ "task": "b39_tv_bracket",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:53:17",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief gives mm and N."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "300 (x, out from wall) x 200 (y, up) x 40 (z, wide) mm envelope."
+   },
+   {
+    "key": "material",
+    "source": "stated",
+    "note": "Steel stated; standard E 210 GPa, nu 0.3 used."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "0.15 stated."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "2 mm elements stated; min feature 5 mm stated (no member thinner than 5 mm)."
+   },
+   {
+    "key": "support:screw_y30_z10",
+    "source": "stated",
+    "note": "Lag screw at x=0, y=30, z=10 with 12 mm washer (circular 12 mm dia patch), fixed xyz."
+   },
+   {
+    "key": "support:screw_y30_z30",
+    "source": "stated",
+    "note": "Lag screw at x=0, y=30, z=30 with 12 mm washer (circular 12 mm dia patch), fixed xyz."
+   },
+   {
+    "key": "support:screw_y170_z10",
+    "source": "stated",
+    "note": "Lag screw at x=0, y=170, z=10 with 12 mm washer (circular 12 mm dia patch), fixed xyz."
+   },
+   {
+    "key": "support:screw_y170_z30",
+    "source": "stated",
+    "note": "Lag screw at x=0, y=170, z=30 with 12 mm washer (circular 12 mm dia patch), fixed xyz."
+   },
+   {
+    "key": "load:tv_plate",
+    "source": "stated",
+    "note": "Plate on x=300 face, y 50-150, full width z 0-40; 400 N down (-y) and 50 N away from wall (+x)."
+   }
+  ],
+  "untagged": [],
+  "assumed": []
+ },
+ "n_tool_calls": 22,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_sources",
+  "validate_spec"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\claude_high\\GPC\\b39_tv_bracket_r1\\session\\session.jsonl",
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 38.667920500040054,
+ "usage": {
+  "input_tokens": 100164,
+  "cached_input_tokens": 89644,
+  "cache_write_input_tokens": 10508,
+  "output_tokens": 3032
+ },
+ "returncode": 0,
+ "final": "The spec is built and passes validation. All 10 items are tagged stated, and none are assumed.\n\n- **Envelope:** 300 \u00d7 200 \u00d7 40 mm, units mm and N.\n- **Material:** steel, E = 210 GPa, \u03bd = 0.3.\n- **Settings:** volume fraction 0.15, 2 mm elements (a 150 \u00d7 100 \u00d7 20 grid, 300,000 elements), minimum member size 5 mm.\n- **Supports:** four 12 mm circular washer patches on the wall face (x = 0), at y = 30 and 170, z = 10 and 30. Each is fixed in all three directions and grabs 29 mesh nodes.\n- **Load:** the plate on the far face (x = 300) runs from y = 50 to 150 across the full 40 mm width. It carries 50 N in +x and 400 N in \u2212y, spread over 1,071 nodes.\n\nThe render shows the supports and load where the brief puts them. Validation left one info note: three of the four washer patches are too small to show up on the coarsest solver grid. The answer is still correct, but the solve may take more iterations.\n\nDONE. Assumptions: steel's standard values (E = 210 GPa, \u03bd = 0.3), each \"12 mm washer\" read as a 12 mm diameter circle, and the screws treated as fully fixed at the washers.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "TV wall bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    200.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "screw_y30_z10",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30.0,
+      10.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "screw_y30_z30",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "screw_y170_z10",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170.0,
+      10.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "screw_y170_z30",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170.0,
+      30.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "tv_plate",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      100.0,
+      20.0
+     ],
+     "size": [
+      100.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     50.0,
+     -400.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  },
+  "min_feature": 5.0
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 39.06960899988189,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 100, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,136 @@
+{
+ "task": "b38_peek_bracket",
+ "cond": "T",
+ "rep": 2,
+ "t": "2026-10-30T10:48:51",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 7.193007600028068,
+ "usage": {
+  "input_tokens": 21991,
+  "cached_input_tokens": 17024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 392,
+  "reasoning_output_tokens": 54
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Satellite equipment bracket\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [80, 60, 40]\n  },\n  \"material\": {\n    \"name\": \"PEEK\",\n    \"E\": 3600,\n    \"nu\": 0.38\n  },\n  \"volume_fraction\": 0.25,\n  \"supports\": [\n    {\n      \"id\": \"bonded_base\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"z-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"combined_launch_load\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"z+\",\n        \"center\": [40, 30],\n        \"size\": [30, 30]\n      },\n      \"force\": [300, 0, -300],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"interface_pad\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"box\",\n        \"min\": [25, 15, 36],\n        \"max\": [55, 45, 40]\n      }\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Satellite equipment bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80,
+    60,
+    40
+   ]
+  },
+  "material": {
+   "name": "PEEK",
+   "E": 3600,
+   "nu": 0.38
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "bonded_base",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "combined_launch_load",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      40,
+      30
+     ],
+     "size": [
+      30,
+      30
+     ]
+    },
+    "force": [
+     300,
+     0,
+     -300
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "passive": [
+   {
+    "id": "interface_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      25,
+      15,
+      36
+     ],
+     "max": [
+      55,
+      45,
+      40
+     ]
+    }
+   }
+  ],
+  "resolution": {
+   "h": 1
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.249427699949592,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

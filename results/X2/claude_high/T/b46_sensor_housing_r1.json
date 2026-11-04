@@ -1,0 +1,137 @@
+{
+ "task": "b46_sensor_housing",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:27:38",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 14.303547800052911,
+ "usage": {
+  "input_tokens": 8623,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7972,
+  "output_tokens": 913
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"sensor_housing_bracket\",\"description\":\"Sensor housing bracket, 80 x 50 x 40 mm envelope, y up. Bottom face (y=0) bolted to chassis over full area; sensor head pushes 200 N along -x on a 10 x 10 mm pad centred on the x=80 end face.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[80,50,40]},\"material\":{\"name\":\"aluminium 6061\",\"E\":68900.0,\"nu\":0.33},\"volume_fraction\":0.3,\"supports\":[{\"id\":\"chassis_bolted_base\",\"region\":{\"kind\":\"face\",\"face\":\"y-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Bottom face y=0 bolted to chassis over its full area\"}],\"loads\":[{\"id\":\"sensor_head_push\",\"region\":{\"kind\":\"patch\",\"face\":\"x+\",\"center\":[25,20],\"size\":[10,10]},\"force\":[-200,0,0],\"distribution\":\"uniform_nodes\",\"note\":\"200 N along -x on 10 x 10 mm pad at centre of x=80 end face\"}],\"passive\":[],\"resolution\":{\"h\":1.0},\"min_feature\":null,\"meta\":{\"assumptions\":[\"Aluminium 6061 taken as E = 68900 MPa, nu = 0.33.\",\"Bolted base modelled as fully fixed in x, y and z over the whole y=0 face.\"],\"open_questions\":[\"Connector plug clearance 'at the front' was requested but neither the face meant by 'front' nor the keep-out size/position was given, so no void region was added. Provide the keep-out box (min/max in mm) to add it as a passive void.\"]}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "sensor_housing_bracket",
+  "description": "Sensor housing bracket, 80 x 50 x 40 mm envelope, y up. Bottom face (y=0) bolted to chassis over full area; sensor head pushes 200 N along -x on a 10 x 10 mm pad centred on the x=80 end face.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80,
+    50,
+    40
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "chassis_bolted_base",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom face y=0 bolted to chassis over its full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "sensor_head_push",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      25,
+      20
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     -200,
+     0,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "200 N along -x on 10 x 10 mm pad at centre of x=80 end face"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1.0
+  },
+  "min_feature": null,
+  "meta": {
+   "assumptions": [
+    "Aluminium 6061 taken as E = 68900 MPa, nu = 0.33.",
+    "Bolted base modelled as fully fixed in x, y and z over the whole y=0 face."
+   ],
+   "open_questions": [
+    "Connector plug clearance 'at the front' was requested but neither the face meant by 'front' nor the keep-out size/position was given, so no void region was added. Provide the keep-out box (min/max in mm) to add it as a passive void."
+   ]
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 14.498074800008908,
+ "cwe": {
+  "value": -0.038186179231218476,
+  "c_pred_under_intended": 0.06995979491053197,
+  "c_intended_opt": 0.07273735664830938,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {
+   "keep_out_filled": 0.24977777777777777
+  },
+  "mass_ratio": 1.0596026182174683
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 50, 40)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

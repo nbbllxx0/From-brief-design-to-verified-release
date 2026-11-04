@@ -1,0 +1,136 @@
+{
+ "task": "b42_snap_hook",
+ "cond": "GNR",
+ "rep": 1,
+ "t": "2026-10-31T22:41:55",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GNR\\b42_snap_hook_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 19.57247189991176,
+ "usage": {
+  "input_tokens": 110149,
+  "cached_input_tokens": 98688,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 541,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic linear-elastic PA12; 15 N shared equally across strip nodes; no additional passive regions. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Printed snap hook",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    40.0,
+    10.0,
+    12.0
+   ]
+  },
+  "material": {
+   "name": "PA12",
+   "E": 1700.0,
+   "nu": 0.4
+  },
+  "supports": [
+   {
+    "id": "fixed_root",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Housing attachment: entire x=0 end face fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "assembly_tip_push",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      38.0,
+      6.0
+     ],
+     "size": [
+      4.0,
+      12.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     15.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 15 N upward (+y) over underside x=36..40, z=0..12; shared equally among patch nodes."
+   }
+  ],
+  "passive": [],
+  "description": "Printed snap hook; x length, y up, z width. Linear elastic isotropic PA12 assumed; root x=0 fully fixed; total assembly force 15 N upward uniformly distributed over underside y=0, x=36..40, full z=0..12. Minimum member thickness 1.2 mm. No additional passive regions or geometric constraints assumed.",
+  "volume_fraction": 0.35,
+  "resolution": {
+   "h": 0.25,
+   "cells_short_edge": null
+  },
+  "min_feature": 1.2
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 19.766488200053573,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=0.25, grid (160, 40, 48)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

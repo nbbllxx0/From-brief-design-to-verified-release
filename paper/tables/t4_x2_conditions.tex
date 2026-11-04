@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering\small
+\caption{Spec grounding on the 50-brief suite (Codex, GPT-6.1-Sol, effort high, repeat 1)}
+\label{tab:t4_x2_conditions}
+\begin{tabular}{lrrrrrr}
+\toprule
+Condition & Correct spec & Right behavior [95\% CI] & Delivered wrong & Questions & Median input tokens & Median wall (s) \\
+\midrule
+R rule parser & 6 & 9 [10--31\%] & 0 & -- & -- & -- \\
+T text only & 34 & 37 [60--84\%] & 1 & -- & 20k & 10 \\
+G grounding tools & 44 & 44 [76--94\%] & 6 & -- & 86k & 28 \\
+G+C + clarification & 50 & 50 [93--100\%] & 0 & 59 & 104k & 37 \\
+G+C+V + picture check & 50 & 50 [93--100\%] & 0 & 59 & 135k & 49 \\
+T+S text + schema feedback & 39 & 42 [71--92\%] & 4 & -- & 20k & 9 \\
+GNR G without rule feedback & 42 & 42 [71--92\%] & 8 & -- & 87k & 20 \\
+G+P G + value provenance & 42 & 42 [71--92\%] & 8 & -- & 106k & 33 \\
+G+C+P provenance-gated questions & 47 & 47 [84--98\%] & 3 & 6 & 107k & 33 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\footnotesize Right behavior: the intended or an admissible spec, or a refusal where the brief must be refused. CI: Wilson score interval. T+S, GNR, G+P and G+C+P were run after the suite; their contested outputs were adjudicated afterwards by the same rule.
+\end{table}

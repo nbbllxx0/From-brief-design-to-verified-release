@@ -1,0 +1,5 @@
+# latexmk settings for the AgenticTO Guidebook (read automatically when latexmk runs in this folder).
+$pdf_mode = 1;
+$out_dir = 'build';
+# Use the book's index style (letter headings, dotted leaders).
+$makeindex = 'makeindex -s ../index.ist %O -o %D %S';

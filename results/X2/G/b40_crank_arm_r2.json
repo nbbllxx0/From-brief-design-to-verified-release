@@ -1,0 +1,190 @@
+{
+ "task": "b40_crank_arm",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T11:06:16",
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_passive",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b40_crank_arm_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 24.042552900034934,
+ "usage": {
+  "input_tokens": 79499,
+  "cached_input_tokens": 72320,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 800,
+  "reasoning_output_tokens": 67
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Assumptions: isotropic aluminium 7075, E = 71.7 GPa, \u03bd = 0.33; axle attachment retained solid; threads idealized; 0.3 volume fraction applies to non-passive material. list_regions and validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Crank arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    180.0,
+    40.0,
+    30.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 7075",
+   "E": 71700.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "axle_fixed",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "radius": 10.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Keyed spindle attachment: fix all translations throughout the 20 mm diameter cylinder."
+   }
+  ],
+  "loads": [
+   {
+    "id": "rider_push",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      160.0,
+      20.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "ellipse"
+    },
+    "force": [
+     0.0,
+     -1200.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 1.2 kN downward (-y), distributed on the 16 mm circular outer boss face at z=30 mm."
+   }
+  ],
+  "passive": [
+   {
+    "id": "axle_attachment_solid",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "radius": 10.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "note": "Keep fixed axle attachment material solid for load transfer; idealized keyed connection."
+   },
+   {
+    "id": "pedal_boss_solid",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      160.0,
+      20.0
+     ],
+     "radius": 8.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "note": "Required solid 16 mm diameter boss, full thickness; threads idealized."
+   }
+  ],
+  "description": "Crank arm; isotropic linear-elastic aluminium 7075 (E = 71.7 GPa, nu = 0.33). Axle cylinder fixed in x/y/z through thickness. Pedal boss retained solid; total 1200 N downward on its z=30 circular face. Volume fraction 0.3 applies to non-passive design volume. Axle attachment cylinder also retained solid for load transfer. No thread geometry or additional minimum feature specified.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 24.308378800051287,
+ "cwe": {
+  "value": 0.030877935893715902,
+  "c_pred_under_intended": 245.52254604775183,
+  "c_intended_opt": 238.16839753670445,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {
+   "keep_in_missing": 0.0
+  },
+  "mass_ratio": 1.0959402322769165
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (180, 40, 30)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

@@ -1,0 +1,70 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b27 eccentric cantilever",
+  "domain": {
+   "size": [
+    160,
+    40,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "corner",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      35,
+      35
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "cantilever with an eccentric end load, bending plus torsion (3D benchmark family)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Patch centre (y,z)=(35,35) and -1000 N give bending plus torsion. The explicit coordinate ranges control placement."
+ }
+}

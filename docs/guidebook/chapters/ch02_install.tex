@@ -1,0 +1,128 @@
+\chapter{Installation and requirements}\label{ch:install}
+\chapterintro{AgenticTO is a Python package with a web front end and a separate GPU solver. This chapter lists what you
+need, installs the Python environment and the front end, connects the \code{voxfem} solver, and sets up the optional
+language agents, which run on personal subscriptions only.}
+
+\section{Requirements}\label{sec:requirements}
+
+\begin{table}[h]
+\caption{Requirements. ``Tested with'' is the configuration used for every result in the paper.}\label{tab:req}
+\begin{fixtable}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}X@{}}
+Item & Tested with & Notes \\ \midrule
+GPU & NVIDIA GeForce RTX 4090, 24 GB & A CUDA 12 GPU. GPU memory bounds the finest grid you can release; rule
+\rref{R013} estimates the memory before a solve starts. \\
+Host & Intel Core i9-13900KF, 96 GB RAM & Large releases keep density fields in host memory as well. \\
+Operating system & Windows 11 & The spill guard reads the Windows GPU-memory counters. Other platforms have not been
+tested. \\
+Python & 3.10 or newer (a conda environment) & See Section~\ref{sec:pyenv} for packages. \\
+Node.js & 22 & Only for the web front end. \\
+Solver & \code{voxfem} & Distributed separately; configured by you (Section~\ref{sec:voxfem}). \\
+Browser & Chrome & The workspace has been tested in Chrome with one user per session. \\
+Codex CLI (optional) & 0.165.0, ChatGPT login & Runs the built-in assistant. \\
+Claude Code (optional) & 2.1.312, claude.ai login & An external agent over MCP. \\
+\end{fixtable}
+\end{table}
+
+\begin{notebox}[Shared desktop GPU]
+In the paper the GPU also drove the desktop, and other processes held about 2--5~GB of its memory. That is why the
+default ladder stops below \LadderMax\ elements, although a 24~GB card could hold more on its own. A guarded attempt at
+$1.13\times10^{8}$ elements was stopped twice by the spill guard and is not part of any reported result
+\claim{C3.2}.
+\end{notebox}
+
+\section{The Python environment}\label{sec:pyenv}
+Create a conda environment with a CUDA 12 build of CuPy and the packages AgenticTO imports:
+
+\begin{shell}
+conda create -n agentto python=3.11
+conda activate agentto
+pip install numpy scipy matplotlib "cupy-cuda12x" "pydantic>=2.8,<3" \
+    fastapi uvicorn mcp vtk pillow websockets pytest
+\end{shell}
+
+What each package is for: \code{numpy}, \code{scipy} and \code{cupy} for the numerics and \code{field\_stats};
+\code{pydantic} for the specification schema and the tool arguments; \code{fastapi}, \code{uvicorn} and
+\code{websockets} for the backend; \code{mcp} for the agent interface; \code{matplotlib} for the setup pictures of the
+\tool{render} tool; \code{vtk} for the marching-cubes surface and the STL export; \code{pillow} for thumbnails.
+
+Optional extras:
+\begin{itemize}
+  \item \code{pywin32} on Windows. The spill guard then reads the GPU memory counters in-process (about 0.1~ms per
+  sample) instead of through a PowerShell subprocess (about 2.4~s per sample).
+  \item \code{pyvista} for the 3D renders of the paper figures, \code{scikit-fem} for the independent cross-check of
+  study X0, and \code{openpyxl} for the adjudication sheets (Chapter~\ref{ch:reproduce}).
+\end{itemize}
+
+AgenticTO is not installed into the environment. The scripts put \code{src/} on the Python path themselves, and the
+MCP configurations in Chapter~\ref{ch:mcp} set \code{PYTHONPATH}. If you prefer an installed package,
+\code{pip install -e .} in the repository root uses \code{pyproject.toml}.
+
+\section{The web front end}
+\begin{shell}
+cd web
+npm install
+cd ..
+\end{shell}
+This installs React, three.js and Vite at the versions pinned in \code{web/package.json}.
+
+\section{Connecting the solver}\label{sec:voxfem}
+\index{voxfem@\code{voxfem}}\index{AGENTTO_VOXFEM_SRC@\code{AGENTTO\_VOXFEM\_SRC}}
+AgenticTO runs on \code{voxfem}, the GPU solver of the authors' companion work on fused matrix-free operators,
+Galerkin multigrid and guarded state solves. \code{voxfem} is distributed separately from AgenticTO; it is not part of
+the AgenticTO repository, and you configure its location yourself. AgenticTO imports it read-only, never writes into
+it (no bytecode caches either), and extends it only by subclassing.
+
+Point AgenticTO at the directory that contains the \code{voxfem} package (the directory you would put on
+\code{PYTHONPATH} to make \code{import voxfem} work):
+
+\begin{shell}
+# POSIX shell
+export AGENTTO_VOXFEM_SRC=/path/to/solver/src
+# Windows PowerShell
+$env:AGENTTO_VOXFEM_SRC = "D:/solver/src"
+\end{shell}
+
+Set the variable in the shell that starts the backend, the MCP server or a script. The GPU worker inherits it.
+
+\begin{warnbox}[Without the solver]
+Without \code{voxfem} you can still read the code, the briefs, the logs and every result file, and regenerate the
+paper's tables and figures from those files (Chapter~\ref{ch:reproduce}). The backend, the rules and every solve need
+the solver: the rules import its grid class, and the GPU worker imports its SIMP implementation.
+\end{warnbox}
+
+\section{Checking the installation}
+\begin{shell}
+python -B -m pytest -q
+\end{shell}
+The tests that solve on the GPU need the solver and a free GPU. Run one GPU job at a time: another CUDA program on the
+same card can push a solve into shared memory, and the spill guard will then stop it.
+
+\section{Optional: language agents on a subscription}\label{sec:agents}
+\index{subscription policy}\index{PolicyError}
+AgenticTO calls language models only through command-line tools that are logged in with a personal subscription:
+the Codex CLI with a ChatGPT login for the built-in assistant, and optionally Claude Code with a claude.ai login.
+
+\begin{shell}
+codex login        # sign in with your ChatGPT account
+claude             # the first run asks you to sign in with your claude.ai account
+\end{shell}
+
+Before every call AgenticTO checks two things, and refuses to start the agent if either fails:
+\begin{enumerate}\sloppy
+  \item No API-key variable is set: \code{OPENAI\_API\_KEY}, \code{CODEX\_API\_KEY}, \code{ANTHROPIC\_API\_KEY},
+  \code{ANTHROPIC\_AUTH\_TOKEN}, \code{CLAUDE\_CODE\_USE\_BEDROCK} or \code{CLAUDE\_CODE\_USE\_VERTEX}. Any of them would
+  silently switch billing to metered API use.
+  \item The CLI is logged in with a subscription: \code{codex login status} must report ChatGPT, and
+  \code{claude auth status} must report \code{claude.ai}.
+\end{enumerate}
+A refusal appears in the assistant panel as a \code{PolicyError}. Unset the variable, or log in again, and retry. The
+child processes are started with those variables removed from their environment as a second safeguard.
+
+The built-in assistant uses the model \code{gpt-6.1-sol} at reasoning effort high (the defaults in
+\code{src/agentto/llm/cli.py}). Set \code{AGENTTO\_CODEX} or \code{AGENTTO\_CLAUDE} if the CLI is not on your
+\code{PATH}.
+
+\begin{tipbox}[The assistant is optional]
+Every design in the paper's 50-brief suite can be built and solved in the workspace alone. The assistant and external
+agents use the same tools you do.
+\end{tipbox}

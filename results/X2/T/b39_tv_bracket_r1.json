@@ -1,0 +1,175 @@
+{
+ "task": "b39_tv_bracket",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:32:43",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 20.48008899996057,
+ "usage": {
+  "input_tokens": 20030,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 866,
+  "reasoning_output_tokens": 264
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"TV wall bracket\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [300, 200, 40]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.15,\n  \"supports\": [\n    {\n      \"id\": \"lag_screw_1\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [30, 10],\n        \"radius\": 6,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular 12 mm washer footprint on the wall face.\"\n    },\n    {\n      \"id\": \"lag_screw_2\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [30, 30],\n        \"radius\": 6,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular 12 mm washer footprint on the wall face.\"\n    },\n    {\n      \"id\": \"lag_screw_3\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [170, 10],\n        \"radius\": 6,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular 12 mm washer footprint on the wall face.\"\n    },\n    {\n      \"id\": \"lag_screw_4\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [170, 30],\n        \"radius\": 6,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular 12 mm washer footprint on the wall face.\"\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"tv_plate_load\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x+\",\n        \"center\": [100, 20],\n        \"size\": [100, 40]\n      },\n      \"force\": [50, -400, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 2\n  },\n  \"min_feature\": 5\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "TV wall bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300,
+    200,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "lag_screw_1",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      30,
+      10
+     ],
+     "radius": 6,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular 12 mm washer footprint on the wall face."
+   },
+   {
+    "id": "lag_screw_2",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      30,
+      30
+     ],
+     "radius": 6,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular 12 mm washer footprint on the wall face."
+   },
+   {
+    "id": "lag_screw_3",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      170,
+      10
+     ],
+     "radius": 6,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular 12 mm washer footprint on the wall face."
+   },
+   {
+    "id": "lag_screw_4",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      170,
+      30
+     ],
+     "radius": 6,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular 12 mm washer footprint on the wall face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "tv_plate_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      100,
+      20
+     ],
+     "size": [
+      100,
+      40
+     ]
+    },
+    "force": [
+     50,
+     -400,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "resolution": {
+   "h": 2
+  },
+  "min_feature": 5
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 20.537692799931392,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": false,
+ "schema_error": "4 validation errors for Spec\nsupports.0.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...ius': 6, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nsupports.1.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kin",
+ "correct_spec": false,
+ "behaviour_ok": false
+}

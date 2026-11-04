@@ -1,0 +1,124 @@
+[
+ {
+  "task": "b08_slider_bracket",
+  "expected_rule": "R003",
+  "rule_errors": [
+   "R003"
+  ],
+  "h": 2.0,
+  "grid": [
+   60,
+   20,
+   20
+  ],
+  "n_elem": 24000,
+  "status": "solve_failed",
+  "iterations": 0,
+  "compute_s": 0,
+  "compliance": null,
+  "certified": false,
+  "checks": {
+   "converged": false,
+   "state_solve_accepted": false,
+   "no_vram_spill": true,
+   "spill_monitored": true,
+   "volume_ok": false,
+   "passive_exact": true
+  },
+  "rel_true": null,
+  "pcg_iters_max": null,
+  "error": "SolveFailed('pcg64: non-positive curvature nan at iteration 1')",
+  "wall_s": 0.5037910998798907
+ },
+ {
+  "task": "b49_hinged_arm",
+  "expected_rule": "R003",
+  "rule_errors": [
+   "R003"
+  ],
+  "h": 1.0,
+  "grid": [
+   200,
+   40,
+   20
+  ],
+  "n_elem": 160000,
+  "status": "solve_failed",
+  "iterations": 0,
+  "compute_s": 0,
+  "compliance": null,
+  "certified": false,
+  "checks": {
+   "converged": false,
+   "state_solve_accepted": false,
+   "no_vram_spill": true,
+   "spill_monitored": true,
+   "volume_ok": false,
+   "passive_exact": true
+  },
+  "rel_true": null,
+  "pcg_iters_max": null,
+  "error": "SolveFailed('pcg64: true residual 2.367e+04 > 1.0e-05 after 20000 iterations')",
+  "wall_s": 81.49909199983813
+ },
+ {
+  "task": "b50_valve_bracket",
+  "expected_rule": "R008",
+  "rule_errors": [
+   "R008"
+  ],
+  "h": 2.0,
+  "grid": [
+   60,
+   40,
+   20
+  ],
+  "n_elem": 48000,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 7.752335898345336,
+  "compliance": 144855460.55661702,
+  "certified": true,
+  "checks": {
+   "converged": true,
+   "state_solve_accepted": true,
+   "no_vram_spill": true,
+   "spill_monitored": true,
+   "volume_ok": true,
+   "passive_exact": true
+  },
+  "rel_true": 8.786673223305911e-06,
+  "pcg_iters_max": 23,
+  "error": null,
+  "wall_s": 7.825308399973437
+ },
+ {
+  "task": "b50_valve_bracket",
+  "expected_rule": "none (reference: pad at x = 40)",
+  "rule_errors": [],
+  "h": 2.0,
+  "grid": [
+   60,
+   40,
+   20
+  ],
+  "n_elem": 48000,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 4.657059399178252,
+  "compliance": 0.38173351318586163,
+  "certified": true,
+  "checks": {
+   "converged": true,
+   "state_solve_accepted": true,
+   "no_vram_spill": true,
+   "spill_monitored": true,
+   "volume_ok": true,
+   "passive_exact": true
+  },
+  "rel_true": 3.946420253242206e-06,
+  "pcg_iters_max": 9,
+  "error": null,
+  "wall_s": 4.687195000005886
+ }
+]

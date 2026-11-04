@@ -1,0 +1,142 @@
+{
+ "task": "b49_hinged_arm",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T15:10:45",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 42197,
+  "cached_input_tokens": 36234,
+  "cache_write_input_tokens": 5957,
+  "output_tokens": 1303
+ },
+ "gc_wall_s": 18.899756700033322,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14523,
+  "cached_input_tokens": 6300,
+  "cache_write_input_tokens": 8219,
+  "output_tokens": 1093
+ },
+ "verify_wall_s": 15.51395589997992,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 2396,
+  "cached_input_tokens": 42534,
+  "cache_write_input_tokens": 14176,
+  "input_tokens": 56720
+ },
+ "wall_s": 34.41371260001324,
+ "questions": 0,
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Hinged support arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    40.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "hinge_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      10.0,
+      20.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Free-turning hinge pin along z at x=10, y=20 (pin line only, rotation about z free)"
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      20.0,
+      10.0
+     ],
+     "size": [
+      10.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -400.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 15.91094719991088,
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 40, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,171 @@
+{
+ "study": "X0-replay",
+ "date": "2026-10-30",
+ "pass": true,
+ "tasks": [
+  {
+   "task": "b01_cantilever_block",
+   "session_s": 19.13,
+   "replay_s": 17.99,
+   "calls": [
+    {
+     "tool": "set_spec",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "validate_spec",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "render",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "set_params",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "undo",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "list_regions",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "ladder",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "solve",
+     "ok": true,
+     "error": null,
+     "status": "converged",
+     "iterations": 76,
+     "compliance_phys": 4.7407961194264745,
+     "certified": false,
+     "warm_used": false,
+     "compute_s": 5.715282098855823
+    },
+    {
+     "tool": "solve",
+     "ok": true,
+     "error": null,
+     "status": "converged",
+     "iterations": 12,
+     "compliance_phys": 4.618076320158675,
+     "certified": false,
+     "warm_used": true,
+     "compute_s": 1.1948067001067102
+    },
+    {
+     "tool": "field_stats",
+     "ok": true,
+     "error": null,
+     "solid_components": 1,
+     "load_connected_to_support": {
+      "pad": true
+     },
+     "material_fraction": 0.3
+    }
+   ],
+   "replay": {
+    "ok": true,
+    "calls": 10,
+    "solves_replayed": 2,
+    "skipped": 0,
+    "mismatches": [],
+    "final_spec_hash": "b1c2b24534984fdb"
+   }
+  },
+  {
+   "task": "b06_motor_mount",
+   "session_s": 20.21,
+   "replay_s": 20.35,
+   "calls": [
+    {
+     "tool": "set_spec",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "validate_spec",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "render",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "set_params",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "undo",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "list_regions",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "ladder",
+     "ok": true,
+     "error": null
+    },
+    {
+     "tool": "solve",
+     "ok": true,
+     "error": null,
+     "status": "converged",
+     "iterations": 80,
+     "compliance_phys": 3.9057077848391675,
+     "certified": false,
+     "warm_used": false,
+     "compute_s": 6.9078488000668585
+    },
+    {
+     "tool": "solve",
+     "ok": true,
+     "error": null,
+     "status": "converged",
+     "iterations": 12,
+     "compliance_phys": 3.992522849078889,
+     "certified": false,
+     "warm_used": true,
+     "compute_s": 2.0477503002621233
+    },
+    {
+     "tool": "field_stats",
+     "ok": true,
+     "error": null,
+     "solid_components": 1,
+     "load_connected_to_support": {
+      "motor": true
+     },
+     "material_fraction": 0.218
+    }
+   ],
+   "replay": {
+    "ok": true,
+    "calls": 10,
+    "solves_replayed": 2,
+    "skipped": 0,
+    "mismatches": [],
+    "final_spec_hash": "b6230705bdfafc1d"
+   }
+  }
+ ]
+}

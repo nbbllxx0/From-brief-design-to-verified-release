@@ -1,0 +1,293 @@
+{
+ "seed": 20261031,
+ "first_round_sheet": "ADJUDICATION_SHEET_2026-10-31.xlsx",
+ "items": {
+  "C01": {
+   "first_round_row": 22,
+   "task": "b44_gearbox_bracket",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b44_gearbox_bracket_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C02": {
+   "first_round_row": 24,
+   "task": "b46_sensor_housing",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b46_sensor_housing_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C03": {
+   "first_round_row": 41,
+   "task": "b48_cable_anchor",
+   "condition": "Claude GCV",
+   "record": "results/X2/claude_high/GCV/b48_cable_anchor_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C04": {
+   "first_round_row": 38,
+   "task": "b13_cantilever_end_traction",
+   "condition": "Claude GCV",
+   "record": "results/X2/claude_high/GCV/b13_cantilever_end_traction_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C05": {
+   "first_round_row": 32,
+   "task": "b37_battery_crossmember",
+   "condition": "Claude GC",
+   "record": "results/X2/claude_high/GC/b37_battery_crossmember_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C06": {
+   "first_round_row": 18,
+   "task": "b36_pedal_arm",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b36_pedal_arm_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C07": {
+   "first_round_row": 12,
+   "task": "b09_duct_bridge",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b09_duct_bridge_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C08": {
+   "first_round_row": 7,
+   "task": "b46_sensor_housing",
+   "condition": "G",
+   "record": "results/X2/G/b46_sensor_housing_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C09": {
+   "first_round_row": 1,
+   "task": "b47_camera_mount",
+   "condition": "T",
+   "record": "results/X2/T/b47_camera_mount_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C10": {
+   "first_round_row": 23,
+   "task": "b45_pump_bracket",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b45_pump_bracket_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C11": {
+   "first_round_row": 29,
+   "task": "b10_hook_plate",
+   "condition": "Claude GC",
+   "record": "results/X2/claude_high/GC/b10_hook_plate_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C12": {
+   "first_round_row": 10,
+   "task": "b03_bridge_deck",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b03_bridge_deck_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C13": {
+   "first_round_row": 17,
+   "task": "b33_shelf_bracket",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b33_shelf_bracket_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C14": {
+   "first_round_row": 11,
+   "task": "b07_sensor_arm",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b07_sensor_arm_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C15": {
+   "first_round_row": 35,
+   "task": "b07_sensor_arm",
+   "condition": "Claude GCV",
+   "record": "results/X2/claude_high/GCV/b07_sensor_arm_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C16": {
+   "first_round_row": 13,
+   "task": "b10_hook_plate",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b10_hook_plate_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C17": {
+   "first_round_row": 30,
+   "task": "b13_cantilever_end_traction",
+   "condition": "Claude GC",
+   "record": "results/X2/claude_high/GC/b13_cantilever_end_traction_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C18": {
+   "first_round_row": 34,
+   "task": "b48_cable_anchor",
+   "condition": "Claude GC",
+   "record": "results/X2/claude_high/GC/b48_cable_anchor_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C19": {
+   "first_round_row": 37,
+   "task": "b10_hook_plate",
+   "condition": "Claude GCV",
+   "record": "results/X2/claude_high/GCV/b10_hook_plate_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C20": {
+   "first_round_row": 36,
+   "task": "b09_duct_bridge",
+   "condition": "Claude GCV",
+   "record": "results/X2/claude_high/GCV/b09_duct_bridge_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C21": {
+   "first_round_row": 8,
+   "task": "b47_camera_mount",
+   "condition": "G",
+   "record": "results/X2/G/b47_camera_mount_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C22": {
+   "first_round_row": 9,
+   "task": "b48_cable_anchor",
+   "condition": "G",
+   "record": "results/X2/G/b48_cable_anchor_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C23": {
+   "first_round_row": 2,
+   "task": "b07_sensor_arm",
+   "condition": "G",
+   "record": "results/X2/G/b07_sensor_arm_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C24": {
+   "first_round_row": 27,
+   "task": "b07_sensor_arm",
+   "condition": "Claude GC",
+   "record": "results/X2/claude_high/GC/b07_sensor_arm_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C25": {
+   "first_round_row": 26,
+   "task": "b48_cable_anchor",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b48_cable_anchor_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C26": {
+   "first_round_row": 28,
+   "task": "b09_duct_bridge",
+   "condition": "Claude GC",
+   "record": "results/X2/claude_high/GC/b09_duct_bridge_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C27": {
+   "first_round_row": 19,
+   "task": "b39_tv_bracket",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b39_tv_bracket_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C28": {
+   "first_round_row": 39,
+   "task": "b30_bridge_clearance",
+   "condition": "Claude GCV",
+   "record": "results/X2/claude_high/GCV/b30_bridge_clearance_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C29": {
+   "first_round_row": 4,
+   "task": "b39_tv_bracket",
+   "condition": "G",
+   "record": "results/X2/G/b39_tv_bracket_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C30": {
+   "first_round_row": 6,
+   "task": "b45_pump_bracket",
+   "condition": "G",
+   "record": "results/X2/G/b45_pump_bracket_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C31": {
+   "first_round_row": 21,
+   "task": "b43_press_riser",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b43_press_riser_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C32": {
+   "first_round_row": 15,
+   "task": "b30_bridge_clearance",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b30_bridge_clearance_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C33": {
+   "first_round_row": 31,
+   "task": "b30_bridge_clearance",
+   "condition": "Claude GC",
+   "record": "results/X2/claude_high/GC/b30_bridge_clearance_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C34": {
+   "first_round_row": 40,
+   "task": "b37_battery_crossmember",
+   "condition": "Claude GCV",
+   "record": "results/X2/claude_high/GCV/b37_battery_crossmember_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C35": {
+   "first_round_row": 14,
+   "task": "b19_engine_bracket",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b19_engine_bracket_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C36": {
+   "first_round_row": 3,
+   "task": "b25_cantilever_metres",
+   "condition": "G",
+   "record": "results/X2/G/b25_cantilever_metres_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C37": {
+   "first_round_row": 33,
+   "task": "b44_gearbox_bracket",
+   "condition": "Claude GC",
+   "record": "results/X2/claude_high/GC/b44_gearbox_bracket_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C38": {
+   "first_round_row": 5,
+   "task": "b44_gearbox_bracket",
+   "condition": "G",
+   "record": "results/X2/G/b44_gearbox_bracket_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C39": {
+   "first_round_row": 25,
+   "task": "b47_camera_mount",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b47_camera_mount_r1.json",
+   "first_round_verdict": "W"
+  },
+  "C40": {
+   "first_round_row": 16,
+   "task": "b31_pillow_block",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b31_pillow_block_r1.json",
+   "first_round_verdict": "A"
+  },
+  "C41": {
+   "first_round_row": 20,
+   "task": "b41_hinge_bracket",
+   "condition": "Claude T",
+   "record": "results/X2/claude_high/T/b41_hinge_bracket_r1.json",
+   "first_round_verdict": "A"
+  }
+ }
+}

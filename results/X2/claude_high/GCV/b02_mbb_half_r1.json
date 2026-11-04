@@ -1,0 +1,153 @@
+{
+ "task": "b02_mbb_half",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T17:58:15",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 43140,
+  "cached_input_tokens": 36702,
+  "cache_write_input_tokens": 6432,
+  "output_tokens": 1763
+ },
+ "gc_wall_s": 30.48121009999886,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14578,
+  "cached_input_tokens": 8651,
+  "cache_write_input_tokens": 5923,
+  "output_tokens": 505
+ },
+ "verify_wall_s": 9.532006899826229,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 57718,
+  "cached_input_tokens": 45353,
+  "output_tokens": 2268,
+  "cache_write_input_tokens": 12355
+ },
+ "wall_s": 40.01321699982509,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "simply-supported-beam-half",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "left_end_support",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Bottom edge at left end, full width; carries vertical and sideways load only"
+   },
+   {
+    "id": "midspan_symmetry",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x"
+    ],
+    "note": "Symmetry plane at mid-span: no x displacement"
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_line_load",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120.0,
+      40.0
+     ],
+     "span": null
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Half of the 2 kN mid-span line load (symmetry), top surface, full width"
+   }
+  ],
+  "passive": [],
+  "description": "Left half of a 240x40x40 mm simply supported beam with symmetry at mid-span (x=120). 2 kN mid-span line load, half (1 kN) carried in the half model.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 10.02077109995298,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

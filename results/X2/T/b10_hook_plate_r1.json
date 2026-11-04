@@ -1,0 +1,36 @@
+{
+ "task": "b10_hook_plate",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:27:03",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 8.896963299950585,
+ "usage": {
+  "input_tokens": 19942,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 142,
+  "reasoning_output_tokens": 101
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The loaded lower corner is not identified; specify its (x, y, z) coordinates to locate the 1.5 kN downward force.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 8.951753800036386,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "clarify",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

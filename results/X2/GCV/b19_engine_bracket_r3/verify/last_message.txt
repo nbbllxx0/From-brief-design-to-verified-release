@@ -1,0 +1,1 @@
+{"match":false,"issues":["The 8000 lbf clevis load points downward (-y); the brief requires an upward pull (+y)."]}

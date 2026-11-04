@@ -1,0 +1,169 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b47 camera mount",
+  "domain": {
+   "size": [
+    120,
+    60,
+    60
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "gantry",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      30,
+      30
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -80,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "clarify",
+ "source": "engineering",
+ "oracle": [
+  {
+   "about": "how much material",
+   "answer": "Use volume fraction 0.15."
+  }
+ ],
+ "admissible": [
+  {
+   "reading": "Retain only the named 20 x 20 x 3 mm camera pad at x=117..120, y,z=20..40; vf=0.15 and no added root skin.",
+   "why": "Admit the local named pad with unspecified depth, consistent with named interfaces. Oracle vf is matched; no extra root skin or minimum feature. E=68.9 GPa is acceptable.",
+   "counts": true,
+   "adjudicated": "2026-11-01",
+   "from_run": "claude_high/GPC/b47_camera_mount_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "inspection-camera-mount",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      120.0,
+      60.0,
+      60.0
+     ]
+    },
+    "material": {
+     "name": "Aluminium 6061",
+     "E": 68900.0,
+     "nu": 0.33
+    },
+    "supports": [
+     {
+      "id": "gantry_bolted_face",
+      "region": {
+       "kind": "face",
+       "face": "x-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "x=0 face bolted to gantry over full area"
+     }
+    ],
+    "loads": [
+     {
+      "id": "camera_load",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        30.0,
+        30.0
+       ],
+       "size": [
+        20.0,
+        20.0
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0.0,
+       -80.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "80 N downward (-y) on 20x20 pad at centre of x=120 face"
+     }
+    ],
+    "passive": [
+     {
+      "id": "camera_pad_keepin",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        117.0,
+        20.0,
+        20.0
+       ],
+       "max": [
+        120.0,
+        40.0,
+        40.0
+       ]
+      },
+      "note": "3 mm solid pad under the camera load so the load lands on material"
+     }
+    ],
+    "volume_fraction": 0.15,
+    "resolution": {
+     "h": 1.0,
+     "cells_short_edge": null
+    }
+   }
+  }
+ ],
+ "notes": "Gap: the volume fraction ('as light as practical' has no value).",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Y after oracle: vf=0.15. As light as practical supplies neither a unique compliance budget nor a strength/displacement constraint."
+ }
+}

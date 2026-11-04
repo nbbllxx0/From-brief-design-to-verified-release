@@ -1,0 +1,134 @@
+{
+ "task": "b08_slider_bracket",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T10:54:30",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "validate_spec",
+  "list_regions",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b08_slider_bracket_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 15.95902660000138,
+ "usage": {
+  "input_tokens": 78378,
+  "cached_input_tokens": 63616,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 490,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "REFUSE \u2014 The rail leaves x translation free, so the 300 N push cannot be balanced; validation reports an unconstrained rigid-body mode.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Slider bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bottom_rail",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Whole bottom face y=0; vertical and sideways restraint, free sliding along x."
+   }
+  ],
+  "loads": [
+   {
+    "id": "left_push",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 300 N along +x on left-end pad; y,z each range 15 to 25 mm."
+   }
+  ],
+  "passive": [],
+  "description": "Y is up. Bottom rail restrains y and z over the whole y=0 face and permits free x sliding. Total 300 N in +x on centered 10 x 10 mm left-end pad. No axial restraint is specified.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 16.162760599981993,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

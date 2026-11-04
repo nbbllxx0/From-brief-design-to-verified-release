@@ -1,0 +1,286 @@
+{
+ "task": "b06_motor_mount",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:16:57",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 1,
+ "retry_errors": [
+  {
+   "error": "4 validation errors for Spec\nsupports.0.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...us': 12, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nsupports.1.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...us': 12, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nsupports.2.region.cylinder\n  Value error, cylinder sp"
+  }
+ ],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 38.82272919989191,
+ "usage": {
+  "input_tokens": 41398,
+  "reasoning_output_tokens": 425,
+  "cached_input_tokens": 29952,
+  "output_tokens": 2445,
+  "cache_write_input_tokens": 0
+ },
+ "returncode": 0,
+ "final": "e\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [160, 60, 120]\n  },\n  \"material\": {\n    \"name\": \"Aluminium 6061\",\n    \"E\": 69000,\n    \"nu\": 0.33\n  },\n  \"volume_fraction\": 0.2,\n  \"supports\": [\n    {\n      \"id\": \"bolt_20_20\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [20, 20],\n        \"radius\": 12,\n        \"span\": [0, 0.5]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh.\"\n    },\n    {\n      \"id\": \"bolt_20_100\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [20, 100],\n        \"radius\": 12,\n        \"span\": [0, 0.5]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh.\"\n    },\n    {\n      \"id\": \"bolt_140_20\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [140, 20],\n        \"radius\": 12,\n        \"span\": [0, 0.5]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh.\"\n    },\n    {\n      \"id\": \"bolt_140_100\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [140, 100],\n        \"radius\": 12,\n        \"span\": [0, 0.5]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh.\"\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"motor_and_belt\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y+\",\n        \"center\": [80, 60],\n        \"size\": [40, 40]\n      },\n      \"force\": [800, -2000, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"boss_20_20\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [20, 20],\n        \"radius\": 12,\n        \"span\": [0, 10]\n      }\n    },\n    {\n      \"id\": \"boss_20_100\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [20, 100],\n        \"radius\": 12,\n        \"span\": [0, 10]\n      }\n    },\n    {\n      \"id\": \"boss_140_20\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [140, 20],\n        \"radius\": 12,\n        \"span\": [0, 10]\n      }\n    },\n    {\n      \"id\": \"boss_140_100\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [140, 100],\n        \"radius\": 12,\n        \"span\": [0, 10]\n      }\n    },\n    {\n      \"id\": \"motor_pad\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"box\",\n        \"min\": [60, 55, 40],\n        \"max\": [100, 60, 80]\n      }\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Motor mount",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160,
+    60,
+    120
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "bolt_20_20",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0.5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh."
+   },
+   {
+    "id": "bolt_20_100",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0.5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh."
+   },
+   {
+    "id": "bolt_140_20",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0.5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh."
+   },
+   {
+    "id": "bolt_140_100",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0.5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh."
+   }
+  ],
+  "loads": [
+   {
+    "id": "motor_and_belt",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80,
+      60
+     ],
+     "size": [
+      40,
+      40
+     ]
+    },
+    "force": [
+     800,
+     -2000,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "passive": [
+   {
+    "id": "boss_20_20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "boss_20_100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "boss_140_20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "boss_140_100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "motor_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      60,
+      55,
+      40
+     ],
+     "max": [
+      100,
+      60,
+      80
+     ]
+    }
+   }
+  ],
+  "resolution": {
+   "h": 1
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 39.58630600012839,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (160, 60, 120)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

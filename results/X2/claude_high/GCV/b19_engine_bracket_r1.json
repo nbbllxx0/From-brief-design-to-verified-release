@@ -1,0 +1,235 @@
+{
+ "task": "b19_engine_bracket",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:01:44",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 58078,
+  "cached_input_tokens": 50718,
+  "cache_write_input_tokens": 7352,
+  "output_tokens": 2009
+ },
+ "gc_wall_s": 22.336468000197783,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14779,
+  "cached_input_tokens": 8853,
+  "cache_write_input_tokens": 5922,
+  "output_tokens": 1850
+ },
+ "verify_wall_s": 23.151062400080264,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 72857,
+  "cached_input_tokens": 59571,
+  "output_tokens": 3859,
+  "cache_write_input_tokens": 13274
+ },
+ "wall_s": 45.48753040027805,
+ "questions": 0,
+ "n_tool_calls": 11,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Engine bracket",
+  "units": {
+   "length": "in",
+   "force": "lbf"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    7.0,
+    2.5,
+    4.0
+   ]
+  },
+  "material": {
+   "name": "Ti-6Al-4V",
+   "E": 16500000.0,
+   "nu": 0.34
+  },
+  "supports": [
+   {
+    "id": "bolt_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "bolt_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "bolt_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "bolt_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "clevis_pull",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "force": [
+     0.0,
+     8000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [
+   {
+    "id": "clevis",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 0.05,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 23.57924049999565,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1.27, grid (140, 50, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

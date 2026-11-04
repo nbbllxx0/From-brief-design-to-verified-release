@@ -1,0 +1,216 @@
+{
+ "task": "b12_wheel",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:00:13",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 42892,
+  "cached_input_tokens": 36470,
+  "cache_write_input_tokens": 6416,
+  "output_tokens": 1301
+ },
+ "gc_wall_s": 18.528485799906775,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14478,
+  "cached_input_tokens": 8564,
+  "cache_write_input_tokens": 5910,
+  "output_tokens": 457
+ },
+ "verify_wall_s": 9.425644599832594,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 57370,
+  "cached_input_tokens": 45034,
+  "output_tokens": 1758,
+  "cache_write_input_tokens": 12326
+ },
+ "wall_s": 27.95413039973937,
+ "questions": 0,
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "wheel",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    50.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "pad_x0_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      2.5
+     ],
+     "size": [
+      5.0,
+      5.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "pad_x1_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      97.5,
+      2.5
+     ],
+     "size": [
+      5.0,
+      5.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "pad_x0_z1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      97.5
+     ],
+     "size": [
+      5.0,
+      5.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "pad_x1_z1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      97.5,
+      97.5
+     ],
+     "size": [
+      5.0,
+      5.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "center_load",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      50.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -2000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 9.890996699919924,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 50, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

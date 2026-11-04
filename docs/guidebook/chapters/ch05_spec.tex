@@ -1,0 +1,227 @@
+\chapter{Building a specification}\label{ch:spec}
+\chapterintro{The specification is the one document that says what problem is solved. This chapter builds one by hand
+in the workspace, a small steel bracket with a solid pad and a bolt hole, and then explains each part of the document:
+the coordinate frame, units, material, supports, loads, keep-in and keep-out regions, the volume fraction and the
+mesh.}
+
+\section{Tutorial: a cantilever bracket}\label{sec:tutorial}
+The bracket is a 100 x 50 x 50~mm steel block, fixed at one end and loaded at the other, with a mounting pad that must
+stay solid and a hole that must stay empty. The screenshots were recorded with the ladder capped at
+$1.2\times10^{7}$ elements, so that the release solves in about a minute.
+
+\subsection{Start a new design}
+Choose \gui{New design\ldots} in the problem picker. You get an empty 100 x 50 x 50~mm box in steel ($E = 210000$,
+$\nu = 0.3$, in N and mm) with a volume fraction of 0.3 and 20 elements along the shortest edge. The \gui{Checks} panel
+says what is missing, and the ladder stays hidden until the specification is valid (Figure~\ref{fig:newdesign}).
+
+\begin{figure}[t]
+\wideshot{02_new_design.png}
+\caption{A new design. The checks say what is missing and how to add it.}
+\label{fig:newdesign}
+\end{figure}
+
+Select \gui{Domain} in the tree to set the size, the units, the volume fraction (\gui{volume \%}), the mesh (by element
+size $h$ or by cells along the shortest edge) and an optional minimum feature size. Select \gui{Material} to set its
+name, Young's modulus $E$ and Poisson's ratio $\nu$.
+
+\subsection{Add a support}
+Press \keycap{S} (or click \gui{Support}) to arm the support tool. The toolbar asks you to click a face of the domain
+(Figure~\ref{fig:supporttool}). Click the face at $x = 0$. It becomes a support fixed in all three directions, the tool
+returns to \gui{Select}, and the new support is selected in the inspector. There you can change the region kind (face,
+patch, edge, box or cylinder) and untick fixed directions to make a roller.
+
+\begin{figure}[t]
+\wideshot{03_support_tool.png}
+\caption{The support tool armed: click the face to fix.}
+\label{fig:supporttool}
+\end{figure}
+
+\subsection{Add a load}
+Press \keycap{L} and click the face at $x = 100$. A 1~kN load appears on a small patch centred where you clicked,
+pointing into the face. Edit it in the inspector: here the force becomes 2000~N downward (force $y = -2000$) and the
+patch 10 x 20~mm (Figure~\ref{fig:loadinspector}). Each edit takes effect as you type and can be undone.
+
+\begin{figure}[t]
+\wideshot{04_load_inspector.png}
+\caption{A load placed by clicking and then edited in the inspector.}
+\label{fig:loadinspector}
+\end{figure}
+
+\subsection{When a check fails}
+The rules run \CheckDelay~ms after every edit. Untick $y$ and $z$ on the support, so that it fixes only $x$: rule
+\rref{R003} reports the rigid-body motions left free (translation in $y$ and $z$, rotation about $x$), the support gets
+an \gui{error} badge in the tree, and the ladder locks (Figure~\ref{fig:ruleerror}). Tick $y$ and $z$ again and the error
+clears. Errors block solving; warnings and notes do not.
+
+\begin{figure}[t]
+\centering
+\shot[0.30\linewidth]{06_rule_error.png}
+\caption{Rule R003: the support leaves rigid-body motion free. The ladder stays locked until the support is fixed.}
+\label{fig:ruleerror}
+\end{figure}
+
+\subsection{Keep-in and keep-out regions}
+Press \keycap{K} and click a face to add a keep-in region (always solid), or \keycap{O} for a keep-out region (always
+empty). Each starts as a slab 10\% thick against that face. In the inspector a keep-in or keep-out region can be a box
+or a cylinder, and you can switch it between keep-in and keep-out.
+
+In Figure~\ref{fig:keep} the keep-in region was resized to an 8 x 20 x 30~mm pad under the load, using its min/max
+fields. The keep-out region was converted to a cylinder of radius 8~mm along $z$, centred at $x = 40$, which leaves a
+through-hole for a bolt or a cable.
+
+\begin{figure}[t]
+\wideshot{05_keepin_keepout.png}
+\caption{The finished setup: support (blue), load on a solid pad (green) and a keep-out cylinder (pink). All rules
+pass.}
+\label{fig:keep}
+\end{figure}
+
+\subsection{Undo and redo}
+\keycap{Ctrl}+\keycap{Z} undoes and \keycap{Ctrl}+\keycap{Shift}+\keycap{Z} or \keycap{Ctrl}+\keycap{Y} redoes, across
+your edits and agent edits alike. Every step is a record in the timeline. Chapter~\ref{ch:ladder} continues with this
+bracket and solves it.
+
+\section{The document}\label{sec:document}
+\index{specification!document}
+Whatever you do in the workspace ends up as one JSON document. This is the reference specification of suite task b01:
+
+\begin{jsoncode}
+{
+  "schema_version": "agentto.spec/v0",
+  "name": "b01 cantilever block",
+  "units": {"length": "mm", "force": "N"},
+  "domain": {"size": [200, 100, 100]},
+  "material": {"name": "steel", "E": 210000.0, "nu": 0.3},
+  "volume_fraction": 0.3,
+  "supports": [{"id": "wall", "region": {"kind": "face", "face": "x-"}}],
+  "loads": [{"id": "pad", "force": [0, -1000, 0],
+             "region": {"kind": "patch", "face": "x+", "center": [50, 50],
+                        "size": [10, 10], "shape": "rect"}}],
+  "passive": [],
+  "resolution": {"h": 1.0}
+}
+\end{jsoncode}
+
+The schema is strict: unknown fields are rejected, every \code{id} must be unique across supports, loads and passive
+regions, and a document needs at least one support, one load, a volume fraction and a resolution. A draft that is not
+complete yet (no load, say) is kept as a draft; the tools report what is missing and the rules do not run until it is
+complete. Appendix~\ref{app:spec} lists every field.
+
+\subsection{Coordinate frame}
+\index{coordinate frame}
+The domain is an axis-aligned box from $(0,0,0)$ to the size you give. All coordinates are absolute, in that frame. The
+faces are named \code{x-}, \code{x+}, \code{y-}, \code{y+}, \code{z-} and \code{z+}: \code{x-} is the face at $x = 0$,
+\code{x+} the face at $x = L_x$. Which axis is ``up'' is yours to choose; the brief b06, for example, says ``y up''.
+
+A patch on a face gives its centre and full size in the face's two in-plane axes, always in increasing axis order:
+$(y,z)$ on $x$ faces, $(x,z)$ on $y$ faces, $(x,y)$ on $z$ faces. This is the most common source of misplaced regions.
+\tool{list_regions} prints the in-plane axes of every face, and the viewport shows the result.
+
+\subsection{Units}
+\index{units}
+Lengths are in mm, m or in; forces in N, kN or lbf. The units label the numbers; they do not convert them.
+
+\begin{warnbox}[Units relabel; they do not convert]
+Switching from mm to m changes the label on the numbers, not the numbers. Enter every value in the units shown, and
+keep $E$ consistent with them: in N and mm, $E$ is in N/mm$^2$ (MPa), so steel is 210000. In kN and mm, steel is 210. In
+the paper's second-provider benchmark, two of the four remaining wrong answers were exactly this slip: the agent worked
+in kN and mm but left $E$ in MPa, a material 1000 times too stiff.
+\end{warnbox}
+
+\subsection{Material}
+An isotropic linear-elastic material: a name, $E$ (positive) and $\nu$ (between $-1$ and $0.5$). The name is a label;
+only $E$ and $\nu$ enter the computation. Because the objective is compliance under one load case, the optimal layout
+does not depend on $E$, but the reported compliance does, and the specification must state the problem the engineer
+meant.
+
+\subsection{Regions}\label{sec:regions}
+\index{regions}
+Supports and loads select grid \emph{nodes}; keep-in and keep-out regions select \emph{elements} by their centres.
+Table~\ref{tab:regions} lists the five region kinds.
+
+\begin{table}[h]
+\caption{Region kinds. All lengths are in the spec's length unit; ``in-plane order'' is the increasing axis order of
+the face's two in-plane axes.}\label{tab:regions}
+\begin{fixtable}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.26\linewidth}@{}}
+Kind & Fields & Valid for \\ \midrule
+\code{face} & \code{face}: one of \code{x-}, \code{x+}, \code{y-}, \code{y+}, \code{z-}, \code{z+} & supports, loads \\
+\code{patch} & \code{face}; \code{center} and \code{size} in in-plane order; \code{shape} \code{rect} (default) or
+\code{ellipse} (the inscribed ellipse, e.g. a washer) & supports, loads \\
+\code{edge} & \code{axis}; \code{at}: the other two coordinates in increasing order; optional \code{span} [start, end]
+along the axis & supports, loads \\
+\code{box} & \code{min}, \code{max}: opposite corners, \code{min} $<$ \code{max} on every axis & supports, loads,
+keep-in/out \\
+\code{cylinder} & \code{axis}; \code{center}: the axis position in the other two coordinates; \code{radius};
+\code{span} [start, end] along the axis & supports, loads, keep-in/out \\
+\end{fixtable}
+\end{table}
+
+Selection uses a rounding tolerance of $10^{-9}$ element edges. A patch with no node within half its size of its
+centre, or an edge between grid lines, is snapped to the nearest grid line and reported by rule \rref{R010}; nothing is
+snapped silently. A region that selects nothing is an error (\rref{R002} for a support, \rref{R004} for a load) or a
+warning (\rref{R011} for a passive region).
+
+\subsection{Supports}
+A support fixes the nodes of its region in the directions listed in \code{fix}; the default is all three. A roller
+fixes fewer: \code{"fix": ["y"]} on a bottom edge leaves the span and width directions free. Supports only need to
+remove the six rigid-body modes together; rule \rref{R003} checks exactly that.
+
+\subsection{Loads}
+A load is a total force vector, in the spec's force unit, shared equally by the nodes of its region. This keeps the
+total force the same on every mesh, but it is not a pressure integration: on a curved or partial region the nodal
+shares are equal, not area-weighted. All loads act together as one load case. A load component that falls on a fixed
+degree of freedom is dropped, because it would go straight into the support, and rule \rref{R005} reports the share.
+
+\subsection{Keep-in and keep-out regions}
+\index{keep-in region}\index{keep-out region}\index{passive region|see{keep-in region, keep-out region}}
+In the document these are \code{passive} items with \code{kind} \code{solid} (keep-in) or \code{void} (keep-out), each
+a box or a cylinder. An element whose centre falls inside is held at density 1 or 0 at every iteration and is not a
+design variable. Keep-out elements keep a small stiffness rather than zero, so their nodes stay well defined. The
+certificate checks that every keep-in element ends at exactly 1 and every keep-out element at exactly 0.
+
+\subsection{Volume fraction}\label{sec:vf}
+\index{volume fraction}
+The volume fraction $v^*$ is the share of the \emph{design} volume, which is the domain minus every keep-in and keep-out
+element:
+\begin{equation}
+  \frac{1}{|\mathcal D|}\sum_{e\in\mathcal D}\bar\rho_e \le v^*,\qquad \bar\rho_e = 1\ (e\in\mathcal S),\quad
+  \bar\rho_e = 0\ (e\in\mathcal V),
+\end{equation}
+where $\mathcal D$ are the design elements, $\mathcal S$ the keep-in and $\mathcal V$ the keep-out elements, and
+$\bar\rho$ the filtered and projected density. Adding a keep-in pad therefore adds material on top of the budget; it
+changes both the feasible set and the total material. That is why an agent that invents a pad the brief did not ask for
+has changed the problem, even if the result looks stiffer.
+
+\subsection{Resolution and the minimum feature}
+\index{resolution}
+Give the mesh as an element edge \code{h} or as \code{cells\_short\_edge}, the number of elements along the shortest
+side; exactly one of the two. The edge must divide all three sides into whole numbers of elements, or rule \rref{R001}
+fires. This resolution is the \emph{base} mesh from which the ladder is built. The release rung is the finest rung that
+fits on the GPU and is often finer: for b06 the spec says 1~mm and the release rung is 0.25~mm
+(Section~\ref{sec:rungs}).
+
+The optional \code{min\_feature} is the smallest member you need. It does not constrain the optimizer; it only feeds
+rule \rref{R009}, which warns when that size spans fewer than about 2.4 elements and would be filtered out.
+
+\section{Editing through the tools}\label{sec:editing}
+Every edit in the workspace is a call to one of the editing tools, logged like an agent's call. The same calls work from
+Python and over MCP:
+
+\begin{itemize}
+  \item \tool{new_spec} starts a box domain; \tool{set_spec} replaces the whole document.
+  \item \tool{set_params} sets scalar fields (name, size, units, $E$, $\nu$, material name, volume fraction, $h$ or
+  \code{cells\_short\_edge}, \code{min\_feature}); only the arguments given change.
+  \item \tool{add_support}, \tool{add_load} and \tool{add_passive} add items; \tool{update_item} changes fields of one;
+  \tool{remove_item} deletes one.
+  \item \tool{undo} and \tool{redo} step through the history.
+\end{itemize}
+
+A failed edit leaves the specification unchanged. Every successful edit is undoable and records the hash of the
+resulting specification in the log, so any later result can be tied to the exact document it was solved from.
+
+\begin{tipbox}[Ground before you solve]
+\tool{list_regions} reports, for every item, its physical bounding box and how many nodes or elements it selects at a
+given mesh, with any snapping. \tool{explain_spec} prints the whole specification in plain sentences, and
+\tool{render} draws the supports, loads and passive regions as a picture. All three are cheap; use them before the
+first solve.
+\end{tipbox}

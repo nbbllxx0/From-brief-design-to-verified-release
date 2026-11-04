@@ -1,0 +1,203 @@
+{
+ "task": "b44_gearbox_bracket",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:55:56",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_passive",
+  "add_load",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b44_gearbox_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 33.4574205998797,
+ "usage": {
+  "input_tokens": 101985,
+  "cached_input_tokens": 92032,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 958,
+  "reasoning_output_tokens": 118
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: top is +z; full x=0 face clamped; steel E=210 GPa, \u03bd=0.3; lugs retained 4 mm axially; \u00b1625 N depth-direction forces at 64 mm separation produce +40 N\u00b7m about x. Volume fraction applies to designable material. list_regions and validation passed; render confirmed placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Gearbox output bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_fixed_end",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid gearbox attachment over the full x=0 end face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_torque_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40.0,
+      72.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -625.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total tangential force on upper lug. With lower lug, gives +40 N m about x using 64 mm centre separation."
+   },
+   {
+    "id": "bottom_torque_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40.0,
+      8.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     625.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total tangential force on lower lug; zero net force with upper lug."
+   }
+  ],
+  "passive": [
+   {
+    "id": "top_drive_lug",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      32.0,
+      64.0
+     ],
+     "max": [
+      160.0,
+      48.0,
+      80.0
+     ]
+    },
+    "note": "16 x 16 mm top end-face lug, centred in depth; assumed 4 mm axial retention."
+   },
+   {
+    "id": "bottom_drive_lug",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      32.0,
+      0.0
+     ],
+     "max": [
+      160.0,
+      48.0,
+      16.0
+     ]
+    },
+    "note": "16 x 16 mm bottom end-face lug, centred in depth; assumed 4 mm axial retention."
+   }
+  ],
+  "description": "Gearbox output bracket. Full x=0 face rigidly fixed. Top is +z; depth is y. Two 16 x 16 mm drive lug patches on x=160 are centred at (y,z)=(40,72) and (40,8), flush to top and bottom edges. Equal opposite y forces of 625 N form a pure +x torque of 40000 N mm (40 N m), with zero resultant force. Lug material retained for an assumed 4 mm axial depth (x=156 to 160). Volume fraction applies to non-passive design volume.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 33.748776300111786,
+ "cwe": {
+  "value": 106439653.56850198,
+  "c_pred_under_intended": 152449236.29570368,
+  "c_intended_opt": 1.4322597805650623,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0046666860580444
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

@@ -1,0 +1,153 @@
+{
+ "task": "b49_hinged_arm",
+ "cond": "GCV",
+ "rep": 3,
+ "t": "2026-10-30T12:03:14",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 111147,
+  "cached_input_tokens": 89216,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 778,
+  "reasoning_output_tokens": 146
+ },
+ "gc_wall_s": 26.351792899891734,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 35725,
+  "cached_input_tokens": 33024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 862,
+  "reasoning_output_tokens": 776
+ },
+ "verify_wall_s": 35.797536799917,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 146872,
+  "cached_input_tokens": 122240,
+  "cache_write_input_tokens": 0,
+  "reasoning_output_tokens": 922,
+  "output_tokens": 1640
+ },
+ "wall_s": 62.14932969980873,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 1,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Hinged support arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    40.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "hinge_axis",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      10.0,
+      20.0
+     ],
+     "span": [
+      0.0,
+      20.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Ideal revolute hinge: fixed translations on the pin axis, leaving rotation about z free; no other restraint."
+   }
+  ],
+  "loads": [
+   {
+    "id": "far_end_downward",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      20.0,
+      10.0
+     ],
+     "size": [
+      10.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -400.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "400 N total downward on x=200 mm, y=15..25 mm, z=0..20 mm."
+   }
+  ],
+  "passive": [],
+  "description": "Single ideal freely rotating hinge about z at x=10 mm, y=20 mm; no other restraint. Downward 400 N on far-end strip y=15..25 mm, full thickness. Hinge represented by fixed translations on its axis, leaving rigid rotation about z free.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 36.32150369998999,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 40, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

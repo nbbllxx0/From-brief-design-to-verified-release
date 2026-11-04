@@ -1,0 +1,286 @@
+{
+ "task": "b15_corner_plate",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:35:12",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief gives mm dimensions and a kN force; use mm and kN consistently."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 200 x 20 x 200 mm in (x,y,z), with y up; origin at minimum corner by tool convention."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Aluminium 6061 is stated; assume isotropic linear elasticity E=69 GPa = 69 kN/mm^2 and Poisson ratio 0.33 because elastic constants and temper are unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.3."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 2 mm elements; h=2 mm."
+   },
+   {
+    "key": "support:corner_xmin_zmin",
+    "source": "assumed",
+    "note": "Brief specifies 6 x 6 mm bottom corner pad fixed in x,y,z. Assume pad flush with both adjoining edges: x,z in [0,6], center (3,3), y=0."
+   },
+   {
+    "key": "support:corner_xmax_zmin",
+    "source": "assumed",
+    "note": "Brief specifies 6 x 6 mm bottom corner pad fixed in x,y,z. Assume pad flush with both adjoining edges: x in [194,200], z in [0,6], center (197,3), y=0."
+   },
+   {
+    "key": "support:corner_xmin_zmax",
+    "source": "assumed",
+    "note": "Brief specifies 6 x 6 mm bottom corner pad fixed in x,y,z. Assume pad flush with both adjoining edges: x in [0,6], z in [194,200], center (3,197), y=0."
+   },
+   {
+    "key": "support:corner_xmax_zmax",
+    "source": "assumed",
+    "note": "Brief specifies 6 x 6 mm bottom corner pad fixed in x,y,z. Assume pad flush with both adjoining edges: x,z in [194,200], center (197,197), y=0."
+   },
+   {
+    "key": "load:top_center_downward",
+    "source": "derived",
+    "note": "Brief specifies total 3 kN downward on a central 20 x 20 mm top pad. Domain gives y=20 and center x=z=200/2=100; footprint [90,110] in x,z; force (0,-3,0) kN, shared equally across selected nodes by tool convention."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "support:corner_xmin_zmin",
+   "support:corner_xmax_zmin",
+   "support:corner_xmin_zmax",
+   "support:corner_xmax_zmax"
+  ]
+ },
+ "n_tool_calls": 21,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b15_corner_plate_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 33.31218950008042,
+ "usage": {
+  "input_tokens": 107224,
+  "cached_input_tokens": 97920,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1298,
+  "reasoning_output_tokens": 130
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic linear elasticity with E = 69 GPa and \u03bd = 0.33; corner pads flush with adjoining edges; load shared equally among pad nodes; no passive regions. Validation passed, render checked, and every spec item source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Plate on four corner supports",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    20.0,
+    200.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "corner_xmin_zmin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      3.0,
+      3.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "corner_xmax_zmin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      197.0,
+      3.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "corner_xmin_zmax",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      3.0,
+      197.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "corner_xmax_zmax",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      197.0,
+      197.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_center_downward",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      100.0,
+      100.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -3.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "description": "Square plate, y up; four fully fixed 6 x 6 mm bottom corner patches; total 3 kN downward on central 20 x 20 mm top patch. Assume linear isotropic elasticity, E=69 GPa, nu=0.33, corner pads flush to envelope edges. No passive volumes specified.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 33.528394700028,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=2, grid (100, 10, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

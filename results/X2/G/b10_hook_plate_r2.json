@@ -1,0 +1,139 @@
+{
+ "task": "b10_hook_plate",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T10:55:07",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b10_hook_plate_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 23.9221952999942,
+ "usage": {
+  "input_tokens": 99959,
+  "cached_input_tokens": 84352,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 694,
+  "reasoning_output_tokens": 120
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: rigid beam with the entire y=80 face fixed; lower corner is x=120, y=0, with 1.5 kN downward distributed across the thickness; steel E=210 GPa, \u03bd=0.3. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Hook plate",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    80.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "top_beam_attachment",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Idealized rigid bolted attachment over the top face y=80 mm."
+   }
+  ],
+  "loads": [
+   {
+    "id": "hanging_corner_load",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      20.0
+     ]
+    },
+    "force": [
+     0.0,
+     -1500.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 1.5 kN downward at the assumed lower-right corner, shared across the full 20 mm thickness."
+   }
+  ],
+  "passive": [],
+  "description": "Hook plate, y up. Idealize the bolted connection to a rigid beam by fixing the entire top face y=80 in x, y and z. Apply a total 1500 N downward force at the lower-right corner x=120,y=0, distributed uniformly across the thickness z=0..20. No bolt geometry or passive regions specified; use the whole envelope as design volume.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 24.131364200031385,
+ "cwe": {
+  "value": 0.059393955186248126,
+  "c_pred_under_intended": 2.7392964889321916,
+  "c_intended_opt": 2.5857203314423347,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 20)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

@@ -1,0 +1,149 @@
+{
+ "task": "b23_clamped_beam",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T10:59:52",
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b23_clamped_beam_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 16.684004900045693,
+ "usage": {
+  "input_tokens": 78708,
+  "cached_input_tokens": 61056,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 573,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: steel E = 210 GPa, \u03bd = 0.30; load shared equally across strip nodes. Validation passed; render confirmed both end clamps and the downward mid-span top load.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Clamped-clamped steel beam",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    240.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full clamp at x=0 mm."
+   },
+   {
+    "id": "right_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full clamp at x=240 mm."
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_downward",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      120.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -3000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 3 kN downward (-y); x=115..125, y=40, z=0..40 mm; equally distributed among selected nodes."
+   }
+  ],
+  "passive": [],
+  "description": "240 x 40 x 40 mm beam; y up. Both end faces fully clamped. Total 3000 N downward uniformly shared over top-face strip x=115..125 mm across z=0..40 mm.",
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 16.882173199905083,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (240, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

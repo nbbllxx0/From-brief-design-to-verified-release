@@ -1,0 +1,211 @@
+{
+ "task": "b39_tv_bracket",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T15:04:59",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 9.719056600006297,
+ "usage": {
+  "input_tokens": 8688,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8037,
+  "output_tokens": 744
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"tv_wall_bracket\",\"description\":\"Cantilever TV wall bracket: four lag-screw washers on the wall face (x=0), TV mounting plate on the far end face (x=300) carrying 400 N down and 50 N away from the wall.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[300,200,40]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.15,\"supports\":[{\"id\":\"screw_lower_near\",\"region\":{\"kind\":\"patch\",\"face\":\"x-\",\"center\":[30,10],\"size\":[12,12]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"lag screw washer at y=30, z=10\"},{\"id\":\"screw_lower_far\",\"region\":{\"kind\":\"patch\",\"face\":\"x-\",\"center\":[30,30],\"size\":[12,12]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"lag screw washer at y=30, z=30\"},{\"id\":\"screw_upper_near\",\"region\":{\"kind\":\"patch\",\"face\":\"x-\",\"center\":[170,10],\"size\":[12,12]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"lag screw washer at y=170, z=10\"},{\"id\":\"screw_upper_far\",\"region\":{\"kind\":\"patch\",\"face\":\"x-\",\"center\":[170,30],\"size\":[12,12]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"lag screw washer at y=170, z=30\"}],\"loads\":[{\"id\":\"tv_load\",\"region\":{\"kind\":\"patch\",\"face\":\"x+\",\"center\":[100,20],\"size\":[100,40]},\"force\":[50,-400,0],\"distribution\":\"uniform_nodes\",\"note\":\"TV mounting plate y=50..150, full width; 400 N down (-y), 50 N away from wall (+x)\"}],\"passive\":[{\"id\":\"mount_plate\",\"kind\":\"solid\",\"region\":{\"kind\":\"box\",\"min\":[296,50,0],\"max\":[300,150,40]},\"note\":\"keep material under the TV mounting plate\"}],\"resolution\":{\"h\":2},\"min_feature\":5,\"meta\":{\"washer_diameter_mm\":12,\"washer_modeled_as\":\"12x12 square patch\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "tv_wall_bracket",
+  "description": "Cantilever TV wall bracket: four lag-screw washers on the wall face (x=0), TV mounting plate on the far end face (x=300) carrying 400 N down and 50 N away from the wall.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300,
+    200,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "screw_lower_near",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30,
+      10
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "lag screw washer at y=30, z=10"
+   },
+   {
+    "id": "screw_lower_far",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30,
+      30
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "lag screw washer at y=30, z=30"
+   },
+   {
+    "id": "screw_upper_near",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170,
+      10
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "lag screw washer at y=170, z=10"
+   },
+   {
+    "id": "screw_upper_far",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170,
+      30
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "lag screw washer at y=170, z=30"
+   }
+  ],
+  "loads": [
+   {
+    "id": "tv_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      100,
+      20
+     ],
+     "size": [
+      100,
+      40
+     ]
+    },
+    "force": [
+     50,
+     -400,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "TV mounting plate y=50..150, full width; 400 N down (-y), 50 N away from wall (+x)"
+   }
+  ],
+  "passive": [
+   {
+    "id": "mount_plate",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      296,
+      50,
+      0
+     ],
+     "max": [
+      300,
+      150,
+      40
+     ]
+    },
+    "note": "keep material under the TV mounting plate"
+   }
+  ],
+  "resolution": {
+   "h": 2
+  },
+  "min_feature": 5,
+  "meta": {
+   "washer_diameter_mm": 12,
+   "washer_modeled_as": "12x12 square patch"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 9.914088800083846,
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 100, 20)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

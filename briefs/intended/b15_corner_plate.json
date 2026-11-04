@@ -1,0 +1,127 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b15 corner plate",
+  "domain": {
+   "size": [
+    200,
+    20,
+    200
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "corner_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      3,
+      3
+     ],
+     "size": [
+      6,
+      6
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "corner_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      197,
+      3
+     ],
+     "size": [
+      6,
+      6
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "corner_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      3,
+      197
+     ],
+     "size": [
+      6,
+      6
+     ],
+     "shape": "rect"
+    }
+   },
+   {
+    "id": "corner_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      197,
+      197
+     ],
+     "size": [
+      6,
+      6
+     ],
+     "shape": "rect"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "centre",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      100,
+      100
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -3000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "point-loaded square plate on four corner supports (3D plate benchmark family)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Four 6 mm corner pads and centred top load agree. Generic family description; no specific published benchmark claimed as verified."
+ }
+}

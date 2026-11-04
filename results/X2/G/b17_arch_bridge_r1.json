@@ -1,0 +1,176 @@
+{
+ "task": "b17_arch_bridge",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:42:48",
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_passive",
+  "add_support",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b17_arch_bridge_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 26.33625870011747,
+ "usage": {
+  "input_tokens": 110644,
+  "cached_input_tokens": 103296,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 660,
+  "reasoning_output_tokens": 14
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: steel E = 210 GPa, \u03bd = 0.30; volume fraction 0.15 applies outside the solid deck (total fraction 0.201); load shared equally among top-face nodes. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Arch bridge with solid deck",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    100.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_bottom_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      60.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom end edge x=0,y=0, across full width; all translations fixed."
+   },
+   {
+    "id": "right_bottom_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      300.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      60.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom end edge x=300,y=0, across full width; all translations fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -6000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "6000 N total downward distributed across entire top deck surface y=100."
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_deck",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      94.0,
+      0.0
+     ],
+     "max": [
+      300.0,
+      100.0,
+      60.0
+     ]
+    },
+    "note": "Full-width top 6 mm deck remains solid."
+   }
+  ],
+  "description": "300 mm x span, 100 mm y height, 60 mm z width. Solid deck y=94..100. Both bottom end edges fixed in x,y,z. Total downward load 6000 N on y=100. Volume fraction 0.15 applies to non-passive design volume; solid deck excluded.",
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 27.052612600149587,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

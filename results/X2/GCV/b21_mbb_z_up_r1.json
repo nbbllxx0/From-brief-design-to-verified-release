@@ -1,0 +1,172 @@
+{
+ "task": "b21_mbb_z_up",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:31:54",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 103155,
+  "cached_input_tokens": 92672,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 871,
+  "reasoning_output_tokens": 283
+ },
+ "gc_wall_s": 31.58399990014732,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 36288,
+  "cached_input_tokens": 33024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 589,
+  "reasoning_output_tokens": 429
+ },
+ "verify_wall_s": 23.992062699981034,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 712,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1460,
+  "input_tokens": 139443,
+  "cached_input_tokens": 125696
+ },
+ "wall_s": 55.57606260012835,
+ "questions": 0,
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Simply supported beam, z up",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    320.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Pinned left bottom edge, full width."
+   },
+   {
+    "id": "right_roller",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      320.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Right bottom roller, full width: restrains sideways y and vertical z; free along x."
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_downward_line",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      160.0,
+      40.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "force": [
+     0.0,
+     0.0,
+     -3000.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 3 kN downward force distributed across the full-width top line at mid-span."
+   }
+  ],
+  "passive": [],
+  "description": "320 x 40 x 40 mm beam, z up. Left bottom full-width edge pinned; right bottom full-width edge restrained in y and z, free in x. Total 3000 N downward line load on the top at mid-span.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 24.296006000135094,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (160, 20, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

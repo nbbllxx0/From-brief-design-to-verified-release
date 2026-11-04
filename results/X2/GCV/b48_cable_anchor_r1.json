@@ -1,0 +1,144 @@
+{
+ "task": "b48_cable_anchor",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:38:29",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 160167,
+  "cached_input_tokens": 141824,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1241,
+  "reasoning_output_tokens": 123
+ },
+ "gc_wall_s": 34.72567369998433,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 19602,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 167,
+  "reasoning_output_tokens": 147
+ },
+ "verify_wall_s": 10.912053999956697,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 270,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1408,
+  "input_tokens": 179769,
+  "cached_input_tokens": 141824
+ },
+ "wall_s": 45.637727699941024,
+ "questions": 2,
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Guy-cable anchor",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    60.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bolted_bottom",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Entire bottom face y=0 bolted down."
+   }
+  ],
+  "loads": [
+   {
+    "id": "cable_pull",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      50.0,
+      30.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "ellipse"
+    },
+    "force": [
+     4000.0,
+     3000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "5 kN cable pull toward +x, rising 3 for 4 horizontal; centered 16 mm boss face."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 11.143541800091043,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 60, 60)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

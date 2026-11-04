@@ -1,0 +1,278 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b39 TV bracket",
+  "domain": {
+   "size": [
+    300,
+    200,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "screw_1",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30,
+      10
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "screw_2",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30,
+      30
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "screw_3",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170,
+      10
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "screw_4",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170,
+      30
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "shape": "ellipse"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "tv",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      100,
+      20
+     ],
+     "size": [
+      100,
+      40
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     50,
+     -400,
+     0
+    ]
+   }
+  ],
+  "min_feature": 5.0,
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "Four square 12 x 12 mm washer support patches, centres unchanged.",
+   "why": "Admit the disclosed fixture-footprint approximation consistently with b06; do not add retained support bosses.",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "from_run": "claude_high/T/b39_tv_bracket_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "tv_wall_bracket",
+    "description": "Steel TV wall bracket: 300 mm projection (x) from wall, 200 mm tall (y up), 40 mm wide (z). Four lag screws with 12 mm washers on the wall face; TV mounting plate on the far end face carries 400 N down and 50 N away from the wall.",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      300,
+      200,
+      40
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "volume_fraction": 0.15,
+    "supports": [
+     {
+      "id": "screw_low_z10",
+      "region": {
+       "kind": "patch",
+       "face": "x-",
+       "center": [
+        30,
+        10
+       ],
+       "size": [
+        12,
+        12
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Lag screw at y=30, z=10, 12 mm washer approximated as a 12x12 patch"
+     },
+     {
+      "id": "screw_low_z30",
+      "region": {
+       "kind": "patch",
+       "face": "x-",
+       "center": [
+        30,
+        30
+       ],
+       "size": [
+        12,
+        12
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Lag screw at y=30, z=30, 12 mm washer approximated as a 12x12 patch"
+     },
+     {
+      "id": "screw_high_z10",
+      "region": {
+       "kind": "patch",
+       "face": "x-",
+       "center": [
+        170,
+        10
+       ],
+       "size": [
+        12,
+        12
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Lag screw at y=170, z=10, 12 mm washer approximated as a 12x12 patch"
+     },
+     {
+      "id": "screw_high_z30",
+      "region": {
+       "kind": "patch",
+       "face": "x-",
+       "center": [
+        170,
+        30
+       ],
+       "size": [
+        12,
+        12
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Lag screw at y=170, z=30, 12 mm washer approximated as a 12x12 patch"
+     }
+    ],
+    "loads": [
+     {
+      "id": "tv_load",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        100,
+        20
+       ],
+       "size": [
+        100,
+        40
+       ]
+      },
+      "force": [
+       50,
+       -400,
+       0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "TV mounting plate on x=300 face, y 50-150 mm, full width; 400 N down (-y) and 50 N pull-out (+x)"
+     }
+    ],
+    "passive": [],
+    "resolution": {
+     "h": 2
+    },
+    "min_feature": 5,
+    "meta": {
+     "washer_diameter_mm": 12,
+     "washer_shape_approximation": "square patch"
+    }
+   }
+  }
+ ],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Loaded mounting-plate footprint and 5 mm minimum agree. Plate thickness is unspecified; extra 6 mm support bosses are not implied by washer contact."
+ }
+}

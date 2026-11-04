@@ -1,0 +1,141 @@
+{
+ "task": "b48_cable_anchor",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T15:06:10",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 12.455909099895507,
+ "usage": {
+  "input_tokens": 8611,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7960,
+  "output_tokens": 956
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"guy_cable_anchor\",\"description\":\"Guy-cable anchor: 100x60x60 mm steel envelope (y up), bottom face bolted over full area, 5 kN cable pull on a 16 mm diameter boss at the centre of the top face, cable inclined 3 rise : 4 horizontal (horizontal component assumed along +x, the long axis).\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[100,60,60]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.25,\"supports\":[{\"id\":\"bolted_base\",\"region\":{\"kind\":\"face\",\"face\":\"y-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Bottom face y=0 bolted down over its full area\"}],\"loads\":[{\"id\":\"cable_pull\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[50,30],\"size\":[16,16]},\"force\":[4000,3000,0],\"distribution\":\"uniform_nodes\",\"note\":\"5 kN along a 3:4 slope: 4 kN horizontal (+x assumed), 3 kN vertical (+y); 16 mm boss approximated by a 16x16 patch\"}],\"passive\":[{\"id\":\"anchor_boss\",\"kind\":\"solid\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"y\",\"center\":[50,30],\"radius\":8,\"span\":[55,60]},\"note\":\"Keep the 16 mm diameter anchor boss solid under the load\"}],\"resolution\":{\"h\":1.0},\"meta\":{\"assumptions\":[\"Horizontal cable component taken along +x (long axis); brief does not state the horizontal direction\",\"Force on anchor points toward the cable: up and horizontal\"]}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "guy_cable_anchor",
+  "description": "Guy-cable anchor: 100x60x60 mm steel envelope (y up), bottom face bolted over full area, 5 kN cable pull on a 16 mm diameter boss at the centre of the top face, cable inclined 3 rise : 4 horizontal (horizontal component assumed along +x, the long axis).",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100,
+    60,
+    60
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "bolted_base",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom face y=0 bolted down over its full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "cable_pull",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      50,
+      30
+     ],
+     "size": [
+      16,
+      16
+     ]
+    },
+    "force": [
+     4000,
+     3000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "5 kN along a 3:4 slope: 4 kN horizontal (+x assumed), 3 kN vertical (+y); 16 mm boss approximated by a 16x16 patch"
+   }
+  ],
+  "passive": [
+   {
+    "id": "anchor_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      50,
+      30
+     ],
+     "radius": 8,
+     "span": [
+      55,
+      60
+     ]
+    },
+    "note": "Keep the 16 mm diameter anchor boss solid under the load"
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  },
+  "meta": {
+   "assumptions": [
+    "Horizontal cable component taken along +x (long axis); brief does not state the horizontal direction",
+    "Force on anchor points toward the cable: up and horizontal"
+   ]
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 12.650627399794757,
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 60, 60)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

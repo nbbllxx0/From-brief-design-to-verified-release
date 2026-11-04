@@ -1,0 +1,522 @@
+[
+ {
+  "n": 64,
+  "grid": [
+   256,
+   64,
+   128
+  ],
+  "levels": 4,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.0,
+  "pcg_iters_first": 8,
+  "pcg_iters_last": 19,
+  "pcg_iters_mean": 10.75,
+  "solve_s_mean": 4.767355129984208,
+  "model_cost": 4.6855329159799
+ },
+ {
+  "n": 64,
+  "grid": [
+   256,
+   64,
+   128
+  ],
+  "levels": 5,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.0,
+  "pcg_iters_first": 8,
+  "pcg_iters_last": 27,
+  "pcg_iters_mean": 14.05,
+  "solve_s_mean": 0.1618835099739954,
+  "model_cost": 0.1834863290875
+ },
+ {
+  "n": 64,
+  "grid": [
+   256,
+   64,
+   128
+  ],
+  "levels": 6,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.0,
+  "pcg_iters_first": 9,
+  "pcg_iters_last": 38,
+  "pcg_iters_mean": 20.4,
+  "solve_s_mean": 0.21814871000824496,
+  "model_cost": 0.1678585191625
+ },
+ {
+  "n": 64,
+  "grid": [
+   256,
+   64,
+   128
+  ],
+  "levels": 7,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.0,
+  "pcg_iters_first": 11,
+  "pcg_iters_last": 39,
+  "pcg_iters_mean": 22.35,
+  "solve_s_mean": 0.2637475699884817,
+  "model_cost": 0.1677731077
+ },
+ {
+  "n": 60,
+  "grid": [
+   256,
+   60,
+   128
+  ],
+  "levels": 4,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.0667,
+  "pcg_iters_first": 34,
+  "pcg_iters_last": 130,
+  "pcg_iters_mean": 76.55,
+  "solve_s_mean": 5.376326774980408,
+  "model_cost": 4.6855329159799
+ },
+ {
+  "n": 60,
+  "grid": [
+   256,
+   60,
+   128
+  ],
+  "levels": 5,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.0667,
+  "pcg_iters_first": 40,
+  "pcg_iters_last": 134,
+  "pcg_iters_mean": 82.95,
+  "solve_s_mean": 0.6808957299683243,
+  "model_cost": 0.1834863290875
+ },
+ {
+  "n": 60,
+  "grid": [
+   256,
+   60,
+   128
+  ],
+  "levels": 6,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.0667,
+  "pcg_iters_first": 43,
+  "pcg_iters_last": 135,
+  "pcg_iters_mean": 86.95,
+  "solve_s_mean": 0.7489305549999699,
+  "model_cost": 0.1678585191625
+ },
+ {
+  "n": 60,
+  "grid": [
+   256,
+   60,
+   128
+  ],
+  "levels": 7,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.0667,
+  "pcg_iters_first": 44,
+  "pcg_iters_last": 135,
+  "pcg_iters_mean": 87.8,
+  "solve_s_mean": 0.8665295349783264,
+  "model_cost": 0.1677731077
+ },
+ {
+  "n": 56,
+  "grid": [
+   256,
+   56,
+   128
+  ],
+  "levels": 4,
+  "padded": [
+   256,
+   56,
+   128
+  ],
+  "pad_frac": 0.0,
+  "pcg_iters_first": 7,
+  "pcg_iters_last": 22,
+  "pcg_iters_mean": 11.45,
+  "solve_s_mean": 3.3668008500011637,
+  "model_cost": 3.3197684137472
+ },
+ {
+  "n": 56,
+  "grid": [
+   256,
+   56,
+   128
+  ],
+  "levels": 5,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.1429,
+  "pcg_iters_first": 28,
+  "pcg_iters_last": 89,
+  "pcg_iters_mean": 56.85,
+  "solve_s_mean": 0.48004429498687384,
+  "model_cost": 0.1834863290875
+ },
+ {
+  "n": 56,
+  "grid": [
+   256,
+   56,
+   128
+  ],
+  "levels": 6,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.1429,
+  "pcg_iters_first": 32,
+  "pcg_iters_last": 94,
+  "pcg_iters_mean": 62.5,
+  "solve_s_mean": 0.5459862699965015,
+  "model_cost": 0.1678585191625
+ },
+ {
+  "n": 56,
+  "grid": [
+   256,
+   56,
+   128
+  ],
+  "levels": 7,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.1429,
+  "pcg_iters_first": 34,
+  "pcg_iters_last": 95,
+  "pcg_iters_mean": 63.7,
+  "solve_s_mean": 0.6179697249899618,
+  "model_cost": 0.1677731077
+ },
+ {
+  "n": 50,
+  "grid": [
+   256,
+   50,
+   128
+  ],
+  "levels": 4,
+  "padded": [
+   256,
+   56,
+   128
+  ],
+  "pad_frac": 0.12,
+  "pcg_iters_first": 44,
+  "pcg_iters_last": 192,
+  "pcg_iters_mean": 109.55,
+  "solve_s_mean": 4.310426339984406,
+  "model_cost": 3.3197684137472
+ },
+ {
+  "n": 50,
+  "grid": [
+   256,
+   50,
+   128
+  ],
+  "levels": 5,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.28,
+  "pcg_iters_first": 53,
+  "pcg_iters_last": 239,
+  "pcg_iters_mean": 128.0,
+  "solve_s_mean": 1.1027392149786466,
+  "model_cost": 0.1834863290875
+ },
+ {
+  "n": 50,
+  "grid": [
+   256,
+   50,
+   128
+  ],
+  "levels": 6,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.28,
+  "pcg_iters_first": 46,
+  "pcg_iters_last": 222,
+  "pcg_iters_mean": 119.55,
+  "solve_s_mean": 1.0248798900283873,
+  "model_cost": 0.1678585191625
+ },
+ {
+  "n": 50,
+  "grid": [
+   256,
+   50,
+   128
+  ],
+  "levels": 7,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.28,
+  "pcg_iters_first": 45,
+  "pcg_iters_last": 212,
+  "pcg_iters_mean": 116.3,
+  "solve_s_mean": 1.1122687450260855,
+  "model_cost": 0.1677731077
+ },
+ {
+  "n": 48,
+  "grid": [
+   256,
+   48,
+   128
+  ],
+  "levels": 4,
+  "padded": [
+   256,
+   48,
+   128
+  ],
+  "pad_frac": 0.0,
+  "pcg_iters_first": 8,
+  "pcg_iters_last": 27,
+  "pcg_iters_mean": 12.7,
+  "solve_s_mean": 2.3577494950033726,
+  "model_cost": 2.2514696403033
+ },
+ {
+  "n": 48,
+  "grid": [
+   256,
+   48,
+   128
+  ],
+  "levels": 5,
+  "padded": [
+   256,
+   48,
+   128
+  ],
+  "pad_frac": 0.0,
+  "pcg_iters_first": 8,
+  "pcg_iters_last": 38,
+  "pcg_iters_mean": 16.35,
+  "solve_s_mean": 0.14145683498354628,
+  "model_cost": 0.1338747745728
+ },
+ {
+  "n": 48,
+  "grid": [
+   256,
+   48,
+   128
+  ],
+  "levels": 6,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.3333,
+  "pcg_iters_first": 24,
+  "pcg_iters_last": 87,
+  "pcg_iters_mean": 49.05,
+  "solve_s_mean": 0.4215129449730739,
+  "model_cost": 0.1678585191625
+ },
+ {
+  "n": 48,
+  "grid": [
+   256,
+   48,
+   128
+  ],
+  "levels": 7,
+  "padded": [
+   256,
+   64,
+   128
+  ],
+  "pad_frac": 0.3333,
+  "pcg_iters_first": 28,
+  "pcg_iters_last": 89,
+  "pcg_iters_mean": 51.5,
+  "solve_s_mean": 0.5016185599844902,
+  "model_cost": 0.1677731077
+ },
+ {
+  "n": 40,
+  "grid": [
+   256,
+   40,
+   128
+  ],
+  "levels": 4,
+  "padded": [
+   256,
+   40,
+   128
+  ],
+  "pad_frac": 0.0,
+  "pcg_iters_first": 8,
+  "pcg_iters_last": 24,
+  "pcg_iters_mean": 13.05,
+  "solve_s_mean": 1.6743730650050566,
+  "model_cost": 1.4434533795496
+ },
+ {
+  "n": 40,
+  "grid": [
+   256,
+   40,
+   128
+  ],
+  "levels": 5,
+  "padded": [
+   256,
+   48,
+   128
+  ],
+  "pad_frac": 0.2,
+  "pcg_iters_first": 34,
+  "pcg_iters_last": 122,
+  "pcg_iters_mean": 71.85,
+  "solve_s_mean": 0.5011550700175575,
+  "model_cost": 0.1338747745728
+ },
+ {
+  "n": 36,
+  "grid": [
+   256,
+   36,
+   128
+  ],
+  "levels": 4,
+  "padded": [
+   256,
+   40,
+   128
+  ],
+  "pad_frac": 0.1111,
+  "pcg_iters_first": 47,
+  "pcg_iters_last": 204,
+  "pcg_iters_mean": 125.75,
+  "solve_s_mean": 2.450315765000414,
+  "model_cost": 1.4434533795496
+ },
+ {
+  "n": 36,
+  "grid": [
+   256,
+   36,
+   128
+  ],
+  "levels": 5,
+  "padded": [
+   256,
+   48,
+   128
+  ],
+  "pad_frac": 0.3333,
+  "pcg_iters_first": 43,
+  "pcg_iters_last": 194,
+  "pcg_iters_mean": 122.9,
+  "solve_s_mean": 0.8585213749785907,
+  "model_cost": 0.1338747745728
+ },
+ {
+  "n": 33,
+  "grid": [
+   256,
+   33,
+   128
+  ],
+  "levels": 4,
+  "padded": [
+   256,
+   40,
+   128
+  ],
+  "pad_frac": 0.2121,
+  "pcg_iters_first": 107,
+  "pcg_iters_last": 530,
+  "pcg_iters_mean": 315.65,
+  "solve_s_mean": 3.820648270053789,
+  "model_cost": 1.4434533795496
+ },
+ {
+  "n": 33,
+  "grid": [
+   256,
+   33,
+   128
+  ],
+  "levels": 5,
+  "padded": [
+   256,
+   48,
+   128
+  ],
+  "pad_frac": 0.4545,
+  "pcg_iters_first": 155,
+  "pcg_iters_last": 729,
+  "pcg_iters_mean": 428.95,
+  "solve_s_mean": 2.8600738600012847,
+  "model_cost": 0.1338747745728
+ }
+]

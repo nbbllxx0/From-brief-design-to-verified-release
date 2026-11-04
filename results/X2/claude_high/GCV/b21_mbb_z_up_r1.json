@@ -1,0 +1,159 @@
+{
+ "task": "b21_mbb_z_up",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:02:24",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 42576,
+  "cached_input_tokens": 36428,
+  "cache_write_input_tokens": 6142,
+  "output_tokens": 1480
+ },
+ "gc_wall_s": 18.172408000100404,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14586,
+  "cached_input_tokens": 8656,
+  "cache_write_input_tokens": 5926,
+  "output_tokens": 1098
+ },
+ "verify_wall_s": 14.083948600105941,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 57162,
+  "cached_input_tokens": 45084,
+  "output_tokens": 2578,
+  "cache_write_input_tokens": 12068
+ },
+ "wall_s": 32.256356600206345,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Simply supported beam, z up",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    320.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "pin_left",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Pinned left bottom edge, full width"
+   },
+   {
+    "id": "roller_right",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      320.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Roller right bottom edge, free in x"
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_line_load",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      160.0,
+      40.0
+     ],
+     "span": null
+    },
+    "force": [
+     0.0,
+     0.0,
+     -3000.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "3 kN downward line load across full width at mid-span, top surface"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 14.548130300128832,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (160, 20, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

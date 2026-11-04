@@ -1,0 +1,144 @@
+{
+ "task": "b17_arch_bridge",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 366.90950910001993,
+ "usage": {
+  "input_tokens": 822883,
+  "cached_input_tokens": 794112,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2330,
+  "reasoning_output_tokens": 412
+ },
+ "returncode": 0,
+ "final": "DONE, e28a17bf3a5c, compliance 32.20936938801551",
+ "n_tool_calls": 27,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_passive",
+  "add_support",
+  "add_support",
+  "add_load",
+  "ladder",
+  "ask_clarification",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "field_stats",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "export_stl",
+  "export_report"
+ ],
+ "questions": 1,
+ "stages": {
+  "spec_s": 18.891000032424927,
+  "solve_h4.0": {
+   "wall_s": 42.27900004386902,
+   "compute_s": 41.04296480002813,
+   "iterations": 78,
+   "n_elem": 28125,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h2.0": {
+   "wall_s": 26.24399995803833,
+   "compute_s": 26.07621560082771,
+   "iterations": 61,
+   "n_elem": 225000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h1.0": {
+   "wall_s": 42.085999965667725,
+   "compute_s": 41.73754220013507,
+   "iterations": 61,
+   "n_elem": 1800000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.5": {
+   "wall_s": 209.25100016593933,
+   "compute_s": 207.80821580067277,
+   "iterations": 61,
+   "n_elem": 14400000,
+   "warm": true,
+   "status": "converged",
+   "certified": true
+  },
+  "export_s": 1.7549,
+  "total_s": 350.95099997520447
+ },
+ "released": true,
+ "exports": [
+  {
+   "triangles": 946564,
+   "bytes": 47328284,
+   "sha256": "d0b92052d434c9ef22de468fb9d184f6f6be30c7981d2722e3b9ee8d21dcdbaf",
+   "path": "results\\X3\\b17_arch_bridge\\session\\exports\\Arch_bridge_with_solid_deck_e28a17bf3a5c.stl",
+   "pool": 1,
+   "vertices": 473330,
+   "t_surface_s": 0.834,
+   "t_write_s": 0.329,
+   "mesh": {
+    "closed": true,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "volume": 361773.6971612671
+   },
+   "job": "e28a17bf3a5c",
+   "certified": true,
+   "released": true
+  },
+  {
+   "job": "e28a17bf3a5c",
+   "certified": true,
+   "json": "results\\X3\\b17_arch_bridge\\session\\exports\\Arch_bridge_with_solid_deck_e28a17bf3a5c_report.json",
+   "markdown": "results\\X3\\b17_arch_bridge\\session\\exports\\Arch_bridge_with_solid_deck_e28a17bf3a5c_report.md",
+   "stl": "results\\X3\\b17_arch_bridge\\session\\exports\\Arch_bridge_with_solid_deck_e28a17bf3a5c.stl"
+  }
+ ],
+ "release_spec_match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 30)"
+  ],
+  "matched": "intended"
+ },
+ "replay": {
+  "ok": true,
+  "calls": 27,
+  "solves_replayed": 4,
+  "skipped": 8,
+  "mismatches": [],
+  "final_spec_hash": "c09bf0dfdc8d4abf"
+ }
+}

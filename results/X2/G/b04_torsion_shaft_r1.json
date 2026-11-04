@@ -1,0 +1,159 @@
+{
+ "task": "b04_torsion_shaft",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:36:42",
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b04_torsion_shaft_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 29.939112400170416,
+ "usage": {
+  "input_tokens": 87217,
+  "cached_input_tokens": 80512,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 804,
+  "reasoning_output_tokens": 75
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic steel, E = 210 GPa, \u03bd = 0.3; lugs modeled as end-face load patches. Top +625 N along z and bottom \u2212625 N produce +40 N\u00b7m about x. Regions checked, validation passed, and render confirmed placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Shaft bracket in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_fixed_end",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid gearbox attachment across entire x=0 end face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_drive_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top lug flush with y=80; +z force. With bottom lug, produces +40 N m about x."
+   },
+   {
+    "id": "bottom_drive_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     -625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bottom lug flush with y=0; -z force. Equal and opposite to top force; 64 mm centroid separation."
+   }
+  ],
+  "passive": [],
+  "description": "160 x 80 x 80 mm shaft bracket, y up. Entire x=0 face rigidly fixed to gearbox. Two 16 x 16 mm rectangular drive-lug load footprints on x=160: top y=64..80, bottom y=0..16, both z=32..48. Uniform nodal forces: top +625 N along z, bottom -625 N along z. Their centroids are separated by 64 mm, giving +40000 N mm (+40 N m) about x and zero resultant force. Assumptions: isotropic linear-elastic steel E=210000 N/mm^2, nu=0.3; lugs represented by end-face load footprints, with no unspecified axial lug depth or passive volumes.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 30.340740600135177,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

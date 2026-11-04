@@ -1,0 +1,12 @@
+\chapter{Tool reference}\label{app:tools}
+\chapterintro{All \NTools\ tools of the contract, with their arguments, types and defaults. The entries are generated
+from the tool registry in \code{src/agentto/tools.py}; the descriptions are the tools' own docstrings, which are also
+what an agent sees over MCP.}
+
+Every tool is called as \code{Session.call(name, args, actor)} from Python, as an MCP tool of the same name, or by the
+workspace. Arguments are validated against the signature; unknown arguments are rejected. A call returns
+\code{\{"ok": true, "seq", "spec\_hash", "result"\}} or \code{\{"ok": false, "seq", "spec\_hash", "error"\}}. Tools
+marked ``changes the spec'' are undoable; a failed call leaves the specification unchanged. Profiles are explained in
+Section~\ref{sec:profiles}.
+
+\input{generated/tools_reference}

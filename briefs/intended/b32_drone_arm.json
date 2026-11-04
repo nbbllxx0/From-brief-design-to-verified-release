@@ -1,0 +1,90 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b32 drone arm",
+  "domain": {
+   "size": [
+    150,
+    20,
+    20
+   ]
+  },
+  "material": {
+   "name": "aluminium 7075",
+   "E": 71700.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "frame",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "thrust",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      140,
+      10
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     0,
+     15
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "motor_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      130,
+      0,
+      15
+     ],
+     "max": [
+      150,
+      20,
+      20
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 0.5
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "z-up thrust +15 N and retained x=130..150, z=15..20 motor pad agree."
+ }
+}

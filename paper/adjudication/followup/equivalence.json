@@ -1,0 +1,17 @@
+{
+ "results/X2/GP/b04_torsion_shaft_r2.json": "results/X2/GNR/b04_torsion_shaft_r1.json",
+ "results/X2/GP/b07_sensor_arm_r2.json": "results/X2/GP/b07_sensor_arm_r1.json",
+ "results/X2/GP/b10_hook_plate_r1.json": "results/X2/TS/b10_hook_plate_r1.json",
+ "results/X2/GP/b10_hook_plate_r2.json": "results/X2/GNR/b10_hook_plate_r1.json",
+ "results/X2/claude_high/GPC/b10_hook_plate_r1.json": "results/X2/TS/b10_hook_plate_r1.json",
+ "results/X2/GP/b39_tv_bracket_r1.json": "results/X2/GNR/b39_tv_bracket_r1.json",
+ "results/X2/GP/b39_tv_bracket_r2.json": "results/X2/GNR/b39_tv_bracket_r1.json",
+ "results/X2/GPC/b39_tv_bracket_r1.json": "results/X2/GNR/b39_tv_bracket_r1.json",
+ "results/X2/GP/b44_gearbox_bracket_r2.json": "results/X2/GNR/b44_gearbox_bracket_r1.json",
+ "results/X2/GPC/b44_gearbox_bracket_r1.json": "results/X2/GP/b44_gearbox_bracket_r1.json",
+ "results/X2/claude_high/GPC/b44_gearbox_bracket_r1.json": "results/X2/GNR/b44_gearbox_bracket_r1.json",
+ "results/X2/GP/b45_pump_bracket_r1.json": "results/X2/GNR/b45_pump_bracket_r1.json",
+ "results/X2/GP/b46_sensor_housing_r2.json": "results/X2/GNR/b46_sensor_housing_r1.json",
+ "results/X2/GPC/b47_camera_mount_r1.json": "results/X2/TS/b47_camera_mount_r1.json",
+ "results/X2/claude_high/GPC/b48_cable_anchor_r1.json": "results/X2/GNR/b48_cable_anchor_r1.json"
+}

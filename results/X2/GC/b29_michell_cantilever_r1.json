@@ -1,0 +1,143 @@
+{
+ "task": "b29_michell_cantilever",
+ "cond": "GC",
+ "rep": 1,
+ "t": "2026-10-30T10:09:58",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b29_michell_cantilever_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 16.89609230007045,
+ "usage": {
+  "input_tokens": 87526,
+  "cached_input_tokens": 70016,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 528,
+  "reasoning_output_tokens": 59
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: steel E = 210,000 N/mm\u00b2, \u03bd = 0.3. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Michell cantilever on a pin",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    100.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_pin",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      30.0,
+      50.0
+     ],
+     "radius": 15.0,
+     "span": [
+      0.0,
+      20.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Everything within the 30 mm diameter pin circle is fixed in all directions through the full thickness."
+   }
+  ],
+  "loads": [
+   {
+    "id": "right_end_downward_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50.0,
+      10.0
+     ],
+     "size": [
+      10.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -500.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "500 N total downward on x=200, y=45 to 55, z=0 to 20 mm."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 17.118806099984795,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 100, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

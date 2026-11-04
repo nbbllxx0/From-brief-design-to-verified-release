@@ -1,0 +1,205 @@
+\chapter{The resolution ladder and the release certificate}\label{ch:ladder}
+\chapterintro{A specification is solved on a ladder of grids, each twice as fine per axis as the one below. This chapter
+explains how the rungs are chosen, how one rung starts from the design of the one below, the three warm release
+policies and what each can and cannot do, and the six predicates of the release certificate.}
+
+\section{The rungs}\label{sec:rungs}
+\index{resolution ladder}\index{rung}
+The ladder is built from the specification's base mesh $h$. Candidate element sizes are $h\cdot 2^k$ for integer
+$k$; a candidate is kept when its grid divides the domain into whole elements and has between \LadderMin\ and
+\LadderMax\ elements. Consecutive rungs must differ by exactly a factor of two per axis, so that every rung can start
+from the one below. The four finest rungs are named \emph{sketch}, \emph{preview}, \emph{refine} and \emph{release};
+any coarser ones are named \code{coarse0}, \code{coarse1}, \ldots{} and are not shown in the workspace.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[font=\sffamily\footnotesize,
+  rung/.style={draw=#1,fill=#1!10,line width=0.7pt,rounded corners=1.5pt,minimum height=9mm,align=center},
+  arr/.style={-{Stealth[length=2mm]},line width=0.6pt,color=guigrey}]
+  \node[rung=guigrey,minimum width=20mm] (s) {\textbf{Sketch}\\144k};
+  \node[rung=guigrey,minimum width=24mm,right=7mm of s] (p) {\textbf{Preview}\\1.15M};
+  \node[rung=guigrey,minimum width=28mm,right=7mm of p] (r) {\textbf{Refine}\\9.2M};
+  \node[rung=okgreen,minimum width=34mm,right=7mm of r] (R) {\textbf{Release}\\73.7M, spill guard on};
+  \draw[arr] (s) -- node[above,font=\scriptsize\sffamily]{warm} (p);
+  \draw[arr] (p) -- node[above,font=\scriptsize\sffamily]{warm} (r);
+  \draw[arr] (r) -- node[above,font=\scriptsize\sffamily]{warm} (R);
+  \node[below=1.5mm of s,font=\scriptsize\sffamily,color=muted] {seconds, cold};
+  \node[below=1.5mm of p,font=\scriptsize\sffamily,color=muted] {seconds};
+  \node[below=1.5mm of r,font=\scriptsize\sffamily,color=muted] {seconds};
+  \node[below=1.5mm of R,font=\scriptsize\sffamily,color=muted] {seconds to minutes};
+\end{tikzpicture}
+\caption{The ladder of the motor mount b06: element counts per rung. Each rung has eight times the elements of the one
+below and starts from its design. Only the release rung runs with spill monitoring, so only it can be certified.}
+\label{fig:ladder}
+\end{figure}
+
+The release rung is the finest grid on the ladder, not the specification's $h$. When a brief asks for elements of at
+most 1~mm, a release at 0.25~mm satisfies it; \tool{ladder} says so in a note. Asking \tool{solve} for a rung and an
+\code{h} that disagree is an error, so an agent cannot accidentally solve the refine grid under the release name.
+
+\paragraph{Solver choice.} Grids up to \MgSwitch\ elements use the FP64 multigrid solver \code{mg64}; larger grids use
+\code{mg\_ir}, a mixed-precision iterative-refinement variant that needs less memory. If \code{mg\_ir} fails on a grid
+of at most \MgRetry\ elements, the worker retries once on \code{mg64}.
+
+\paragraph{Typical times.} Table~\ref{tab:rungtimes} gives the latency study's numbers on the RTX~4090.
+
+\begin{table}[h]
+\caption{Backend timings over the 14 released tasks of the session study, each measured through the running backend
+\claim{C6.4, C6.5}. Warm means started from the design of the rung below or, for the sketch, from the previous sketch
+after an edit.}\label{tab:rungtimes}
+\begin{fixtable}{@{}>{\raggedright\arraybackslash}p{0.38\linewidth}X@{}}
+Interaction & Range over tasks \\ \midrule
+Edit $\rightarrow$ validation, 95th percentile & 1.2--10.5 ms \\
+Edit $\rightarrow$ warm sketch, 95th percentile & 0.59--2.40 s \\
+Cold sketch of a new specification & 2.5--6.7 s (4 of 14 within 3 s); first density frame after about 0.1 s \\
+Release, warm (tail policy), compute & 3.1--56.4 s, all 14 certified \\
+\end{fixtable}
+\end{table}
+
+\section{Warm starts}\label{sec:warm}
+\index{warm start}
+When a solve has a suitable earlier design, it starts from it:
+\begin{enumerate}
+  \item The coarse density is upsampled by a factor of two in each direction (piecewise constant).
+  \item One pass of the fine rung's density filter smooths it, so boundary elements take intermediate values. Without
+  this step an upsampled 0/1 design is saturated under the sharp final projection, and no small move can change it.
+  \item A constant density offset, found by bisection, makes the projected design volume equal the target. Keep-in and
+  keep-out regions voxelize differently at the two resolutions, so the upsampled volume is not exactly the target.
+\end{enumerate}
+
+The warm source is chosen automatically. A solve on a rung uses the design of the same specification one doubling
+coarser, if there is one (even a solve still running, behind which it queues). After an edit, when no coarser design of
+the new specification exists, it uses the latest design on the same grid. Without either, the solve is cold.
+
+\section{Release policies}\label{sec:policies}
+\index{release policy}\index{tail schedule}\index{long re-opening}\index{short re-opening}
+After the warm start, the optimizer runs a continuation schedule. Table~\ref{tab:schedules}, generated from the code,
+lists the four schedules. Each row runs until the given iteration and sets the SIMP penalty $p$, the projection
+sharpness $\beta$, the move limit and the filter radius $r_\mathrm{min}$ in element units. All runs stop at
+convergence or at \MaxOuter\ iterations.
+
+\begin{table}[htb]
+\caption{Continuation schedules (from \code{solver.py} and \code{escalation.py}).}\label{tab:schedules}
+\input{generated/schedules}
+\end{table}
+
+\begin{description}
+  \item[Tail] (\gui{Release}, the default warm start from a coarser rung). Only the final phase: $p = 4.5$,
+  $\beta = 32$, move 0.05. It takes about 12 iterations and mostly \emph{certifies} the upsampled design on the fine grid
+  rather than improving it.
+  \item[Long re-opening] (\gui{Optimize release}, or \code{optimize=True} in \tool{solve}). The cold schedule from its
+  second phase on: $p = 3.5$, $\beta = 4$, move 0.15, then sharpening to the final phase. The projection starts far from
+  saturation, so boundaries move and members finer than the coarse rung can form. About 60 iterations.
+  \item[Short re-opening] (automatic after an edit, and for clarification previews). $\beta$ steps 8, 16, 32 with
+  larger moves, so a design on the same grid can follow a changed specification.
+  \item[Cold.] The full schedule from uniform density: what a solve does without a warm source, and the reference in
+  the paper's comparisons.
+\end{description}
+
+\begin{warnbox}[A tail release is not a fine-grid optimization]
+A sharply projected upsampled design can be saturated away from the projection threshold; continuing only the final
+phase then changes essentially no solid or void states. A certified tail release is an acceptance of the transferred
+coarse design on the fine grid, which is useful, but it is not an optimization from a uniform fine-grid start. In the
+paper's comparison the binary design changed essentially not at all after a tail release. Use \gui{Optimize release} for the final design.
+\end{warnbox}
+
+\begin{evidencebox}[Release policies on five problems (paper, Table 8)]
+At their release grids of 25.6--73.7 million elements, every final result below was certified. $\Delta C$ is the
+compliance relative to a cold run on the same grid; compute is the share of the cold run's release-rung compute
+(earlier rungs excluded) \claim{C3.1}.
+
+\smallskip
+{\centering\sffamily\footnotesize
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Problem & Elements & Cold & Tail $\Delta C$ & Tail compute & Long $\Delta C$ & Long compute \\ \midrule
+Cantilever & 65.5M & 118 s & +0.28\% & 7\% & $-$1.20\% & 69\% \\
+Bridge & 65.5M & 249 s & +1.39\% & 11\% & $-$1.19\% & 51\% \\
+Torsion & 65.5M & 121 s & +0.86\% & 6\% & +0.07\% & 59\% \\
+L-bracket & 25.6M & 251 s & +0.00\% & 3\% & $-$3.06\% & 51\% \\
+Motor mount & 73.7M & 423 s & +1.22\% & 8\% & +0.03\% & 61\% \\
+\bottomrule
+\end{tabular}\par}
+
+\smallskip
+The long re-opening reached a different local optimum from the cold run (binary overlap 0.86--0.97); a lower compliance
+is evidence of a different trajectory, not of a global optimum. The bridge's cold reference needed a different solver
+configuration after two failures. A sixth problem, a duct bridge, gave no usable comparison and is excluded.
+\end{evidencebox}
+
+\section{The release certificate}\label{sec:certificate}
+\index{certificate!predicates}
+Every finished solve carries a certificate, created inside the solver from its own evidence. The tool contract can read
+it but has no way to write it. The certificate is the conjunction of six predicates:
+\begin{equation}
+  A_\mathrm{num} = A_\mathrm{conv}\land A_\mathrm{res}\land A_\mathrm{no\,spill}\land A_\mathrm{monitor}\land
+  A_\mathrm{vol}\land A_\mathrm{passive}.
+\end{equation}
+The final state solve is accepted on the true relative residual, recomputed in FP64:
+\begin{equation}
+  r_\mathrm{true} = \frac{\lVert f - K u\rVert_2}{\lVert f\rVert_2} \le \tau ,
+\end{equation}
+where $\tau$ is the solve's configured tolerance (normally $10^{-5}$ for optimization in the paper's experiments).
+Table~\ref{tab:checks}, generated from \code{solver.py} and the result card's labels, lists the six predicates.
+
+\begin{table}[htb]
+\caption{The six certificate checks. A result is certified only when all six pass.}\label{tab:checks}
+\input{generated/certificate_checks}
+\end{table}
+
+\begin{figure}[t]
+\wideshot{09_release_surface.png}
+\caption{A certified release of the bracket: the marching-cubes surface of the 8.2-million-element design (on the reduced
+ladder), the result card on the right and every rung's time on the ladder.}
+\label{fig:releasesurface}
+\end{figure}
+
+\paragraph{Why lower rungs are never certified.} Spill monitoring samples GPU memory every \SpillEvery\ iterations,
+and only release-rung solves enable it. A sketch, preview or refine result therefore fails \emph{spill monitored} and is
+shown as \gui{not certified}, even when every other check passes (Figure~\ref{fig:b06refine}). It is feedback, not a
+release. Only a certified result on the release rung is a released design, and the card says so whenever the latest
+result is on a lower rung.
+
+\paragraph{What the spill check means.} On a desktop GPU, the driver can move memory into shared system memory when
+the card fills up. A solve then still runs, but its timings no longer mean anything. The spill guard compares shared
+GPU memory against its value at the start of the run and stops the solve when it grows past the limit. A passing
+check means no spill was observed under that sampling policy.
+
+\begin{notebox}[What the certificate does not say]
+The certificate belongs to the density problem that was solved, on the reported grid. It is not a proof of a global
+optimum. Extracting a surface does not transfer the certificate to a new mechanical analysis of that surface, and the
+certificate says nothing about stress, buckling, fatigue or manufacturing. In the paper's gate ablation, a problem with
+its load inside a keep-out region converged and passed all six numerical checks; only rule \rref{R008} stops it
+\claim{C4.4}.
+\end{notebox}
+
+\section{Surface, voxels and stale results}\label{sec:stale}
+\index{stale result}
+A certified release is shown as its $\rho = 0.5$ isosurface, extracted with marching cubes (VTK Flying Edges). For
+large grids the surface on screen is pooled for display, as the note under the buttons says; the exported STL is not.
+\gui{Voxels} shows the raw density field (Figure~\ref{fig:voxels}).
+
+Each result is tied to the hash of the specification it solved. Change the specification after a solve and the card
+marks its result \gui{stale} (Figure~\ref{fig:stale}): the design on screen no longer matches the specification. Undo the
+change and the badge clears.
+
+\begin{figure}[t]
+\centering
+\begin{minipage}[b]{0.6\linewidth}\shot{12_voxels.png}\end{minipage}\hfill
+\begin{minipage}[b]{0.33\linewidth}\shot{14_stale.png}\end{minipage}
+\caption{Left: the same design shown as density voxels. Right: a stale result after the volume fraction was edited.}
+\label{fig:voxels}\label{fig:stale}
+\end{figure}
+
+\section{Export}\label{sec:export}
+\index{export}
+\gui{Export STL + report} (or the tools \tool{export_stl} and \tool{export_report}) writes three files to the session's
+\code{exports/} folder:
+\begin{itemize}
+  \item a closed binary STL of the full-resolution $\rho = 0.5$ surface, positions in the spec's length unit; the
+  export also checks, for surfaces of up to 30 million triangles, that every edge is shared by exactly two triangles and records the enclosed volume;
+  \item a Markdown report and the same report as JSON, with the specification and its hash, the rung and solver,
+  iterations and compute time, the compliance, every certificate check, the STL record with its SHA-256, and the hash of
+  the session log (Appendix~\ref{app:certificate}).
+\end{itemize}
+A design that is not a certified result is exported with \code{\_draft} in its file name.

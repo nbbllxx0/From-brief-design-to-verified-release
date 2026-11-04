@@ -1,0 +1,220 @@
+{
+ "task": "b21_mbb_z_up",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:38:35",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief uses mm for lengths and kN for force; retained mm and kN."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "320 mm along x, 40 mm along y, 40 mm along z; z up, bottom z=0 and left x=0."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; assumed isotropic linear elasticity with E=210 GPa=210 kN/mm^2 and Poisson ratio 0.30."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.3."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 2 mm elements; h=2 mm."
+   },
+   {
+    "key": "support:left_pin",
+    "source": "stated",
+    "note": "Pinned left bottom edge x=0,z=0 across y=0..40 mm; translations x,y,z restrained."
+   },
+   {
+    "key": "support:right_roller",
+    "source": "stated",
+    "note": "Right bottom edge x=320,z=0 across full width; carries vertical z and sideways y load, free along x."
+   },
+   {
+    "key": "load:midspan_line",
+    "source": "derived",
+    "note": "Mid-span x=320/2=160 mm; top z=40 mm and y=0..40 mm from the envelope. Stated total 3 kN downward gives force (0,0,-3) kN, shared equally among selected line nodes."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b21_mbb_z_up_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 56.49252719990909,
+ "usage": {
+  "input_tokens": 105312,
+  "cached_input_tokens": 94336,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1297,
+  "reasoning_output_tokens": 312
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Assumed isotropic linear-elastic steel with E = 210 GPa and \u03bd = 0.30; no passive regions. Validation passed, render inspected, and every spec item source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Simply supported beam, z up",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    320.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Pinned across the left bottom edge, x=0, z=0."
+   },
+   {
+    "id": "right_roller",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      320.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Roller across the right bottom edge, x=320, z=0; free along x."
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_line",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      160.0,
+      40.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "force": [
+     0.0,
+     0.0,
+     -3.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 3 kN downward (-z), shared across the full-width top line at x=320/2=160 mm and z=40 mm."
+   }
+  ],
+  "passive": [],
+  "description": "z points up. Left bottom full-width edge pinned; right bottom full-width edge restrained in y and z, free in x. Mid-span top full-width downward line load, total 3 kN. No passive regions.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 56.70596730010584,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=2, grid (160, 20, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

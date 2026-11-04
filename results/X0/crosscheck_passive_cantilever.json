@@ -1,0 +1,26 @@
+{
+ "name": "passive_cantilever",
+ "grid": [
+  40,
+  20,
+  20
+ ],
+ "n_elem": 16000,
+ "h": 0.05,
+ "status": "converged",
+ "iterations": 76,
+ "final_rel_true": 5.83589222443319e-09,
+ "tol": 1e-08,
+ "compliance_nd": 2.568071543117533,
+ "compliance_phys": 102.72286172470132,
+ "units": {
+  "length": "mm",
+  "force": "N"
+ },
+ "passive": {
+  "keep_in_ok": true,
+  "keep_out_ok": true,
+  "keep_in_min": 1.0,
+  "keep_out_max": 0.0
+ }
+}

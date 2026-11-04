@@ -1,0 +1,184 @@
+{
+ "task": "b17_arch_bridge",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:30:27",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 89088,
+  "cached_input_tokens": 65792,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 990,
+  "reasoning_output_tokens": 241
+ },
+ "gc_wall_s": 32.87536259996705,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 19610,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 150,
+  "reasoning_output_tokens": 130
+ },
+ "verify_wall_s": 7.470983000006527,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 371,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1140,
+  "input_tokens": 108698,
+  "cached_input_tokens": 65792
+ },
+ "wall_s": 40.346345599973574,
+ "questions": 1,
+ "n_tool_calls": 11,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Arch bridge with solid deck",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    100.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_bottom_edge",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      60.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "right_bottom_edge",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      300.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      60.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -6000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 6 kN downward distributed uniformly over the whole deck surface at y=100 mm."
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_deck",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      94.0,
+      0.0
+     ],
+     "max": [
+      300.0,
+      100.0,
+      60.0
+     ]
+    },
+    "note": "Top 6 mm deck remains solid."
+   }
+  ],
+  "description": "Bridge envelope with a solid 6 mm top deck, both bottom end edges fixed in x, y and z, and 6000 N uniformly downward over the top face.",
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  },
+  "volume_fraction": 0.15
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.781265799887478,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

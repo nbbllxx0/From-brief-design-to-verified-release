@@ -1,0 +1,216 @@
+{
+ "task": "b04_torsion_shaft",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:56:49",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief gives lengths and element size in mm and torque in N*m; use mm and N (40 N*m = 40000 N*mm)."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "160 mm along x, 80 mm along y, 80 mm along z; origin (0,0,0), y up."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; grade and elastic constants are unspecified. Use isotropic steel E=210000 N/mm^2 and nu=0.30."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.3."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 2 mm elements; h=2 mm."
+   },
+   {
+    "key": "support:gearbox_mount",
+    "source": "stated",
+    "note": "x=0 end bolted rigidly to gearbox: fix x, y, z translations on the entire x-min face."
+   },
+   {
+    "key": "load:top_lug",
+    "source": "derived",
+    "note": "Stated 16x16 mm lug flush y=80 and centred z=40 gives centre (y,z)=(72,40). Bottom centre y=8, so force separation is 64 mm. 40 N*m / 0.064 m=625 N, directed +z at the top for positive x torque."
+   },
+   {
+    "key": "load:bottom_lug",
+    "source": "derived",
+    "note": "Stated 16x16 mm lug flush y=0 and centred z=40 gives centre (y,z)=(8,40). Equal opposite bottom force is -625 N along z; the pair produces +40 N*m about x with zero net force."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b04_torsion_shaft_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 28.375419799936935,
+ "usage": {
+  "input_tokens": 92405,
+  "cached_input_tokens": 71424,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1184,
+  "reasoning_output_tokens": 78
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Assumed isotropic steel with E = 210 GPa and \u03bd = 0.30. Validation passed; render confirms support and load placement; every item is source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Shaft bracket in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_mount",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "The x=0 end is bolted rigidly to the gearbox; clamp the end face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top lug spans y=64..80, z=32..48. +z force; F=40000/(72-8)=625 N."
+   },
+   {
+    "id": "bottom_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     -625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bottom lug spans y=0..16, z=32..48. -z force. Pair has zero resultant force and +40000 N*mm moment about x."
+   }
+  ],
+  "passive": [],
+  "description": "Rigid gearbox attachment at x=0. Equal and opposite z forces on 16 x 16 mm patches at x=160 generate +40 N*m about x. Lug patch centres are y=72 and y=8, z=40; separation 64 mm, force magnitude 625 N.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 28.594057699898258,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

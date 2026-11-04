@@ -1,0 +1,275 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b41 hinge bracket",
+  "domain": {
+   "size": [
+    140,
+    80,
+    30
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "bolt_left",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20,
+      15
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "bolt_right",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      120,
+      15
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "shape": "ellipse"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "door",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      70,
+      65
+     ],
+     "radius": 10,
+     "span": [
+      0,
+      30
+     ]
+    },
+    "force": [
+     300,
+     -800,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "hinge_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      70,
+      65
+     ],
+     "radius": 10,
+     "span": [
+      0,
+      30
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "cable_slot",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      40,
+      20,
+      0
+     ],
+     "max": [
+      100,
+      35,
+      30
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "Two square 12 x 12 mm washer support patches, centres unchanged.",
+   "why": "Admit local support-footprint approximation consistently with b06; retained boss and slot remain correct.",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "from_run": "claude_high/T/b41_hinge_bracket_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "door_hinge_bracket",
+    "description": "Door hinge bracket bolted at its bottom face, carrying the door load through a hinge-pin boss, with a cable slot kept empty.",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      140,
+      80,
+      30
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "volume_fraction": 0.3,
+    "supports": [
+     {
+      "id": "bolt_left",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        20,
+        15
+       ],
+       "size": [
+        12,
+        12
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Bolt at x=20, z=15; 12 mm washer approximated as a 12x12 mm patch"
+     },
+     {
+      "id": "bolt_right",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        120,
+        15
+       ],
+       "size": [
+        12,
+        12
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Bolt at x=120, z=15; 12 mm washer approximated as a 12x12 mm patch"
+     }
+    ],
+    "loads": [
+     {
+      "id": "door_load",
+      "region": {
+       "kind": "cylinder",
+       "axis": "z",
+       "center": [
+        70,
+        65
+       ],
+       "radius": 10,
+       "span": [
+        0,
+        30
+       ]
+      },
+      "force": [
+       300,
+       -800,
+       0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "800 N door weight downward (-y) and 300 N pull along +x, applied on the hinge-pin boss"
+     }
+    ],
+    "passive": [
+     {
+      "id": "hinge_boss",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "z",
+       "center": [
+        70,
+        65
+       ],
+       "radius": 10,
+       "span": [
+        0,
+        30
+       ]
+      },
+      "note": "Hinge-pin boss, 20 mm diameter, full thickness"
+     },
+     {
+      "id": "cable_slot",
+      "kind": "void",
+      "region": {
+       "kind": "box",
+       "min": [
+        40,
+        20,
+        0
+       ],
+       "max": [
+        100,
+        35,
+        30
+       ]
+      },
+      "note": "Cable slot through the full thickness"
+     }
+    ],
+    "resolution": {
+     "h": 1.0
+    },
+    "min_feature": null
+   }
+  }
+ ],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Retained hinge boss, cable slot, washer supports and combined load agree."
+ }
+}

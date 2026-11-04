@@ -1,0 +1,195 @@
+{
+ "task": "b12_wheel",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:21:34",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 11.349582999944687,
+ "usage": {
+  "input_tokens": 8606,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7955,
+  "output_tokens": 773
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"wheel\",\"description\":\"100x50x100 mm steel envelope, y up, standing on four 5x5 mm corner pads on the bottom face (y=0), fixed in all directions; 2 kN downward load on a 10x10 mm pad at the centre of the bottom face.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[100,50,100]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.2,\"supports\":[{\"id\":\"pad_x0_z0\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[2.5,2.5],\"size\":[5,5]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner pad at x=0, z=0\"},{\"id\":\"pad_x100_z0\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[97.5,2.5],\"size\":[5,5]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner pad at x=100, z=0\"},{\"id\":\"pad_x0_z100\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[2.5,97.5],\"size\":[5,5]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner pad at x=0, z=100\"},{\"id\":\"pad_x100_z100\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[97.5,97.5],\"size\":[5,5]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner pad at x=100, z=100\"}],\"loads\":[{\"id\":\"centre_load\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[50,50],\"size\":[10,10]},\"force\":[0,-2000,0],\"distribution\":\"uniform_nodes\",\"note\":\"2 kN downward (-y) hanging load on 10x10 mm pad at centre of bottom face\"}],\"passive\":[],\"resolution\":{\"h\":1.0},\"min_feature\":null,\"meta\":{\"up_axis\":\"y\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "wheel",
+  "description": "100x50x100 mm steel envelope, y up, standing on four 5x5 mm corner pads on the bottom face (y=0), fixed in all directions; 2 kN downward load on a 10x10 mm pad at the centre of the bottom face.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100,
+    50,
+    100
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "pad_x0_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      2.5
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner pad at x=0, z=0"
+   },
+   {
+    "id": "pad_x100_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      97.5,
+      2.5
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner pad at x=100, z=0"
+   },
+   {
+    "id": "pad_x0_z100",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      97.5
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner pad at x=0, z=100"
+   },
+   {
+    "id": "pad_x100_z100",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      97.5,
+      97.5
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner pad at x=100, z=100"
+   }
+  ],
+  "loads": [
+   {
+    "id": "centre_load",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      50,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     -2000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "2 kN downward (-y) hanging load on 10x10 mm pad at centre of bottom face"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1.0
+  },
+  "min_feature": null,
+  "meta": {
+   "up_axis": "y"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 11.562586199957877,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 50, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

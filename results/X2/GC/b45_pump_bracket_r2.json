@@ -1,0 +1,135 @@
+{
+ "task": "b45_pump_bracket",
+ "cond": "GC",
+ "rep": 2,
+ "t": "2026-10-30T11:33:36",
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "ask_clarification",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 1,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b45_pump_bracket_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 37.9877118000295,
+ "usage": {
+  "input_tokens": 123719,
+  "cached_input_tokens": 114816,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1031,
+  "reasoning_output_tokens": 191
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: steel E = 210 GPa, \u03bd = 0.30; footprint dimensions follow x \u00d7 z. Applied clarified 250 N downward load. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Pump bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    100.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "wall_mount",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Back face z=0 bolts to the wall over its full 160 x 100 mm area."
+   }
+  ],
+  "loads": [
+   {
+    "id": "pump_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80.0,
+      35.0
+     ],
+     "size": [
+      60.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -250.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "User clarified: 25 kg pump, use 250 N downward (-y) spread over the footprint; no other loads. Footprint x=50..110, y=100, z=15..55."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 38.34809620003216,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 50, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,235 @@
+{
+ "task": "b19_engine_bracket",
+ "cond": "GC",
+ "rep": 2,
+ "t": "2026-10-30T11:21:59",
+ "n_tool_calls": 13,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_passive",
+  "ask_clarification",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "ask_clarification",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 2,
+ "oracle_hits": 2,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b19_engine_bracket_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 64.57667750003748,
+ "usage": {
+  "input_tokens": 105256,
+  "cached_input_tokens": 96768,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2250,
+  "reasoning_output_tokens": 1090
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Validated and render checked. As clarified: washer disks fully fixed; 8000 lbf distributed uniformly over the preserved clevis nodes.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Engine bracket",
+  "units": {
+   "length": "in",
+   "force": "lbf"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    7.0,
+    2.5,
+    4.0
+   ]
+  },
+  "material": {
+   "name": "Ti-6Al-4V",
+   "E": 16500000.0,
+   "nu": 0.34
+  },
+  "supports": [
+   {
+    "id": "bolt_x0p5_z0p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, as clarified."
+   },
+   {
+    "id": "bolt_x0p5_z3p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, as clarified."
+   },
+   {
+    "id": "bolt_x2p5_z0p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, as clarified."
+   },
+   {
+    "id": "bolt_x2p5_z3p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, as clarified."
+   }
+  ],
+  "loads": [
+   {
+    "id": "clevis_pull",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "force": [
+     0.0,
+     8000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "8000 lbf total, shared equally over preserved clevis cylinder nodes, as clarified."
+   }
+  ],
+  "passive": [
+   {
+    "id": "clevis",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "note": "Required solid clevis cylinder."
+   }
+  ],
+  "description": "Engine bracket; y up. Four bottom-face bolt washer footprints and a preserved solid z-axis clevis cylinder.",
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 0.05,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 64.80029050004669,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1.27, grid (140, 50, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

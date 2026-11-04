@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering\small
+\caption{The release contract with each gate removed}
+\label{tab:t12_gates}
+\begin{tabular}{lrrr}
+\toprule
+Gate removed & Case & Outcome & Note \\
+\midrule
+Certificate & release attempts certified & 52/54 & the two uncertified attempts produced no releasable design \\
+Certificate & spill-guard stops (113M $\times$2, 59M) & 3 & runs stopped; no design \\
+Certificate & non-converged solves & 11 & a gate-less system would show these as designs \\
+Rule base off & b08 (R003) & solve failed; not certified & SolveFailed('pcg64: non-positive curvature nan at iteration 1') \\
+Rule base off & b49 (R003) & solve failed; not certified & SolveFailed('pcg64: true residual 2.367e+04 > 1.0e-05 after 20000 iter \\
+Rule base off & b50 (R008) & converged; certified & compliance 3.8e+08$\times$ the corrected reference \\
+\bottomrule
+\end{tabular}
+\par\smallskip\footnotesize With both gates on, no uncertified or ill-posed design was released in any study.
+\end{table}

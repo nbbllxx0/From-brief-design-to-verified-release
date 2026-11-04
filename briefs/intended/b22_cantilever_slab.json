@@ -1,0 +1,64 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b22 cantilever slab",
+  "domain": {
+   "size": [
+    150,
+    20,
+    200
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "pressure",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -6000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "cantilevered plate under a uniform load (distributed-load cantilever family)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "The top face shares its wall edge with the support, so 1.3% of the load lands on fixed nodes (R005 warning); that is what a uniform load on the whole surface means.",
+ "accept_warnings": [
+  "R005"
+ ],
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Whole-top load is consistent. A surface load can share fixed-edge nodes; do not call the finite nodal fraction a continuum area fraction."
+ }
+}

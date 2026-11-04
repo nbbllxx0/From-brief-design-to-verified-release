@@ -1,0 +1,193 @@
+{
+ "task": "b44_gearbox_bracket",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:27:10",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 13.018295200075954,
+ "usage": {
+  "input_tokens": 8635,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7984,
+  "output_tokens": 1096
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"gearbox_output_bracket\",\"description\":\"160 x 80 x 80 mm steel bracket bolted at x=0 to a gearbox; 40 N*m torque about the long (x) axis applied at the x=160 end through two 16 x 16 mm drive lugs (top and bottom edges, centred in y), modelled as an equal and opposite y-force couple.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[160,80,80]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.3,\"supports\":[{\"id\":\"gearbox_bolted_face\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"x=0 end bolted rigidly to gearbox\"}],\"loads\":[{\"id\":\"top_lug\",\"region\":{\"kind\":\"patch\",\"face\":\"x+\",\"center\":[40,72],\"size\":[16,16]},\"force\":[0,-625,0],\"distribution\":\"uniform_nodes\",\"note\":\"Top drive lug; couple force F = 40000 N*mm / 64 mm lever arm = 625 N; gives +x torque\"},{\"id\":\"bottom_lug\",\"region\":{\"kind\":\"patch\",\"face\":\"x+\",\"center\":[40,8],\"size\":[16,16]},\"force\":[0,625,0],\"distribution\":\"uniform_nodes\",\"note\":\"Bottom drive lug; opposite force of the couple, total torque 40 N*m about +x\"}],\"passive\":[{\"id\":\"top_lug_solid\",\"kind\":\"solid\",\"region\":{\"kind\":\"box\",\"min\":[156,32,64],\"max\":[160,48,80]},\"note\":\"Keep material under top drive lug\"},{\"id\":\"bottom_lug_solid\",\"kind\":\"solid\",\"region\":{\"kind\":\"box\",\"min\":[156,32,0],\"max\":[160,48,16]},\"note\":\"Keep material under bottom drive lug\"}],\"resolution\":{\"h\":2},\"meta\":{\"torque_Nmm\":40000,\"torque_axis\":\"x\",\"lever_arm_mm\":64,\"axis_location_yz\":[40,40]}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "gearbox_output_bracket",
+  "description": "160 x 80 x 80 mm steel bracket bolted at x=0 to a gearbox; 40 N*m torque about the long (x) axis applied at the x=160 end through two 16 x 16 mm drive lugs (top and bottom edges, centred in y), modelled as an equal and opposite y-force couple.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160,
+    80,
+    80
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "gearbox_bolted_face",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "x=0 end bolted rigidly to gearbox"
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40,
+      72
+     ],
+     "size": [
+      16,
+      16
+     ]
+    },
+    "force": [
+     0,
+     -625,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top drive lug; couple force F = 40000 N*mm / 64 mm lever arm = 625 N; gives +x torque"
+   },
+   {
+    "id": "bottom_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40,
+      8
+     ],
+     "size": [
+      16,
+      16
+     ]
+    },
+    "force": [
+     0,
+     625,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bottom drive lug; opposite force of the couple, total torque 40 N*m about +x"
+   }
+  ],
+  "passive": [
+   {
+    "id": "top_lug_solid",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156,
+      32,
+      64
+     ],
+     "max": [
+      160,
+      48,
+      80
+     ]
+    },
+    "note": "Keep material under top drive lug"
+   },
+   {
+    "id": "bottom_lug_solid",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156,
+      32,
+      0
+     ],
+     "max": [
+      160,
+      48,
+      16
+     ]
+    },
+    "note": "Keep material under bottom drive lug"
+   }
+  ],
+  "resolution": {
+   "h": 2
+  },
+  "meta": {
+   "torque_Nmm": 40000,
+   "torque_axis": "x",
+   "lever_arm_mm": 64,
+   "axis_location_yz": [
+    40,
+    40
+   ]
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 13.220114500029013,
+ "cwe": {
+  "value": 106439653.56850198,
+  "c_pred_under_intended": 152449236.29570368,
+  "c_intended_opt": 1.4322597805650623,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0046666860580444
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

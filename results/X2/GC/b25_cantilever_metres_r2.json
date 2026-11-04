@@ -1,0 +1,137 @@
+{
+ "task": "b25_cantilever_metres",
+ "cond": "GC",
+ "rep": 2,
+ "t": "2026-10-30T11:29:01",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "get_spec",
+  "ask_clarification",
+  "update_item",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 1,
+ "oracle_hits": 1,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b25_cantilever_metres_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 25.104361899895594,
+ "usage": {
+  "input_tokens": 102957,
+  "cached_input_tokens": 94976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 971,
+  "reasoning_output_tokens": 63
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Validation passed; render confirmed support and load placement. Per clarification, the bearing plate is represented by its load footprint only, with no passive solid thickness.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Large cantilever \u2014 metres and kilonewtons",
+  "units": {
+   "length": "m",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    2.0,
+    1.0,
+    1.0
+   ]
+  },
+  "material": {
+   "name": "structural steel",
+   "E": 210000000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_x0",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed x = 0 m face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "bearing_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.2,
+      0.2
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bearing plate represented solely by the distributed load footprint; no passive solid plate. Total 100 kN downward at x = 2 m, y,z = 0.4\u20130.6 m."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 0.02,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 27.868520400021225,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=20, grid (100, 50, 50)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

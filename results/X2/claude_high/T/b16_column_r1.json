@@ -1,0 +1,195 @@
+{
+ "task": "b16_column",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:22:18",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 9.489633599994704,
+ "usage": {
+  "input_tokens": 8607,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7956,
+  "output_tokens": 725
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"column_combined_load\",\"description\":\"Column envelope 60 x 240 x 60 mm, y up, on four 10x10 mm corner footing pads fixed in all directions; 20x20 mm top cap pad carries 10 kN down and 1 kN along +x.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[60,240,60]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.2,\"supports\":[{\"id\":\"foot_x0_z0\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[5,5],\"size\":[10,10]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner footing pad\"},{\"id\":\"foot_x60_z0\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[55,5],\"size\":[10,10]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner footing pad\"},{\"id\":\"foot_x0_z60\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[5,55],\"size\":[10,10]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner footing pad\"},{\"id\":\"foot_x60_z60\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[55,55],\"size\":[10,10]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner footing pad\"}],\"loads\":[{\"id\":\"cap_load\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[30,30],\"size\":[20,20]},\"force\":[1000,-10000,0],\"distribution\":\"uniform_nodes\",\"note\":\"10 kN downward (-y) plus 1 kN sideways (+x) on top cap pad\"}],\"passive\":[],\"resolution\":{\"h\":2},\"min_feature\":null,\"meta\":{\"up_axis\":\"y\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "column_combined_load",
+  "description": "Column envelope 60 x 240 x 60 mm, y up, on four 10x10 mm corner footing pads fixed in all directions; 20x20 mm top cap pad carries 10 kN down and 1 kN along +x.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    60,
+    240,
+    60
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "foot_x0_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      5,
+      5
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner footing pad"
+   },
+   {
+    "id": "foot_x60_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      55,
+      5
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner footing pad"
+   },
+   {
+    "id": "foot_x0_z60",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      5,
+      55
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner footing pad"
+   },
+   {
+    "id": "foot_x60_z60",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      55,
+      55
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner footing pad"
+   }
+  ],
+  "loads": [
+   {
+    "id": "cap_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      30,
+      30
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "force": [
+     1000,
+     -10000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "10 kN downward (-y) plus 1 kN sideways (+x) on top cap pad"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 2
+  },
+  "min_feature": null,
+  "meta": {
+   "up_axis": "y"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 9.69296809984371,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (30, 120, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

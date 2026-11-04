@@ -1,0 +1,238 @@
+{
+ "task": "b19_engine_bracket",
+ "cond": "GC",
+ "rep": 3,
+ "t": "2026-10-30T11:48:13",
+ "n_tool_calls": 16,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_passive",
+  "ask_clarification",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "ask_clarification",
+  "add_load",
+  "list_regions",
+  "ask_clarification",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 3,
+ "oracle_hits": 3,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b19_engine_bracket_r3\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 57.879884799942374,
+ "usage": {
+  "input_tokens": 179767,
+  "cached_input_tokens": 167936,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1994,
+  "reasoning_output_tokens": 535
+ },
+ "returncode": 0,
+ "final": "DONE\nConfirmed assumptions: washers fix x/y/z; pull is distributed throughout the solid clevis; volume fraction excludes the clevis. Validation passed and render checked.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Engine bracket",
+  "units": {
+   "length": "in",
+   "force": "lbf"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    7.0,
+    2.5,
+    4.0
+   ]
+  },
+  "material": {
+   "name": "Ti-6Al-4V",
+   "E": 16500000.0,
+   "nu": 0.34
+  },
+  "supports": [
+   {
+    "id": "washer_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped bottom washer, as clarified."
+   },
+   {
+    "id": "washer_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped bottom washer, as clarified."
+   },
+   {
+    "id": "washer_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped bottom washer, as clarified."
+   },
+   {
+    "id": "washer_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped bottom washer, as clarified."
+   }
+  ],
+  "loads": [
+   {
+    "id": "clevis_pull",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "force": [
+     0.0,
+     8000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total pull distributed equally over the entire kept clevis, as clarified."
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_clevis",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "note": "Required solid clevis cylinder."
+   }
+  ],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 0.05,
+   "cells_short_edge": null
+  },
+  "description": "Engine bracket; inches and lbf; y up. Four 0.5 in diameter bottom washer patches fully fixed in x,y,z. Total 8000 lbf +y pull distributed over entire mandatory solid clevis cylinder. Volume fraction 0.2 applies to non-passive design volume, excluding the solid clevis, as clarified."
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 58.33210660004988,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1.27, grid (140, 50, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

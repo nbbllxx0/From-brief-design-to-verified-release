@@ -1,0 +1,187 @@
+{
+ "task": "b26_canopy",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:23:55",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 8.113571799825877,
+ "usage": {
+  "input_tokens": 8632,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7981,
+  "output_tokens": 658
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"canopy_on_four_columns\",\"description\":\"Aluminium 6061 canopy plate 300 x 40 x 200 mm (y up) resting on four 20 x 20 mm column heads on the bottom face at x = 40/260, z = 40/160, fully fixed; 8 kN downward load uniformly distributed over the top face.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[300,40,200]},\"material\":{\"name\":\"aluminium 6061\",\"E\":69000.0,\"nu\":0.33},\"volume_fraction\":0.25,\"supports\":[{\"id\":\"column_x40_z40\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[40,40],\"size\":[20,20]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"column head 20x20 at x=40, z=40\"},{\"id\":\"column_x260_z40\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[260,40],\"size\":[20,20]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"column head 20x20 at x=260, z=40\"},{\"id\":\"column_x40_z160\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[40,160],\"size\":[20,20]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"column head 20x20 at x=40, z=160\"},{\"id\":\"column_x260_z160\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[260,160],\"size\":[20,20]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"column head 20x20 at x=260, z=160\"}],\"loads\":[{\"id\":\"top_pressure\",\"region\":{\"kind\":\"face\",\"face\":\"y+\"},\"force\":[0,-8000,0],\"distribution\":\"uniform_nodes\",\"note\":\"8 kN total downward, uniform over whole top surface\"}],\"passive\":[],\"resolution\":{\"h\":2},\"min_feature\":null,\"meta\":{\"up_axis\":\"y\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "canopy_on_four_columns",
+  "description": "Aluminium 6061 canopy plate 300 x 40 x 200 mm (y up) resting on four 20 x 20 mm column heads on the bottom face at x = 40/260, z = 40/160, fully fixed; 8 kN downward load uniformly distributed over the top face.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300,
+    40,
+    200
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "column_x40_z40",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      40,
+      40
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "column head 20x20 at x=40, z=40"
+   },
+   {
+    "id": "column_x260_z40",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      260,
+      40
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "column head 20x20 at x=260, z=40"
+   },
+   {
+    "id": "column_x40_z160",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      40,
+      160
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "column head 20x20 at x=40, z=160"
+   },
+   {
+    "id": "column_x260_z160",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      260,
+      160
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "column head 20x20 at x=260, z=160"
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_pressure",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -8000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "8 kN total downward, uniform over whole top surface"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 2
+  },
+  "min_feature": null,
+  "meta": {
+   "up_axis": "y"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 8.316149899968877,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 20, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

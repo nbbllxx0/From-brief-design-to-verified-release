@@ -1,0 +1,19 @@
+**Run-to-run variation (repeats 2 and 3 on subsets)**
+
+| Condition | Repeat | Briefs | Right behavior | Delivered wrong |
+|---|---|---|---|---|
+| T text only | 1 | 50 | 37 | 1 |
+| T text only | 2 | 50 | 37 | 3 |
+| T text only | 3 | 20 | 9 | 3 |
+| G grounding tools | 1 | 50 | 44 | 6 |
+| G grounding tools | 2 | 50 | 42 | 8 |
+| G+C + clarification | 1 | 50 | 50 | 0 |
+| G+C + clarification | 2 | 32 | 32 | 0 |
+| G+C + clarification | 3 | 20 | 20 | 0 |
+| G+C+V + picture check | 1 | 50 | 50 | 0 |
+| G+C+V + picture check | 2 | 20 | 20 | 0 |
+| G+C+V + picture check | 3 | 20 | 20 | 0 |
+| G+P G + value provenance | 1 | 50 | 42 | 8 |
+| G+P G + value provenance | 2 | 20 | 13 | 7 |
+
+Source: results/X2/<cond>/*_r{1,2,3}.json.

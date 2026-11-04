@@ -1,0 +1,38 @@
+{
+ "task": "b50_valve_bracket",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:27:48",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 0,
+ "retry_errors": [],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 6.1754462998360395,
+ "usage": {
+  "input_tokens": 19996,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 97,
+  "reasoning_output_tokens": 62
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The actuator load pad lies entirely within the required valve-handle clearance region, so material cannot support the specified load there.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 6.232932800194249,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": true
+}

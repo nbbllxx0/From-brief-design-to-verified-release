@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentto"
+version = "0.0.1"
+description = "Knowledge-grounded, agent-assisted topology optimization at up to 1e8 elements on the voxfem solver"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = ["numpy", "scipy", "cupy", "pydantic>=2.8,<3", "fastapi", "uvicorn", "mcp", "vtk", "matplotlib"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-p no:cacheprovider"

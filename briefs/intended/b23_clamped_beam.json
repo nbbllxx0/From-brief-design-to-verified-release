@@ -1,0 +1,77 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b23 clamped beam",
+  "domain": {
+   "size": [
+    240,
+    40,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "left",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   },
+   {
+    "id": "right",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "centre",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      120,
+      20
+     ],
+     "size": [
+      10,
+      40
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -3000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "clamped-clamped beam with a central load (3D benchmark family)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Two clamped faces and 10 x 40 mm central top strip agree."
+ }
+}

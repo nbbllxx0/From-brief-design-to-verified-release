@@ -1,0 +1,196 @@
+{
+ "task": "b39_tv_bracket",
+ "cond": "T",
+ "rep": 2,
+ "t": "2026-10-30T10:48:58",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 25.367317100055516,
+ "usage": {
+  "input_tokens": 21995,
+  "cached_input_tokens": 17024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 955,
+  "reasoning_output_tokens": 357
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"TV wall bracket\",\n  \"description\": \"Steel wall bracket with four washer-sized wall supports and a loaded mounting region on the far end.\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [300, 200, 40]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.15,\n  \"supports\": [\n    {\n      \"id\": \"lag_screw_lower_left\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x-\",\n        \"center\": [30, 10],\n        \"size\": [12, 12]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"12 mm washer footprint approximated by a square patch.\"\n    },\n    {\n      \"id\": \"lag_screw_lower_right\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x-\",\n        \"center\": [30, 30],\n        \"size\": [12, 12]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"12 mm washer footprint approximated by a square patch.\"\n    },\n    {\n      \"id\": \"lag_screw_upper_left\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x-\",\n        \"center\": [170, 10],\n        \"size\": [12, 12]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"12 mm washer footprint approximated by a square patch.\"\n    },\n    {\n      \"id\": \"lag_screw_upper_right\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x-\",\n        \"center\": [170, 30],\n        \"size\": [12, 12]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"12 mm washer footprint approximated by a square patch.\"\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"tv_plate_load\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x+\",\n        \"center\": [100, 20],\n        \"size\": [100, 40]\n      },\n      \"force\": [50, -400, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 2\n  },\n  \"min_feature\": 5\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "TV wall bracket",
+  "description": "Steel wall bracket with four washer-sized wall supports and a loaded mounting region on the far end.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300,
+    200,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "lag_screw_lower_left",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30,
+      10
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "12 mm washer footprint approximated by a square patch."
+   },
+   {
+    "id": "lag_screw_lower_right",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30,
+      30
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "12 mm washer footprint approximated by a square patch."
+   },
+   {
+    "id": "lag_screw_upper_left",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170,
+      10
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "12 mm washer footprint approximated by a square patch."
+   },
+   {
+    "id": "lag_screw_upper_right",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170,
+      30
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "12 mm washer footprint approximated by a square patch."
+   }
+  ],
+  "loads": [
+   {
+    "id": "tv_plate_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      100,
+      20
+     ],
+     "size": [
+      100,
+      40
+     ]
+    },
+    "force": [
+     50,
+     -400,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "resolution": {
+   "h": 2
+  },
+  "min_feature": 5
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 25.43066930002533,
+ "cwe": {
+  "value": 0.014875160206001992,
+  "c_pred_under_intended": 2.928045256841677,
+  "c_intended_opt": 2.885128508069243,
+  "h": 2.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.000000238418579
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 100, 20)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,140 @@
+{
+ "task": "b45_pump_bracket",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:56:30",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b45_pump_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 24.456409899983555,
+ "usage": {
+  "input_tokens": 78441,
+  "cached_input_tokens": 69120,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 600,
+  "reasoning_output_tokens": 79
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: 1,000 N static downward pump load distributed over the footprint; full back face clamped; steel E = 210 GPa, \u03bd = 0.30; no dynamic loads. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Pump bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    100.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "wall_mount",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full back face at z=0 bolted to wall, idealized as fully clamped."
+   }
+  ],
+  "loads": [
+   {
+    "id": "pump_weight",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80.0,
+      35.0
+     ],
+     "size": [
+      60.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Assumed 1000 N static design weight uniformly shared by footprint nodes. Top face y=100; footprint x=50..110, z=15..55 mm."
+   }
+  ],
+  "passive": [],
+  "description": "Pump bracket; y up. Full z=0 wall face clamped. Assumed static pump design weight 1000 N, uniformly distributed downward over top footprint x=50..110 mm, z=15..55 mm. Linear elastic minimum-compliance setup; no other loads assumed.",
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 24.843671400099993,
+ "cwe": {
+  "value": -5.912859091239397e-11,
+  "c_pred_under_intended": 0.009375557967597932,
+  "c_intended_opt": 0.009375557968152296,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 50, 30)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

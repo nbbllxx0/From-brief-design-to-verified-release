@@ -1,0 +1,155 @@
+{
+ "task": "b50_valve_bracket",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:59:18",
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_passive",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b50_valve_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 28.454940099967644,
+ "usage": {
+  "input_tokens": 86903,
+  "cached_input_tokens": 80256,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 697,
+  "reasoning_output_tokens": 76
+ },
+ "returncode": 0,
+ "final": "REFUSE\nThe load pad at x=80\u2013100, y=80, z=10\u201330 mm lies entirely within the required valve-handle clearance, leaving no material to carry the load; validation reports R008 and the render confirms the conflict.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Valve actuator bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    80.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "bottom_bolted",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full bottom face y=0 bolted down; idealized fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "actuator_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      90.0,
+      20.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -600.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "600 N total downward load, uniformly shared across top pad nodes at y=80; x=80..100, z=10..30."
+   }
+  ],
+  "passive": [
+   {
+    "id": "valve_handle_clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      70.0,
+      50.0,
+      0.0
+     ],
+     "max": [
+      120.0,
+      80.0,
+      40.0
+     ]
+    },
+    "note": "Required clearance x>70, y>50 through full z depth. Element-centre selection enforces strict inequalities at h=1 mm."
+   }
+  ],
+  "description": "Valve actuator bracket; y up. Full bottom face fixed. 600 N downward on top pad x=80..100, z=10..30. Valve handle clearance x>70, y>50 through full depth. The specified load pad lies entirely within the required clearance; preserve both requirements for validation.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 28.93803730001673,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

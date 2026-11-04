@@ -1,0 +1,165 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "m",
+   "force": "kN"
+  },
+  "name": "b25 cantilever metres",
+  "domain": {
+   "size": [
+    2.0,
+    1.0,
+    1.0
+   ]
+  },
+  "material": {
+   "name": "structural steel",
+   "E": 210000000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "bearing",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.2,
+      0.2
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -100,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 0.02
+  }
+ },
+ "expected": "solve",
+ "source": "2:1:1 cantilever (Aage et al. 2015 family), in metres and kN",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "One-element-thick 0.02 m retained bearing plate inside the stated envelope.",
+   "why": "Named bearing plate has no thickness. This modest interface idealization is admissible, not an exact spec match; supplied mass ratio 1.00227.",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "from_run": "G/b25_cantilever_metres_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "Large steel cantilever — metres and kilonewtons",
+    "units": {
+     "length": "m",
+     "force": "kN"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      2.0,
+      1.0,
+      1.0
+     ]
+    },
+    "material": {
+     "name": "Structural steel",
+     "E": 210000000.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "fixed_root",
+      "region": {
+       "kind": "face",
+       "face": "x-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Fully fixed x=0 face."
+     }
+    ],
+    "loads": [
+     {
+      "id": "bearing_load",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        0.5,
+        0.5
+       ],
+       "size": [
+        0.2,
+        0.2
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0.0,
+       -100.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Total 100 kN downward, shared across the centered bearing patch on x=2 m."
+     }
+    ],
+    "passive": [
+     {
+      "id": "bearing_plate",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        1.98,
+        0.4,
+        0.4
+       ],
+       "max": [
+        2.0,
+        0.6,
+        0.6
+       ]
+      },
+      "note": "Assumed one-element-thick (0.02 m) solid steel bearing plate inside envelope; excluded from design-volume fraction."
+     }
+    ],
+    "description": "2 m x 1 m x 1 m cantilever; y is up. Fully fixed x=0 face. Total 100 kN downward (-y) on centered 0.2 m x 0.2 m bearing patch at x=2 m. Bearing plate modeled as a 0.02 m thick passive solid inside the envelope; gravity omitted.",
+    "volume_fraction": 0.15,
+    "resolution": {
+     "h": 0.02,
+     "cells_short_edge": null
+    }
+   }
+  }
+ ],
+ "notes": "E = 210 GPa = 2.1e8 kN/m^2.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "N",
+  "comment": "E=2.1e8 kN/m^2 and h=0.02 m are correct. Named bearing plate also permits a thin retained interface. Aage-family label does not verify this centred-patch case [S3]."
+ }
+}

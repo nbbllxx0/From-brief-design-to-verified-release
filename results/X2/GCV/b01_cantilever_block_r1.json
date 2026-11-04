@@ -1,0 +1,144 @@
+{
+ "task": "b01_cantilever_block",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:26:39",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 79447,
+  "cached_input_tokens": 72320,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 508,
+  "reasoning_output_tokens": 81
+ },
+ "gc_wall_s": 20.280570900067687,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 60003,
+  "cached_input_tokens": 39680,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 529,
+  "reasoning_output_tokens": 383
+ },
+ "verify_wall_s": 26.146091599948704,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 464,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1037,
+  "input_tokens": 139450,
+  "cached_input_tokens": 112000
+ },
+ "wall_s": 46.42666250001639,
+ "questions": 0,
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Bracket design, rev A",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    100.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "Steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "welded_wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Whole end face x=0 welded to wall, fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "free_end_downward_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 1 kN downward on centered 10 mm x 10 mm pad at x=200."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 27.41489230003208,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

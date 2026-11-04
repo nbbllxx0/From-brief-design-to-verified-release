@@ -1,0 +1,172 @@
+{
+ "task": "b37_battery_crossmember",
+ "cond": "GC",
+ "rep": 1,
+ "t": "2026-10-30T10:17:35",
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_load",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b37_battery_crossmember_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 23.41958240000531,
+ "usage": {
+  "input_tokens": 102318,
+  "cached_input_tokens": 82688,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 634,
+  "reasoning_output_tokens": 137
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Spec validated; render confirms both fixed ends and both downward foot loads.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Battery-tray crossmember",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    600.0,
+    60.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6082-T6",
+   "E": 70.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "left_end_fixed",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "right_end_fixed",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "foot_x200",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      200.0,
+      40.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1.5,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   },
+   {
+    "id": "foot_x400",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      400.0,
+      40.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1.5,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 23.6295082999859,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (300, 30, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

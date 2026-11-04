@@ -1,0 +1,150 @@
+{
+ "task": "b29_michell_cantilever",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:03:45",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 41882,
+  "cached_input_tokens": 36103,
+  "cache_write_input_tokens": 5773,
+  "output_tokens": 1256
+ },
+ "gc_wall_s": 17.769010400166735,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14566,
+  "cached_input_tokens": 8635,
+  "cache_write_input_tokens": 5927,
+  "output_tokens": 1038
+ },
+ "verify_wall_s": 18.041133400052786,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 56448,
+  "cached_input_tokens": 44738,
+  "output_tokens": 2294,
+  "cache_write_input_tokens": 11700
+ },
+ "wall_s": 35.81014380021952,
+ "questions": 0,
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "michell_cantilever_pin",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    100.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "pin",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      30.0,
+      50.0
+     ],
+     "radius": 15.0,
+     "span": [
+      0.0,
+      20.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid 30 mm pin through full thickness at (30,50)"
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50.0,
+      10.0
+     ],
+     "size": [
+      10.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -500.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "500 N down on 10 mm strip of right end, full thickness"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 18.47158999997191,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 100, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

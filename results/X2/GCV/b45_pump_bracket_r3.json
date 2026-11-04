@@ -1,0 +1,144 @@
+{
+ "task": "b45_pump_bracket",
+ "cond": "GCV",
+ "rep": 3,
+ "t": "2026-10-30T12:02:06",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 88386,
+  "cached_input_tokens": 66560,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1004,
+  "reasoning_output_tokens": 72
+ },
+ "gc_wall_s": 27.329726800089702,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17640,
+  "cached_input_tokens": 15104,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 536,
+  "reasoning_output_tokens": 516
+ },
+ "verify_wall_s": 21.393920900067315,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 106026,
+  "cached_input_tokens": 81664,
+  "cache_write_input_tokens": 0,
+  "reasoning_output_tokens": 588,
+  "output_tokens": 1540
+ },
+ "wall_s": 48.72364770015702,
+ "questions": 1,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Pump bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    100.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "wall_mount",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full back face z=0 bolted to wall; fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "pump_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80.0,
+      35.0
+     ],
+     "size": [
+      60.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -250.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "25 kg pump represented by the clarified total 250 N downward load, shared equally by footprint nodes; no other loads."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 22.041367599973455,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 50, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

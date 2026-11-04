@@ -1,0 +1,143 @@
+{
+ "task": "b01_cantilever_block",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 972.1750547999982,
+ "usage": {
+  "input_tokens": 1957239,
+  "cached_input_tokens": 1907456,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 7279,
+  "reasoning_output_tokens": 4280
+ },
+ "returncode": 0,
+ "final": "STOPPED \u2014 confirmed 1 mm mesh cannot receive release certification; the tool requires 0.5 mm. No release exported.",
+ "n_tool_calls": 46,
+ "n_failed_calls": 1,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "ladder",
+  "get_spec",
+  "set_params",
+  "ladder",
+  "validate_spec",
+  "list_regions",
+  "solve",
+  "status",
+  "get_spec",
+  "cancel",
+  "set_params",
+  "validate_spec",
+  "solve",
+  "solve",
+  "field_stats",
+  "solve",
+  "status",
+  "status",
+  "status",
+  "status",
+  "status",
+  "status",
+  "cancel",
+  "status",
+  "solve",
+  "status",
+  "status",
+  "status",
+  "status",
+  "status",
+  "status",
+  "status",
+  "status",
+  "field_stats",
+  "cancel",
+  "solve",
+  "solve",
+  "ask_clarification",
+  "set_params"
+ ],
+ "questions": 1,
+ "stages": {
+  "spec_s": 29.95799994468689,
+  "solve_h4.0": {
+   "wall_s": 5.062000036239624,
+   "compute_s": 5.02845790120773,
+   "iterations": 76,
+   "n_elem": 31250,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h2.0": {
+   "wall_s": 6.786999940872192,
+   "compute_s": 6.682258800137788,
+   "iterations": 61,
+   "n_elem": 250000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h1.0": {
+   "wall_s": 61.424999952316284,
+   "compute_s": 56.6735757002607,
+   "iterations": 12,
+   "n_elem": 2000000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "total_s": 957.2109999656677
+ },
+ "released": false,
+ "exports": [],
+ "replay": {
+  "ok": false,
+  "calls": 46,
+  "solves_replayed": 6,
+  "skipped": 20,
+  "mismatches": [
+   {
+    "seq": 32,
+    "tool": "solve",
+    "field": "status",
+    "log": "converged",
+    "replay": "running"
+   },
+   {
+    "seq": 32,
+    "tool": "solve",
+    "field": "iterations",
+    "log": 12,
+    "replay": null
+   },
+   {
+    "seq": 32,
+    "tool": "solve",
+    "field": "compliance_phys",
+    "log": 4.48776553617436,
+    "replay": null
+   },
+   {
+    "seq": 32,
+    "tool": "solve",
+    "field": "certified",
+    "log": false,
+    "replay": null
+   },
+   {
+    "seq": 32,
+    "tool": "solve",
+    "field": "warm_used",
+    "log": true,
+    "replay": null
+   }
+  ],
+  "final_spec_hash": "a2f6dffab83154cd"
+ }
+}

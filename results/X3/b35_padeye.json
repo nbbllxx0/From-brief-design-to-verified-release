@@ -1,0 +1,138 @@
+{
+ "task": "b35_padeye",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 140.7982354001142,
+ "usage": {
+  "input_tokens": 419385,
+  "cached_input_tokens": 393472,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1856,
+  "reasoning_output_tokens": 617
+ },
+ "returncode": 0,
+ "final": "DONE, 3e8216e3ba2d, compliance 9.05505008188826 N\u00b7mm",
+ "n_tool_calls": 21,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "ladder",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "field_stats",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "export_stl",
+  "export_report"
+ ],
+ "questions": 0,
+ "stages": {
+  "spec_s": 17.193000078201294,
+  "solve_h2.0": {
+   "wall_s": 8.468999862670898,
+   "compute_s": 7.231555100530386,
+   "iterations": 76,
+   "n_elem": 30000,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h1.0": {
+   "wall_s": 6.759999990463257,
+   "compute_s": 6.472813001368195,
+   "iterations": 67,
+   "n_elem": 240000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.5": {
+   "wall_s": 11.091000080108643,
+   "compute_s": 10.64319029985927,
+   "iterations": 61,
+   "n_elem": 1920000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.25": {
+   "wall_s": 57.60300016403198,
+   "compute_s": 54.65896260039881,
+   "iterations": 61,
+   "n_elem": 15360000,
+   "warm": true,
+   "status": "converged",
+   "certified": true
+  },
+  "export_s": 0.9906,
+  "total_s": 115.53500008583069
+ },
+ "released": true,
+ "exports": [
+  {
+   "triangles": 448564,
+   "bytes": 22428284,
+   "sha256": "82b01788f0a8d377eed461bd7d0ca04a0bfbc5c879f53821e695725abcf188cc",
+   "path": "results\\X3\\b35_padeye\\session\\exports\\Lifting_padeye_3e8216e3ba2d.stl",
+   "pool": 1,
+   "vertices": 224284,
+   "t_surface_s": 0.745,
+   "t_write_s": 0.113,
+   "mesh": {
+    "closed": true,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "volume": 86832.34441784419
+   },
+   "job": "3e8216e3ba2d",
+   "certified": true,
+   "released": true
+  },
+  {
+   "job": "3e8216e3ba2d",
+   "certified": true,
+   "json": "results\\X3\\b35_padeye\\session\\exports\\Lifting_padeye_3e8216e3ba2d_report.json",
+   "markdown": "results\\X3\\b35_padeye\\session\\exports\\Lifting_padeye_3e8216e3ba2d_report.md",
+   "stl": "results\\X3\\b35_padeye\\session\\exports\\Lifting_padeye_3e8216e3ba2d.stl"
+  }
+ ],
+ "release_spec_match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 80, 30)"
+  ],
+  "matched": "intended"
+ },
+ "replay": {
+  "ok": true,
+  "calls": 21,
+  "solves_replayed": 4,
+  "skipped": 5,
+  "mismatches": [],
+  "final_spec_hash": "dba0ac9485413cc8"
+ }
+}

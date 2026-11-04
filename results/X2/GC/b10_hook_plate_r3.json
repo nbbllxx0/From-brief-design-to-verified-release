@@ -1,0 +1,139 @@
+{
+ "task": "b10_hook_plate",
+ "cond": "GC",
+ "rep": 3,
+ "t": "2026-10-30T11:47:28",
+ "n_tool_calls": 11,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "ask_clarification",
+  "add_support",
+  "ask_clarification",
+  "add_load",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "get_spec",
+  "render"
+ ],
+ "questions": 2,
+ "oracle_hits": 1,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b10_hook_plate_r3\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 44.05095609999262,
+ "usage": {
+  "input_tokens": 128136,
+  "cached_input_tokens": 119552,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1624,
+  "reasoning_output_tokens": 304
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Validated without errors; render confirms top-face fixation and the downward 1.5 kN load on x=110\u2013120, y=0 across the full thickness. Assumptions: steel E=210 GPa, \u03bd=0.3; load shared uniformly among patch nodes.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Hook plate",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    80.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "top_attachment",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "User selected entire top face rigidly fixed to beam."
+   }
+  ],
+  "loads": [
+   {
+    "id": "hanging_load",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      115.0,
+      10.0
+     ],
+     "size": [
+      10.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1500.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "1500 N hanging load downward on bottom-face lug footprint, x=110..120, z=0..20 mm, per clarification."
+   }
+  ],
+  "passive": [],
+  "description": "Steel hook plate, 120 x 80 x 20 mm, y up. Entire top face y=80 fixed to beam per clarification. Total 1500 N downward on bottom-face lug footprint x=110..120, z=0..20 mm. Volume fraction 0.3; 1 mm elements.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 44.45970460004173,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

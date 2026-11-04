@@ -1,0 +1,207 @@
+{
+ "task": "b14_cube_torsion",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T10:56:35",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "add_load",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b14_cube_torsion_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 30.16541159991175,
+ "usage": {
+  "input_tokens": 87861,
+  "cached_input_tokens": 76160,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1045,
+  "reasoning_output_tokens": 201
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: fully fixed bottom face; isotropic steel, E = 210 GPa, \u03bd = 0.30; forces distributed equally across each pad\u2019s nodes. Each pad applies 100 N at a 45 mm lever arm, producing +18 N\u00b7m total torque. list_regions and validate_spec passed; render confirmed placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Block in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    100.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_bottom",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full-area bolted base idealized as fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "south_pad",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50.0,
+      5.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     100.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "100 N along +x, centroid lever arm 45 mm; +4500 N mm about z."
+   },
+   {
+    "id": "east_pad",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      95.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "100 N along +y, centroid lever arm 45 mm; +4500 N mm about z."
+   },
+   {
+    "id": "north_pad",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50.0,
+      95.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -100.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "100 N along -x, centroid lever arm 45 mm; +4500 N mm about z."
+   },
+   {
+    "id": "west_pad",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      5.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "100 N along -y, centroid lever arm 45 mm; +4500 N mm about z."
+   }
+  ],
+  "passive": [],
+  "description": "100 mm cube, z up. Full bottom face fixed in x,y,z. Four 10 x 10 mm square traction pads on z=100, centered at (50,5), (95,50), (50,95), (5,50) mm, flush with their respective top edges. Equal uniformly distributed tangential forces of 100 N give net zero force and +18000 N mm torque about z: 4 * 45 mm * 100 N = 18 N m. Assumptions: homogeneous isotropic linear-elastic steel E=210 GPa, nu=0.30; full-area bolting idealized as a fully fixed face; pads specify traction areas without additional passive thickness.",
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 30.375415400136262,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

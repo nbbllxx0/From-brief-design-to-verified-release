@@ -1,0 +1,252 @@
+{
+ "task": "b19_engine_bracket",
+ "cond": "GCV",
+ "rep": 3,
+ "t": "2026-10-30T11:58:36",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 179767,
+  "cached_input_tokens": 167936,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1994,
+  "reasoning_output_tokens": 535
+ },
+ "gc_wall_s": 57.879884799942374,
+ "verify": {
+  "match": false,
+  "issues": [
+   "The 8000 lbf clevis load points downward (-y); the brief requires an upward pull (+y)."
+  ]
+ },
+ "verify_usage": {
+  "input_tokens": 19716,
+  "cached_input_tokens": 17024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 462,
+  "reasoning_output_tokens": 418
+ },
+ "verify_wall_s": 18.909759800182655,
+ "repaired": true,
+ "repair_usage": {
+  "input_tokens": 80449,
+  "cached_input_tokens": 73216,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 205,
+  "reasoning_output_tokens": 21
+ },
+ "repair_final": "DONE, no changes needed: get_spec and list_regions confirm the clevis load is already 8000 lbf upward (+y). Validation passed.",
+ "usage": {
+  "input_tokens": 279932,
+  "cached_input_tokens": 258176,
+  "cache_write_input_tokens": 0,
+  "reasoning_output_tokens": 974,
+  "output_tokens": 2661
+ },
+ "wall_s": 92.29160090023652,
+ "questions": 3,
+ "n_tool_calls": 20,
+ "n_failed_calls": 0,
+ "session_log": "results\\X2\\GCV\\b19_engine_bracket_r3\\session\\session.jsonl",
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "DONE, no changes needed: get_spec and list_regions confirm the clevis load is already 8000 lbf upward (+y). Validation passed.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Engine bracket",
+  "description": "Engine bracket; inches and lbf; y up. Four 0.5 in diameter bottom washer patches fully fixed in x,y,z. Total 8000 lbf +y pull distributed over entire mandatory solid clevis cylinder. Volume fraction 0.2 applies to non-passive design volume, excluding the solid clevis, as clarified.",
+  "units": {
+   "length": "in",
+   "force": "lbf"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    7.0,
+    2.5,
+    4.0
+   ]
+  },
+  "material": {
+   "name": "Ti-6Al-4V",
+   "E": 16500000.0,
+   "nu": 0.34
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "washer_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped bottom washer, as clarified."
+   },
+   {
+    "id": "washer_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped bottom washer, as clarified."
+   },
+   {
+    "id": "washer_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped bottom washer, as clarified."
+   },
+   {
+    "id": "washer_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped bottom washer, as clarified."
+   }
+  ],
+  "loads": [
+   {
+    "id": "clevis_pull",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "force": [
+     0.0,
+     8000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total pull distributed equally over the entire kept clevis, as clarified."
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_clevis",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "note": "Required solid clevis cylinder."
+   }
+  ],
+  "resolution": {
+   "h": 0.05,
+   "cells_short_edge": null
+  },
+  "min_feature": null,
+  "meta": {}
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 35.32923620007932,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1.27, grid (140, 50, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

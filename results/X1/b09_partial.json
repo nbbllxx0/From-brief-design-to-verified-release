@@ -1,0 +1,16 @@
+{
+ "problem": "b09_duct_bridge",
+ "source": "results/X1/escalation.log (console lines; the run crashed before escalation.json was written, so no shape metrics)",
+ "rungs": {"preview": {"h": 1.0, "grid": [300, 60, 60], "n_elem": 1080000},
+           "refine": {"h": 0.5, "grid": [600, 120, 120], "n_elem": 8640000},
+           "release": {"h": 0.25, "grid": [1200, 240, 240], "n_elem": 69120000}},
+ "preview": {"status": "not_converged", "iterations": 300, "compute_s": 170.6},
+ "refine": {
+  "cold":        {"status": "converged",     "iterations": 76,  "compute_s": 685.0,  "s_per_iter": 9.01, "compliance": 1.65532e6, "betti_end": {"b0": 1, "b1": 953,  "b2": 28, "chi": -924}},
+  "tail":        {"status": "not_converged", "iterations": 300, "compute_s": 2469.3, "s_per_iter": 8.23, "compliance": 7.05292e8, "changed_frac": 0.00162, "betti_end": {"b0": 1, "b1": 629,  "b2": 7,  "chi": -621}},
+  "reopen":      {"status": "converged",     "iterations": 21,  "compute_s": 78.4,   "s_per_iter": 3.73, "compliance": 1.66793e6, "changed_frac": 0.00278, "betti_end": {"b0": 1, "b1": 292,  "b2": 17, "chi": -274}},
+  "reopen_long": {"status": "not_converged", "iterations": 300, "compute_s": 2243.1, "s_per_iter": 7.48, "compliance": 1.61723e6, "changed_frac": 0.0135,  "betti_end": {"b0": 2, "b1": 1748, "b2": 11, "chi": -1735}}
+ },
+ "release": "not run: the cold release returned no compliance (error not captured; the print crashed on None). Deferred.",
+ "note": "The cold preview itself did not converge in 300 iterations and is a lattice (b1 953 at refine): a pressure load on the whole top face at 25% volume. No arm is interpretable here; see NOTES.md."
+}

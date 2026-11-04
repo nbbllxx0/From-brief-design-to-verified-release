@@ -1,0 +1,155 @@
+{
+ "task": "b43_press_riser",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T11:07:24",
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_passive",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b43_press_riser_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 29.288992899935693,
+ "usage": {
+  "input_tokens": 110475,
+  "cached_input_tokens": 97792,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 874,
+  "reasoning_output_tokens": 283
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: steel E = 210 GPa, \u03bd = 0.3; bolts fully fix the bottom face; pad dimensions run 100 mm along x and 50 mm along z. Volume fraction applies to non-passive material. Mesh spacing is 2 mm. Validation passed; render checked.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Press riser block",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    100.0,
+    150.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bed_bolts",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bolted bed idealized as fully fixed across the bottom material."
+   }
+  ],
+  "loads": [
+   {
+    "id": "tool_force",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      150.0,
+      75.0
+     ],
+     "size": [
+      100.0,
+      50.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -20000.0,
+     2000.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total load on central top pad, x=100..200, z=50..100, y=100."
+   }
+  ],
+  "passive": [
+   {
+    "id": "coolant_channel",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      0.0,
+      45.0
+     ],
+     "max": [
+      300.0,
+      30.0,
+      105.0
+     ]
+    },
+    "note": "Full-length empty coolant channel, opening at bottom."
+   }
+  ],
+  "description": "Press riser; y up. Full available bottom bearing area bolted to bed. Open-bottom coolant channel runs along x. Top pad is 100 mm along x and 50 mm along z.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": null,
+   "cells_short_edge": 50
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 29.524624400073662,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 75)"
+  ],
+  "matched": "admissible:1"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

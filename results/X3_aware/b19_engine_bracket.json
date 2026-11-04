@@ -1,0 +1,174 @@
+{
+ "task": "b19_engine_bracket",
+ "n_solves": 4,
+ "replay_calls_ok": true,
+ "x3_total_s": 1876.7400000095367,
+ "solve_wall_voxfem_s": 1824.6125281001441,
+ "solve_wall_aware_s": 282.17673909990117,
+ "total_aware_s": 334.3042110092938,
+ "release": {
+  "h": 0.0125,
+  "n_elem": 35840000,
+  "status": [
+   "converged",
+   "converged"
+  ],
+  "iterations": [
+   61,
+   61
+  ],
+  "compute_s": [
+   1507.5506202005781,
+   227.18654169957153
+  ],
+  "wall_s": [
+   1512.908666800009,
+   230.5786695999559
+  ],
+  "certified": [
+   true,
+   true
+  ],
+  "rel_dC": 1.0077004709341253e-05
+ },
+ "solves": [
+  {
+   "h": 0.1,
+   "n_elem": 70000,
+   "status": [
+    "converged",
+    "converged"
+   ],
+   "iterations": [
+    82,
+    82
+   ],
+   "compute_s": [
+    43.21563940006308,
+    9.875187798403203
+   ],
+   "wall_s": [
+    43.84369460004382,
+    10.291859799996018
+   ],
+   "certified": [
+    false,
+    false
+   ],
+   "rel_dC": 3.5647797380633506e-08
+  },
+  {
+   "h": 0.05,
+   "n_elem": 560000,
+   "status": [
+    "converged",
+    "converged"
+   ],
+   "iterations": [
+    67,
+    67
+   ],
+   "compute_s": [
+    61.732155099045485,
+    9.637735299067572
+   ],
+   "wall_s": [
+    61.9830938000232,
+    9.78468000004068
+   ],
+   "certified": [
+    false,
+    false
+   ],
+   "rel_dC": 9.309990271599844e-06
+  },
+  {
+   "h": 0.025,
+   "n_elem": 4480000,
+   "status": [
+    "converged",
+    "converged"
+   ],
+   "iterations": [
+    61,
+    61
+   ],
+   "compute_s": [
+    205.08941850042902,
+    31.020914600929245
+   ],
+   "wall_s": [
+    205.87707290006801,
+    31.52152969990857
+   ],
+   "certified": [
+    false,
+    false
+   ],
+   "rel_dC": -2.127278915353692e-06
+  },
+  {
+   "h": 0.0125,
+   "n_elem": 35840000,
+   "status": [
+    "converged",
+    "converged"
+   ],
+   "iterations": [
+    61,
+    61
+   ],
+   "compute_s": [
+    1507.5506202005781,
+    227.18654169957153
+   ],
+   "wall_s": [
+    1512.908666800009,
+    230.5786695999559
+   ],
+   "certified": [
+    true,
+    true
+   ],
+   "rel_dC": 1.0077004709341253e-05
+  }
+ ],
+ "replay_wall_s": 287.8305404998828,
+ "mismatches": [
+  {
+   "seq": 15,
+   "tool": "solve",
+   "field": "compliance_phys",
+   "log": 126.97391487090869,
+   "replay": 126.97391939724906
+  },
+  {
+   "seq": 17,
+   "tool": "solve",
+   "field": "compliance_phys",
+   "log": 123.60610426530052,
+   "replay": 123.60725503692873
+  },
+  {
+   "seq": 21,
+   "tool": "solve",
+   "field": "compliance_phys",
+   "log": 122.10617510811687,
+   "replay": 122.10591535422513
+  },
+  {
+   "seq": 27,
+   "tool": "solve",
+   "field": "compliance_phys",
+   "log": 121.26051525896641,
+   "replay": 121.26173720174972
+  },
+  {
+   "seq": 58,
+   "tool": "export_stl",
+   "field": "sha256",
+   "log": "2d48831a0e64144c1f8d3fd2aa86511c4ce1f8c2d97686a05e5082741e159dda",
+   "replay": "2031f7448f58ce3c9eb06694110ec69faeee0d6e6d1e198f60cd8d9b1db46975"
+  }
+ ]
+}

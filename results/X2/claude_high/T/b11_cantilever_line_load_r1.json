@@ -1,0 +1,122 @@
+{
+ "task": "b11_cantilever_line_load",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:21:27",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 7.325057500042021,
+ "usage": {
+  "input_tokens": 8616,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7965,
+  "output_tokens": 378
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"cantilever_end_line_load\",\"description\":\"Cantilever beam 120x40x20 mm, x=0 face fully fixed, 1 kN downward line load along the bottom edge of the free end (x=120, y=0) across full width.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[120,40,20]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.3,\"supports\":[{\"id\":\"fixed_end\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"x = 0 end face fully fixed\"}],\"loads\":[{\"id\":\"end_line_load\",\"region\":{\"kind\":\"edge\",\"axis\":\"z\",\"at\":[120,0],\"span\":[0,20]},\"force\":[0,-1000,0],\"distribution\":\"uniform_nodes\",\"note\":\"1 kN downward, spread evenly along bottom edge of free end across full width\"}],\"passive\":[],\"resolution\":{\"h\":1.0},\"min_feature\":null,\"meta\":{}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "cantilever_end_line_load",
+  "description": "Cantilever beam 120x40x20 mm, x=0 face fully fixed, 1 kN downward line load along the bottom edge of the free end (x=120, y=0) across full width.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120,
+    40,
+    20
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "fixed_end",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "x = 0 end face fully fixed"
+   }
+  ],
+  "loads": [
+   {
+    "id": "end_line_load",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120,
+      0
+     ],
+     "span": [
+      0,
+      20
+     ]
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "1 kN downward, spread evenly along bottom edge of free end across full width"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1.0
+  },
+  "min_feature": null,
+  "meta": {}
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.537202699808404,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

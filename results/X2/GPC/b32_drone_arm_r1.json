@@ -1,0 +1,211 @@
+{
+ "task": "b32_drone_arm",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:11:48",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies millimetres for lengths and newtons for thrust."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "150 mm along x, 20 mm along y, 20 mm along z; z points upward. Tool min-corner origin gives [0,150] x [0,20] x [0,20]."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Aluminium 7075 is stated. Isotropic linear-elastic constants E=71700 N/mm^2 and nu=0.33 are assumed because the brief gives no elastic constants or temper."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.2; tool applies it to non-passive design volume, with required solid pad excluded."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 0.5 mm elements; h=0.5 mm."
+   },
+   {
+    "key": "support:root_clamp",
+    "source": "stated",
+    "note": "Root end face x=0 is clamped: fix x, y and z translations on the full face."
+   },
+   {
+    "key": "load:motor_thrust",
+    "source": "stated",
+    "note": "15 N total upward (+z) on pad top face z=20, x=130..150, full width y=0..20; represented by the tool's total force shared across face nodes."
+   },
+   {
+    "key": "passive:motor_pad",
+    "source": "stated",
+    "note": "Keep solid x=130..150, full width y=0..20, z=15..20, as specified."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b32_drone_arm_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 26.227067899890244,
+ "usage": {
+  "input_tokens": 107077,
+  "cached_input_tokens": 88576,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1010,
+  "reasoning_output_tokens": 134
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumed isotropic aluminium 7075 properties: E = 71,700 N/mm\u00b2, \u03bd = 0.33.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Drone arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150.0,
+    20.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 7075",
+   "E": 71700.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "root_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Root end face x=0 clamped in the frame."
+   }
+  ],
+  "loads": [
+   {
+    "id": "motor_thrust",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      140.0,
+      10.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     15.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 15 N upward thrust distributed across the top face of the motor pad, x=130..150, y=0..20, z=20."
+   }
+  ],
+  "passive": [
+   {
+    "id": "motor_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      130.0,
+      0.0,
+      15.0
+     ],
+     "max": [
+      150.0,
+      20.0,
+      20.0
+     ]
+    },
+    "note": "Required solid motor pad: 20 x 20 x 5 mm at the top of the far end."
+   }
+  ],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 0.5,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 26.49424510006793,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=0.5, grid (300, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

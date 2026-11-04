@@ -1,0 +1,36 @@
+{
+ "task": "b46_sensor_housing",
+ "cond": "T",
+ "rep": 3,
+ "t": "2026-10-30T11:28:20",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 7.176200099987909,
+ "usage": {
+  "input_tokens": 19977,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 95,
+  "reasoning_output_tokens": 65
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The connector plug clearance cannot be specified because its dimensions and location within the domain are not defined.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 7.317365200025961,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "clarify",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

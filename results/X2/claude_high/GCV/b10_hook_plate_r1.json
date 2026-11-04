@@ -1,0 +1,142 @@
+{
+ "task": "b10_hook_plate",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T17:59:53",
+ "gc_correct": false,
+ "gc_usage": {
+  "input_tokens": 41646,
+  "cached_input_tokens": 35958,
+  "cache_write_input_tokens": 5682,
+  "output_tokens": 1211
+ },
+ "gc_wall_s": 18.725503799971193,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14412,
+  "cached_input_tokens": 8486,
+  "cache_write_input_tokens": 5922,
+  "output_tokens": 582
+ },
+ "verify_wall_s": 9.666752000106499,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 56058,
+  "cached_input_tokens": 44444,
+  "output_tokens": 1793,
+  "cache_write_input_tokens": 11604
+ },
+ "wall_s": 28.39225580007769,
+ "questions": 0,
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Hook plate",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    80.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bolted_top",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bolted along top face y=80 to beam"
+   }
+  ],
+  "loads": [
+   {
+    "id": "hanging_load",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120.0,
+      0.0
+     ],
+     "span": null
+    },
+    "force": [
+     0.0,
+     -1500.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "1.5 kN hanging (gravity -y) from lower corner, spread through thickness"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 10.095780499977991,
+ "cwe": {
+  "value": 0.059393955186248126,
+  "c_pred_under_intended": 2.7392964889321916,
+  "c_intended_opt": 2.5857203314423347,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 20)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

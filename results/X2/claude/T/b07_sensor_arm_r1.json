@@ -1,0 +1,123 @@
+{
+ "task": "b07_sensor_arm",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T15:03:30",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 11.538842300185934,
+ "usage": {
+  "input_tokens": 8594,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7943,
+  "output_tokens": 582
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"sensor_arm\",\"description\":\"Cantilevered sensor arm along x, fixed to the robot frame at x = 0, carrying a 20 N camera on a 20 x 20 mm plate centred on the x = 150 end face.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[150,30,30]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.25,\"supports\":[{\"id\":\"robot_frame\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Assumed: the arm attaches to the robot frame over its whole end face at x = 0, opposite the camera end, fully clamped.\"}],\"loads\":[{\"id\":\"camera_weight\",\"region\":{\"kind\":\"patch\",\"face\":\"x+\",\"center\":[15,15],\"size\":[20,20]},\"force\":[0,0,-20],\"distribution\":\"uniform_nodes\",\"note\":\"2 kg camera weight (about 20 N), assumed to act downward in -z, on the 20 x 20 mm mounting plate centred on the x = 150 end face.\"}],\"passive\":[],\"resolution\":{\"h\":1.0},\"min_feature\":null,\"meta\":{\"assumptions\":[\"The brief does not say where the arm meets the robot frame, so the x = 0 face is taken as the fixed attachment.\",\"Gravity is taken as acting in -z.\"]}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "sensor_arm",
+  "description": "Cantilevered sensor arm along x, fixed to the robot frame at x = 0, carrying a 20 N camera on a 20 x 20 mm plate centred on the x = 150 end face.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150,
+    30,
+    30
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "robot_frame",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Assumed: the arm attaches to the robot frame over its whole end face at x = 0, opposite the camera end, fully clamped."
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera_weight",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      15,
+      15
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "force": [
+     0,
+     0,
+     -20
+    ],
+    "distribution": "uniform_nodes",
+    "note": "2 kg camera weight (about 20 N), assumed to act downward in -z, on the 20 x 20 mm mounting plate centred on the x = 150 end face."
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1.0
+  },
+  "min_feature": null,
+  "meta": {
+   "assumptions": [
+    "The brief does not say where the arm meets the robot frame, so the x = 0 face is taken as the fixed attachment.",
+    "Gravity is taken as acting in -z."
+   ]
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 11.72979149990715,
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (150, 30, 30)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "agentto.spec/v0",
+  "name": "TV wall bracket",
+  "units": {
+    "length": "mm",
+    "force": "N"
+  },
+  "domain": {
+    "kind": "box",
+    "size": [300, 200, 40]
+  },
+  "material": {
+    "name": "steel",
+    "E": 210000,
+    "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+    {
+      "id": "lag_screw_1",
+      "region": {
+        "kind": "patch",
+        "face": "x-",
+        "center": [30, 10],
+        "size": [12, 12]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "12 mm washer footprint approximated by a 12 x 12 mm wall-face patch."
+    },
+    {
+      "id": "lag_screw_2",
+      "region": {
+        "kind": "patch",
+        "face": "x-",
+        "center": [30, 30],
+        "size": [12, 12]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "12 mm washer footprint approximated by a 12 x 12 mm wall-face patch."
+    },
+    {
+      "id": "lag_screw_3",
+      "region": {
+        "kind": "patch",
+        "face": "x-",
+        "center": [170, 10],
+        "size": [12, 12]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "12 mm washer footprint approximated by a 12 x 12 mm wall-face patch."
+    },
+    {
+      "id": "lag_screw_4",
+      "region": {
+        "kind": "patch",
+        "face": "x-",
+        "center": [170, 30],
+        "size": [12, 12]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "12 mm washer footprint approximated by a 12 x 12 mm wall-face patch."
+    }
+  ],
+  "loads": [
+    {
+      "id": "tv_plate_load",
+      "region": {
+        "kind": "patch",
+        "face": "x+",
+        "center": [100, 20],
+        "size": [100, 40]
+      },
+      "force": [50, -400, 0],
+      "distribution": "uniform_nodes"
+    }
+  ],
+  "resolution": {
+    "h": 2
+  },
+  "min_feature": 5
+}

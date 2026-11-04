@@ -1,0 +1,155 @@
+{
+ "task": "b13_cantilever_end_traction",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:29:20",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 144740,
+  "cached_input_tokens": 136704,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 884,
+  "reasoning_output_tokens": 143
+ },
+ "gc_wall_s": 31.424990200204775,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17659,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 122,
+  "reasoning_output_tokens": 102
+ },
+ "verify_wall_s": 6.086665999842808,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 245,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1006,
+  "input_tokens": 162399,
+  "cached_input_tokens": 136704
+ },
+ "wall_s": 37.51165620004758,
+ "questions": 1,
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Cantilever with a distributed end load",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_root",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Entire x=0 face fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "distributed_end_shear",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "force": [
+     0.0,
+     -4000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 4 kN downward (-y), uniformly shared over all nodes of the x=160 face."
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_end_plate",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      0.0,
+      0.0
+     ],
+     "max": [
+      160.0,
+      80.0,
+      80.0
+     ]
+    },
+    "note": "Mandatory 4 mm thick solid plate across the entire free end."
+   }
+  ],
+  "description": "160 x 80 x 80 mm cantilever; y up. Fully fixed at x=0. Keep solid end plate x=156..160 mm. Total 4000 N shear in -y uniformly distributed over x=160 face. Confirmed volume fraction 0.12 of non-passive design volume, excluding end plate.",
+  "volume_fraction": 0.12,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 6.3644348999951035,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

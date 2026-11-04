@@ -1,0 +1,189 @@
+{
+ "task": "b45_pump_bracket",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:18:48",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "assumed",
+    "note": "Length mm stated; force N chosen because brief specifies no force unit."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "160 x 100 x 60 mm in x,y,z; origin at minimum corner, y up."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel stated; isotropic linear elastic E=210000 N/mm\u00b2 and nu=0.3 assumed (tool steel defaults)."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.25."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 2 mm elements; h=2 mm."
+   },
+   {
+    "key": "support:wall",
+    "source": "stated",
+    "note": "Back face z=0 bolts to wall over its full area; represented as full-face fixation in x,y,z."
+   },
+   {
+    "key": "load:pump",
+    "source": "answered",
+    "note": "Clarification specifies pump weighs 25 kg and instructs use of 250 N downward (-y), spread over the footprint, with nothing else acting. Patch y=100, x=50..110, z=15..55 mm from brief."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "units",
+   "material"
+  ]
+ },
+ "n_tool_calls": 18,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "ask_clarification",
+  "update_item",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 1,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b45_pump_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 35.86956879985519,
+ "usage": {
+  "input_tokens": 130840,
+  "cached_input_tokens": 119168,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1354,
+  "reasoning_output_tokens": 136
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: N force units; isotropic linear-elastic steel with E = 210,000 N/mm\u00b2 and \u03bd = 0.3. Clarified load: 250 N downward. Validation passed, render checked, all items tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Pump bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    100.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "wall",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full back face z=0 bolted to wall, idealized as fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "pump",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80.0,
+      35.0
+     ],
+     "size": [
+      60.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -250.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Clarified pump load: 250 N downward (-y), spread over the stated footprint. No other forces."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 36.082889599958435,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 50, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

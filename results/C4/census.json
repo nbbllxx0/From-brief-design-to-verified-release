@@ -1,0 +1,4987 @@
+{
+ "solves": 486,
+ "certified": 54,
+ "by_study": {
+  "X1": {
+   "solves": 70,
+   "certified": 20
+  },
+  "X3": {
+   "solves": 63,
+   "certified": 15
+  },
+  "X5": {
+   "solves": 16,
+   "certified": 4
+  },
+  "X6a": {
+   "solves": 336,
+   "certified": 14
+  },
+  "solver": {
+   "solves": 1,
+   "certified": 1
+  }
+ },
+ "uncertified_by_status": {
+  "converged": 420,
+  "solve_failed": 1,
+  "not_converged": 11
+ },
+ "would_pass_without_gate": 431,
+ "not_converged_finished": [
+  {
+   "path": "refine_pilot.json.rows[0].arms.cold_phys",
+   "study": "X1",
+   "n_elem": 1024000
+  },
+  {
+   "path": "refine_pilot.json.rows[0].arms.phys_tail",
+   "study": "X1",
+   "n_elem": 1024000
+  },
+  {
+   "path": "refine_pilot.json.rows[0].arms.phys_reopen_long",
+   "study": "X1",
+   "n_elem": 1024000
+  },
+  {
+   "path": "refine_pilot.json.rows[1].arms.cold_phys",
+   "study": "X1",
+   "n_elem": 1024000
+  },
+  {
+   "path": "refine_pilot.json.rows[1].arms.phys_tail",
+   "study": "X1",
+   "n_elem": 1024000
+  },
+  {
+   "path": "refine_pilot.json.rows[1].arms.phys_reopen_long",
+   "study": "X1",
+   "n_elem": 1024000
+  },
+  {
+   "path": "refine_pilot.json.rows[2].arms.cold_phys",
+   "study": "X1",
+   "n_elem": 1152000
+  },
+  {
+   "path": "refine_pilot.json.rows[2].arms.phys_tail",
+   "study": "X1",
+   "n_elem": 1152000
+  },
+  {
+   "path": "refine_pilot.json.rows[2].arms.phys_reopen_long",
+   "study": "X1",
+   "n_elem": 1152000
+  },
+  {
+   "path": "b17_arch_bridge.json.rungs[1]",
+   "study": "X6a",
+   "n_elem": 225000
+  },
+  {
+   "path": "b40_crank_arm.json.rungs[2]",
+   "study": "X6a",
+   "n_elem": 1728000
+  }
+ ],
+ "gate_catches_in_notes": [
+  {
+   "study": "X1",
+   "what": "113.2M warm release (mg_ir), twice",
+   "count": 2,
+   "stopped_by": "spill guard",
+   "source": "results/X1/NOTES.md"
+  },
+  {
+   "study": "X5",
+   "what": "59M mg64 evaluation beside the desktop",
+   "count": 1,
+   "stopped_by": "spill guard",
+   "source": "results/X5/NOTES.md"
+  }
+ ],
+ "would_pass_by_failed_check": {
+  "none": 431
+ },
+ "release_attempts": 54,
+ "release_attempts_uncertified": [
+  {
+   "path": "escalation.json.rows[1].release.cold_failed",
+   "study": "X1",
+   "status": "solve_failed",
+   "failed": [],
+   "error": "SolveFailed('ir_lean: correction rejected with inner tolerance 1e-07')"
+  },
+  {
+   "path": "b01_cantilever_block_run1.json.stages.solve_h1.0",
+   "study": "X3",
+   "status": "converged",
+   "failed": [],
+   "error": null
+  }
+ ],
+ "rows": [
+  {
+   "path": "escalation.json.rows[0].preview",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[0].refine.cold",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[0].refine.tail",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[0].refine.reopen",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[0].refine.reopen_long",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[0].release.cold",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[0].release.tail",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[0].release.reopen",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[0].release.reopen_long",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[1].preview",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[1].refine.cold",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[1].refine.tail",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[1].refine.reopen",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[1].refine.reopen_long",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[1].release.cold",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[1].release.tail",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[1].release.reopen",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[1].release.reopen_long",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[1].release.cold_failed",
+   "status": "solve_failed",
+   "n_elem": 65536000,
+   "certified": false,
+   "checks": null,
+   "error": "SolveFailed('ir_lean: correction rejected with inner tolerance 1e-07')",
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[2].preview",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[2].refine.cold",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[2].refine.tail",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[2].refine.reopen",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[2].refine.reopen_long",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[2].release.cold",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[2].release.tail",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[2].release.reopen",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[2].release.reopen_long",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[3].preview",
+   "status": "converged",
+   "n_elem": 400000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[3].refine.cold",
+   "status": "converged",
+   "n_elem": 3200000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[3].refine.tail",
+   "status": "converged",
+   "n_elem": 3200000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[3].refine.reopen",
+   "status": "converged",
+   "n_elem": 3200000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[3].refine.reopen_long",
+   "status": "converged",
+   "n_elem": 3200000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[3].release.cold",
+   "status": "converged",
+   "n_elem": 25600000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[3].release.tail",
+   "status": "converged",
+   "n_elem": 25600000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[3].release.reopen",
+   "status": "converged",
+   "n_elem": 25600000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[3].release.reopen_long",
+   "status": "converged",
+   "n_elem": 25600000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[4].preview",
+   "status": "converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[4].refine.cold",
+   "status": "converged",
+   "n_elem": 9216000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[4].refine.tail",
+   "status": "converged",
+   "n_elem": 9216000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[4].refine.reopen",
+   "status": "converged",
+   "n_elem": 9216000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[4].refine.reopen_long",
+   "status": "converged",
+   "n_elem": 9216000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[4].release.cold",
+   "status": "converged",
+   "n_elem": 73728000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[4].release.tail",
+   "status": "converged",
+   "n_elem": 73728000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[4].release.reopen",
+   "status": "converged",
+   "n_elem": 73728000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "escalation.json.rows[4].release.reopen_long",
+   "status": "converged",
+   "n_elem": 73728000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[0].coarse",
+   "status": "converged",
+   "n_elem": 128000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[0].arms.cold",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[0].arms.tail",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[0].arms.reopen",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[0].arms.reopen_long",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[0].arms.cold_phys",
+   "status": "not_converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[0].arms.phys_tail",
+   "status": "not_converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[0].arms.phys_reopen_long",
+   "status": "not_converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[1].coarse",
+   "status": "converged",
+   "n_elem": 128000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[1].arms.cold",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[1].arms.tail",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[1].arms.reopen",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[1].arms.reopen_long",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[1].arms.cold_phys",
+   "status": "not_converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[1].arms.phys_tail",
+   "status": "not_converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[1].arms.phys_reopen_long",
+   "status": "not_converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[2].coarse",
+   "status": "converged",
+   "n_elem": 144000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[2].arms.cold",
+   "status": "converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[2].arms.tail",
+   "status": "converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[2].arms.reopen",
+   "status": "converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[2].arms.reopen_long",
+   "status": "converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[2].arms.cold_phys",
+   "status": "not_converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[2].arms.phys_tail",
+   "status": "not_converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "refine_pilot.json.rows[2].arms.phys_reopen_long",
+   "status": "not_converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X1"
+  },
+  {
+   "path": "b01_cantilever_block.json.stages.solve_h4.0",
+   "status": "converged",
+   "n_elem": 31250,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b01_cantilever_block.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 250000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b01_cantilever_block.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 2000000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b01_cantilever_block.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 16000000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b01_cantilever_block_run1.json.stages.solve_h4.0",
+   "status": "converged",
+   "n_elem": 31250,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b01_cantilever_block_run1.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 250000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b01_cantilever_block_run1.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 2000000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b01_cantilever_block_run2.json.stages.solve_h4.0",
+   "status": "converged",
+   "n_elem": 31250,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b01_cantilever_block_run2.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 250000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b01_cantilever_block_run2.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 2000000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b01_cantilever_block_run2.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 16000000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b02_mbb_half.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 24000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b02_mbb_half.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b02_mbb_half.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 1536000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b02_mbb_half.json.stages.solve_h0.25",
+   "status": "converged",
+   "n_elem": 12288000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b04_torsion_shaft.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 128000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b04_torsion_shaft.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b04_torsion_shaft.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b04_torsion_shaft.json.stages.solve_h0.25",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b05_l_bracket.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 50000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b05_l_bracket.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 400000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b05_l_bracket.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 3200000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b05_l_bracket.json.stages.solve_h0.25",
+   "status": "converged",
+   "n_elem": 25600000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b06_motor_mount.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 144000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b06_motor_mount.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b06_motor_mount.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 9216000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b06_motor_mount.json.stages.solve_h0.25",
+   "status": "converged",
+   "n_elem": 73728000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 96000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 768000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.stages.solve_h0.25",
+   "status": "converged",
+   "n_elem": 6144000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.stages.solve_h0.125",
+   "status": "converged",
+   "n_elem": 49152000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b17_arch_bridge.json.stages.solve_h4.0",
+   "status": "converged",
+   "n_elem": 28125,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b17_arch_bridge.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 225000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b17_arch_bridge.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 1800000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b17_arch_bridge.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 14400000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b19_engine_bracket.json.stages.solve_h0.1",
+   "status": "converged",
+   "n_elem": 70000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b19_engine_bracket.json.stages.solve_h0.05",
+   "status": "converged",
+   "n_elem": 560000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b19_engine_bracket.json.stages.solve_h0.025",
+   "status": "converged",
+   "n_elem": 4480000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b19_engine_bracket.json.stages.solve_h0.0125",
+   "status": "converged",
+   "n_elem": 35840000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b25_cantilever_metres.json.stages.solve_h0.04",
+   "status": "converged",
+   "n_elem": 31250,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b25_cantilever_metres.json.stages.solve_h0.02",
+   "status": "converged",
+   "n_elem": 250000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b25_cantilever_metres.json.stages.solve_h0.01",
+   "status": "converged",
+   "n_elem": 2000000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b25_cantilever_metres.json.stages.solve_h0.005",
+   "status": "converged",
+   "n_elem": 16000000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b31_pillow_block.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 36000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b31_pillow_block.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 288000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b31_pillow_block.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 2304000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b31_pillow_block.json.stages.solve_h0.25",
+   "status": "converged",
+   "n_elem": 18432000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b35_padeye.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 30000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b35_padeye.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 240000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b35_padeye.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 1920000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b35_padeye.json.stages.solve_h0.25",
+   "status": "converged",
+   "n_elem": 15360000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b40_crank_arm.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 27000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b40_crank_arm.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 216000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b40_crank_arm.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 1728000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b40_crank_arm.json.stages.solve_h0.25",
+   "status": "converged",
+   "n_elem": 13824000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 128000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.stages.solve_h0.25",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "b47_camera_mount.json.stages.solve_h2.0",
+   "status": "converged",
+   "n_elem": 54000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b47_camera_mount.json.stages.solve_h1.0",
+   "status": "converged",
+   "n_elem": 432000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b47_camera_mount.json.stages.solve_h0.5",
+   "status": "converged",
+   "n_elem": 3456000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X3"
+  },
+  {
+   "path": "b47_camera_mount.json.stages.solve_h0.25",
+   "status": "converged",
+   "n_elem": 27648000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X3"
+  },
+  {
+   "path": "resolution.json.span_bridge.rows[0]",
+   "status": "converged",
+   "n_elem": 64000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.span_bridge.rows[1]",
+   "status": "converged",
+   "n_elem": 512000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.span_bridge.rows[2]",
+   "status": "converged",
+   "n_elem": 4096000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.span_bridge.rows[3]",
+   "status": "converged",
+   "n_elem": 32768000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.span_bridge.chain_reopen_long[0]",
+   "status": "converged",
+   "n_elem": 64000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.span_bridge.chain_reopen_long[1]",
+   "status": "converged",
+   "n_elem": 512000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.span_bridge.chain_reopen_long[2]",
+   "status": "converged",
+   "n_elem": 4096000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.span_bridge.chain_reopen_long[3]",
+   "status": "converged",
+   "n_elem": 32768000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.b06.rows[0]",
+   "status": "converged",
+   "n_elem": 144000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.b06.rows[1]",
+   "status": "converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.b06.rows[2]",
+   "status": "converged",
+   "n_elem": 9216000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.b06.rows[3]",
+   "status": "converged",
+   "n_elem": 73728000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.b06.chain_reopen_long[0]",
+   "status": "converged",
+   "n_elem": 144000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.b06.chain_reopen_long[1]",
+   "status": "converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.b06.chain_reopen_long[2]",
+   "status": "converged",
+   "n_elem": 9216000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X5"
+  },
+  {
+   "path": "resolution.json.b06.chain_reopen_long[3]",
+   "status": "converged",
+   "n_elem": 73728000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X5"
+  },
+  {
+   "path": "b01_cantilever_block.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 31250,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 250000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 2000000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 16000000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b01_cantilever_block.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 24000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 1536000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 12288000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b02_mbb_half.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 128000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b04_torsion_shaft.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 50000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 400000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 3200000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 25600000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b05_l_bracket.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 144000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 1152000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 9216000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 73728000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b06_motor_mount.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 96000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 768000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 6144000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 49152000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b11_cantilever_line_load.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 28125,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.rungs[1]",
+   "status": "not_converged",
+   "n_elem": 225000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 1800000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 14400000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b17_arch_bridge.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 70000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 560000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 4480000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 35840000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_engine_bracket.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 31250,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 250000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 2000000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 16000000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b25_cantilever_metres.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 36000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 288000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 2304000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 18432000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b31_pillow_block.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 30000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 240000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 1920000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 15360000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b35_padeye.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 27000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 216000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.rungs[2]",
+   "status": "not_converged",
+   "n_elem": 1728000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 13824000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b40_crank_arm.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 128000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 1024000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 8192000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 65536000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b44_gearbox_bracket.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.rungs[0]",
+   "status": "converged",
+   "n_elem": 54000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.rungs[1]",
+   "status": "converged",
+   "n_elem": 432000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.rungs[2]",
+   "status": "converged",
+   "n_elem": 3456000,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.rungs[3]",
+   "status": "converged",
+   "n_elem": 27648000,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[0]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[1]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[2]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[3]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[4]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[5]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[6]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[7]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[8]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[9]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[10]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[11]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[12]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[13]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[14]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[15]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[16]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[17]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[18]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b47_camera_mount.json.edit_to_sketch.runs[19]",
+   "status": "converged",
+   "n_elem": null,
+   "certified": false,
+   "checks": null,
+   "error": null,
+   "release": false,
+   "study": "X6a"
+  },
+  {
+   "path": "b19_release_aware.json",
+   "status": "converged",
+   "n_elem": null,
+   "certified": true,
+   "checks": null,
+   "error": null,
+   "release": true,
+   "study": "solver"
+  }
+ ]
+}

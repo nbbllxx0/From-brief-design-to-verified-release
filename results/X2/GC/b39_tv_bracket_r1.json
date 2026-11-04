@@ -1,0 +1,215 @@
+{
+ "task": "b39_tv_bracket",
+ "cond": "GC",
+ "rep": 1,
+ "t": "2026-10-30T10:18:31",
+ "n_tool_calls": 12,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "ask_clarification",
+  "add_load",
+  "ask_clarification",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 2,
+ "oracle_hits": 2,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b39_tv_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 52.28498979983851,
+ "usage": {
+  "input_tokens": 128005,
+  "cached_input_tokens": 119552,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1578,
+  "reasoning_output_tokens": 500
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: steel E = 210 GPa, \u03bd = 0.3; washer contacts fully fixed; plate force uniformly distributed. Confirmed external plate and 12 mm contact diameters through clarification. Validation passed; render placement checked.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "TV wall bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    200.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "wall_y30_z10",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30.0,
+      10.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed 12 mm diameter washer contact at the lag screw center."
+   },
+   {
+    "id": "wall_y30_z30",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed 12 mm diameter washer contact at the lag screw center."
+   },
+   {
+    "id": "wall_y170_z10",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170.0,
+      10.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed 12 mm diameter washer contact at the lag screw center."
+   },
+   {
+    "id": "wall_y170_z30",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170.0,
+      30.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed 12 mm diameter washer contact at the lag screw center."
+   }
+  ],
+  "loads": [
+   {
+    "id": "tv_plate_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      100.0,
+      20.0
+     ],
+     "size": [
+      100.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     50.0,
+     -400.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "External TV plate transfers the total force uniformly to this end-face patch; no internal solid plate."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  },
+  "min_feature": 5.0
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 52.501913900021464,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 100, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,171 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b03 bridge deck",
+  "domain": {
+   "size": [
+    400,
+    100,
+    100
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "pin",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0,
+      0
+     ],
+     "span": null
+    }
+   },
+   {
+    "id": "expansion",
+    "fix": [
+     "y",
+     "z"
+    ],
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      400,
+      0
+     ],
+     "span": null
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -5000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "voxfem solver benchmark bridge with a distributed deck load",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "Right roller fixes y only; x and z free, left pinned edge unchanged.",
+   "why": "No explicit z guidance in the brief. This is a conventional bearing model. Supplied optimization was not converged; its tiny compliance change is not equivalence proof.",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "from_run": "claude_high/T/b03_bridge_deck_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "bridge_deck_segment",
+    "description": "400 x 100 x 100 mm steel deck segment on two full-width line bearings along the bottom end edges: left pinned, right a roller free along the span (x). A 5 kN downward load is spread uniformly over the top surface.",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      400.0,
+      100.0,
+      100.0
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "volume_fraction": 0.25,
+    "supports": [
+     {
+      "id": "left_bearing_pinned",
+      "region": {
+       "kind": "edge",
+       "axis": "z",
+       "at": [
+        0.0,
+        0.0
+       ],
+       "span": null
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Bottom edge at x=0 across the full width, pinned."
+     },
+     {
+      "id": "right_bearing_roller",
+      "region": {
+       "kind": "edge",
+       "axis": "z",
+       "at": [
+        400.0,
+        0.0
+       ],
+       "span": null
+      },
+      "fix": [
+       "y"
+      ],
+      "note": "Bottom edge at x=400 across the full width. Vertical restraint only, so the deck can expand along x."
+     }
+    ],
+    "loads": [
+     {
+      "id": "deck_load",
+      "region": {
+       "kind": "face",
+       "face": "y+"
+      },
+      "force": [
+       0.0,
+       -5000.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Uniform 5 kN total acting downward on the top surface."
+     }
+    ],
+    "passive": [],
+    "resolution": {
+     "h": 2.0
+    },
+    "min_feature": null,
+    "meta": {}
+   }
+  }
+ ],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "N",
+  "comment": "Intended guided bearing is reasonable; a y-only roller is also admissible. FEAD without title/DOI/figure is insufficient provenance."
+ }
+}

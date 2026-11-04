@@ -1,0 +1,102 @@
+\chapter{The workspace}\label{ch:workspace}
+\chapterintro{The workspace is a single browser page with ten areas. This chapter names each area, explains the status
+indicators, and shows how to move around the 3D view. Later chapters use these names.}
+
+\begin{figure}[t]
+\centering
+\widegraphic[178mm]{00_overview.png}
+\caption{The workspace after a certified release of the bracket built in Chapter~\ref{ch:spec}. The numbers refer to
+Table~\ref{tab:areas}.}
+\label{fig:overview}
+\end{figure}
+
+\begin{table}[p]
+\caption{The ten areas of the workspace (Figure~\ref{fig:overview}).}\label{tab:areas}
+\begin{fixtable}{@{}c>{\raggedright\arraybackslash}p{0.2\linewidth}X@{}}
+\# & Area & What it does \\ \midrule
+\callout{1} & \gui{Top bar} & Problem picker (\gui{New design\ldots}, the 50 suite tasks, the three template problems),
+specification status, backend connection and round-trip time, light/dark theme. \\
+\callout{2} & \gui{Design intent} & The specification as a tree: domain, material, supports, loads, keep-in and keep-out
+regions. Click an item to select it; a red \gui{error} or amber \gui{check} badge marks an item that a rule flags. \\
+\callout{3} & \gui{Checks} & Live rule findings, each with its code, severity and message. \\
+\callout{4} & \gui{Inspector} & Exact values of the selected item, edited in place: region kind, face, centre, size,
+force, fixed directions. \\
+\callout{5} & \gui{Viewport tools} & \gui{Select}, \gui{Support}, \gui{Load}, \gui{Keep-in}, \gui{Keep-out};
+\gui{Hide design}. \\
+\callout{6} & \gui{3D viewport} & The domain with supports (blue), loads (orange arrows), keep-in (green) and keep-out
+(pink) regions; the density design or its surface; the orientation cube; a size legend. \\
+\callout{7} & \gui{Result card} & The latest finished design: certified or not, current or stale, compliance, volume,
+grid, each certificate check, \gui{Surface}/\gui{Voxels}, \gui{Export STL + report}. \\
+\callout{8} & \gui{Assistant} & Chat with the design assistant, the \gui{Propose}/\gui{Act} dial, clarification
+questions and proposed changes as cards. \\
+\callout{9} & \gui{Resolution ladder} & \gui{Sketch}, \gui{Preview}, \gui{Refine} and \gui{Release} with their element
+counts, times and certificate seals; \gui{Optimize release}; \gui{Stop}; live compliance and volume with a convergence
+sparkline; the \gui{GPU} status pill. \\
+\callout{10} & \gui{Timeline} & The session log, newest on the right, each record tagged \gui{USER}, \gui{AGENT},
+\gui{GPU} or \gui{SYSTEM}. Hover a record for its time and details. \\
+\end{fixtable}
+\end{table}
+
+\section{The areas}
+Figure~\ref{fig:overview} and Table~\ref{tab:areas} name the ten areas. Three of them carry most of the work: the
+\gui{Design intent} tree with its \gui{Inspector} below (where you state the problem), the viewport (where you place
+regions by clicking faces), and the ladder with the result card (where you solve and read the outcome).
+
+\section{Status indicators}
+\begin{description}
+  \item[Specification status] (top bar). \emph{valid spec}, \emph{valid $\cdot$ $n$ warnings}, or \emph{$n$ errors}.
+  It counts rule findings and schema errors. The ladder is hidden or disabled while there is an error.
+  \item[Backend] (top bar). Whether the WebSocket to the backend is open, with the round-trip time in milliseconds.
+  \item[GPU] (bottom right). \emph{off} before the first solve request, \emph{starting} while the worker process loads
+  CUDA and the solver, \emph{ready}, or \emph{dead} if the worker exited (Chapter~\ref{ch:limits}).
+  \item[Rung buttons]. Each shows its element count and, after a solve, its compute time; an \gui{$\uparrow$} marks a warm
+  start from the rung below, a seal marks a certified result. While a rung runs it shows \emph{setting up\ldots} and then
+  the iteration count.
+  \item[Result card badges]. \gui{certified} or \gui{not certified}, and \gui{stale} when the specification has changed
+  since this design was solved (Section~\ref{sec:stale}).
+\end{description}
+
+\section{First launch}
+On first launch a \gui{Getting started} card sits above the result card (Figure~\ref{fig:firstrun}). It summarizes the
+workflow in three steps and the two shortcuts worth learning first: \keycap{?} for the keyboard map and
+\keycap{Ctrl}+\keycap{K} for the command palette. \gui{Got it} hides it.
+
+\begin{figure}[t]
+\wideshot{01_first_run.png}
+\caption{The \gui{Getting started} card at the top right. In this screenshot the backend session already held the
+bracket of Chapter~\ref{ch:spec}, so the problem picker reads \gui{live session}; on an empty session the workspace opens
+the suite task b06 instead.}
+\label{fig:firstrun}
+\end{figure}
+
+\section{Moving around the 3D view}
+\index{viewport navigation}
+\begin{itemize}
+  \item Left-drag orbits, right-drag pans, the mouse wheel zooms.
+  \item Click a face of the orientation cube to look along that axis.
+  \item Click an item in the viewport or in the tree to select it; the inspector shows its values.
+  \item \gui{Hide design} hides the density so you can see the regions inside it.
+\end{itemize}
+
+\section{The timeline}
+The timeline at the bottom is the session log made visible (Figure~\ref{fig:timeline}). Each record is a tool call or a
+solve result, tagged with its actor. Agent edits appear here just like yours. Chapter~\ref{ch:provenance} describes the
+log behind it.
+
+\begin{figure}[h]
+\widegraphic[178mm]{15_timeline.png}
+\caption{The timeline: user edits, solves and GPU results, each tagged with its actor.}
+\label{fig:timeline}
+\end{figure}
+
+\section{Themes, keyboard and palette}
+\gui{Dark}/\gui{Light} in the top bar switches the theme (Figure~\ref{fig:dark}). \keycap{?} opens the keyboard map and
+\keycap{Ctrl}+\keycap{K} the command palette, which runs any rung, \gui{Optimize release}, \gui{Stop}, shows the last
+surface, exports, undoes and redoes, picks a tool and switches the theme. Appendix~\ref{app:keys} lists all shortcuts.
+Shortcuts are off while you type in a field.
+
+\begin{figure}[h]
+\wideshot[150mm]{18_dark.png}
+\caption{The dark theme.}
+\label{fig:dark}
+\end{figure}

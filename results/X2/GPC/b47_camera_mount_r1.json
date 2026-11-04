@@ -1,0 +1,191 @@
+{
+ "task": "b47_camera_mount",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:19:58",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies mm dimensions and an 80 N force."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 120 x 60 x 60 mm in x,y,z; y up."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Aluminium 6061 is stated; isotropic linear-elastic E=69000 N/mm^2 and nu=0.33 are assumed because elastic constants and temper are not supplied."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "assumed",
+    "note": "Use 0.20 of the design volume as a lightweight starting target. 'As light as practical' provides no numerical volume, stiffness, stress or deflection limit to determine a unique minimum mass."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "1 mm elements: h=1 mm."
+   },
+   {
+    "key": "support:gantry",
+    "source": "stated",
+    "note": "The full x=0 face is bolted to the gantry; fix x,y,z on that entire face."
+   },
+   {
+    "key": "load:camera",
+    "source": "derived",
+    "note": "From y up and 80 N downward, total force=(0,-80,0) N. From centre of 60 x 60 mm x=120 face, pad centre (y,z)=(30,30) mm; 20 x 20 mm pad spans y,z=20..40 mm."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "volume_fraction"
+  ]
+ },
+ "n_tool_calls": 15,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b47_camera_mount_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 29.733967000152916,
+ "usage": {
+  "input_tokens": 115264,
+  "cached_input_tokens": 106752,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 883,
+  "reasoning_output_tokens": 120
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Assumptions: volume fraction 0.20; aluminium 6061 elastic constants E = 69,000 N/mm\u00b2, \u03bd = 0.33. Validation passed, render placement confirmed, and every item source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Inspection-camera mount",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    60.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "gantry",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full x=0 face bolted to gantry; modelled as fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -80.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 80 N downward (-y) over centred 20 x 20 mm end-face pad."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 29.973839699989185,
+ "cwe": {
+  "value": -0.2572918140867615,
+  "c_pred_under_intended": 0.2030012587452242,
+  "c_intended_opt": 0.2733257322263287,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.3333332538604736
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": false,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 60)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

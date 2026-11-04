@@ -1,0 +1,71 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b42 snap hook",
+  "domain": {
+   "size": [
+    40,
+    10,
+    12
+   ]
+  },
+  "material": {
+   "name": "PA12",
+   "E": 1700.0,
+   "nu": 0.4
+  },
+  "volume_fraction": 0.35,
+  "supports": [
+   {
+    "id": "housing",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      38,
+      6
+     ],
+     "size": [
+      4,
+      12
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     15,
+     0
+    ]
+   }
+  ],
+  "min_feature": 1.2,
+  "resolution": {
+   "h": 0.25
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Underside strip x=36..40 and upward +15 N agree. This is the stated linear compliance problem, not certification of snap action."
+ }
+}

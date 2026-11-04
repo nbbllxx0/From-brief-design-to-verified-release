@@ -1,0 +1,213 @@
+{
+ "task": "b12_wheel",
+ "cond": "GC",
+ "rep": 2,
+ "t": "2026-10-30T11:17:58",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b12_wheel_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 24.47078329999931,
+ "usage": {
+  "input_tokens": 80432,
+  "cached_input_tokens": 71552,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 670,
+  "reasoning_output_tokens": 113
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Validated without errors; render confirms placement. Assumptions: standard steel (E = 210 GPa, \u03bd = 0.3); pads are surface regions; load distributed uniformly across its pad.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Wheel problem",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    50.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "corner_xmin_zmin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      2.5
+     ],
+     "size": [
+      5.0,
+      5.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "corner_xmax_zmin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      97.5,
+      2.5
+     ],
+     "size": [
+      5.0,
+      5.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "corner_xmin_zmax",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      97.5
+     ],
+     "size": [
+      5.0,
+      5.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "corner_xmax_zmax",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      97.5,
+      97.5
+     ],
+     "size": [
+      5.0,
+      5.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "bottom_centre_load",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      50.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -2000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 2 kN downward, distributed over the centred bottom-face pad."
+   }
+  ],
+  "passive": [],
+  "description": "Y-up envelope. Four fully fixed 5 x 5 mm corner pads on y=0; total 2000 N downward on a centred 10 x 10 mm bottom-face pad.",
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 24.71795150008984,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 50, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,120 @@
+{
+ "task": "b01_cantilever_block",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T15:02:47",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 7.507815399905667,
+ "usage": {
+  "input_tokens": 8646,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7995,
+  "output_tokens": 498
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"bracket_rev_a_cantilever_block\",\"description\":\"Cantilever bracket: 200x100x100 mm steel block, x=0 face welded to wall, 1 kN downward load on a 10x10 mm pad at the centre of the x=200 face.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[200,100,100]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.3,\"supports\":[{\"id\":\"wall_weld\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Whole x=0 end face welded to wall, fully fixed\"}],\"loads\":[{\"id\":\"tip_load\",\"region\":{\"kind\":\"patch\",\"face\":\"x+\",\"center\":[50,50],\"size\":[10,10]},\"force\":[0,-1000,0],\"distribution\":\"uniform_nodes\",\"note\":\"1 kN straight down (-y) on 10x10 mm pad at centre of free end face x=200\"}],\"passive\":[],\"resolution\":{\"h\":1.0},\"min_feature\":null,\"meta\":{\"source\":\"Bracket design, rev A\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "bracket_rev_a_cantilever_block",
+  "description": "Cantilever bracket: 200x100x100 mm steel block, x=0 face welded to wall, 1 kN downward load on a 10x10 mm pad at the centre of the x=200 face.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200,
+    100,
+    100
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "wall_weld",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Whole x=0 end face welded to wall, fully fixed"
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "1 kN straight down (-y) on 10x10 mm pad at centre of free end face x=200"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1.0
+  },
+  "min_feature": null,
+  "meta": {
+   "source": "Bracket design, rev A"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 8.28534259996377,
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

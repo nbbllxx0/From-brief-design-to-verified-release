@@ -1,0 +1,266 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b07 sensor arm",
+  "domain": {
+   "size": [
+    150,
+    30,
+    30
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "frame",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      15,
+      15
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -20,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "clarify",
+ "source": "engineering",
+ "oracle": [
+  {
+   "about": "where and how the arm attaches",
+   "answer": "The x = 0 end face is bolted flat to the frame; treat it as fully fixed."
+  },
+  {
+   "about": "direction of the camera load",
+   "answer": "Gravity acts along -y."
+  }
+ ],
+ "admissible": [
+  {
+   "reading": "20 x 20 x 2 mm retained camera plate at x=148..150, with oracle root and -y load.",
+   "why": "Named mounting plate permits a thin local retained interface when thickness is unspecified. Supplied mass ratio 1.01778; accept this narrow variant, not arbitrary retained layers.",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "from_run": "claude_high/GC/b07_sensor_arm_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "Sensor arm",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      150.0,
+      30.0,
+      30.0
+     ]
+    },
+    "material": {
+     "name": "Steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "frame_mount",
+      "region": {
+       "kind": "face",
+       "face": "x-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "robot frame attachment, full end face clamped"
+     }
+    ],
+    "loads": [
+     {
+      "id": "camera",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        15.0,
+        15.0
+       ],
+       "size": [
+        20.0,
+        20.0
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0.0,
+       -20.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "2 kg camera weight"
+     }
+    ],
+    "passive": [
+     {
+      "id": "camera_plate",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        148.0,
+        5.0,
+        5.0
+       ],
+       "max": [
+        150.0,
+        25.0,
+        25.0
+       ]
+      },
+      "note": "keep-in pad under the 20x20 camera mounting plate"
+     }
+    ],
+    "volume_fraction": 0.25,
+    "resolution": {
+     "h": 1.0,
+     "cells_short_edge": null
+    }
+   }
+  },
+  {
+   "reading": "Retain a 20 x 20 x 1 mm camera plate at x=149..150, y,z=5..25, with fixed x=0 root and 20 N in -y.",
+   "why": "Extends the admitted 2 mm named mounting plate to a 1 mm layer. Root and gravity match the oracle; two questions are recorded. No arbitrary root skin is added.",
+   "counts": true,
+   "adjudicated": "2026-11-01",
+   "from_run": "GPC/b07_sensor_arm_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "Sensor arm",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      150.0,
+      30.0,
+      30.0
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "frame_attachment",
+      "region": {
+       "kind": "face",
+       "face": "x-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Confirmed full-face clamp at x=0 to robot frame."
+     }
+    ],
+    "loads": [
+     {
+      "id": "camera_weight",
+      "region": {
+       "kind": "patch",
+       "face": "x+",
+       "center": [
+        15.0,
+        15.0
+       ],
+       "size": [
+        20.0,
+        20.0
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0.0,
+       -20.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "20 N total over centered 20 x 20 mm patch at x=150; clarified gravity direction -y."
+     }
+    ],
+    "passive": [
+     {
+      "id": "camera_plate",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        149.0,
+        5.0,
+        5.0
+       ],
+       "max": [
+        150.0,
+        25.0,
+        25.0
+       ]
+      },
+      "note": "Centered 20 x 20 mm mounting plate retained solid; assumed 1 mm thickness within envelope."
+     }
+    ],
+    "volume_fraction": 0.25,
+    "resolution": {
+     "h": 1.0,
+     "cells_short_edge": null
+    }
+   }
+  }
+ ],
+ "notes": "Two decision-relevant gaps: the attachment and the load direction.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Y after oracle: root fully fixed and gravity -y. Both gaps are real. A thin retained layer behind the named camera plate is also admissible; it is not uniquely specified."
+ }
+}

@@ -1,0 +1,205 @@
+{
+ "task": "b23_clamped_beam",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:06:33",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies mm for lengths and kN for the load; use mm and kN consistently."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Beam envelope 240 x 40 x 40 mm in x,y,z; y is up. Tool origin is the minimum corner."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; elastic constants are unspecified. Assume isotropic linear elastic steel with E=210 GPa (210 kN/mm^2) and nu=0.30."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.25."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:left_clamp",
+    "source": "stated",
+    "note": "Entire x=0 end face fully clamped: fix x,y,z displacement."
+   },
+   {
+    "key": "support:right_clamp",
+    "source": "stated",
+    "note": "Entire x=240 mm end face fully clamped: fix x,y,z displacement."
+   },
+   {
+    "key": "load:midspan_downward",
+    "source": "stated",
+    "note": "Total 3 kN downward with y up gives force (0,-3,0) kN. Top face y=40 mm; strip x=115..125 mm and full width z=0..40 mm. Patch center (120,20), size (10,40) encodes these stated bounds."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b23_clamped_beam_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 24.832470800029114,
+ "usage": {
+  "input_tokens": 106234,
+  "cached_input_tokens": 97280,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 917,
+  "reasoning_output_tokens": 100
+ },
+ "returncode": 0,
+ "final": "DONE, assumed isotropic linear elastic steel with E = 210 GPa and \u03bd = 0.30.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Clamped-clamped beam",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    240.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full end face at x=0 fully clamped."
+   },
+   {
+    "id": "right_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full end face at x=240 mm fully clamped."
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_downward",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      120.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -3.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 3 kN downward (-y), distributed over x=115..125 mm, y=40 mm, z=0..40 mm."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 25.078143700025976,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=1, grid (240, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

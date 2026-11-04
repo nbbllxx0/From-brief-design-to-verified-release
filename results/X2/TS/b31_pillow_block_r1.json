@@ -1,0 +1,176 @@
+{
+ "task": "b31_pillow_block",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:18:08",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 1,
+ "retry_errors": [
+  {
+   "error": "2 validation errors for Spec\nsupports.0.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...ius': 8, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nsupports.1.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...ius': 8, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+  }
+ ],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 32.06294789980166,
+ "usage": {
+  "input_tokens": 40789,
+  "reasoning_output_tokens": 438,
+  "cached_input_tokens": 27392,
+  "output_tokens": 1506,
+  "cache_write_input_tokens": 0
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Pillow-block bearing bracket\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [120, 60, 40]\n  },\n  \"material\": {\n    \"name\": \"grey cast iron\",\n    \"E\": 110000,\n    \"nu\": 0.26\n  },\n  \"volume_fraction\": 0.3,\n  \"supports\": [\n    {\n      \"id\": \"left_bolt\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [15, 20],\n        \"radius\": 8,\n        \"span\": [0, 0.5]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular 16 mm washer footprint; the half-element selection depth includes only y = 0 nodes on the specified 1 mm mesh.\"\n    },\n    {\n      \"id\": \"right_bolt\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [105, 20],\n        \"radius\": 8,\n        \"span\": [0, 0.5]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular 16 mm washer footprint; the half-element selection depth includes only y = 0 nodes on the specified 1 mm mesh.\"\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"shaft_force\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [60, 40],\n        \"radius\": 15,\n        \"span\": [0, 40]\n      },\n      \"force\": [0, -3000, 0],\n      \"distribution\": \"uniform_nodes\",\n      \"note\": \"Total downward shaft force distributed over the preserved bearing seat.\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"bearing_seat\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [60, 40],\n        \"radius\": 15,\n        \"span\": [0, 40]\n      }\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Pillow-block bearing bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120,
+    60,
+    40
+   ]
+  },
+  "material": {
+   "name": "grey cast iron",
+   "E": 110000,
+   "nu": 0.26
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "left_bolt",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      15,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      0,
+      0.5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular 16 mm washer footprint; the half-element selection depth includes only y = 0 nodes on the specified 1 mm mesh."
+   },
+   {
+    "id": "right_bolt",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      105,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      0,
+      0.5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular 16 mm washer footprint; the half-element selection depth includes only y = 0 nodes on the specified 1 mm mesh."
+   }
+  ],
+  "loads": [
+   {
+    "id": "shaft_force",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      60,
+      40
+     ],
+     "radius": 15,
+     "span": [
+      0,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -3000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total downward shaft force distributed over the preserved bearing seat."
+   }
+  ],
+  "passive": [
+   {
+    "id": "bearing_seat",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      60,
+      40
+     ],
+     "radius": 15,
+     "span": [
+      0,
+      40
+     ]
+    }
+   }
+  ],
+  "resolution": {
+   "h": 1
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 32.18825230002403,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

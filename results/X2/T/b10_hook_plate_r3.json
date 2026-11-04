@@ -1,0 +1,36 @@
+{
+ "task": "b10_hook_plate",
+ "cond": "T",
+ "rep": 3,
+ "t": "2026-10-30T11:26:30",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 8.924229600001127,
+ "usage": {
+  "input_tokens": 19942,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 200,
+  "reasoning_output_tokens": 167
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The brief does not identify which lower corner carries the load, so its location cannot be specified unambiguously.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 9.000178099842742,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "clarify",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

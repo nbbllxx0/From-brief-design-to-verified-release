@@ -1,0 +1,106 @@
+{
+ "brief": "b01_cantilever_block.md",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 10.557996999938041,
+ "usage": {
+  "input_tokens": 21925,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 317,
+  "reasoning_output_tokens": 43
+ },
+ "returncode": 0,
+ "n_events": 4,
+ "prompt_chars": 12749,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Bracket design, rev A\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [200, 100, 100]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.3,\n  \"supports\": [\n    {\n      \"id\": \"wall_weld\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"downward_pad_load\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x+\",\n        \"center\": [50, 50],\n        \"size\": [10, 10]\n      },\n      \"force\": [0, -1000, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  }\n}",
+ "schema_valid": true,
+ "rules": {
+  "ok": true,
+  "resolution": {
+   "h": 1.0,
+   "grid": [
+    200,
+    100,
+    100
+   ],
+   "n_elem": 2000000,
+   "n_design": 2000000,
+   "material_fraction_total": 0.3,
+   "mg_levels": 4,
+   "est_bytes": 732824427.480916
+  },
+  "findings": []
+ },
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Bracket design, rev A",
+  "description": "",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    100.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "wall_weld",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "downward_pad_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "min_feature": null,
+  "meta": {}
+ }
+}

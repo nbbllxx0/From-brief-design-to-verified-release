@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Node / web front end
+node_modules/
+web/dist/
+web/.vite/
+*.tsbuildinfo
+npm-debug.log*
+
+# Large regenerable data: density fields, meshes, renders (regenerate by replay; see data/README.md)
+*.npy
+*.npz
+*.stl
+*.vtp
+*.vtk
+fields/
+exports/
+renders/
+work/
+
+# Local GUI sessions written by the backend
+sessions/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

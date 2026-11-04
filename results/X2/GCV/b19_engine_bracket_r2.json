@@ -1,0 +1,239 @@
+{
+ "task": "b19_engine_bracket",
+ "cond": "GCV",
+ "rep": 2,
+ "t": "2026-10-30T11:38:49",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 105256,
+  "cached_input_tokens": 96768,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2250,
+  "reasoning_output_tokens": 1090
+ },
+ "gc_wall_s": 64.57667750003748,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 54778,
+  "cached_input_tokens": 50944,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 711,
+  "reasoning_output_tokens": 511
+ },
+ "verify_wall_s": 28.38836760004051,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 2961,
+  "reasoning_output_tokens": 1601,
+  "input_tokens": 160034,
+  "cache_write_input_tokens": 0,
+  "cached_input_tokens": 147712
+ },
+ "wall_s": 92.96504510007799,
+ "questions": 2,
+ "n_tool_calls": 13,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Engine bracket",
+  "units": {
+   "length": "in",
+   "force": "lbf"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    7.0,
+    2.5,
+    4.0
+   ]
+  },
+  "material": {
+   "name": "Ti-6Al-4V",
+   "E": 16500000.0,
+   "nu": 0.34
+  },
+  "supports": [
+   {
+    "id": "bolt_x0p5_z0p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, as clarified."
+   },
+   {
+    "id": "bolt_x0p5_z3p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, as clarified."
+   },
+   {
+    "id": "bolt_x2p5_z0p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, as clarified."
+   },
+   {
+    "id": "bolt_x2p5_z3p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped washer footprint, as clarified."
+   }
+  ],
+  "loads": [
+   {
+    "id": "clevis_pull",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "force": [
+     0.0,
+     8000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "8000 lbf total, shared equally over preserved clevis cylinder nodes, as clarified."
+   }
+  ],
+  "passive": [
+   {
+    "id": "clevis",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "note": "Required solid clevis cylinder."
+   }
+  ],
+  "description": "Engine bracket; y up. Four bottom-face bolt washer footprints and a preserved solid z-axis clevis cylinder.",
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 0.05,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 28.985079600010067,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1.27, grid (140, 50, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,204 @@
+{
+ "task": "b26_canopy",
+ "cond": "GNR",
+ "rep": 1,
+ "t": "2026-10-31T22:36:25",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GNR\\b26_canopy_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 20.426105299964547,
+ "usage": {
+  "input_tokens": 87933,
+  "cached_input_tokens": 76160,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 875,
+  "reasoning_output_tokens": 65
+ },
+ "returncode": 0,
+ "final": "DONE\n\nAssumptions: isotropic linear-elastic aluminium 6061, E = 69 GPa, \u03bd = 0.33; self-weight omitted; uniform load represented by equal nodal shares. Validation passed; render confirmed four bottom support patches and the downward top load.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Canopy on four columns",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    40.0,
+    200.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "column_x40_z40",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      40.0,
+      40.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fixed column head: x=30..50, y=0, z=30..50 mm."
+   },
+   {
+    "id": "column_x40_z160",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      40.0,
+      160.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fixed column head: x=30..50, y=0, z=150..170 mm."
+   },
+   {
+    "id": "column_x260_z40",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      260.0,
+      40.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fixed column head: x=250..270, y=0, z=30..50 mm."
+   },
+   {
+    "id": "column_x260_z160",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      260.0,
+      160.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fixed column head: x=250..270, y=0, z=150..170 mm."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_uniform_downward",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -8000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 8 kN downward over the entire top face y=40 mm; equivalent uniform pressure 0.133333333 N/mm^2, represented by equal nodal force shares."
+   }
+  ],
+  "passive": [],
+  "description": "300 x 40 x 200 mm canopy, y up. Four fully fixed 20 x 20 mm column-head contact patches on y=0; total 8000 N downward uniformly distributed on y=40. Linear elastic isotropic aluminium 6061, E=69000 N/mm^2, nu=0.33. Columns represented by fixed contact patches; self-weight omitted.",
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 20.93549730000086,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 20, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

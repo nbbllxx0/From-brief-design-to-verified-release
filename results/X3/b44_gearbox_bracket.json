@@ -1,0 +1,142 @@
+{
+ "task": "b44_gearbox_bracket",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 166.71585120004602,
+ "usage": {
+  "input_tokens": 521095,
+  "cached_input_tokens": 508288,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2289,
+  "reasoning_output_tokens": 507
+ },
+ "returncode": 0,
+ "final": "DONE, e158db7a2b21, compliance 1.4386109912395393 N\u00b7mm",
+ "n_tool_calls": 25,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "ask_clarification",
+  "update_item",
+  "update_item",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "ladder",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "field_stats",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "export_stl",
+  "export_report"
+ ],
+ "questions": 1,
+ "stages": {
+  "spec_s": 17.371999979019165,
+  "solve_h2.0": {
+   "wall_s": 4.132000207901001,
+   "compute_s": 2.774231498129666,
+   "iterations": 76,
+   "n_elem": 128000,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h1.0": {
+   "wall_s": 3.4549999237060547,
+   "compute_s": 3.360597399296239,
+   "iterations": 61,
+   "n_elem": 1024000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.5": {
+   "wall_s": 13.324999809265137,
+   "compute_s": 12.884429100202397,
+   "iterations": 61,
+   "n_elem": 8192000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.25": {
+   "wall_s": 85.48699998855591,
+   "compute_s": 82.41502000018954,
+   "iterations": 61,
+   "n_elem": 65536000,
+   "warm": true,
+   "status": "converged",
+   "certified": true
+  },
+  "export_s": 5.4236,
+  "total_s": 138.10300016403198
+ },
+ "released": true,
+ "exports": [
+  {
+   "triangles": 3352876,
+   "bytes": 167643884,
+   "sha256": "cdce7c939e43001835cd65f8dc40fa8cc19f4547b02ba7a5b4066d546149e61f",
+   "path": "results\\X3\\b44_gearbox_bracket\\session\\exports\\Gearbox_output_bracket_e158db7a2b21.stl",
+   "pool": 1,
+   "vertices": 1676440,
+   "t_surface_s": 2.547,
+   "t_write_s": 0.988,
+   "mesh": {
+    "closed": true,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "volume": 307196.13289281714
+   },
+   "job": "e158db7a2b21",
+   "certified": true,
+   "released": true
+  },
+  {
+   "job": "e158db7a2b21",
+   "certified": true,
+   "json": "results\\X3\\b44_gearbox_bracket\\session\\exports\\Gearbox_output_bracket_e158db7a2b21_report.json",
+   "markdown": "results\\X3\\b44_gearbox_bracket\\session\\exports\\Gearbox_output_bracket_e158db7a2b21_report.md",
+   "stl": "results\\X3\\b44_gearbox_bracket\\session\\exports\\Gearbox_output_bracket_e158db7a2b21.stl"
+  }
+ ],
+ "release_spec_match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "replay": {
+  "ok": true,
+  "calls": 25,
+  "solves_replayed": 4,
+  "skipped": 5,
+  "mismatches": [],
+  "final_spec_hash": "ca962c37142318b8"
+ }
+}

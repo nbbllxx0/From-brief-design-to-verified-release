@@ -1,0 +1,95 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b50 valve bracket",
+  "domain": {
+   "size": [
+    120,
+    80,
+    40
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "base",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "actuator",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      90,
+      20
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -600,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "handle",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      70,
+      50,
+      0
+     ],
+     "max": [
+      120,
+      80,
+      40
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "refuse",
+ "source": "engineering",
+ "oracle": [
+  {
+   "about": "moving the pad or the clearance",
+   "answer": "Neither can move: both are set by the actuator and the valve."
+  }
+ ],
+ "admissible": [],
+ "notes": "Contradictory: the load pad lies inside the region that must stay empty (rule R008). A correct agent reports the conflict instead of moving either.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Refusal correct: the entire loaded x=80..100 top patch lies in mandatory void. Neither feature may move under the oracle. CONTESTED RUNS"
+ }
+}

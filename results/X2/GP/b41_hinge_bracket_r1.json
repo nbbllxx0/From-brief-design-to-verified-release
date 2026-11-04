@@ -1,0 +1,278 @@
+{
+ "task": "b41_hinge_bracket",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:49:33",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Envelope and element dimensions are in mm; forces are in N."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "140 x 80 x 30 mm envelope in x,y,z; y is up; minimum corner at origin consistent with given coordinates."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; assume isotropic linear elastic steel with E=210000 N/mm^2 and nu=0.30 because elastic constants and grade are unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.3; agentto applies this to the non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:bolt_left",
+    "source": "assumed",
+    "note": "Brief gives bottom face y=0, x=20,z=15 mm and 12 mm washer. Interpret washer size as 12 mm outside diameter and assume fully clamped x,y,z over its circular footprint."
+   },
+   {
+    "key": "support:bolt_right",
+    "source": "assumed",
+    "note": "Brief gives bottom face y=0, x=120,z=15 mm and 12 mm washer. Interpret washer size as 12 mm outside diameter and assume fully clamped x,y,z over its circular footprint."
+   },
+   {
+    "key": "load:door_force",
+    "source": "assumed",
+    "note": "Brief states 300 N along +x and 800 N downward; y up gives total (300,-800,0) N. Assume simultaneous force uniformly shared over all nodes of the solid boss, with no additional applied couple."
+   },
+   {
+    "key": "passive:hinge_boss",
+    "source": "derived",
+    "note": "Brief states solid boss axis z, center (70,65) mm, diameter 20 mm, full thickness; radius=20/2=10 mm and z span=0..30 mm."
+   },
+   {
+    "key": "passive:cable_slot",
+    "source": "stated",
+    "note": "Empty box x=40..100 mm, y=20..35 mm, full thickness z=0..30 mm."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "support:bolt_left",
+   "support:bolt_right",
+   "load:door_force"
+  ]
+ },
+ "n_tool_calls": 21,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_passive",
+  "add_passive",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b41_hinge_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 41.778198399813846,
+ "usage": {
+  "input_tokens": 117044,
+  "cached_input_tokens": 97536,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1315,
+  "reasoning_output_tokens": 89
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Assumptions: isotropic steel E = 210 GPa, \u03bd = 0.30; 12 mm washer outside diameters with fully fixed footprints; simultaneous forces distributed uniformly over boss nodes, with no added couple. Validation passed, render checked, and every item source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Door hinge bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    140.0,
+    80.0,
+    30.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bolt_left",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20.0,
+      15.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom washer footprint at (20,0,15) mm. Assume 12 mm washer means outside diameter and a fully clamped attachment."
+   },
+   {
+    "id": "bolt_right",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      120.0,
+      15.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom washer footprint at (120,0,15) mm. Assume 12 mm washer means outside diameter and a fully clamped attachment."
+   }
+  ],
+  "loads": [
+   {
+    "id": "door_force",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      70.0,
+      65.0
+     ],
+     "radius": 10.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "force": [
+     300.0,
+     -800.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total simultaneous load: +300 N x and -800 N y. Assume uniform sharing over solid boss nodes; no additional pin hole or moment specified."
+   }
+  ],
+  "passive": [
+   {
+    "id": "hinge_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      70.0,
+      65.0
+     ],
+     "radius": 10.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "note": "Keep solid boss; 20 mm diameter gives 10 mm radius; full envelope thickness."
+   },
+   {
+    "id": "cable_slot",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      40.0,
+      20.0,
+      0.0
+     ],
+     "max": [
+      100.0,
+      35.0,
+      30.0
+     ]
+    },
+    "note": "Keep cable slot empty through full thickness."
+   }
+  ],
+  "description": "Door hinge bracket; y up. Two fully fixed circular washer footprints on y=0. Preserve full-thickness hinge boss and full-thickness empty cable slot. Apply resultant door load uniformly to boss nodes.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 42.04019890003838,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (140, 80, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

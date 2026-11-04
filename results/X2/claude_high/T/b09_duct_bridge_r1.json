@@ -1,0 +1,161 @@
+{
+ "task": "b09_duct_bridge",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:21:00",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 12.960168400080875,
+ "usage": {
+  "input_tokens": 8661,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8010,
+  "output_tokens": 873
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"pedestrian_bridge_cable_duct\",\"description\":\"Pedestrian bridge model, 300 x 60 x 60 mm steel. Left bottom end edge is pinned and the right bottom end edge is a roller sliding along x. A 3 kN downward load acts on the full top surface. A 16 mm diameter cable duct runs along z at x=150, y=20 and must stay empty.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[300,60,60]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.25,\"supports\":[{\"id\":\"left_pinned_bearing\",\"region\":{\"kind\":\"edge\",\"axis\":\"z\",\"at\":[0,0],\"span\":null},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Bottom left end edge across full width, pinned\"},{\"id\":\"right_sliding_bearing\",\"region\":{\"kind\":\"edge\",\"axis\":\"z\",\"at\":[300,0],\"span\":null},\"fix\":[\"y\"],\"note\":\"Bottom right end edge across full width, free to slide along span (x); z restrained by left pin\"}],\"loads\":[{\"id\":\"deck_load\",\"region\":{\"kind\":\"face\",\"face\":\"y+\"},\"force\":[0,-3000,0],\"distribution\":\"uniform_nodes\",\"note\":\"3 kN downward on full top surface\"}],\"passive\":[{\"id\":\"cable_duct\",\"kind\":\"void\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"z\",\"center\":[150,20],\"radius\":8,\"span\":[0,60]},\"note\":\"16 mm diameter cable duct across full width, must stay empty\"}],\"resolution\":{\"h\":1},\"min_feature\":3,\"meta\":{}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "pedestrian_bridge_cable_duct",
+  "description": "Pedestrian bridge model, 300 x 60 x 60 mm steel. Left bottom end edge is pinned and the right bottom end edge is a roller sliding along x. A 3 kN downward load acts on the full top surface. A 16 mm diameter cable duct runs along z at x=150, y=20 and must stay empty.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300,
+    60,
+    60
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "left_pinned_bearing",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0,
+      0
+     ],
+     "span": null
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom left end edge across full width, pinned"
+   },
+   {
+    "id": "right_sliding_bearing",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      300,
+      0
+     ],
+     "span": null
+    },
+    "fix": [
+     "y"
+    ],
+    "note": "Bottom right end edge across full width, free to slide along span (x); z restrained by left pin"
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -3000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "3 kN downward on full top surface"
+   }
+  ],
+  "passive": [
+   {
+    "id": "cable_duct",
+    "kind": "void",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      150,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      0,
+      60
+     ]
+    },
+    "note": "16 mm diameter cable duct across full width, must stay empty"
+   }
+  ],
+  "resolution": {
+   "h": 1
+  },
+  "min_feature": 3,
+  "meta": {}
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 13.173515100032091,
+ "cwe": {
+  "value": 0.003232757680490028,
+  "c_pred_under_intended": 30.988883406857838,
+  "c_intended_opt": 30.88902666865189,
+  "h": 1.0,
+  "pred_status": "not_converged",
+  "passive_violation": {
+   "keep_out_filled": 0.0
+  },
+  "mass_ratio": 1.0000001192092896
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (300, 60, 60)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

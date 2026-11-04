@@ -1,0 +1,271 @@
+{
+ "task": "b44_gearbox_bracket",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:56:04",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief gives mm and N*m; spec uses mm and N"
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "160 (x) x 80 x 80 mm envelope"
+   },
+   {
+    "key": "material",
+    "source": "stated",
+    "note": "Steel; standard E=210 GPa, nu=0.3"
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "0.3"
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "2 mm elements"
+   },
+   {
+    "key": "support:gearbox_mount",
+    "source": "stated",
+    "note": "x=0 end bolted rigidly: whole x- face fixed in xyz"
+   },
+   {
+    "key": "load:lug_top",
+    "source": "derived",
+    "note": "16x16 lug on x+ face at top edge (z 64-80), centred in depth (y=40); 40 N*m = 40000 N*mm couple over 64 mm between lug centres -> 625 N, -y, giving +Mx (torque sense assumed positive right-hand about +x)"
+   },
+   {
+    "key": "load:lug_bottom",
+    "source": "derived",
+    "note": "16x16 lug on x+ face at bottom edge (z 0-16), y=40; 625 N in +y, completing the 40 N*m couple about x"
+   },
+   {
+    "key": "passive:lug_pad_top",
+    "source": "assumed",
+    "note": "4 mm deep keep-in pad under the top lug so the load is applied on solid material"
+   },
+   {
+    "key": "passive:lug_pad_bottom",
+    "source": "assumed",
+    "note": "4 mm deep keep-in pad under the bottom lug so the load is applied on solid material"
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "passive:lug_pad_top",
+   "passive:lug_pad_bottom"
+  ]
+ },
+ "n_tool_calls": 21,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "add_passive",
+  "add_passive",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\claude_high\\GPC\\b44_gearbox_bracket_r1\\session\\session.jsonl",
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 37.43777829990722,
+ "usage": {
+  "input_tokens": 67812,
+  "cached_input_tokens": 57180,
+  "cache_write_input_tokens": 10624,
+  "output_tokens": 3788
+ },
+ "returncode": 0,
+ "final": "The spec is built and passes validation with no errors. Every item has a source tag.\n\n- **Domain:** 160 \u00d7 80 \u00d7 80 mm, in steel (E = 210 GPa, \u03bd = 0.3). Volume fraction is 0.3 and elements are 2 mm, which gives an 80\u00d740\u00d740 grid of 128,000 elements.\n- **Support:** the whole x = 0 face is fixed in x, y and z, for the rigid bolted joint to the gearbox.\n- **Loads:** the two 16 \u00d7 16 mm lugs sit on the x = 160 face, centred at y = 40. The top lug covers z 64\u201380 and the bottom lug covers z 0\u201316. The 40 N\u00b7m (40,000 N\u00b7mm) torque is applied as a couple over the 64 mm between lug centres, which is 625 N per lug. The top lug is pushed in \u2212y and the bottom lug in +y, giving +40,000 N\u00b7mm about x. Each lug patch selects 81 nodes.\n- **Keep-in pads:** a solid block 4 mm deep sits under each lug so the load is applied to solid material.\n- **Render:** the support is on the x = 0 face and both lugs are on the far end face at the top and bottom edges, as the brief says.\n\nDONE. Assumptions:\n- The torque is taken as positive (right-hand rule about +x), since the brief doesn't give a direction. For a pure couple, reversing it gives the same optimised shape.\n- I added the two 4 mm keep-in pads under the lugs; the brief doesn't mention them.\n- The brief only says \"steel\", so E = 210 GPa and \u03bd = 0.3 are standard values I chose.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Gearbox output bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_mount",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "x=0 end bolted rigidly to gearbox"
+   }
+  ],
+  "loads": [
+   {
+    "id": "lug_top",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40.0,
+      72.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -625.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top drive lug, half of 40 N*m couple: 625 N x 64 mm lever between lug centres"
+   },
+   {
+    "id": "lug_bottom",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40.0,
+      8.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     625.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bottom drive lug, other half of the couple (+Mx total 40000 N*mm)"
+   }
+  ],
+  "passive": [
+   {
+    "id": "lug_pad_top",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      32.0,
+      64.0
+     ],
+     "max": [
+      160.0,
+      48.0,
+      80.0
+     ]
+    },
+    "note": "Keep-in pad under top drive lug"
+   },
+   {
+    "id": "lug_pad_bottom",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      32.0,
+      0.0
+     ],
+     "max": [
+      160.0,
+      48.0,
+      16.0
+     ]
+    },
+    "note": "Keep-in pad under bottom drive lug"
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 37.880146800074726,
+ "cwe": {
+  "value": 106439653.56850198,
+  "c_pred_under_intended": 152449236.29570368,
+  "c_intended_opt": 1.4322597805650623,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0046666860580444
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

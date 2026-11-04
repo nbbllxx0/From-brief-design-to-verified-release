@@ -1,0 +1,36 @@
+{
+ "task": "b45_pump_bracket",
+ "cond": "T",
+ "rep": 3,
+ "t": "2026-10-30T11:28:14",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 5.259828600101173,
+ "usage": {
+  "input_tokens": 21937,
+  "cached_input_tokens": 17024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 61,
+  "reasoning_output_tokens": 30
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The pump's weight or design force is missing, so the load on its footprint cannot be specified.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 5.39144690008834,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "clarify",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

@@ -1,0 +1,17 @@
+{
+ "task": "b38_peek_bracket",
+ "cond": "R",
+ "rep": 1,
+ "questions": 0,
+ "spec": null,
+ "reason": "no up axis",
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

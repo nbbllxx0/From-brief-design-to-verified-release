@@ -1,0 +1,268 @@
+{
+ "task": "b06_motor_mount",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:25:59",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 31.86721030017361,
+ "usage": {
+  "input_tokens": 20045,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1405,
+  "reasoning_output_tokens": 389
+ },
+ "returncode": 0,
+ "final": " \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [160, 60, 120]\n  },\n  \"material\": {\n    \"name\": \"aluminium 6061\",\n    \"E\": 69000,\n    \"nu\": 0.33\n  },\n  \"volume_fraction\": 0.2,\n  \"supports\": [\n    {\n      \"id\": \"bolt_20_20\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [20, 20],\n        \"radius\": 12,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Clamped 24 mm washer footprint on the bottom face.\"\n    },\n    {\n      \"id\": \"bolt_20_100\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [20, 100],\n        \"radius\": 12,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Clamped 24 mm washer footprint on the bottom face.\"\n    },\n    {\n      \"id\": \"bolt_140_20\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [140, 20],\n        \"radius\": 12,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Clamped 24 mm washer footprint on the bottom face.\"\n    },\n    {\n      \"id\": \"bolt_140_100\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [140, 100],\n        \"radius\": 12,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Clamped 24 mm washer footprint on the bottom face.\"\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"motor_load\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y+\",\n        \"center\": [80, 60],\n        \"size\": [40, 40]\n      },\n      \"force\": [800, -2000, 0],\n      \"distribution\": \"uniform_nodes\",\n      \"note\": \"Simultaneous downward motor force and belt tension.\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"boss_20_20\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [20, 20],\n        \"radius\": 12,\n        \"span\": [0, 10]\n      }\n    },\n    {\n      \"id\": \"boss_20_100\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [20, 100],\n        \"radius\": 12,\n        \"span\": [0, 10]\n      }\n    },\n    {\n      \"id\": \"boss_140_20\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [140, 20],\n        \"radius\": 12,\n        \"span\": [0, 10]\n      }\n    },\n    {\n      \"id\": \"boss_140_100\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [140, 100],\n        \"radius\": 12,\n        \"span\": [0, 10]\n      }\n    },\n    {\n      \"id\": \"motor_pad\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"box\",\n        \"min\": [60, 55, 40],\n        \"max\": [100, 60, 80]\n      }\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  },\n  \"meta\": {\n    \"assumptions\": [\n      \"The pad and bosses lie inside the specified envelope.\",\n      \"M10 fasteners are idealized as fixed washer footprints; bolt holes are not explicitly modeled.\"\n    ]\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Motor mount",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160,
+    60,
+    120
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "bolt_20_20",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Clamped 24 mm washer footprint on the bottom face."
+   },
+   {
+    "id": "bolt_20_100",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Clamped 24 mm washer footprint on the bottom face."
+   },
+   {
+    "id": "bolt_140_20",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Clamped 24 mm washer footprint on the bottom face."
+   },
+   {
+    "id": "bolt_140_100",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Clamped 24 mm washer footprint on the bottom face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "motor_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80,
+      60
+     ],
+     "size": [
+      40,
+      40
+     ]
+    },
+    "force": [
+     800,
+     -2000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Simultaneous downward motor force and belt tension."
+   }
+  ],
+  "passive": [
+   {
+    "id": "boss_20_20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "boss_20_100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "boss_140_20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "boss_140_100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "motor_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      60,
+      55,
+      40
+     ],
+     "max": [
+      100,
+      60,
+      80
+     ]
+    }
+   }
+  ],
+  "resolution": {
+   "h": 1
+  },
+  "meta": {
+   "assumptions": [
+    "The pad and bosses lie inside the specified envelope.",
+    "M10 fasteners are idealized as fixed washer footprints; bolt holes are not explicitly modeled."
+   ]
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 31.92729889997281,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": false,
+ "schema_error": "4 validation errors for Spec\nsupports.0.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...us': 12, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nsupports.1.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kin",
+ "correct_spec": false,
+ "behaviour_ok": false
+}

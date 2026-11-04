@@ -1,0 +1,164 @@
+{
+ "task": "b44_gearbox_bracket",
+ "cond": "GC",
+ "rep": 2,
+ "t": "2026-10-30T11:32:25",
+ "n_tool_calls": 13,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "ask_clarification",
+  "update_item",
+  "update_item",
+  "ask_clarification",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 2,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b44_gearbox_bracket_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 70.38746070000343,
+ "usage": {
+  "input_tokens": 140011,
+  "cached_input_tokens": 125056,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2454,
+  "reasoning_output_tokens": 745
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: steel E = 210 GPa, \u03bd = 0.3; lugs modeled as load patches without prescribed solid depth. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Gearbox output bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_fixed",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid gearbox attachment across the x=0 end."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_drive_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "y is up. Top end-face lug at x=160, y=64..80, z=32..48. +625 N in z gives +x torque with the bottom lug."
+   },
+   {
+    "id": "bottom_drive_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     -625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bottom end-face lug at x=160, y=0..16, z=32..48. -625 N in z; 64 mm centroid spacing gives +40 N m torque and zero net force."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  },
+  "description": "Gearbox output bracket: 160 x 80 x 80 mm steel domain; y is up. Rigid full-face attachment at x=0. At x=160, 16 x 16 mm top/bottom load footprints are flush with y=80 and y=0 and centred at z=40. Uniformly distributed total forces +625 N z at y=72 and -625 N z at y=8 form a +40 N m torque about x. Lugs modeled as end-face load footprints; no unspecified passive solid depth. Steel E=210000 N/mm^2, nu=0.3. Volume fraction 0.3; element edge 2 mm."
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 70.81153300008737,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

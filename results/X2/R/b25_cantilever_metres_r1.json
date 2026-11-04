@@ -1,0 +1,91 @@
+{
+ "task": "b25_cantilever_metres",
+ "cond": "R",
+ "rep": 1,
+ "questions": 0,
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "R",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "size": [
+    2000.0,
+    1000.0,
+    1000.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "support_1",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "load_1",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      500.0,
+      500.0
+     ],
+     "size": [
+      200.0,
+      200.0
+     ]
+    },
+    "force": [
+     0.0,
+     -100000.0,
+     0.0
+    ]
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 20.0
+  }
+ },
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=20, grid (100, 50, 50)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

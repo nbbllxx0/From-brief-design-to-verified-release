@@ -1,0 +1,145 @@
+{
+ "task": "b31_pillow_block",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 149.83275299984962,
+ "usage": {
+  "input_tokens": 583891,
+  "cached_input_tokens": 552832,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2644,
+  "reasoning_output_tokens": 715
+ },
+ "returncode": 0,
+ "final": "DONE, 14b825f6f856, compliance 6.831844972825129 N\u00b7mm",
+ "n_tool_calls": 28,
+ "n_failed_calls": 1,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "ladder",
+  "add_support",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "list_regions",
+  "ladder",
+  "ask_clarification",
+  "set_params",
+  "ask_clarification",
+  "update_item",
+  "validate_spec",
+  "render",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "field_stats",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "export_stl",
+  "export_report"
+ ],
+ "questions": 2,
+ "stages": {
+  "spec_s": 32.515000104904175,
+  "solve_h2.0": {
+   "wall_s": 6.803999900817871,
+   "compute_s": 5.405724298674613,
+   "iterations": 82,
+   "n_elem": 36000,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h1.0": {
+   "wall_s": 6.485000133514404,
+   "compute_s": 6.323361998889595,
+   "iterations": 61,
+   "n_elem": 288000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.5": {
+   "wall_s": 10.174999952316284,
+   "compute_s": 9.725923099322245,
+   "iterations": 61,
+   "n_elem": 2304000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.25": {
+   "wall_s": 58.757999897003174,
+   "compute_s": 55.80841299938038,
+   "iterations": 61,
+   "n_elem": 18432000,
+   "warm": true,
+   "status": "converged",
+   "certified": true
+  },
+  "export_s": 1.3269,
+  "total_s": 127.88100004196167
+ },
+ "released": true,
+ "exports": [
+  {
+   "triangles": 631948,
+   "bytes": 31597484,
+   "sha256": "30684567d5f291dc22b7878a816f9a178321b742116460a1a9be7ba34ef353d2",
+   "path": "results\\X3\\b31_pillow_block\\session\\exports\\Pillow-block_bearing_bracket_14b825f6f856.stl",
+   "pool": 1,
+   "vertices": 315976,
+   "t_surface_s": 0.779,
+   "t_write_s": 0.179,
+   "mesh": {
+    "closed": true,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "volume": 106177.4592353549
+   },
+   "job": "14b825f6f856",
+   "certified": true,
+   "released": true
+  },
+  {
+   "job": "14b825f6f856",
+   "certified": true,
+   "json": "results\\X3\\b31_pillow_block\\session\\exports\\Pillow-block_bearing_bracket_14b825f6f856_report.json",
+   "markdown": "results\\X3\\b31_pillow_block\\session\\exports\\Pillow-block_bearing_bracket_14b825f6f856_report.md",
+   "stl": "results\\X3\\b31_pillow_block\\session\\exports\\Pillow-block_bearing_bracket_14b825f6f856.stl"
+  }
+ ],
+ "release_spec_match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "replay": {
+  "ok": true,
+  "calls": 28,
+  "solves_replayed": 4,
+  "skipped": 6,
+  "mismatches": [],
+  "final_spec_hash": "65b8c68c66537fa6"
+ }
+}

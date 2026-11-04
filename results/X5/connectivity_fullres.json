@@ -1,0 +1,24 @@
+{
+ "cold": {
+  "shape": [
+   1280,
+   160,
+   160
+  ],
+  "solid_components_6": 1,
+  "solid_components_26": 1,
+  "void_regions_6": 99,
+  "enclosed_cavities_6": 92
+ },
+ "reopen_long": {
+  "shape": [
+   1280,
+   160,
+   160
+  ],
+  "solid_components_6": 1,
+  "solid_components_26": 1,
+  "void_regions_6": 13,
+  "enclosed_cavities_6": 12
+ }
+}

@@ -1,0 +1,244 @@
+{
+ "task": "b28_stool",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:03:28",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 44119,
+  "cached_input_tokens": 37040,
+  "cache_write_input_tokens": 7073,
+  "output_tokens": 1646
+ },
+ "gc_wall_s": 22.2907955001574,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14593,
+  "cached_input_tokens": 8682,
+  "cache_write_input_tokens": 5907,
+  "output_tokens": 1118
+ },
+ "verify_wall_s": 16.455471999943256,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 58712,
+  "cached_input_tokens": 45722,
+  "output_tokens": 2764,
+  "cache_write_input_tokens": 12980
+ },
+ "wall_s": 38.74626750010066,
+ "questions": 0,
+ "n_tool_calls": 12,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Stool",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    200.0,
+    200.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "foot_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      10.0,
+      10.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "foot_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      190.0,
+      10.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "foot_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      10.0,
+      190.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "foot_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      190.0,
+      190.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "seat_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -1200.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [
+   {
+    "id": "seat",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      190.0,
+      0.0
+     ],
+     "max": [
+      200.0,
+      200.0,
+      200.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "legroom",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      50.0,
+      0.0,
+      50.0
+     ],
+     "max": [
+      150.0,
+      120.0,
+      150.0
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "volume_fraction": 0.1,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 16.969245600048453,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (100, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

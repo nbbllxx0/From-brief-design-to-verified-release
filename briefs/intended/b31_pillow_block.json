@@ -1,0 +1,244 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b31 pillow block",
+  "domain": {
+   "size": [
+    120,
+    60,
+    40
+   ]
+  },
+  "material": {
+   "name": "grey cast iron",
+   "E": 110000.0,
+   "nu": 0.26
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "bolt_left",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      15,
+      20
+     ],
+     "size": [
+      16,
+      16
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "bolt_right",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      105,
+      20
+     ],
+     "size": [
+      16,
+      16
+     ],
+     "shape": "ellipse"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "shaft",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      60,
+      40
+     ],
+     "radius": 15,
+     "span": [
+      0,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -3000,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "seat",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      60,
+      40
+     ],
+     "radius": 15,
+     "span": [
+      0,
+      40
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "Two square 16 x 16 mm washer support patches, centres unchanged.",
+   "why": "Local fixture-footprint approximation admitted consistently with b06; other physical requirements unchanged.",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "from_run": "claude_high/T/b31_pillow_block_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "pillow_block_bearing_bracket",
+    "description": "Pillow-block bearing bracket in grey cast iron. Bottom face (y=0) bolted down by two M8 bolts with 16 mm washers at x=15 and x=105, z=20. A solid bearing-seat cylinder (axis z, centre x=60, y=40, diameter 30, full depth) is kept, and the shaft applies 3 kN downward on it.",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      120,
+      60,
+      40
+     ]
+    },
+    "material": {
+     "name": "grey cast iron",
+     "E": 110000.0,
+     "nu": 0.26
+    },
+    "volume_fraction": 0.3,
+    "supports": [
+     {
+      "id": "bolt_left",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        15,
+        20
+       ],
+       "size": [
+        16,
+        16
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "M8 bolt with 16 mm washer at x=15, z=20 on bottom face; square patch approximates the washer footprint"
+     },
+     {
+      "id": "bolt_right",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        105,
+        20
+       ],
+       "size": [
+        16,
+        16
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "M8 bolt with 16 mm washer at x=105, z=20 on bottom face; square patch approximates the washer footprint"
+     }
+    ],
+    "loads": [
+     {
+      "id": "shaft_load",
+      "region": {
+       "kind": "cylinder",
+       "axis": "z",
+       "center": [
+        60,
+        40
+       ],
+       "radius": 15,
+       "span": [
+        0,
+        40
+       ]
+      },
+      "force": [
+       0,
+       -3000,
+       0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "3 kN downward (-y) from shaft on bearing seat"
+     }
+    ],
+    "passive": [
+     {
+      "id": "bearing_seat",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "z",
+       "center": [
+        60,
+        40
+       ],
+       "radius": 15,
+       "span": [
+        0,
+        40
+       ]
+      },
+      "note": "Solid bearing seat, 30 mm diameter, full depth, kept"
+     }
+    ],
+    "resolution": {
+     "h": 1.0
+    },
+    "min_feature": null,
+    "meta": {
+     "up_axis": "y",
+     "bolt_size": "M8",
+     "washer_diameter_mm": 16
+    }
+   }
+  }
+ ],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "16 mm washer footprints and 30 mm retained seat cylinder agree; load on the named seat is an idealized transfer region."
+ }
+}

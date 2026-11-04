@@ -1,0 +1,180 @@
+{
+ "task": "b47_camera_mount",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T11:09:12",
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_passive",
+  "add_passive",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b47_camera_mount_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 25.447369100060314,
+ "usage": {
+  "input_tokens": 79121,
+  "cached_input_tokens": 72064,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 781,
+  "reasoning_output_tokens": 71
+ },
+ "returncode": 0,
+ "final": "DONE\n\nAssumptions: 6061-T6, E = 68.9 GPa, \u03bd = 0.33; fully clamped gantry face; static loading without self-weight; minimum compliance at 15% design volume; 3 mm minimum feature; 2 mm solid attachment plate and camera pad.\n\nValidation passed without findings at 1 mm resolution. Render confirmed the support and downward load locations.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Inspection-camera mount",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    60.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061-T6",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "gantry_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Entire x=0 face bolted to rigid gantry; idealized fully clamped."
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera_weight",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -80.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "80 N total downward, y up; centered pad spans y=20..40 and z=20..40 at x=120."
+   }
+  ],
+  "passive": [
+   {
+    "id": "gantry_interface",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "max": [
+      2.0,
+      60.0,
+      60.0
+     ]
+    },
+    "note": "Assumed 2 mm solid attachment plate across full clamped face."
+   },
+   {
+    "id": "camera_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      118.0,
+      20.0,
+      20.0
+     ],
+     "max": [
+      120.0,
+      40.0,
+      40.0
+     ]
+    },
+    "note": "Assumed 2 mm solid load-transfer pad."
+   }
+  ],
+  "description": "Inspection-camera mount; y up. Minimize compliance at a 15% design-volume budget as a lightweight stiffness surrogate; no displacement or stress limit supplied. Full x=0 face clamped to gantry. Total 80 N downward (-y) distributed on centered 20 x 20 mm pad on x=120. Assume 6061-T6, linear isotropic elasticity, static loading, no self-weight; preserve 2 mm thick gantry interface and camera pad.",
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "min_feature": 3.0
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 25.68145120004192,
+ "cwe": {
+  "value": -0.007051762663358385,
+  "c_pred_under_intended": 0.27139830403288,
+  "c_intended_opt": 0.2733257322263287,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.104938268661499
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": false,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 60)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

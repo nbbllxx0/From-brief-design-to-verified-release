@@ -1,0 +1,261 @@
+% agentto-guide.sty -- page design for the AgenticTO Guidebook.
+% Colour meanings follow the project's figures (Okabe-Ito): green = pass/certified, vermillion = fail/error,
+% blue = agent, amber = gate/rules, dark grey = GUI.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{agentto-guide}[2026/10/31 AgenticTO Guidebook style]
+
+% ---- fonts ------------------------------------------------------------------------------------------------
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{XCharter}
+\RequirePackage[xcharter,vvarbb]{newtxmath}
+\RequirePackage[scaled=0.90]{helvet}
+\RequirePackage[varqu,varl,scaled=0.95]{zi4}
+\RequirePackage{textcomp}
+\RequirePackage[final,tracking=smallcaps,expansion=true,protrusion=true]{microtype}
+
+% ---- page -------------------------------------------------------------------------------------------------
+\RequirePackage[a4paper,textwidth=150mm,top=27mm,bottom=30mm,headsep=9mm,footskip=12mm,
+  marginparwidth=20mm,marginparsep=4mm,hcentering]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em plus 0.15em minus 0.1em}
+\linespread{1.04}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\raggedbottom
+
+% ---- colour -----------------------------------------------------------------------------------------------
+\RequirePackage[table]{xcolor}
+\definecolor{okgreen}{HTML}{009E73}     % pass, certified
+\definecolor{okverm}{HTML}{D55E00}      % fail, error
+\definecolor{okblue}{HTML}{0072B2}      % agent
+\definecolor{okamber}{HTML}{E69F00}     % gate, rules
+\definecolor{oksky}{HTML}{56B4E9}
+\definecolor{okpurple}{HTML}{CC79A7}
+\definecolor{okyellow}{HTML}{F0E442}
+\definecolor{guigrey}{HTML}{4D4D4D}     % GUI
+\definecolor{ink}{HTML}{1F1F1F}
+\definecolor{muted}{HTML}{6B6B6B}
+\definecolor{rulegrey}{HTML}{BDBDBD}
+\definecolor{paper}{HTML}{F6F6F4}
+\definecolor{codebg}{HTML}{F4F5F7}
+\definecolor{linkblue}{HTML}{005A8C}
+\color{ink}
+
+% ---- tools ------------------------------------------------------------------------------------------------
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{xltabular}
+% X columns are ragged right: narrow table cells look better unjustified
+\renewcommand\tabularxcolumn[1]{>{\raggedright\arraybackslash}p{#1}}
+\RequirePackage{multirow}
+\RequirePackage{enumitem}
+\RequirePackage{pifont}
+\RequirePackage{calc}
+\RequirePackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc,fit,backgrounds,shapes.misc,decorations.pathreplacing}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{listings}
+\RequirePackage{float}
+\RequirePackage{placeins}
+
+\setlist{itemsep=0.15em,topsep=0.3em,parsep=0.2em,leftmargin=1.4em}
+\setlist[itemize]{label={\color{muted}\textbullet}}
+\setlist[enumerate]{label={\sffamily\bfseries\small\arabic*.},leftmargin=1.6em}
+\setlist[description]{font=\sffamily\bfseries\small,leftmargin=1.2em}
+
+% ---- headings ---------------------------------------------------------------------------------------------
+\RequirePackage[explicit]{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily}
+  {\begin{tikzpicture}[baseline]
+     \node[anchor=south west,inner sep=0,text=okblue,font=\sffamily\bfseries\fontsize{54}{54}\selectfont]
+       at (0,0) {\thechapter};
+     \fill[okgreen] (0,-3.2mm) rectangle (16mm,-2.2mm);
+     \fill[okamber] (16mm,-3.2mm) rectangle (32mm,-2.2mm);
+     \fill[okblue]  (32mm,-3.2mm) rectangle (48mm,-2.2mm);
+   \end{tikzpicture}}
+  {6mm}
+  {\fontsize{24}{28}\selectfont\bfseries\raggedright\hyphenpenalty=10000 #1}
+  [\vspace{2mm}{\color{rulegrey}\titlerule[0.4pt]}]
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\sffamily}{}{0pt}
+  {\fontsize{24}{28}\selectfont\bfseries #1}
+  [\vspace{2mm}{\color{rulegrey}\titlerule[0.4pt]}]
+\titlespacing*{\chapter}{0pt}{-6mm}{9mm}
+\titleformat{\section}
+  {\normalfont\sffamily\Large\bfseries}{\llap{\color{okblue}\thesection\hspace{4mm}}}{0pt}{#1}
+\titleformat{name=\section,numberless}
+  {\normalfont\sffamily\Large\bfseries}{}{0pt}{#1}
+\titlespacing*{\section}{0pt}{4.2ex plus 1ex minus .2ex}{1.4ex}
+\titleformat{\subsection}
+  {\normalfont\sffamily\large\bfseries}{\llap{\color{muted}\thesubsection\hspace{3.5mm}}}{0pt}{#1}
+\titleformat{name=\subsection,numberless}
+  {\normalfont\sffamily\large\bfseries}{}{0pt}{#1}
+\titlespacing*{\subsection}{0pt}{3ex plus .8ex minus .2ex}{1ex}
+\titleformat{\paragraph}[runin]{\normalfont\sffamily\bfseries}{}{0pt}{#1}
+\titlespacing*{\paragraph}{0pt}{1.4ex plus .5ex}{0.8em}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{1}
+
+% chapter summary under the title
+\newcommand\chapterintro[1]{%
+  {\sffamily\color{guigrey}\large\linespread{1.15}\selectfont #1\par}\vspace{4mm}}
+
+% ---- running heads ----------------------------------------------------------------------------------------
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{\ifnum\value{chapter}>0 \ifx\@chapapp\appendixname\appendixname\ \fi\thechapter\quad\fi #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\ifnum\value{secnumdepth}>0 \thesection\quad\fi #1}}
+\fancyhead[LE]{\sffamily\footnotesize\bfseries\thepage\hspace{5mm}\mdseries\color{muted}\leftmark}
+\fancyhead[RO]{\sffamily\footnotesize\color{muted}\rightmark\hspace{5mm}\color{ink}\bfseries\thepage}
+\fancyfoot[LE]{\sffamily\scriptsize\color{muted}AgenticTO Guidebook}
+\fancyfoot[RO]{\sffamily\scriptsize\color{muted}Version \AgenticVersion}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{{\color{rulegrey}\hrule width\headwidth height\headrulewidth}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\sffamily\footnotesize\color{muted}\thepage}%
+  \renewcommand{\headrulewidth}{0pt}}
+\newcommand\AgenticVersion{0.0.1}
+
+% ---- captions, floats -------------------------------------------------------------------------------------
+\RequirePackage[font={small,sf},labelfont={bf,color=okblue},labelsep=period,justification=raggedright,
+  singlelinecheck=false,skip=5pt]{caption}
+\captionsetup[table]{position=top,skip=4pt}
+\renewcommand{\floatpagefraction}{0.75}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+
+% a screenshot wider than the text block, centred on the page
+\newcommand\widegraphic[2][175mm]{\makebox[\textwidth][c]{\includegraphics[width=#1]{#2}}}
+% a thin frame around a screenshot
+\newcommand\shot[2][\linewidth]{{\setlength{\fboxsep}{0pt}\color{rulegrey}\fbox{\includegraphics[width=#1-2\fboxrule]{#2}}}}
+\newcommand\wideshot[2][175mm]{\makebox[\textwidth][c]{\shot[#1]{#2}}}
+
+% ---- inline markup ----------------------------------------------------------------------------------------
+% inline code that may break after / _ and ,
+\ExplSyntaxOn
+\tl_new:N \l__guide_code_tl
+\NewDocumentCommand\code{m}{
+  \tl_set:Nn \l__guide_code_tl {#1}
+  \regex_replace_all:nnN { \c{_} } { \c{_}\c{allowbreak} } \l__guide_code_tl
+  \regex_replace_all:nnN { ([/,]) } { \1\c{allowbreak} } \l__guide_code_tl
+  \texttt{\l__guide_code_tl}
+}
+% a tool name, linked to its reference entry; #1 is the raw name (with plain underscores)
+\NewDocumentCommand\tool{m}{
+  \tl_set:Nx \l__guide_code_tl { \tl_to_str:n {#1} }
+  \regex_replace_all:nnN { (\_) } { \1\c{allowbreak} } \l__guide_code_tl
+  \hyperref[tool:#1]{\texttt{\l__guide_code_tl}}
+}
+\ExplSyntaxOff
+\DisableLigatures[-]{family=tt*}
+\newcommand\gui[1]{\textsf{\bfseries #1}}
+\newcommand\meta[1]{\textlangle\textit{\rmfamily #1}\textrangle}
+\newcommand\msgline[1]{{\ttfamily\small #1}}
+\newcommand\yes{{\color{okgreen}\ding{51}}}
+\newcommand\no{{\color{rulegrey}--}}
+\newcommand\pass{{\color{okgreen}\ding{51}}}
+\newcommand\fail{{\color{okverm}\ding{55}}}
+\newcommand\keycap[1]{\tcbox[on line,boxsep=0pt,left=2.2pt,right=2.2pt,top=1.2pt,bottom=1.2pt,arc=1.6pt,
+  boxrule=0.45pt,colframe=muted,colback=white,fontupper=\sffamily\footnotesize]{\strut #1}}
+\newcommand\sev[1]{%
+  \ifstrequal{#1}{error}{\def\sev@c{okverm}}{\ifstrequal{#1}{warning}{\def\sev@c{okamber}}{\def\sev@c{oksky}}}%
+  \tcbox[on line,boxsep=0pt,left=2.5pt,right=2.5pt,top=1pt,bottom=1pt,arc=1.5pt,boxrule=0pt,
+    colback=\sev@c,fontupper=\sffamily\scriptsize\bfseries\color{white}]{\strut #1}}
+\newcommand\badge[2]{\tcbox[on line,boxsep=0pt,left=2.5pt,right=2.5pt,top=1pt,bottom=1pt,arc=1.5pt,boxrule=0pt,
+    colback=#1,fontupper=\sffamily\scriptsize\bfseries\color{white}]{\strut #2}}
+\newcommand\claim[1]{\textsf{\small\color{muted}[#1]}}
+\newcommand\step[1]{\tikz[baseline=(n.base)]\node[circle,fill=okblue,text=white,inner sep=1.2pt,minimum size=4.6mm,
+  font=\sffamily\bfseries\footnotesize](n){#1};}
+\newcommand\callout[1]{\tikz[baseline=(n.base)]\node[circle,fill=okverm,text=white,inner sep=1pt,minimum size=4.4mm,
+  font=\sffamily\bfseries\scriptsize](n){#1};}
+
+% ---- boxes ------------------------------------------------------------------------------------------------
+\tcbset{guidebox/.style={enhanced,boxrule=0pt,arc=1.5pt,left=10pt,right=8pt,top=5pt,bottom=5pt,
+  fontupper=\small,before skip=8pt,after skip=8pt,parbox=false,
+  fonttitle=\sffamily\bfseries\small,coltitle=ink,attach title to upper={\enskip},
+  borderline west={2.5pt}{0pt}{#1},colback=#1!7!white}}
+\newtcolorbox{tipbox}[1][Tip]{guidebox=okgreen,title={\color{okgreen!70!black}#1.}}
+\newtcolorbox{notebox}[1][Note]{guidebox=okblue,title={\color{okblue}#1.}}
+\newtcolorbox{warnbox}[1][Warning]{guidebox=okverm,title={\color{okverm}#1.}}
+\newtcolorbox{evidencebox}[1][From the paper]{guidebox=okamber,title={\color{okamber!75!black}#1.}}
+
+% a numbered procedure
+\newenvironment{steps}{\begin{enumerate}[label={\protect\step{\arabic*}},leftmargin=2.1em,itemsep=0.45em,
+  align=left,labelsep=0.5em]}{\end{enumerate}}
+
+% rule card: code, severity badges, condition
+\newtcolorbox{rulecard}[3]{enhanced,breakable,boxrule=0.4pt,colframe=rulegrey,colback=white,arc=1.5pt,
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt,fontupper=\small,
+  borderline west={2.5pt}{0pt}{okamber},
+  title={\textbf{#1}\enspace #2\enspace\mdseries #3},fonttitle=\sffamily\small,
+  colbacktitle=paper,coltitle=ink,titlerule=0pt,toptitle=2pt,bottomtitle=2pt}
+\newcommand\rulefield[1]{\par\noindent\hangindent=18mm\hangafter=1%
+  \makebox[18mm][l]{\sffamily\footnotesize\bfseries\color{muted}#1}}
+
+% tool entry: name, argument list, flags
+\newtcolorbox{toolentry}[3]{enhanced,breakable,boxrule=0.4pt,colframe=rulegrey,colback=white,arc=1.5pt,
+  left=8pt,right=8pt,top=5pt,bottom=6pt,before skip=7pt,after skip=7pt,fontupper=\small,
+  borderline west={2.5pt}{0pt}{okblue},
+  title={\ttfamily\bfseries #1\mdseries\color{muted}(#2)\hfill{\sffamily\scriptsize\color{muted}#3}},
+  fonttitle=\small,colbacktitle=paper,coltitle=ink,titlerule=0pt,toptitle=2pt,bottomtitle=2pt}
+\newenvironment{argtable}
+  {\par\footnotesize\sffamily\tabularx{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.26\linewidth}
+   >{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.16\linewidth}@{}}
+   \toprule\textbf{Argument} & \textbf{Type} & \textbf{Default}\\\midrule}
+  {\bottomrule\endtabularx\par}
+
+% reference tables: sans, breakable across pages
+\newenvironment{reftable}[1]
+  {\par\small\sffamily\setlength{\LTpre}{7pt}\setlength{\LTpost}{6pt}\renewcommand{\arraystretch}{1.18}%
+   \xltabular{\linewidth}{#1}\toprule}
+  {\bottomrule\endxltabular\par}
+% caption for a breakable (non-float) reference table
+\RequirePackage{needspace}
+% (grouped: \captionof outside a float would otherwise leak its settings, e.g. \parskip=0, into the text)
+\newcommand\tablecaption[2]{\par\needspace{9\baselineskip}{\captionof{table}{#1}\label{#2}\par}\nopagebreak}
+% the same look, for tables inside floats (no page breaks)
+\newenvironment{fixtable}[1]
+  {\par\small\sffamily\renewcommand{\arraystretch}{1.18}\tabularx{\linewidth}{#1}\toprule}
+  {\bottomrule\endtabularx\par}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% ---- code listings ----------------------------------------------------------------------------------------
+\lstdefinestyle{guide}{basicstyle=\ttfamily\small,columns=fullflexible,keepspaces=true,
+  backgroundcolor=\color{codebg},frame=leftline,framerule=2pt,rulecolor=\color{guigrey},
+  xleftmargin=6pt,framexleftmargin=6pt,framextopmargin=3pt,framexbottommargin=3pt,
+  aboveskip=8pt,belowskip=8pt,showstringspaces=false,breaklines=true,breakatwhitespace=false,
+  postbreak=\mbox{\textcolor{muted}{$\hookrightarrow$}\space},
+  commentstyle=\color{muted}\itshape,keywordstyle=\color{okblue}\bfseries,stringstyle=\color{okgreen!65!black},
+  upquote=true,tabsize=2}
+\lstdefinelanguage{shell}{morekeywords={python,conda,pip,npm,node,codex,claude,cd,export,set,latexmk},
+  sensitive=true,morecomment=[l]{\#},morestring=[b]"}
+\lstdefinelanguage{json}{morestring=[b]",literate={:}{{{\color{muted}:}}}1 {,}{{{\color{muted},}}}1,
+  morekeywords={true,false,null}}
+\lstdefinelanguage{toml}{morecomment=[l]{\#},morestring=[b]",morekeywords={true,false}}
+\lstset{style=guide}
+\lstnewenvironment{shell}[1][]{\needspace{4\baselineskip}\lstset{language=shell,#1}}{}
+\lstnewenvironment{jsoncode}[1][]{\needspace{4\baselineskip}\lstset{language=json,#1}}{}
+\lstnewenvironment{pycode}[1][]{\needspace{4\baselineskip}\lstset{language=Python,
+  morekeywords={True,False,None},#1}}{}
+\lstnewenvironment{tomlcode}[1][]{\needspace{4\baselineskip}\lstset{language=toml,#1}}{}
+
+% ---- index, links -----------------------------------------------------------------------------------------
+\RequirePackage{imakeidx}
+\RequirePackage[hyperindex=true,colorlinks=true,linkcolor=linkblue,urlcolor=linkblue,citecolor=linkblue,
+  bookmarksnumbered=true,pdfborder={0 0 0}]{hyperref}
+\RequirePackage{bookmark}
+\urlstyle{tt}
+
+% index helpers
+\newcommand\toolidx[1]{\index{#1@\texttt{#1} (tool)}}
+\newcommand\cmd[1]{\code{#1}}
+
+\endinput

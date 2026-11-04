@@ -1,0 +1,132 @@
+{
+ "task": "b08_slider_bracket",
+ "cond": "GC",
+ "rep": 1,
+ "t": "2026-10-30T17:31:10",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "validate_spec",
+  "list_regions",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\claude_high\\GC\\b08_slider_bracket_r1\\session\\session.jsonl",
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 14.510150299873203,
+ "usage": {
+  "input_tokens": 41555,
+  "cached_input_tokens": 35911,
+  "cache_write_input_tokens": 5638,
+  "output_tokens": 982
+ },
+ "returncode": 0,
+ "final": "I built the spec exactly as the brief describes. The render shows the parts in the right places: the rail is the whole bottom face (y = 0), held in y and z only, and the 300 N +x push is on a 10 \u00d7 10 mm pad at the centre of the x = 0 face, covering 121 nodes. Validation fails with R003: nothing stops the part from moving along x. The only force is a 300 N push along that same free direction, so the part would just slide along the rail. Nothing holds it against the push, so the problem has no static solution. To make it solvable, the brief needs something that stops x motion, such as an end stop, a rail clamp or a drive attachment.\n\nREFUSE: the rail lets the bracket slide freely in x and nothing else holds it in x, so the 300 N +x push can't be resisted.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "slider_bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "rail",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "linear rail: holds vertical and sideways, free to slide along x"
+   }
+  ],
+  "loads": [
+   {
+    "id": "push",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 14.915498099988326,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,269 @@
+{
+ "part_a": {
+  "n": 50,
+  "agreement": 0.98,
+  "kappa": 0.0,
+  "disagreements": [
+   {
+    "task": "b43_press_riser",
+    "first": "N",
+    "second": "Y",
+    "second_reading": null,
+    "comment": "Correct geometry and shortest-side mesh count (equivalent h = 2 mm). \"Full bottom\" means existing material outside the open channel. The split support patches in C31 implement that reading."
+   }
+  ]
+ },
+ "part_b": {
+  "n": 41,
+  "agreement": 0.8048780487804879,
+  "kappa": 0.6048192771084339,
+  "disagreements": [
+   {
+    "id": "C06",
+    "first_round_row": 18,
+    "task": "b36_pedal_arm",
+    "condition": "Claude T",
+    "record": "results/X2/claude_high/T/b36_pedal_arm_r1.json",
+    "first_round_verdict": "W",
+    "second": "A",
+    "second_reading": "Retain the already fully fixed keyed-shaft cylinder as a solid non-design interface.",
+    "comment": "The brief keys the arm to a shaft and fixes everything inside the 16 mm circle. Keeping that same cylinder solid reasonably represents the fixed interface. No free span is newly reinforced. This is an admissible interpretation, not a claim of identical material accounting."
+   },
+   {
+    "id": "C13",
+    "first_round_row": 17,
+    "task": "b33_shelf_bracket",
+    "condition": "Claude T",
+    "record": "results/X2/claude_high/T/b33_shelf_bracket_r1.json",
+    "first_round_verdict": "A",
+    "second": "W",
+    "second_reading": null,
+    "comment": "A nominal 10 mm washer conventionally gives a circular contact footprint. Candidate defaults to a 10 x 10 mm square, about 27% larger in area. This changes the support problem. Small compliance loss alone does not authorize a geometric approximation. Aluminium E rounding is acceptable."
+   },
+   {
+    "id": "C25",
+    "first_round_row": 26,
+    "task": "b48_cable_anchor",
+    "condition": "Claude T",
+    "record": "results/X2/claude_high/T/b48_cable_anchor_r1.json",
+    "first_round_verdict": "W",
+    "second": "A",
+    "second_reading": "Represent the 16 mm boss face by a 1 mm retained terminal cylinder y = 59..60 mm.",
+    "comment": "A one-element-deep retained boss is a reasonable finite interface for the named boss face. The same cable resultant acts at the same x,z and azimuth. Distribution through this thin terminal layer is accepted as that boss interface idealization, not general surface/body-load equivalence."
+   },
+   {
+    "id": "C27",
+    "first_round_row": 19,
+    "task": "b39_tv_bracket",
+    "condition": "Claude T",
+    "record": "results/X2/claude_high/T/b39_tv_bracket_r1.json",
+    "first_round_verdict": "A",
+    "second": "W",
+    "second_reading": null,
+    "comment": "The four 12 mm washers imply circular bearing contacts. Candidate uses 12 x 12 mm square contacts at the correct centres. Area is about 27% larger per contact. It is an approximation to a different support region, with no stated approximation policy."
+   },
+   {
+    "id": "C29",
+    "first_round_row": 4,
+    "task": "b39_tv_bracket",
+    "condition": "G",
+    "record": "results/X2/G/b39_tv_bracket_r1.json",
+    "first_round_verdict": "W",
+    "second": "A",
+    "second_reading": "Keep the named mounting plate as a 6 mm end layer and the circular screw interfaces as 6 mm deep solids.",
+    "comment": "A finite retained TV mounting plate and local circular screw interfaces reasonably represent the hardware named in the brief. Their thickness is unspecified. The added solids stay at those interfaces and preserve load/contact geometry. Higher total mass is not a performance improvement at equal mass."
+   },
+   {
+    "id": "C35",
+    "first_round_row": 14,
+    "task": "b19_engine_bracket",
+    "condition": "Claude T",
+    "record": "results/X2/claude_high/T/b19_engine_bracket_r1.json",
+    "first_round_verdict": "A",
+    "second": "W",
+    "second_reading": null,
+    "comment": "The brief explicitly specifies 0.5 in diameter washers. Candidate uses 0.5 x 0.5 in square contacts rather than circles. Correct centres and small reported loss do not satisfy the diameter requirement."
+   },
+   {
+    "id": "C40",
+    "first_round_row": 16,
+    "task": "b31_pillow_block",
+    "condition": "Claude T",
+    "record": "results/X2/claude_high/T/b31_pillow_block_r1.json",
+    "first_round_verdict": "A",
+    "second": "W",
+    "second_reading": null,
+    "comment": "The 16 mm washers imply circular contacts. Candidate uses 16 x 16 mm squares, enlarging each support area by about 27%. This is a distinct boundary region, not an exact rewrite. The retained bearing seat and force are otherwise correct."
+   },
+   {
+    "id": "C41",
+    "first_round_row": 20,
+    "task": "b41_hinge_bracket",
+    "condition": "Claude T",
+    "record": "results/X2/claude_high/T/b41_hinge_bracket_r1.json",
+    "first_round_verdict": "A",
+    "second": "W",
+    "second_reading": null,
+    "comment": "The 12 mm washers imply circular contacts. Candidate uses 12 x 12 mm square contacts, enlarging each support area by about 27%. The correct boss, slot and load do not remove this support-region difference."
+   }
+  ]
+ },
+ "bounds": {
+  "J.W. (paper)": {
+   "right": {
+    "R": 9,
+    "T": 37,
+    "G": 44,
+    "GC": 50,
+    "GCV": 50,
+    "Claude T": 42,
+    "Claude GC": 46,
+    "Claude GCV": 47
+   },
+   "paired": {
+    "T->G": [
+     1,
+     8,
+     0.0390625
+    ],
+    "G->GC": [
+     0,
+     6,
+     0.03125
+    ],
+    "T->GC": [
+     0,
+     13,
+     0.000244140625
+    ],
+    "T->Claude T": [
+     2,
+     7,
+     0.1796875
+    ],
+    "GC->Claude GC": [
+     4,
+     0,
+     0.125
+    ]
+   }
+  },
+  "S.Y. alone": {
+   "right": {
+    "R": 9,
+    "T": 37,
+    "G": 45,
+    "GC": 50,
+    "GCV": 50,
+    "Claude T": 39,
+    "Claude GC": 46,
+    "Claude GCV": 47
+   },
+   "paired": {
+    "T->G": [
+     1,
+     9,
+     0.021484375
+    ],
+    "G->GC": [
+     0,
+     5,
+     0.0625
+    ],
+    "T->GC": [
+     0,
+     13,
+     0.000244140625
+    ],
+    "T->Claude T": [
+     1,
+     3,
+     0.625
+    ],
+    "GC->Claude GC": [
+     4,
+     0,
+     0.125
+    ]
+   }
+  },
+  "both must accept": {
+   "right": {
+    "R": 9,
+    "T": 37,
+    "G": 44,
+    "GC": 50,
+    "GCV": 50,
+    "Claude T": 37,
+    "Claude GC": 46,
+    "Claude GCV": 47
+   },
+   "paired": {
+    "T->G": [
+     1,
+     8,
+     0.0390625
+    ],
+    "G->GC": [
+     0,
+     6,
+     0.03125
+    ],
+    "T->GC": [
+     0,
+     13,
+     0.000244140625
+    ],
+    "T->Claude T": [
+     2,
+     2,
+     1.0
+    ],
+    "GC->Claude GC": [
+     4,
+     0,
+     0.125
+    ]
+   }
+  },
+  "either accepts": {
+   "right": {
+    "R": 9,
+    "T": 37,
+    "G": 45,
+    "GC": 50,
+    "GCV": 50,
+    "Claude T": 44,
+    "Claude GC": 46,
+    "Claude GCV": 47
+   },
+   "paired": {
+    "T->G": [
+     1,
+     9,
+     0.021484375
+    ],
+    "G->GC": [
+     0,
+     5,
+     0.0625
+    ],
+    "T->GC": [
+     0,
+     13,
+     0.000244140625
+    ],
+    "T->Claude T": [
+     1,
+     8,
+     0.0390625
+    ],
+    "GC->Claude GC": [
+     4,
+     0,
+     0.125
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,543 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b48 cable anchor",
+  "domain": {
+   "size": [
+    100,
+    60,
+    60
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "base",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "cable",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      50,
+      30
+     ],
+     "size": [
+      16,
+      16
+     ],
+     "shape": "ellipse"
+    },
+    "force": [
+     4000,
+     3000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "clarify",
+ "source": "engineering",
+ "oracle": [
+  {
+   "about": "which way the cable runs",
+   "answer": "The cable leaves towards +x: 4 kN along +x and 3 kN upward (+y)."
+  }
+ ],
+ "admissible": [
+  {
+   "reading": "Retained 16 mm diameter, 3 mm deep anchor boss at y=57..60; force on y+ circle.",
+   "why": "Named boss implies an interface with unspecified depth. Small local retention is admissible; supplied mass ratio 1.00520. Not a license for arbitrary bosses.",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "from_run": "G/b48_cable_anchor_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "Guy-cable anchor",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      100.0,
+      60.0,
+      60.0
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "bolted_bottom",
+      "region": {
+       "kind": "face",
+       "face": "y-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Entire y=0 bottom face fixed in all translations; full-area bolted mounting idealized as clamped."
+     }
+    ],
+    "loads": [
+     {
+      "id": "guy_cable",
+      "region": {
+       "kind": "patch",
+       "face": "y+",
+       "center": [
+        50.0,
+        30.0
+       ],
+       "size": [
+        16.0,
+        16.0
+       ],
+       "shape": "ellipse"
+      },
+      "force": [
+       4000.0,
+       3000.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "5 kN cable resultant; horizontal run toward +x, rise/run 3/4, so Fx=4000 N, Fy=3000 N."
+     }
+    ],
+    "passive": [
+     {
+      "id": "anchor_boss",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "y",
+       "center": [
+        50.0,
+        30.0
+       ],
+       "radius": 8.0,
+       "span": [
+        57.0,
+        60.0
+       ]
+      },
+      "note": "16 mm diameter boss, centered on top face; assumed 3 mm depth inward to preserve envelope."
+     }
+    ],
+    "description": "Guy-cable anchor; y up. Full bottom face clamped to represent bolting over its full area. Cable runs toward +x and rises 3:4, applying total force (4000,3000,0) N on a 16 mm diameter circular boss face at (50,60,30) mm. Boss assumed 3 mm deep within envelope, retained solid. Volume fraction 0.25 applies to non-passive design volume.",
+    "volume_fraction": 0.25,
+    "resolution": {
+     "h": 1.0,
+     "cells_short_edge": null
+    }
+   }
+  },
+  {
+   "reading": "Retained 16 mm diameter, 3 mm deep boss at y=57..60; load on the top face.",
+   "why": "Same narrow named-interface interpretation as case 09; depth is unspecified. Modest local mass change is acknowledged.",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "from_run": "claude_high/GC/b48_cable_anchor_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "guy-cable-anchor",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      100.0,
+      60.0,
+      60.0
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "bolted_base",
+      "region": {
+       "kind": "face",
+       "face": "y-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Bottom face bolted down over full area"
+     }
+    ],
+    "loads": [
+     {
+      "id": "cable_pull",
+      "region": {
+       "kind": "patch",
+       "face": "y+",
+       "center": [
+        50.0,
+        30.0
+       ],
+       "size": [
+        16.0,
+        16.0
+       ],
+       "shape": "ellipse"
+      },
+      "force": [
+       4000.0,
+       3000.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "5 kN guy cable at 3:4 slope (rise:run), running toward +x, on 16 mm boss at top-face centre"
+     }
+    ],
+    "passive": [
+     {
+      "id": "anchor_boss",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "y",
+       "center": [
+        50.0,
+        30.0
+       ],
+       "radius": 8.0,
+       "span": [
+        57.0,
+        60.0
+       ]
+      },
+      "note": "Keep-in material under the 16 mm anchor boss face"
+     }
+    ],
+    "volume_fraction": 0.25,
+    "resolution": {
+     "h": 1.0,
+     "cells_short_edge": null
+    }
+   }
+  },
+  {
+   "reading": "Retain the named diameter-16 mm boss 4 mm deep at y=56..60; keep the top circular load and (4000,3000,0) N.",
+   "why": "Extends the admitted 3 mm named boss to 4 mm; direction matches oracle. Zero questions means this accepts the final spec, not successful clarification behavior.",
+   "counts": true,
+   "adjudicated": "2026-11-01",
+   "from_run": "GNR/b48_cable_anchor_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "Guy-cable anchor",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      100.0,
+      60.0,
+      60.0
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "bolted_bottom",
+      "region": {
+       "kind": "face",
+       "face": "y-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Full bottom face y=0 bolted down, idealized as fixed in x, y, z."
+     }
+    ],
+    "loads": [
+     {
+      "id": "guy_cable_pull",
+      "region": {
+       "kind": "patch",
+       "face": "y+",
+       "center": [
+        50.0,
+        30.0
+       ],
+       "size": [
+        16.0,
+        16.0
+       ],
+       "shape": "ellipse"
+      },
+      "force": [
+       4000.0,
+       3000.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Total 5 kN pull distributed on the circular boss face. Assumed horizontal direction +x; rise:run=3:4 gives Fx=4000 N, Fy=3000 N."
+     }
+    ],
+    "passive": [
+     {
+      "id": "anchor_boss",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "y",
+       "center": [
+        50.0,
+        30.0
+       ],
+       "radius": 8.0,
+       "span": [
+        56.0,
+        60.0
+       ]
+      },
+      "note": "16 mm diameter solid anchor boss centered on top face; assumed 4 mm depth inside envelope."
+     }
+    ],
+    "description": "Guy-cable anchor; y is up. Bottom y=0 fully fixed as full-area bolted attachment. 5000 N cable pull on a 16 mm diameter circular boss face centered at (50,60,30) mm, rising 3 per 4 horizontal toward +x: F=(4000,3000,0) N. Assumed 4 mm deep solid boss within envelope, axis y, y=56..60 mm. Steel E=210000 N/mm^2, nu=0.3. Volume fraction 0.25 applies to non-passive design volume.",
+    "volume_fraction": 0.25,
+    "resolution": {
+     "h": 1.0,
+     "cells_short_edge": null
+    }
+   }
+  },
+  {
+   "reading": "Retain the named diameter-16 mm boss 1 mm deep at y=59..60; keep the top circular load and (4000,3000,0) N.",
+   "why": "Extends the admitted 3 mm named boss to 1 mm. Force, footprint and support match the oracle; one question is recorded. No unrelated solids are introduced.",
+   "counts": true,
+   "adjudicated": "2026-11-01",
+   "from_run": "GPC/b48_cable_anchor_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "Guy-cable anchor",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      100.0,
+      60.0,
+      60.0
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "bolted_base",
+      "region": {
+       "kind": "face",
+       "face": "y-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Full bottom face y=0 bolted down; fixed in all translations."
+     }
+    ],
+    "loads": [
+     {
+      "id": "guy_cable",
+      "region": {
+       "kind": "patch",
+       "face": "y+",
+       "center": [
+        50.0,
+        30.0
+       ],
+       "size": [
+        16.0,
+        16.0
+       ],
+       "shape": "ellipse"
+      },
+      "force": [
+       4000.0,
+       3000.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Clarification selected +x horizontal pull. Total 5000 N, components (4000,3000,0) N, distributed over centered 16 mm circular top-face patch."
+     }
+    ],
+    "passive": [
+     {
+      "id": "anchor_boss",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "y",
+       "center": [
+        50.0,
+        30.0
+       ],
+       "radius": 8.0,
+       "span": [
+        59.0,
+        60.0
+       ]
+      },
+      "note": "Retain a one-element-thick solid disk behind the stated 16 mm diameter boss face; depth assumed 1 mm within envelope."
+     }
+    ],
+    "volume_fraction": 0.25,
+    "resolution": {
+     "h": 1.0,
+     "cells_short_edge": null
+    }
+   }
+  },
+  {
+   "reading": "Retain the named diameter-16 mm boss 4 mm deep at y=56..60; keep the top circular load and (4000,3000,0) N.",
+   "why": "Same final physical reading as row 40, hence A. One question and the final message support clarified +x direction; the actual question/answer transcript is absent.",
+   "counts": true,
+   "adjudicated": "2026-11-01",
+   "from_run": "claude_high/GPC/b48_cable_anchor_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "guy_cable_anchor",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      100.0,
+      60.0,
+      60.0
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "supports": [
+     {
+      "id": "bolted_base",
+      "region": {
+       "kind": "face",
+       "face": "y-"
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "bottom face bolted down over full area"
+     }
+    ],
+    "loads": [
+     {
+      "id": "cable_pull",
+      "region": {
+       "kind": "patch",
+       "face": "y+",
+       "center": [
+        50.0,
+        30.0
+       ],
+       "size": [
+        16.0,
+        16.0
+       ],
+       "shape": "ellipse"
+      },
+      "force": [
+       4000.0,
+       3000.0,
+       0.0
+      ],
+      "distribution": "uniform_nodes",
+      "note": "5 kN at slope 3:4 -> 4 kN horizontal (+x assumed), 3 kN up"
+     }
+    ],
+    "passive": [
+     {
+      "id": "boss_keep_in",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "y",
+       "center": [
+        50.0,
+        30.0
+       ],
+       "radius": 8.0,
+       "span": [
+        56.0,
+        60.0
+       ]
+      },
+      "note": "16 mm anchor boss, 4 mm deep keep-in under load face"
+     }
+    ],
+    "volume_fraction": 0.25,
+    "resolution": {
+     "h": 1.0,
+     "cells_short_edge": null
+    }
+   }
+  }
+ ],
+ "notes": "Gap: the horizontal direction of the pull (+x, -x, +z or -z).",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Y after oracle: (4000,3000,0) N gives 5 kN with 3:4 rise/run. Horizontal azimuth is genuinely unspecified before clarification."
+ }
+}

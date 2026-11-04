@@ -1,0 +1,114 @@
+{
+ "task": "b22_cantilever_slab",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:23:25",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 6.3506789999082685,
+ "usage": {
+  "input_tokens": 8600,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7949,
+  "output_tokens": 359
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"cantilever_slab\",\"description\":\"Cantilevered slab 150 x 20 x 200 mm (x out from wall, y up, z width), steel. Wall face x=0 fully fixed; 6 kN downward load spread uniformly over the top surface (y+).\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[150,20,200]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.3,\"supports\":[{\"id\":\"wall\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"wall face x=0 fully fixed\"}],\"loads\":[{\"id\":\"top_pressure\",\"region\":{\"kind\":\"face\",\"face\":\"y+\"},\"force\":[0,-6000,0],\"distribution\":\"uniform_nodes\",\"note\":\"6 kN downward, uniform over whole top surface\"}],\"passive\":[],\"resolution\":{\"h\":2},\"min_feature\":null,\"meta\":{}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "cantilever_slab",
+  "description": "Cantilevered slab 150 x 20 x 200 mm (x out from wall, y up, z width), steel. Wall face x=0 fully fixed; 6 kN downward load spread uniformly over the top surface (y+).",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150,
+    20,
+    200
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "wall face x=0 fully fixed"
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_pressure",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -6000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "6 kN downward, uniform over whole top surface"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 2
+  },
+  "min_feature": null,
+  "meta": {}
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 6.549461000133306,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (75, 10, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

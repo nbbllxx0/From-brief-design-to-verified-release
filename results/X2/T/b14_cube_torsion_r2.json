@@ -1,0 +1,186 @@
+{
+ "task": "b14_cube_torsion",
+ "cond": "T",
+ "rep": 2,
+ "t": "2026-10-30T10:44:35",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 11.869422200135887,
+ "usage": {
+  "input_tokens": 21963,
+  "cached_input_tokens": 17024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 627,
+  "reasoning_output_tokens": 79
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Block in torsion\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [100, 100, 100]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.15,\n  \"supports\": [\n    {\n      \"id\": \"fixed_bottom\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"z-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"pad_x_plus\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"z+\",\n        \"center\": [95, 50],\n        \"size\": [10, 10]\n      },\n      \"force\": [0, 100, 0],\n      \"distribution\": \"uniform_nodes\"\n    },\n    {\n      \"id\": \"pad_y_plus\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"z+\",\n        \"center\": [50, 95],\n        \"size\": [10, 10]\n      },\n      \"force\": [-100, 0, 0],\n      \"distribution\": \"uniform_nodes\"\n    },\n    {\n      \"id\": \"pad_x_minus\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"z+\",\n        \"center\": [5, 50],\n        \"size\": [10, 10]\n      },\n      \"force\": [0, -100, 0],\n      \"distribution\": \"uniform_nodes\"\n    },\n    {\n      \"id\": \"pad_y_minus\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"z+\",\n        \"center\": [50, 5],\n        \"size\": [10, 10]\n      },\n      \"force\": [100, 0, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  },\n  \"meta\": {\n    \"torque_axis\": \"+z\",\n    \"total_torque_N_mm\": 18000,\n    \"pad_center_lever_arm_mm\": 45,\n    \"force_per_pad_N\": 100\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Block in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100,
+    100,
+    100
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "fixed_bottom",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "pad_x_plus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      95,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     100,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   },
+   {
+    "id": "pad_y_plus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50,
+      95
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     -100,
+     0,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   },
+   {
+    "id": "pad_x_minus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      5,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     -100,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   },
+   {
+    "id": "pad_y_minus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50,
+      5
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     100,
+     0,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "resolution": {
+   "h": 1
+  },
+  "meta": {
+   "torque_axis": "+z",
+   "total_torque_N_mm": 18000,
+   "pad_center_lever_arm_mm": 45,
+   "force_per_pad_N": 100
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 11.928983499994501,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

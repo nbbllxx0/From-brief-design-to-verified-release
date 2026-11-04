@@ -1,0 +1,160 @@
+{
+ "task": "b04_torsion_shaft",
+ "cond": "GC",
+ "rep": 1,
+ "t": "2026-10-30T09:54:06",
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "ask_clarification",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 1,
+ "oracle_hits": 1,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b04_torsion_shaft_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 46.67329269996844,
+ "usage": {
+  "input_tokens": 113890,
+  "cached_input_tokens": 100352,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1622,
+  "reasoning_output_tokens": 634
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: steel E = 210 GPa, \u03bd = 0.30; lugs are load patches without solid keep-ins, as selected. Validation passed; render confirmed clamp and \u00b1625 N load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Shaft bracket in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid attachment to gearbox at x=0."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top lug y=64..80, z=32..48. +z force gives positive x torque."
+   },
+   {
+    "id": "bottom_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     -625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bottom lug y=0..16, z=32..48. -z force completes +40,000 N*mm couple."
+   }
+  ],
+  "passive": [],
+  "description": "160 x 80 x 80 mm shaft bracket; x=0 rigid clamp; +40 N*m torque via opposed z forces on 16 x 16 mm end-face lug footprints centered at y=72 and y=8, z=40. Force couple arm 64 mm; each force 625 N.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 46.905976299894974,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

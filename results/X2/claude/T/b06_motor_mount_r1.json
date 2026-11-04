@@ -1,0 +1,263 @@
+{
+ "task": "b06_motor_mount",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T15:03:19",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 11.283960599917918,
+ "usage": {
+  "input_tokens": 8718,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8067,
+  "output_tokens": 1088
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"motor_mount\",\"description\":\"Aluminium 6061 motor mount plate 160x60x120 mm (y up). Bolted to bed via four M10 bolts with 24 mm washers on bottom face y=0 at x=20/140, z=20/100; solid 24 mm dia x 10 mm bosses kept around bolts. Motor pad 40x40x5 mm on top face centred x=80, z=60 carrying 2 kN down (-y) and 0.8 kN sideways (+x).\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[160,60,120]},\"material\":{\"name\":\"aluminium_6061\",\"E\":69000.0,\"nu\":0.33},\"volume_fraction\":0.2,\"supports\":[{\"id\":\"bolt_x20_z20\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"y\",\"center\":[20,20],\"radius\":12,\"span\":[0,0]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"24 mm washer contact on bottom face\"},{\"id\":\"bolt_x140_z20\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"y\",\"center\":[140,20],\"radius\":12,\"span\":[0,0]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"24 mm washer contact on bottom face\"},{\"id\":\"bolt_x20_z100\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"y\",\"center\":[20,100],\"radius\":12,\"span\":[0,0]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"24 mm washer contact on bottom face\"},{\"id\":\"bolt_x140_z100\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"y\",\"center\":[140,100],\"radius\":12,\"span\":[0,0]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"24 mm washer contact on bottom face\"}],\"loads\":[{\"id\":\"motor_load\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[80,60],\"size\":[40,40]},\"force\":[800,-2000,0],\"distribution\":\"uniform_nodes\",\"note\":\"2 kN downward (-y) plus 0.8 kN belt tension (+x) on motor pad\"}],\"passive\":[{\"id\":\"boss_x20_z20\",\"kind\":\"solid\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"y\",\"center\":[20,20],\"radius\":12,\"span\":[0,10]}},{\"id\":\"boss_x140_z20\",\"kind\":\"solid\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"y\",\"center\":[140,20],\"radius\":12,\"span\":[0,10]}},{\"id\":\"boss_x20_z100\",\"kind\":\"solid\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"y\",\"center\":[20,100],\"radius\":12,\"span\":[0,10]}},{\"id\":\"boss_x140_z100\",\"kind\":\"solid\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"y\",\"center\":[140,100],\"radius\":12,\"span\":[0,10]}},{\"id\":\"motor_pad\",\"kind\":\"solid\",\"region\":{\"kind\":\"box\",\"min\":[60,55,40],\"max\":[100,60,80]}}],\"resolution\":{\"h\":1.0},\"meta\":{\"up_axis\":\"y\",\"bolt\":\"M10\",\"washer_diameter_mm\":24}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "motor_mount",
+  "description": "Aluminium 6061 motor mount plate 160x60x120 mm (y up). Bolted to bed via four M10 bolts with 24 mm washers on bottom face y=0 at x=20/140, z=20/100; solid 24 mm dia x 10 mm bosses kept around bolts. Motor pad 40x40x5 mm on top face centred x=80, z=60 carrying 2 kN down (-y) and 0.8 kN sideways (+x).",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160,
+    60,
+    120
+   ]
+  },
+  "material": {
+   "name": "aluminium_6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "bolt_x20_z20",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "24 mm washer contact on bottom face"
+   },
+   {
+    "id": "bolt_x140_z20",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "24 mm washer contact on bottom face"
+   },
+   {
+    "id": "bolt_x20_z100",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "24 mm washer contact on bottom face"
+   },
+   {
+    "id": "bolt_x140_z100",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "24 mm washer contact on bottom face"
+   }
+  ],
+  "loads": [
+   {
+    "id": "motor_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80,
+      60
+     ],
+     "size": [
+      40,
+      40
+     ]
+    },
+    "force": [
+     800,
+     -2000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "2 kN downward (-y) plus 0.8 kN belt tension (+x) on motor pad"
+   }
+  ],
+  "passive": [
+   {
+    "id": "boss_x20_z20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "boss_x140_z20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "boss_x20_z100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "boss_x140_z100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    }
+   },
+   {
+    "id": "motor_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      60,
+      55,
+      40
+     ],
+     "max": [
+      100,
+      60,
+      80
+     ]
+    }
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  },
+  "meta": {
+   "up_axis": "y",
+   "bolt": "M10",
+   "washer_diameter_mm": 24
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 11.481619499856606,
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": false,
+ "schema_error": "4 validation errors for Spec\nsupports.0.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...us': 12, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nsupports.1.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kin",
+ "correct_spec": false,
+ "behaviour_ok": false
+}

@@ -1,0 +1,144 @@
+{
+ "task": "b25_cantilever_metres",
+ "cond": "GCV",
+ "rep": 2,
+ "t": "2026-10-30T11:39:24",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 102957,
+  "cached_input_tokens": 94976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 971,
+  "reasoning_output_tokens": 63
+ },
+ "gc_wall_s": 25.104361899895594,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17677,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 552,
+  "reasoning_output_tokens": 532
+ },
+ "verify_wall_s": 19.126883700024337,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 1523,
+  "reasoning_output_tokens": 595,
+  "input_tokens": 120634,
+  "cache_write_input_tokens": 0,
+  "cached_input_tokens": 94976
+ },
+ "wall_s": 44.23124559991993,
+ "questions": 1,
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Large cantilever \u2014 metres and kilonewtons",
+  "units": {
+   "length": "m",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    2.0,
+    1.0,
+    1.0
+   ]
+  },
+  "material": {
+   "name": "structural steel",
+   "E": 210000000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_x0",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed x = 0 m face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "bearing_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.2,
+      0.2
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bearing plate represented solely by the distributed load footprint; no passive solid plate. Total 100 kN downward at x = 2 m, y,z = 0.4\u20130.6 m."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 0.02,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 19.631650399882346,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=20, grid (100, 50, 50)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

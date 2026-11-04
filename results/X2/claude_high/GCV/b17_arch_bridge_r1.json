@@ -1,0 +1,174 @@
+{
+ "task": "b17_arch_bridge",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:01:19",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 87727,
+  "cached_input_tokens": 80427,
+  "cache_write_input_tokens": 7288,
+  "output_tokens": 1834
+ },
+ "gc_wall_s": 28.465299299918115,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14547,
+  "cached_input_tokens": 8615,
+  "cache_write_input_tokens": 5928,
+  "output_tokens": 492
+ },
+ "verify_wall_s": 8.19829330011271,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 102274,
+  "cached_input_tokens": 89042,
+  "output_tokens": 2326,
+  "cache_write_input_tokens": 13216
+ },
+ "wall_s": 36.663592600030825,
+ "questions": 0,
+ "n_tool_calls": 12,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "arch_bridge",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    100.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "pin_left",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "bottom left end edge, full width"
+   },
+   {
+    "id": "pin_right",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      300.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "bottom right end edge, full width"
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -6000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "6 kN downward uniform over deck"
+   }
+  ],
+  "passive": [
+   {
+    "id": "deck",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      94.0,
+      0.0
+     ],
+     "max": [
+      300.0,
+      100.0,
+      60.0
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 8.655732499901205,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

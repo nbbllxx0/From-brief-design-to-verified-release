@@ -1,0 +1,163 @@
+{
+ "task": "b43_press_riser",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:37:13",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 103172,
+  "cached_input_tokens": 89728,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1026,
+  "reasoning_output_tokens": 371
+ },
+ "gc_wall_s": 35.7997206998989,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 54448,
+  "cached_input_tokens": 35968,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 895,
+  "reasoning_output_tokens": 719
+ },
+ "verify_wall_s": 36.09204769995995,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 1090,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1921,
+  "input_tokens": 157620,
+  "cached_input_tokens": 125696
+ },
+ "wall_s": 71.89176839985885,
+ "questions": 1,
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Press riser block",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    100.0,
+    150.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "press_bed",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom face bolted to the press bed over its full area."
+   }
+  ],
+  "loads": [
+   {
+    "id": "tool_force",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      150.0,
+      75.0
+     ],
+     "size": [
+      100.0,
+      50.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -20000.0,
+     2000.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [
+   {
+    "id": "coolant_channel",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      0.0,
+      45.0
+     ],
+     "max": [
+      300.0,
+      30.0,
+      105.0
+     ]
+    },
+    "note": "Full-length coolant channel, open at the bottom."
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": null,
+   "cells_short_edge": 50
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 36.39152660011314,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 75)"
+  ],
+  "matched": "admissible:1"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

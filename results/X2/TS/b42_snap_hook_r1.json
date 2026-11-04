@@ -1,0 +1,120 @@
+{
+ "task": "b42_snap_hook",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:26:36",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 0,
+ "retry_errors": [],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 7.566470499848947,
+ "usage": {
+  "input_tokens": 20012,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 334,
+  "reasoning_output_tokens": 52
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Printed snap hook\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [40, 10, 12]\n  },\n  \"material\": {\n    \"name\": \"PA12\",\n    \"E\": 1700,\n    \"nu\": 0.4\n  },\n  \"volume_fraction\": 0.35,\n  \"supports\": [\n    {\n      \"id\": \"fixed_root\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"assembly_tip_force\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [38, 6],\n        \"size\": [4, 12]\n      },\n      \"force\": [0, 15, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 0.25\n  },\n  \"min_feature\": 1.2\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Printed snap hook",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    40,
+    10,
+    12
+   ]
+  },
+  "material": {
+   "name": "PA12",
+   "E": 1700,
+   "nu": 0.4
+  },
+  "volume_fraction": 0.35,
+  "supports": [
+   {
+    "id": "fixed_root",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "assembly_tip_force",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      38,
+      6
+     ],
+     "size": [
+      4,
+      12
+     ]
+    },
+    "force": [
+     0,
+     15,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "resolution": {
+   "h": 0.25
+  },
+  "min_feature": 1.2
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.627102700062096,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=0.25, grid (160, 40, 48)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

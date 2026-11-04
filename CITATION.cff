@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this code or these records, please cite the paper below."
+title: "From topology-optimization brief to solver-checked release: separating intent, admissibility and acceptance knowledge for language agents"
+type: software
+version: 0.0.1
+authors:
+  - family-names: Yang
+    given-names: Shaoliang
+    affiliation: Santa Clara University
+  - family-names: Wang
+    given-names: Jun
+    affiliation: Santa Clara University
+    email: jwang22@scu.edu
+repository-code: "https://github.com/nbbllxx0/From-brief-design-to-verified-release"
+license:
+  - MIT
+  - CC-BY-4.0
+keywords:
+  - topology optimization
+  - language agents
+  - model context protocol
+  - GPU finite elements
+  - verification
+identifiers:
+  - type: other
+    value: "arXiv:2611.04077"
+    description: "arXiv preprint"
+preferred-citation:
+  type: article
+  title: "From topology-optimization brief to solver-checked release: separating intent, admissibility and acceptance knowledge for language agents"
+  authors:
+    - family-names: Yang
+      given-names: Shaoliang
+      affiliation: Santa Clara University
+    - family-names: Wang
+      given-names: Jun
+      affiliation: Santa Clara University
+  year: 2026
+  journal: "arXiv preprint"
+  identifiers:
+    - type: other
+      value: "arXiv:2611.04077"
+  url: "https://arxiv.org/abs/2611.04077"

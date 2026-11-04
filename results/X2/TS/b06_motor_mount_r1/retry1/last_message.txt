@@ -1,0 +1,139 @@
+{
+  "schema_version": "agentto.spec/v0",
+  "name": "Motor mount",
+  "units": {
+    "length": "mm",
+    "force": "N"
+  },
+  "domain": {
+    "kind": "box",
+    "size": [160, 60, 120]
+  },
+  "material": {
+    "name": "Aluminium 6061",
+    "E": 69000,
+    "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+    {
+      "id": "bolt_20_20",
+      "region": {
+        "kind": "cylinder",
+        "axis": "y",
+        "center": [20, 20],
+        "radius": 12,
+        "span": [0, 0.5]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh."
+    },
+    {
+      "id": "bolt_20_100",
+      "region": {
+        "kind": "cylinder",
+        "axis": "y",
+        "center": [20, 100],
+        "radius": 12,
+        "span": [0, 0.5]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh."
+    },
+    {
+      "id": "bolt_140_20",
+      "region": {
+        "kind": "cylinder",
+        "axis": "y",
+        "center": [140, 20],
+        "radius": 12,
+        "span": [0, 0.5]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh."
+    },
+    {
+      "id": "bolt_140_100",
+      "region": {
+        "kind": "cylinder",
+        "axis": "y",
+        "center": [140, 100],
+        "radius": 12,
+        "span": [0, 0.5]
+      },
+      "fix": ["x", "y", "z"],
+      "note": "Circular washer footprint clamped at y=0; the positive 0.5 mm selection depth includes only bottom-face nodes on the 1 mm mesh."
+    }
+  ],
+  "loads": [
+    {
+      "id": "motor_and_belt",
+      "region": {
+        "kind": "patch",
+        "face": "y+",
+        "center": [80, 60],
+        "size": [40, 40]
+      },
+      "force": [800, -2000, 0],
+      "distribution": "uniform_nodes"
+    }
+  ],
+  "passive": [
+    {
+      "id": "boss_20_20",
+      "kind": "solid",
+      "region": {
+        "kind": "cylinder",
+        "axis": "y",
+        "center": [20, 20],
+        "radius": 12,
+        "span": [0, 10]
+      }
+    },
+    {
+      "id": "boss_20_100",
+      "kind": "solid",
+      "region": {
+        "kind": "cylinder",
+        "axis": "y",
+        "center": [20, 100],
+        "radius": 12,
+        "span": [0, 10]
+      }
+    },
+    {
+      "id": "boss_140_20",
+      "kind": "solid",
+      "region": {
+        "kind": "cylinder",
+        "axis": "y",
+        "center": [140, 20],
+        "radius": 12,
+        "span": [0, 10]
+      }
+    },
+    {
+      "id": "boss_140_100",
+      "kind": "solid",
+      "region": {
+        "kind": "cylinder",
+        "axis": "y",
+        "center": [140, 100],
+        "radius": 12,
+        "span": [0, 10]
+      }
+    },
+    {
+      "id": "motor_pad",
+      "kind": "solid",
+      "region": {
+        "kind": "box",
+        "min": [60, 55, 40],
+        "max": [100, 60, 80]
+      }
+    }
+  ],
+  "resolution": {
+    "h": 1
+  }
+}

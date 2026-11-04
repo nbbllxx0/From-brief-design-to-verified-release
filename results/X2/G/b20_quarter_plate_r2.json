@@ -1,0 +1,168 @@
+{
+ "task": "b20_quarter_plate",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T10:58:50",
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b20_quarter_plate_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 24.64763809996657,
+ "usage": {
+  "input_tokens": 111020,
+  "cached_input_tokens": 103808,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 730,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: corner pads are flush with plate edges; steel E = 210 GPa, \u03bd = 0.30. Quarter load is 1 kN downward over 10 \u00d7 10 mm. Regions and validation passed; render confirmed placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Steel plate \u2014 quarter model",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    24.0,
+    120.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "corner_bottom_pin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      4.0,
+      4.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "One of four full-plate corner pads; bottom y=0, x,z=0..8; fixed all translations as specified."
+   },
+   {
+    "id": "symmetry_x",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x"
+    ],
+    "note": "Symmetry plane x=120: zero normal displacement ux."
+   },
+   {
+    "id": "symmetry_z",
+    "region": {
+     "kind": "face",
+     "face": "z+"
+    },
+    "fix": [
+     "z"
+    ],
+    "note": "Symmetry plane z=120: zero normal displacement uz."
+   }
+  ],
+  "loads": [
+   {
+    "id": "quarter_top_centre_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      115.0,
+      115.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Quarter of full 20 x 20 mm centre pad and quarter of 4000 N total. Top y=24, x,z=110..120."
+   }
+  ],
+  "passive": [],
+  "description": "Quarter of a 240 x 24 x 240 mm plate, y up. Domain x,z=0..120, y=0..24. Symmetry at x=120 and z=120. Outer bottom corner pad x,z=0..8 fixed in xyz. Quarter of central top 20 x 20 mm full-plate load pad: x,z=110..120, total quarter force 1000 N downward. Linear isotropic steel E=210000 N/mm^2, nu=0.3. Corner pads assumed flush with full-plate edges; no extra passive regions.",
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 24.87670849985443,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 24, 120)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

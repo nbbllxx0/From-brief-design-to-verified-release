@@ -1,0 +1,198 @@
+{
+ "G": {
+  "n": 50,
+  "right": 44,
+  "right_ci95": [
+   0.7619492111337642,
+   0.9438247628937535
+  ],
+  "delivered_wrong": [
+   "b07_sensor_arm",
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b45_pump_bracket",
+   "b46_sensor_housing",
+   "b47_camera_mount"
+  ],
+  "delivered_with_rule_error": [],
+  "categories": {
+   "clarify": {
+    "wrong reading": 5,
+    "right": 2
+   },
+   "refuse": {
+    "right": 3
+   },
+   "solve": {
+    "right": 39,
+    "wrong reading": 1
+   }
+  },
+  "validate_calls_median": 1.0,
+  "input_tokens_median": 86454.0,
+  "wall_s_median": 28.336317200097255
+ },
+ "GNR": {
+  "n": 50,
+  "right": 40,
+  "right_ci95": [
+   0.6696262789551477,
+   0.8875637005402612
+  ],
+  "delivered_wrong": [
+   "b04_torsion_shaft",
+   "b07_sensor_arm",
+   "b10_hook_plate",
+   "b31_pillow_block",
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b45_pump_bracket",
+   "b46_sensor_housing",
+   "b47_camera_mount",
+   "b48_cable_anchor"
+  ],
+  "delivered_with_rule_error": [],
+  "categories": {
+   "clarify": {
+    "wrong reading": 7
+   },
+   "refuse": {
+    "right": 3
+   },
+   "solve": {
+    "right": 37,
+    "wrong reading": 3
+   }
+  },
+  "validate_calls_median": 1.0,
+  "input_tokens_median": 86821.0,
+  "wall_s_median": 19.561032600002363
+ },
+ "G_to_GNR": {
+  "corrected": [],
+  "broken": [
+   "b04_torsion_shaft",
+   "b10_hook_plate",
+   "b31_pillow_block",
+   "b48_cable_anchor"
+  ],
+  "p_mcnemar": 0.125
+ },
+ "discordant": {
+  "b04_torsion_shaft": {
+   "expected": "solve",
+   "G": "right",
+   "GNR": "wrong reading",
+   "GNR_fields_wrong": [
+    "passive"
+   ],
+   "GNR_rule_errors": [],
+   "GNR_final": "DONE\nAssumptions: steel E = 210 GPa, ν = 0.3; solid lugs extend 4 mm into the envelope; volume fraction applies to non-passive volume. Forces are ±625 N along z, producing +40 N·m about x. Validation passed; render confirmed support and load placement."
+  },
+  "b10_hook_plate": {
+   "expected": "clarify",
+   "G": "right",
+   "GNR": "wrong reading",
+   "GNR_fields_wrong": [
+    "loads"
+   ],
+   "GNR_rule_errors": [],
+   "GNR_final": "DONE\nAssumptions: top face fully fixed to a rigid beam; load acts downward (−y) over a 5 × 20 mm patch at the lower-right corner; steel E = 210 GPa, ν = 0.3; self-weight omitted. list_regions and validate_spec passed; render confirmed support and load placement."
+  },
+  "b31_pillow_block": {
+   "expected": "solve",
+   "G": "right",
+   "GNR": "wrong reading",
+   "GNR_fields_wrong": [
+    "passive"
+   ],
+   "GNR_rule_errors": [],
+   "GNR_final": "DONE\n\nAssumptions: fully clamped, non-slipping washer footprints; no explicit bolt holes; 2 mm solid mounting pads; 3 kN distributed uniformly over seat nodes; volume fraction applies to non-passive material. Validation passed; render checked."
+  },
+  "b48_cable_anchor": {
+   "expected": "clarify",
+   "G": "right",
+   "GNR": "wrong reading",
+   "GNR_fields_wrong": [
+    "passive"
+   ],
+   "GNR_rule_errors": [],
+   "GNR_final": "DONE\nAssumptions: cable pulls toward +x, giving (4000, 3000, 0) N; boss extends 4 mm into the envelope; bottom fully fixed; steel E = 210 GPa, ν = 0.30. Volume fraction applies to non-passive material. Region checks and validation passed; render confirmed placement."
+  }
+ },
+ "GNR_delivered_wrong_detail": {
+  "b04_torsion_shaft": {
+   "expected": "solve",
+   "rule_errors": [],
+   "fields_wrong": [
+    "passive"
+   ]
+  },
+  "b07_sensor_arm": {
+   "expected": "clarify",
+   "rule_errors": [],
+   "fields_wrong": [
+    "loads",
+    "passive"
+   ]
+  },
+  "b10_hook_plate": {
+   "expected": "clarify",
+   "rule_errors": [],
+   "fields_wrong": [
+    "loads"
+   ]
+  },
+  "b31_pillow_block": {
+   "expected": "solve",
+   "rule_errors": [],
+   "fields_wrong": [
+    "passive"
+   ]
+  },
+  "b39_tv_bracket": {
+   "expected": "solve",
+   "rule_errors": [],
+   "fields_wrong": [
+    "passive"
+   ]
+  },
+  "b44_gearbox_bracket": {
+   "expected": "clarify",
+   "rule_errors": [],
+   "fields_wrong": [
+    "loads",
+    "passive"
+   ]
+  },
+  "b45_pump_bracket": {
+   "expected": "clarify",
+   "rule_errors": [],
+   "fields_wrong": [
+    "loads"
+   ]
+  },
+  "b46_sensor_housing": {
+   "expected": "clarify",
+   "rule_errors": [],
+   "fields_wrong": [
+    "passive"
+   ]
+  },
+  "b47_camera_mount": {
+   "expected": "clarify",
+   "rule_errors": [],
+   "fields_wrong": [
+    "min_feature",
+    "passive"
+   ]
+  },
+  "b48_cable_anchor": {
+   "expected": "clarify",
+   "rule_errors": [],
+   "fields_wrong": [
+    "passive"
+   ]
+  }
+ }
+}

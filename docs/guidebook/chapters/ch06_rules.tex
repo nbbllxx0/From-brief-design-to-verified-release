@@ -1,0 +1,59 @@
+\chapter{Rules}\label{ch:rules}
+\chapterintro{Thirteen deterministic rules check that a specification states an admissible problem before anything is
+solved. This chapter explains when the rules run, how to read a finding, and what each code means and how to fix it.
+The rule list in this chapter is generated from \code{src/agentto/rules.py}.}
+
+\section{When the rules run}
+\index{rules!when they run}
+\begin{itemize}
+  \item In the workspace, \CheckDelay~ms after the last edit. In the paper's latency study the 95th-percentile
+  validation time per task was 1.2--10.5~ms \claim{C6.4}.
+  \item On every \tool{validate_spec} call, at the specification's own mesh or at a mesh size \code{h} you pass.
+  \item On every \tool{solve} call, again at the mesh of the requested rung. A solve whose rung fails validation is
+  refused before it reaches the GPU, and the GPU worker checks once more before it starts.
+\end{itemize}
+
+Any \sev{error} blocks solving and release. A \sev{warning} or \sev{info} finding does not block; it stays visible in
+the \gui{Checks} panel, often with a suggested fix. Several rules depend on the grid (for example R002, R010, R011 and
+R013), so a specification can pass at one mesh and fail at another.
+
+\section{Reading a finding}
+Each finding has a stable code, a severity, a message, the ids of the items it concerns (the tree marks those items),
+and, where one exists, a fix. A fix either sets a field (the workspace can offer it as one click, and an agent can
+propose it as a card) or suggests an action in words. \tool{validate_spec} returns the findings as JSON:
+
+\begin{jsoncode}
+{"ok": false,
+ "resolution": {"h": 1.0, "grid": [100, 50, 50], "n_elem": 250000, ...},
+ "findings": [{"code": "R003", "severity": "error",
+   "message": "supports leave rigid-body motion free: translation y, translation z, rotation about x",
+   "ids": ["support_1"],
+   "fix": {"suggest": "add a support that restrains translation y, translation z, rotation about x"}}]}
+\end{jsoncode}
+
+The codes are stable: experiments, logs and this book refer to them, and a code is never reused for a different
+check.
+
+\section{Summary}
+\input{generated/rules_summary}
+
+\section{Rule by rule}
+In the messages below, \meta{id} and similar placeholders stand for values filled in at run time.
+
+\input{generated/rules_cards}
+
+\section{What the rules cannot see}\label{sec:rulelimits}
+The rules decide whether a problem is admissible, not whether it is the problem the engineer meant. A support that
+selects real nodes and removes every rigid-body mode passes, even if it restrains a direction the brief leaves free. A
+keep-in pad that the brief never mentioned passes. A load with the right magnitude on the wrong face passes. These are
+intent errors, and only the engineer, helped by clarification, can catch them (Chapter~\ref{ch:assistant}).
+
+\begin{evidencebox}
+With grounding tools but no questions, the primary agent produced 6 wrong specifications on the 50-brief suite. All 6
+passed every rule \claim{C4.2}. Conversely, the rules stopped all 3 deliberately ill-posed briefs before any solve: two
+rigid-body cases (\rref{R003}) and one load inside its own keep-out region (\rref{R008}) \claim{C4.1}.
+\end{evidencebox}
+
+The rules also do not check that the final design is connected, that the exported surface is manufacturable, or that
+the structure is safe. The release certificate (Chapter~\ref{ch:ladder}) covers the numerical computation, and nothing
+in AgenticTO covers structural safety.

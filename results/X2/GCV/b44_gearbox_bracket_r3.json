@@ -1,0 +1,168 @@
+{
+ "task": "b44_gearbox_bracket",
+ "cond": "GCV",
+ "rep": 3,
+ "t": "2026-10-30T12:01:52",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 105097,
+  "cached_input_tokens": 97152,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2051,
+  "reasoning_output_tokens": 766
+ },
+ "gc_wall_s": 61.24237210000865,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 19624,
+  "cached_input_tokens": 12544,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 285,
+  "reasoning_output_tokens": 265
+ },
+ "verify_wall_s": 13.835427799960598,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 124721,
+  "cached_input_tokens": 109696,
+  "cache_write_input_tokens": 0,
+  "reasoning_output_tokens": 1031,
+  "output_tokens": 2336
+ },
+ "wall_s": 75.07779989996925,
+ "questions": 2,
+ "n_tool_calls": 11,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Gearbox output bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_fixed",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid gearbox attachment at x=0; entire end face clamped."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Upper drive lug, y=64\u201380 mm, z=32\u201348 mm. +z force; one half of +x torque couple."
+   },
+   {
+    "id": "bottom_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     -625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Lower drive lug, y=0\u201316 mm, z=32\u201348 mm. \u2212z force; 64 mm centre separation gives +40000 N mm torque."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  },
+  "description": "160\u00d780\u00d780 mm steel gearbox output bracket. y is up, z is depth. Entire x=0 face rigidly fixed. On x=160, 16\u00d716 mm lug load footprints centred at (y,z)=(72,40) and (8,40), flush with y=80 and y=0 edges. Opposite \u00b1625 N z forces give pure +x torque of 40000 N mm (40 N m), zero net force. Lugs are face footprints only, without passive solid depth, as clarified. Steel E=210000 N/mm\u00b2, nu=0.3; design volume fraction 0.3; 2 mm elements."
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 14.334941599983722,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

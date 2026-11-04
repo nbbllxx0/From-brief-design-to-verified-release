@@ -1,0 +1,52 @@
+{
+ "T": {
+  "right": 37,
+  "schema-invalid": 7,
+  "refused solvable": 5,
+  "wrong reading": 1
+ },
+ "G": {
+  "right": 44,
+  "wrong reading": 6
+ },
+ "T_to_G_fixed": {
+  "b06_motor_mount": [
+   "solve",
+   "schema-invalid"
+  ],
+  "b10_hook_plate": [
+   "clarify",
+   "refused solvable"
+  ],
+  "b19_engine_bracket": [
+   "solve",
+   "schema-invalid"
+  ],
+  "b31_pillow_block": [
+   "solve",
+   "schema-invalid"
+  ],
+  "b33_shelf_bracket": [
+   "solve",
+   "schema-invalid"
+  ],
+  "b40_crank_arm": [
+   "solve",
+   "schema-invalid"
+  ],
+  "b41_hinge_bracket": [
+   "solve",
+   "schema-invalid"
+  ],
+  "b48_cable_anchor": [
+   "clarify",
+   "refused solvable"
+  ]
+ },
+ "T_to_G_broken": {
+  "b44_gearbox_bracket": [
+   "clarify",
+   "wrong reading"
+  ]
+ }
+}

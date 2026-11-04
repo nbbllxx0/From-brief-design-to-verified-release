@@ -1,0 +1,155 @@
+{
+ "task": "b34_antenna_bracket",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:50:59",
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b34_antenna_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 31.91320770001039,
+ "usage": {
+  "input_tokens": 87215,
+  "cached_input_tokens": 80128,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 774,
+  "reasoning_output_tokens": 75
+ },
+ "returncode": 0,
+ "final": "DONE\n\nAssumptions: Weight and wind act simultaneously, uniformly distributed over the solid clamp nodes. No additional self-weight or eccentric moment. Volume fraction applies to non-passive material, excluding the preserved clamp.\n\nValidation passed with no findings; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Antenna wall bracket",
+  "units": {
+   "length": "m",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    0.4,
+    0.3,
+    0.2
+   ]
+  },
+  "material": {
+   "name": "S355 steel",
+   "E": 210000000000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "wall_weld",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full wall face x=0 welded; all three translations fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "antenna_weight_and_wind",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.33,
+      0.1
+     ],
+     "radius": 0.04,
+     "span": [
+      0.05,
+      0.3
+     ]
+    },
+    "force": [
+     0.0,
+     -300.0,
+     1200.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Simultaneous total antenna weight and wind, uniformly shared over clamp nodes; no extra eccentric moment specified."
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_mast_clamp",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.33,
+      0.1
+     ],
+     "radius": 0.04,
+     "span": [
+      0.05,
+      0.3
+     ]
+    },
+    "note": "Preserved solid vertical cylinder; y-axis, to domain top."
+   }
+  ],
+  "description": "SI antenna wall bracket. Full x=0 face welded, all displacement components fixed. Solid vertical mast clamp, axis y at x=0.33 m, z=0.10 m, radius 0.04 m, y=0.05 to 0.30 m. Concurrent static antenna loads: 300 N downward and 1200 N along +z, distributed uniformly over clamp nodes. Volume fraction 0.15 applies to non-passive design volume; preserved clamp excluded. Linear elastic minimum-compliance setup; no additional self-weight or antenna eccentricity assumed.",
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 0.005,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 33.113351800013334,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=5, grid (80, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,160 @@
+{
+ "task": "b50_valve_bracket",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:09:35",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 58219,
+  "cached_input_tokens": 51383,
+  "cache_write_input_tokens": 6828,
+  "output_tokens": 2490
+ },
+ "gc_wall_s": 33.532985700061545,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14557,
+  "cached_input_tokens": 6314,
+  "cache_write_input_tokens": 8239,
+  "output_tokens": 845
+ },
+ "verify_wall_s": 11.15136200003326,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 72776,
+  "cached_input_tokens": 57697,
+  "output_tokens": 3335,
+  "cache_write_input_tokens": 15067
+ },
+ "wall_s": 44.684347700094804,
+ "questions": 1,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Valve actuator bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    80.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "base_bolted",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "actuator_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      90.0,
+      20.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -600.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [
+   {
+    "id": "handle_clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      70.0,
+      50.0,
+      0.0
+     ],
+     "max": [
+      120.0,
+      80.0,
+      40.0
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 11.603637200081721,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

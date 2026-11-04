@@ -1,0 +1,209 @@
+{
+ "task": "b41_hinge_bracket",
+ "cond": "GC",
+ "rep": 1,
+ "t": "2026-10-30T10:20:15",
+ "n_tool_calls": 13,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_passive",
+  "add_passive",
+  "ask_clarification",
+  "add_support",
+  "add_support",
+  "ask_clarification",
+  "add_load",
+  "ask_clarification",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 3,
+ "oracle_hits": 3,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b41_hinge_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 50.84954329999164,
+ "usage": {
+  "input_tokens": 166270,
+  "cached_input_tokens": 151808,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1974,
+  "reasoning_output_tokens": 479
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Validated and render checked. Assumptions: steel E=210 GPa, \u03bd=0.3; volume fraction applies to non-passive material. Clarified: fully clamped \u00d812 mm washer contacts; load distributed uniformly through the solid boss.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Door hinge bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    140.0,
+    80.0,
+    30.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bolt_left",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20.0,
+      15.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Clamped 12 mm diameter washer contact, as clarified."
+   },
+   {
+    "id": "bolt_right",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      120.0,
+      15.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Clamped 12 mm diameter washer contact, as clarified."
+   }
+  ],
+  "loads": [
+   {
+    "id": "door_load",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      70.0,
+      65.0
+     ],
+     "radius": 10.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "force": [
+     300.0,
+     -800.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Simultaneous resultant, shared uniformly over boss nodes; centred through thickness, as clarified."
+   }
+  ],
+  "passive": [
+   {
+    "id": "hinge_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      70.0,
+      65.0
+     ],
+     "radius": 10.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "note": "Required solid boss, diameter 20 mm, full thickness; no pin bore specified."
+   },
+   {
+    "id": "cable_slot",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      40.0,
+      20.0,
+      0.0
+     ],
+     "max": [
+      100.0,
+      35.0,
+      30.0
+     ]
+    },
+    "note": "Required empty cable slot through full thickness."
+   }
+  ],
+  "description": "Door hinge bracket; y up. Envelope 140 x 80 x 30 mm. Two bottom bolt washer supports; kept solid boss at (70,65), diameter 20 mm, full z thickness; cable slot x=40..100, y=20..35 through thickness. Boss resultant force (+300,-800,0) N.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 51.1222852000501,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (140, 80, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

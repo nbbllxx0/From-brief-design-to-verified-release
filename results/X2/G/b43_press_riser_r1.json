@@ -1,0 +1,155 @@
+{
+ "task": "b43_press_riser",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:55:28",
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_passive",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b43_press_riser_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 27.99374770000577,
+ "usage": {
+  "input_tokens": 87582,
+  "cached_input_tokens": 76160,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 801,
+  "reasoning_output_tokens": 211
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: steel E = 210 GPa, \u03bd = 0.30; bolted bottom fully fixed in x/y/z; pad dimensions are 100 mm along x \u00d7 50 mm along z. Volume fraction applies to non-passive material. Mesh: 150 \u00d7 50 \u00d7 75 elements, 2 mm spacing. Validation passed; render checked.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Press riser block",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    100.0,
+    150.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "press_bed",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full bottom face bolted to press bed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "tool_pad",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      150.0,
+      75.0
+     ],
+     "size": [
+      100.0,
+      50.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -20000.0,
+     2000.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total force shared over centred top pad, 100 mm x 50 mm in x,z."
+   }
+  ],
+  "passive": [
+   {
+    "id": "coolant_channel",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      0.0,
+      45.0
+     ],
+     "max": [
+      300.0,
+      30.0,
+      105.0
+     ]
+    },
+    "note": "Full-length rectangular coolant channel; must remain empty."
+   }
+  ],
+  "description": "Press riser, y up. Bottom bolted to press bed, fixed in x/y/z. Full-length coolant void x=0..300, y=0..30, z=45..105 mm. Top pad assumed 100 mm along x and 50 mm along z, centred at x=150,z=75; total force (0,-20000,2000) N.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": null,
+   "cells_short_edge": 50
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 28.474655299913138,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 75)"
+  ],
+  "matched": "admissible:1"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

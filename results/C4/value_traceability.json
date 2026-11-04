@@ -1,0 +1,3175 @@
+{
+ "rule": "For every delivered specification of a solve or clarify brief, each numeric value that places a support, load or passive region (centres, sizes, spans, radii, box corners) and each load force component is tagged 'traceable' when it can be formed from the numbers written in the brief: a brief number (also x1000 and /1000 for unit changes), zero, a domain size, half of either, or a sum or difference of two of these (each optionally halved). Anything else is tagged 'untraced', i.e. assumed by the agent. A specification is flagged when it carries any untraced value. The rule was fixed before the wrong/right split was examined; it is a post hoc proxy for typed field provenance, not part of the evaluated system. As a control it is applied to the reference readings too. No LLM calls, no solves.",
+ "conditions": {
+  "T": {
+   "delivered": 35,
+   "wrong": 1,
+   "right": 34,
+   "flag_wrong": 0,
+   "flag_right": 2,
+   "flag_right_solve": 1,
+   "right_solve": 33,
+   "flag_right_clarify": 1,
+   "right_clarify": 1,
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b02_mbb_half",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b03_bridge_deck",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "expected": "solve",
+     "correct": true,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_drive_lug.force",
+       625.0
+      ],
+      [
+       "loads.bottom_drive_lug.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b05_l_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b09_duct_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b12_wheel",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b14_cube_torsion",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b15_corner_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b16_column",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b17_arch_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b20_quarter_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b23_clamped_beam",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b24_shear_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b26_canopy",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b28_stool",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b32_drone_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b35_padeye",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b36_pedal_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b38_peek_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b42_snap_hook",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b43_press_riser",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "expected": "clarify",
+     "correct": true,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_drive_lug.force",
+       625.0
+      ],
+      [
+       "loads.bottom_drive_lug.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b47_camera_mount",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    }
+   ]
+  },
+  "G": {
+   "delivered": 47,
+   "wrong": 6,
+   "right": 41,
+   "flag_wrong": 3,
+   "flag_right": 1,
+   "flag_right_solve": 1,
+   "right_solve": 39,
+   "flag_right_clarify": 0,
+   "right_clarify": 2,
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b02_mbb_half",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b03_bridge_deck",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "expected": "solve",
+     "correct": true,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_drive_lug.force",
+       625.0
+      ],
+      [
+       "loads.bottom_drive_lug.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b05_l_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b06_motor_mount",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b07_sensor_arm",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b09_duct_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b10_hook_plate",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b12_wheel",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b14_cube_torsion",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b15_corner_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b16_column",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b17_arch_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b19_engine_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b20_quarter_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b23_clamped_beam",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b24_shear_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b26_canopy",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b28_stool",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b31_pillow_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b32_drone_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b35_padeye",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b36_pedal_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b38_peek_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b39_tv_bracket",
+     "expected": "solve",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b40_crank_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b42_snap_hook",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b43_press_riser",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "expected": "clarify",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_torque_force.force",
+       -625.0
+      ],
+      [
+       "loads.bottom_torque_force.force",
+       625.0
+      ]
+     ]
+    },
+    {
+     "task": "b45_pump_bracket",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b46_sensor_housing",
+     "expected": "clarify",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "passive.connector_plug_clearance",
+       17.0
+      ],
+      [
+       "passive.connector_plug_clearance",
+       33.0
+      ]
+     ]
+    },
+    {
+     "task": "b47_camera_mount",
+     "expected": "clarify",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "passive.camera_pad",
+       118.0
+      ]
+     ]
+    },
+    {
+     "task": "b48_cable_anchor",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    }
+   ]
+  },
+  "GNR": {
+   "delivered": 47,
+   "wrong": 10,
+   "right": 37,
+   "flag_wrong": 5,
+   "flag_right": 0,
+   "flag_right_solve": 0,
+   "right_solve": 37,
+   "flag_right_clarify": 0,
+   "right_clarify": 0,
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b02_mbb_half",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b03_bridge_deck",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "expected": "solve",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_lug_force.force",
+       625.0
+      ],
+      [
+       "loads.bottom_lug_force.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b05_l_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b06_motor_mount",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b07_sensor_arm",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b09_duct_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b10_hook_plate",
+     "expected": "clarify",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.lower_corner_hanging_load",
+       117.5
+      ]
+     ]
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b12_wheel",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b14_cube_torsion",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b15_corner_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b16_column",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b17_arch_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b19_engine_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b20_quarter_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b23_clamped_beam",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b24_shear_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b26_canopy",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b28_stool",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b31_pillow_block",
+     "expected": "solve",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b32_drone_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b35_padeye",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b36_pedal_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b38_peek_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b39_tv_bracket",
+     "expected": "solve",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b40_crank_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b42_snap_hook",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b43_press_riser",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "expected": "clarify",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_torque_force.force",
+       -625.0
+      ],
+      [
+       "loads.bottom_torque_force.force",
+       625.0
+      ]
+     ]
+    },
+    {
+     "task": "b45_pump_bracket",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b46_sensor_housing",
+     "expected": "clarify",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "passive.connector_clearance",
+       17.0
+      ],
+      [
+       "passive.connector_clearance",
+       33.0
+      ]
+     ]
+    },
+    {
+     "task": "b47_camera_mount",
+     "expected": "clarify",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "passive.camera_pad_skin",
+       118.0
+      ]
+     ]
+    },
+    {
+     "task": "b48_cable_anchor",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    }
+   ]
+  },
+  "GC": {
+   "delivered": 47,
+   "wrong": 0,
+   "right": 47,
+   "flag_wrong": 0,
+   "flag_right": 2,
+   "flag_right_solve": 1,
+   "right_solve": 40,
+   "flag_right_clarify": 1,
+   "right_clarify": 7,
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b02_mbb_half",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b03_bridge_deck",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "expected": "solve",
+     "correct": true,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_lug.force",
+       625.0
+      ],
+      [
+       "loads.bottom_lug.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b05_l_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b06_motor_mount",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b07_sensor_arm",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b09_duct_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b10_hook_plate",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b12_wheel",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b14_cube_torsion",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b15_corner_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b16_column",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b17_arch_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b19_engine_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b20_quarter_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b23_clamped_beam",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b24_shear_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b26_canopy",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b28_stool",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b31_pillow_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b32_drone_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b35_padeye",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b36_pedal_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b38_peek_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b39_tv_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b40_crank_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b42_snap_hook",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b43_press_riser",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "expected": "clarify",
+     "correct": true,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_drive_lug.force",
+       625.0
+      ],
+      [
+       "loads.bottom_drive_lug.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b45_pump_bracket",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b46_sensor_housing",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b47_camera_mount",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b48_cable_anchor",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    }
+   ]
+  },
+  "GCV": {
+   "delivered": 47,
+   "wrong": 0,
+   "right": 47,
+   "flag_wrong": 0,
+   "flag_right": 2,
+   "flag_right_solve": 1,
+   "right_solve": 40,
+   "flag_right_clarify": 1,
+   "right_clarify": 7,
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b02_mbb_half",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b03_bridge_deck",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "expected": "solve",
+     "correct": true,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_lug.force",
+       625.0
+      ],
+      [
+       "loads.bottom_lug.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b05_l_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b06_motor_mount",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b07_sensor_arm",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b09_duct_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b10_hook_plate",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b12_wheel",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b14_cube_torsion",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b15_corner_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b16_column",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b17_arch_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b19_engine_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b20_quarter_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b23_clamped_beam",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b24_shear_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b26_canopy",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b28_stool",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b31_pillow_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b32_drone_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b35_padeye",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b36_pedal_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b38_peek_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b39_tv_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b40_crank_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b42_snap_hook",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b43_press_riser",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "expected": "clarify",
+     "correct": true,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_drive_lug.force",
+       625.0
+      ],
+      [
+       "loads.bottom_drive_lug.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b45_pump_bracket",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b46_sensor_housing",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b47_camera_mount",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b48_cable_anchor",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    }
+   ]
+  },
+  "claude_high/T": {
+   "delivered": 47,
+   "wrong": 8,
+   "right": 39,
+   "flag_wrong": 3,
+   "flag_right": 1,
+   "flag_right_solve": 1,
+   "right_solve": 39,
+   "flag_right_clarify": 0,
+   "right_clarify": 0,
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b02_mbb_half",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b03_bridge_deck",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "expected": "solve",
+     "correct": true,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_lug.force",
+       625.0
+      ],
+      [
+       "loads.bottom_lug.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b05_l_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b06_motor_mount",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b07_sensor_arm",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b09_duct_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b10_hook_plate",
+     "expected": "clarify",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.hanging_load",
+       116.0
+      ],
+      [
+       "loads.hanging_load",
+       8.0
+      ],
+      [
+       "passive.load_pad",
+       112.0
+      ]
+     ]
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b12_wheel",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b14_cube_torsion",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b15_corner_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b16_column",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b17_arch_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b19_engine_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b20_quarter_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b23_clamped_beam",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b24_shear_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b26_canopy",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b28_stool",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b31_pillow_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b32_drone_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b35_padeye",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b36_pedal_arm",
+     "expected": "solve",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b38_peek_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b39_tv_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b40_crank_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b42_snap_hook",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b43_press_riser",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "expected": "clarify",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.top_lug.force",
+       -625.0
+      ],
+      [
+       "loads.bottom_lug.force",
+       625.0
+      ]
+     ]
+    },
+    {
+     "task": "b45_pump_bracket",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b46_sensor_housing",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b47_camera_mount",
+     "expected": "clarify",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "passive.camera_pad",
+       118.0
+      ]
+     ]
+    },
+    {
+     "task": "b48_cable_anchor",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    }
+   ]
+  },
+  "claude_high/GC": {
+   "delivered": 47,
+   "wrong": 4,
+   "right": 43,
+   "flag_wrong": 1,
+   "flag_right": 1,
+   "flag_right_solve": 1,
+   "right_solve": 38,
+   "flag_right_clarify": 0,
+   "right_clarify": 5,
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b02_mbb_half",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b03_bridge_deck",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "expected": "solve",
+     "correct": true,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.lug_top.force",
+       625.0
+      ],
+      [
+       "loads.lug_bottom.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b05_l_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b06_motor_mount",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b07_sensor_arm",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b09_duct_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b10_hook_plate",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b12_wheel",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "expected": "solve",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b14_cube_torsion",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b15_corner_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b16_column",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b17_arch_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b19_engine_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b20_quarter_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b23_clamped_beam",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b24_shear_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b26_canopy",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b28_stool",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b31_pillow_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b32_drone_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b35_padeye",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b36_pedal_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "expected": "solve",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b38_peek_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b39_tv_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b40_crank_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b42_snap_hook",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b43_press_riser",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "expected": "clarify",
+     "correct": false,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.lug_top.force",
+       -625.0
+      ],
+      [
+       "loads.lug_bottom.force",
+       625.0
+      ]
+     ]
+    },
+    {
+     "task": "b45_pump_bracket",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b46_sensor_housing",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b47_camera_mount",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b48_cable_anchor",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    }
+   ]
+  },
+  "claude_high/GCV": {
+   "delivered": 47,
+   "wrong": 3,
+   "right": 44,
+   "flag_wrong": 0,
+   "flag_right": 2,
+   "flag_right_solve": 1,
+   "right_solve": 38,
+   "flag_right_clarify": 1,
+   "right_clarify": 6,
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b02_mbb_half",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b03_bridge_deck",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "expected": "solve",
+     "correct": true,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.lug_top.force",
+       625.0
+      ],
+      [
+       "loads.lug_bottom.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b05_l_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b06_motor_mount",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b07_sensor_arm",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b09_duct_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b10_hook_plate",
+     "expected": "clarify",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b12_wheel",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "expected": "solve",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b14_cube_torsion",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b15_corner_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b16_column",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b17_arch_bridge",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b19_engine_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b20_quarter_plate",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b23_clamped_beam",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b24_shear_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b26_canopy",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b28_stool",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b31_pillow_block",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b32_drone_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b35_padeye",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b36_pedal_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "expected": "solve",
+     "correct": false,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b38_peek_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b39_tv_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b40_crank_arm",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b42_snap_hook",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b43_press_riser",
+     "expected": "solve",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "expected": "clarify",
+     "correct": true,
+     "flag": true,
+     "untraced": [
+      [
+       "loads.lug_top.force",
+       625.0
+      ],
+      [
+       "loads.lug_bottom.force",
+       -625.0
+      ]
+     ]
+    },
+    {
+     "task": "b45_pump_bracket",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b46_sensor_housing",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b47_camera_mount",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    },
+    {
+     "task": "b48_cable_anchor",
+     "expected": "clarify",
+     "correct": true,
+     "flag": false,
+     "untraced": []
+    }
+   ]
+  }
+ },
+ "references": {
+  "solve": [
+   1,
+   40
+  ],
+  "clarify": [
+   1,
+   7
+  ],
+  "rows": [
+   {
+    "task": "b01_cantilever_block",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b02_mbb_half",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b03_bridge_deck",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b04_torsion_shaft",
+    "expected": "solve",
+    "flag": true,
+    "untraced": [
+     [
+      "loads.lug_top.force",
+      625.0
+     ],
+     [
+      "loads.lug_bottom.force",
+      -625.0
+     ]
+    ]
+   },
+   {
+    "task": "b05_l_bracket",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b06_motor_mount",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b07_sensor_arm",
+    "expected": "clarify",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b09_duct_bridge",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b10_hook_plate",
+    "expected": "clarify",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b11_cantilever_line_load",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b12_wheel",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b13_cantilever_end_traction",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b14_cube_torsion",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b15_corner_plate",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b16_column",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b17_arch_bridge",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b18_cantilever_hole",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b19_engine_bracket",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b20_quarter_plate",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b21_mbb_z_up",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b22_cantilever_slab",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b23_clamped_beam",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b24_shear_block",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b25_cantilever_metres",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b26_canopy",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b27_eccentric_cantilever",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b28_stool",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b29_michell_cantilever",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b30_bridge_clearance",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b31_pillow_block",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b32_drone_arm",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b33_shelf_bracket",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b34_antenna_bracket",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b35_padeye",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b36_pedal_arm",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b37_battery_crossmember",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b38_peek_bracket",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b39_tv_bracket",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b40_crank_arm",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b41_hinge_bracket",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b42_snap_hook",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b43_press_riser",
+    "expected": "solve",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b44_gearbox_bracket",
+    "expected": "clarify",
+    "flag": true,
+    "untraced": [
+     [
+      "loads.lug_top.force",
+      625.0
+     ],
+     [
+      "loads.lug_bottom.force",
+      -625.0
+     ]
+    ]
+   },
+   {
+    "task": "b45_pump_bracket",
+    "expected": "clarify",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b46_sensor_housing",
+    "expected": "clarify",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b47_camera_mount",
+    "expected": "clarify",
+    "flag": false,
+    "untraced": []
+   },
+   {
+    "task": "b48_cable_anchor",
+    "expected": "clarify",
+    "flag": false,
+    "untraced": []
+   }
+  ]
+ },
+ "pooled_all_conditions": {
+  "delivered": 364,
+  "wrong": 32,
+  "right": 332,
+  "flag_wrong": 12,
+  "flag_right": 11,
+  "flag_right_solve": 7,
+  "right_solve": 304,
+  "flag_right_clarify": 4,
+  "right_clarify": 28
+ }
+}

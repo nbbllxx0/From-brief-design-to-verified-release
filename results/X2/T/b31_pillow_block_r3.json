@@ -1,0 +1,153 @@
+{
+ "task": "b31_pillow_block",
+ "cond": "T",
+ "rep": 3,
+ "t": "2026-10-30T11:27:17",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 17.628667500102893,
+ "usage": {
+  "input_tokens": 20023,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 779,
+  "reasoning_output_tokens": 215
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Pillow-block bearing bracket\",\n  \"description\": \"Bearing bracket with y upward, two bottom washer supports, and a preserved solid cylindrical bearing seat.\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [120, 60, 40]\n  },\n  \"material\": {\n    \"name\": \"grey cast iron\",\n    \"E\": 110000,\n    \"nu\": 0.26\n  },\n  \"volume_fraction\": 0.3,\n  \"supports\": [\n    {\n      \"id\": \"left_m8_washer\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [15, 20],\n        \"radius\": 8,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Fixed circular washer footprint on y = 0; 16 mm diameter.\"\n    },\n    {\n      \"id\": \"right_m8_washer\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [105, 20],\n        \"radius\": 8,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Fixed circular washer footprint on y = 0; 16 mm diameter.\"\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"shaft_force\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [60, 40],\n        \"radius\": 15,\n        \"span\": [0, 40]\n      },\n      \"force\": [0, -3000, 0],\n      \"distribution\": \"uniform_nodes\",\n      \"note\": \"Total downward shaft force distributed over the preserved bearing seat.\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"bearing_seat\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [60, 40],\n        \"radius\": 15,\n        \"span\": [0, 40]\n      },\n      \"note\": \"Preserve the solid 30 mm diameter bearing seat through the full depth.\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Pillow-block bearing bracket",
+  "description": "Bearing bracket with y upward, two bottom washer supports, and a preserved solid cylindrical bearing seat.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120,
+    60,
+    40
+   ]
+  },
+  "material": {
+   "name": "grey cast iron",
+   "E": 110000,
+   "nu": 0.26
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "left_m8_washer",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      15,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fixed circular washer footprint on y = 0; 16 mm diameter."
+   },
+   {
+    "id": "right_m8_washer",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      105,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fixed circular washer footprint on y = 0; 16 mm diameter."
+   }
+  ],
+  "loads": [
+   {
+    "id": "shaft_force",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      60,
+      40
+     ],
+     "radius": 15,
+     "span": [
+      0,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -3000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total downward shaft force distributed over the preserved bearing seat."
+   }
+  ],
+  "passive": [
+   {
+    "id": "bearing_seat",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      60,
+      40
+     ],
+     "radius": 15,
+     "span": [
+      0,
+      40
+     ]
+    },
+    "note": "Preserve the solid 30 mm diameter bearing seat through the full depth."
+   }
+  ],
+  "resolution": {
+   "h": 1
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 17.711521100020036,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": false,
+ "schema_error": "2 validation errors for Spec\nsupports.0.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...ius': 8, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nsupports.1.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kin",
+ "correct_spec": false,
+ "behaviour_ok": false
+}

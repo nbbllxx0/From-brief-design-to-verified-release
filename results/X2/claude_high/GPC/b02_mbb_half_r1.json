@@ -1,0 +1,202 @@
+{
+ "task": "b02_mbb_half",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:33:51",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "mm and kN given in brief; N used (2 kN = 2000 N)"
+   },
+   {
+    "key": "domain",
+    "source": "derived",
+    "note": "Half of 240 mm length = 120 mm; 40 deep x 40 wide stated"
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Aluminium 6061 stated; E=68.9 GPa, nu=0.33 taken from handbook values"
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "0.3"
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "1 mm elements"
+   },
+   {
+    "key": "support:end_support",
+    "source": "stated",
+    "note": "Bottom edge at end x=0, full width, carries vertical (y) and sideways (z) only"
+   },
+   {
+    "key": "support:symmetry",
+    "source": "derived",
+    "note": "Symmetry at mid-span plane x=120: fix x on that face"
+   },
+   {
+    "key": "load:midspan_load",
+    "source": "derived",
+    "note": "Half model carries half of 2 kN: 1000 N downward on top edge at x=120, full width"
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\claude_high\\GPC\\b02_mbb_half_r1\\session\\session.jsonl",
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 28.617407399928197,
+ "usage": {
+  "input_tokens": 81783,
+  "cached_input_tokens": 73267,
+  "cache_write_input_tokens": 8506,
+  "output_tokens": 2496
+ },
+ "returncode": 0,
+ "final": "I set up the half-beam spec and it passes validation. The render shows the supports and load where the brief puts them, and every spec item has a source tag.\n\n- **Domain:** 120 \u00d7 40 \u00d7 40 mm (the left half of the 240 mm beam), meshed at 1 mm into 192,000 elements. Volume fraction is 0.3.\n- **End support:** the bottom edge at x=0, y=0 across the full width (41 nodes) is fixed in y and z only, so it carries vertical and sideways load.\n- **Symmetry:** the mid-span face at x=120 is fixed in x (1,681 nodes).\n- **Load:** the half model takes half the 2 kN, so 1000 N acts in \u2212y along the top edge at x=120, y=40 across the full width (41 nodes).\n\nThese supports hold the part still against all six rigid-body movements.\n\nDONE. Assumptions: the brief names aluminium 6061 but gives no material constants, so I used handbook values of E = 68.9 GPa and \u03bd = 0.33.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "mbb_half",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "end_support",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Bottom edge at left end, full width; vertical + sideways only"
+   },
+   {
+    "id": "symmetry",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x"
+    ],
+    "note": "Mid-span symmetry plane x=120"
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_load",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120.0,
+      40.0
+     ],
+     "span": null
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Half of 2 kN line load at mid-span top, full width"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 28.982374200131744,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

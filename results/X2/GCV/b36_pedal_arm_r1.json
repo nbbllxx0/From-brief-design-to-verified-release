@@ -1,0 +1,153 @@
+{
+ "task": "b36_pedal_arm",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:35:40",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 144560,
+  "cached_input_tokens": 130304,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 858,
+  "reasoning_output_tokens": 238
+ },
+ "gc_wall_s": 34.9386203000322,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17665,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 123,
+  "reasoning_output_tokens": 103
+ },
+ "verify_wall_s": 8.780022900085896,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 341,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 981,
+  "input_tokens": 162225,
+  "cached_input_tokens": 130304
+ },
+ "wall_s": 43.718643200118095,
+ "questions": 1,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Pedal arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    40.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "keyed_shaft",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      15.0,
+      20.0
+     ],
+     "radius": 8.0,
+     "span": [
+      0.0,
+      20.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "All nodes inside the 16 mm shaft circle fixed in all directions through full thickness."
+   }
+  ],
+  "loads": [
+   {
+    "id": "foot_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      185.0,
+      10.0
+     ],
+     "size": [
+      30.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 1 kN downward on top face x=170\u2013200 mm, full z thickness."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 9.039440900087357,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 40, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

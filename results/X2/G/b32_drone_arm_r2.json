@@ -1,0 +1,155 @@
+{
+ "task": "b32_drone_arm",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T11:03:14",
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b32_drone_arm_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 25.25524799991399,
+ "usage": {
+  "input_tokens": 100520,
+  "cached_input_tokens": 85120,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 720,
+  "reasoning_output_tokens": 55
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic aluminium 7075, E = 71.7 GPa, \u03bd = 0.33; thrust uniformly distributed over the pad top; volume fraction 0.2 excludes the preserved pad (overall fraction 0.2267); no minimum-feature constraint. Region checks and validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Drone arm \u2014 aluminium 7075",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150.0,
+    20.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 7075",
+   "E": 71700.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "root_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full root end face x=0 mm clamped in all three translations."
+   }
+  ],
+  "loads": [
+   {
+    "id": "full_thrust",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      140.0,
+      10.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     15.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 15 N upward (+z), shared equally among nodes on the motor pad top face."
+   }
+  ],
+  "passive": [
+   {
+    "id": "motor_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      130.0,
+      0.0,
+      15.0
+     ],
+     "max": [
+      150.0,
+      20.0,
+      20.0
+     ]
+    },
+    "note": "Preserve the full 20 x 20 x 5 mm motor mounting pad."
+   }
+  ],
+  "description": "Drone arm, x along length and z up. Linear isotropic aluminium 7075 assumed: E=71.7 GPa, nu=0.33. Root x=0 fully clamped; preserved motor pad x=130..150, y=0..20, z=15..20 mm; total upward thrust 15 N uniformly distributed across pad top. Volume fraction 0.2 applies to non-passive design volume; solid pad excluded per tool convention. No additional minimum feature constraint.",
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 0.5,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 25.473253099946305,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=0.5, grid (300, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

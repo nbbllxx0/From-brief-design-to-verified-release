@@ -1,0 +1,142 @@
+{
+ "task": "b47_camera_mount",
+ "cond": "GC",
+ "rep": 3,
+ "t": "2026-10-30T11:54:15",
+ "n_tool_calls": 14,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "get_spec",
+  "ask_clarification",
+  "set_params",
+  "ask_clarification",
+  "set_params",
+  "ask_clarification",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 3,
+ "oracle_hits": 1,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b47_camera_mount_r3\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 49.20274950005114,
+ "usage": {
+  "input_tokens": 191345,
+  "cached_input_tokens": 174080,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1726,
+  "reasoning_output_tokens": 362
+ },
+ "returncode": 0,
+ "final": "DONE\n\nAssumptions: full-face clamping; uniform pad loading with no retained pad thickness; aluminium E = 68.9 GPa, \u03bd = 0.33. Clarified: 15% volume fraction, no additional minimum feature constraint. Validation passed; render confirmed placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Inspection-camera mount",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    60.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "gantry_mount",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full x=0 face bolted to gantry, idealized as fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera_weight",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -80.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 80 N downward (-y), distributed on centered camera pad."
+   }
+  ],
+  "passive": [],
+  "description": "Inspection-camera mount; y up. Full x=0 face bolted to gantry, idealized fully fixed. Uniform total 80 N in -y on centered 20 x 20 mm patch at x=120. Volume fraction 0.15 per clarification; 1 mm elements; no additional minimum feature constraint per clarification. Pad interpreted as load footprint only because no retained thickness was supplied. Linear isotropic aluminium 6061: E=68900 N/mm^2, nu=0.33.",
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "volume_fraction": 0.15
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 49.68379590008408,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 60)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

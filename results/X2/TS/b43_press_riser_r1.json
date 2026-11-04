@@ -1,0 +1,38 @@
+{
+ "task": "b43_press_riser",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:26:44",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 0,
+ "retry_errors": [],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 10.637111800024286,
+ "usage": {
+  "input_tokens": 20008,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 289,
+  "reasoning_output_tokens": 248
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The coolant channel removes part of the bottom face, conflicting with the requirement that the bottom face be bolted to the press bed over its full area.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 10.690505199832842,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

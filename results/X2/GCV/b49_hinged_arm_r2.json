@@ -1,0 +1,153 @@
+{
+ "task": "b49_hinged_arm",
+ "cond": "GCV",
+ "rep": 2,
+ "t": "2026-10-30T11:42:08",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 87787,
+  "cached_input_tokens": 76160,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 682,
+  "reasoning_output_tokens": 118
+ },
+ "gc_wall_s": 18.551809600088745,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 63299,
+  "cached_input_tokens": 52480,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 739,
+  "reasoning_output_tokens": 593
+ },
+ "verify_wall_s": 28.770362299866974,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 1421,
+  "reasoning_output_tokens": 711,
+  "input_tokens": 151086,
+  "cache_write_input_tokens": 0,
+  "cached_input_tokens": 128640
+ },
+ "wall_s": 47.32217189995572,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 1,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Hinged support arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    40.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "hinge_axis",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      10.0,
+      20.0
+     ],
+     "span": [
+      0.0,
+      20.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Ideal revolute hinge along z at x=10, y=20 mm. Axis translations fixed; rotation about z remains free. Nothing else holds the arm."
+   }
+  ],
+  "loads": [
+   {
+    "id": "end_downward_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      20.0,
+      10.0
+     ],
+     "size": [
+      10.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -400.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "400 N total downward, x=200 mm, y=15..25 mm, full z=0..20 mm thickness."
+   }
+  ],
+  "passive": [],
+  "description": "Arm with y up, freely rotating about the sole hinge axis parallel to z at x=10 mm, y=20 mm. No other supports. Total downward end load 400 N.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 29.22259879997,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (200, 40, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

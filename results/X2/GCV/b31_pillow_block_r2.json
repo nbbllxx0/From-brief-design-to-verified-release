@@ -1,0 +1,208 @@
+{
+ "task": "b31_pillow_block",
+ "cond": "GCV",
+ "rep": 2,
+ "t": "2026-10-30T11:39:44",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 196112,
+  "cached_input_tokens": 182656,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 3024,
+  "reasoning_output_tokens": 1436
+ },
+ "gc_wall_s": 108.07818660000339,
+ "verify": {
+  "match": false,
+  "issues": [
+   "The 3000 N shaft load points upward (+y); the brief requires downward (\u2212y)."
+  ]
+ },
+ "verify_usage": {
+  "input_tokens": 54104,
+  "cached_input_tokens": 48256,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 742,
+  "reasoning_output_tokens": 587
+ },
+ "verify_wall_s": 31.881496499991044,
+ "repaired": true,
+ "repair_usage": {
+  "input_tokens": 79788,
+  "cached_input_tokens": 66304,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 254,
+  "reasoning_output_tokens": 17
+ },
+ "repair_final": "DONE, no changes needed: shaft load already points downward (\u22123000 N in y). Spec validated successfully.",
+ "usage": {
+  "output_tokens": 4020,
+  "reasoning_output_tokens": 2040,
+  "input_tokens": 330004,
+  "cache_write_input_tokens": 0,
+  "cached_input_tokens": 297216
+ },
+ "wall_s": 156.36701759998687,
+ "questions": 3,
+ "n_tool_calls": 18,
+ "n_failed_calls": 0,
+ "session_log": "results\\X2\\GCV\\b31_pillow_block_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "DONE, no changes needed: shaft load already points downward (\u22123000 N in y). Spec validated successfully.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Pillow-block bearing bracket",
+  "description": "120 x 60 x 40 mm pillow-block bracket; y up. Grey cast iron E=110000 N/mm^2, nu=0.26. Two clamped 16 mm diameter washer footprints on y=0 at (x,z)=(15,20) and (105,20). Required solid seat: z-axis cylinder at (x,y)=(60,40), diameter 30 mm, z=0..40. Total shaft force (0,-3000,0) N shared over seat nodes. Volume fraction 0.3 applies to non-passive design volume, as clarified. Element edge 1 mm. Bolts represented by effective washer support patches.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    60.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Grey cast iron",
+   "E": 110000.0,
+   "nu": 0.26
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "bolt_left",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      15.0,
+      20.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Clamped 16 mm washer footprint, selected by clarification."
+   },
+   {
+    "id": "bolt_right",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      105.0,
+      20.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Clamped 16 mm washer footprint, selected by clarification."
+   }
+  ],
+  "loads": [
+   {
+    "id": "shaft_force",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      60.0,
+      40.0
+     ],
+     "radius": 15.0,
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "force": [
+     0.0,
+     -3000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 3 kN downward force equally distributed over the solid seat nodes, selected by clarification."
+   }
+  ],
+  "passive": [
+   {
+    "id": "bearing_seat",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      60.0,
+      40.0
+     ],
+     "radius": 15.0,
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "note": "Required solid bearing seat, diameter 30 mm, through full depth."
+   }
+  ],
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "min_feature": null,
+  "meta": {}
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 49.04156310018152,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,28 @@
+{
+ "criterion": "relative compliance difference <= 1e-6 (voxfem solve accepted at 1e-8 true residual)",
+ "all_pass": true,
+ "rows": [
+  {
+   "name": "passive_cantilever",
+   "n_elem": 16000,
+   "ndof": 54243,
+   "compliance_skfem": 102.72286171582533,
+   "compliance_voxfem": 102.72286172470132,
+   "rel_diff": 8.640711541732709e-11,
+   "skfem_rel_residual": 8.981663906484078e-13,
+   "voxfem_rel_true": 5.83589222443319e-09,
+   "wall_s": 26.06753379991278
+  },
+  {
+   "name": "b05_l_bracket",
+   "n_elem": 50000,
+   "ndof": 163863,
+   "compliance_skfem": 7.466737490124342,
+   "compliance_voxfem": 7.466737485846029,
+   "rel_diff": 5.729828885493752e-10,
+   "skfem_rel_residual": 1.1403024516842367e-11,
+   "voxfem_rel_true": 9.356063313887677e-09,
+   "wall_s": 415.9328683000058
+  }
+ ]
+}

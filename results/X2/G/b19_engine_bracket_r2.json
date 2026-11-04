@@ -1,0 +1,233 @@
+{
+ "task": "b19_engine_bracket",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T10:58:26",
+ "n_tool_calls": 11,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b19_engine_bracket_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 24.004449900006875,
+ "usage": {
+  "input_tokens": 80437,
+  "cached_input_tokens": 72704,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 803,
+  "reasoning_output_tokens": 59
+ },
+ "returncode": 0,
+ "final": "DONE\n\nAssumptions: Washer footprints fully constrain x, y, and z. The 8000 lbf load is uniformly distributed across the solid clevis nodes. Volume fraction 0.2 applies to non-passive material. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Engine bracket \u2013 Ti-6Al-4V",
+  "units": {
+   "length": "in",
+   "force": "lbf"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    7.0,
+    2.5,
+    4.0
+   ]
+  },
+  "material": {
+   "name": "Ti-6Al-4V",
+   "E": 16500000.0,
+   "nu": 0.34
+  },
+  "supports": [
+   {
+    "id": "bolt_x0p5_z0p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped 0.5 in diameter washer footprint at y=0; bolt connection idealization."
+   },
+   {
+    "id": "bolt_x0p5_z3p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped 0.5 in diameter washer footprint at y=0; bolt connection idealization."
+   },
+   {
+    "id": "bolt_x2p5_z0p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped 0.5 in diameter washer footprint at y=0; bolt connection idealization."
+   },
+   {
+    "id": "bolt_x2p5_z3p5",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully clamped 0.5 in diameter washer footprint at y=0; bolt connection idealization."
+   }
+  ],
+  "loads": [
+   {
+    "id": "clevis_vertical_pull",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "force": [
+     0.0,
+     8000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "8000 lbf total upward (+y) force, equally distributed over all selected nodes of the solid clevis cylinder."
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_clevis",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "note": "Required solid clevis cylinder, preserved throughout optimization."
+   }
+  ],
+  "description": "Engine bracket, y up. Four fully clamped circular washer footprints on y=0, diameter 0.5 in. Preserved solid z-axis clevis cylinder. Assumptions: each bolted washer footprint fixes x,y,z; the total +y load is distributed uniformly among mesh nodes in the preserved clevis cylinder; volume fraction 0.2 applies to non-passive design volume. Linear elastic compliance setup, no bolt holes or additional passive material specified.",
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 0.05,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 24.23732819990255,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1.27, grid (140, 50, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

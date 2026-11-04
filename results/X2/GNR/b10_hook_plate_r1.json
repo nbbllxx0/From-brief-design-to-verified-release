@@ -1,0 +1,140 @@
+{
+ "task": "b10_hook_plate",
+ "cond": "GNR",
+ "rep": 1,
+ "t": "2026-10-31T22:31:28",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GNR\\b10_hook_plate_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 18.994745100149885,
+ "usage": {
+  "input_tokens": 79019,
+  "cached_input_tokens": 61312,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 708,
+  "reasoning_output_tokens": 94
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: top face fully fixed to a rigid beam; load acts downward (\u2212y) over a 5 \u00d7 20 mm patch at the lower-right corner; steel E = 210 GPa, \u03bd = 0.3; self-weight omitted. list_regions and validate_spec passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Hook plate",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    80.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "top_beam_support",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bolted connection to rigid beam idealized by fixing the entire top face y=80."
+   }
+  ],
+  "loads": [
+   {
+    "id": "lower_corner_hanging_load",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      117.5,
+      10.0
+     ],
+     "size": [
+      5.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1500.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Lower-right corner selected; 1.5 kN total downward load distributed over x=115..120 and full thickness z=0..20 on y=0."
+   }
+  ],
+  "passive": [],
+  "description": "120 x 80 x 20 mm hook plate; y is up. Bolted top face y=80 idealized as fully fixed to a rigid beam. Total hanging load 1500 N in -y at the lower-right corner, distributed over a 5 x 20 mm patch on y=0 (x=115..120, z=0..20). Linear-elastic steel E=210000 N/mm^2, nu=0.3. No bolt layout or holes specified; no passive volumes or self-weight added.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 19.226387199945748,
+ "cwe": {
+  "value": 0.03208603266659793,
+  "c_pred_under_intended": 2.66868583846368,
+  "c_intended_opt": 2.5857203314423347,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 20)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

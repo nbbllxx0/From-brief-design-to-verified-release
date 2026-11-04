@@ -1,0 +1,1087 @@
+{
+ "span_bridge": {
+  "spec": {
+   "schema_version": "agentto.spec/v0",
+   "name": "X5 span bridge",
+   "description": "",
+   "units": {
+    "length": "mm",
+    "force": "N"
+   },
+   "domain": {
+    "kind": "box",
+    "size": [
+     1280.0,
+     160.0,
+     160.0
+    ]
+   },
+   "material": {
+    "name": "steel",
+    "E": 210000.0,
+    "nu": 0.3
+   },
+   "volume_fraction": 0.15,
+   "supports": [
+    {
+     "id": "abutment_left",
+     "region": {
+      "kind": "edge",
+      "axis": "z",
+      "at": [
+       0.0,
+       0.0
+      ],
+      "span": null
+     },
+     "fix": [
+      "x",
+      "y",
+      "z"
+     ],
+     "note": ""
+    },
+    {
+     "id": "abutment_right",
+     "region": {
+      "kind": "edge",
+      "axis": "z",
+      "at": [
+       1280.0,
+       0.0
+      ],
+      "span": null
+     },
+     "fix": [
+      "x",
+      "y",
+      "z"
+     ],
+     "note": ""
+    }
+   ],
+   "loads": [
+    {
+     "id": "deck_load",
+     "region": {
+      "kind": "face",
+      "face": "y+"
+     },
+     "force": [
+      0.0,
+      -32000.0,
+      0.0
+     ],
+     "distribution": "uniform_nodes",
+     "note": ""
+    }
+   ],
+   "passive": [
+    {
+     "id": "deck",
+     "kind": "solid",
+     "region": {
+      "kind": "box",
+      "min": [
+       0.0,
+       152.0,
+       0.0
+      ],
+      "max": [
+       1280.0,
+       160.0,
+       160.0
+      ]
+     },
+     "note": ""
+    }
+   ],
+   "resolution": {
+    "h": 1.0,
+    "cells_short_edge": null
+   },
+   "min_feature": null,
+   "meta": {}
+  },
+  "fine_h": 1.0,
+  "fine_grid": [
+   1280,
+   160,
+   160
+  ],
+  "rows": [
+   {
+    "arm": "cold",
+    "status": "converged",
+    "iterations": 80,
+    "compute_s": 36.022402501432225,
+    "wall_s": 36.07667959993705,
+    "s_per_iter": 0.45028003126790284,
+    "compliance": 1999104175.1280618,
+    "volume": 0.15,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {},
+    "error": null,
+    "grid": [
+     160,
+     20,
+     20
+    ],
+    "n_elem": 64000,
+    "h": 8.0,
+    "c_own_phys": 2379.885922771502,
+    "c_part": 2715.0346179247645,
+    "eval_s": 7.153032199945301,
+    "thickness": {
+     "p5_mm": 16.0,
+     "median_mm": 16.0,
+     "n_ridge": 3246,
+     "min_resolvable_mm": 19.2
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 24,
+     "b2": 0,
+     "chi": -23
+    },
+    "betti_pool": 1,
+    "stl": {
+     "triangles": 29752,
+     "bytes": 1487684,
+     "sha256": "3188133269de61f2d66fcfe8201550072f6b550709c5343b73791108f7c2986f",
+     "pool": 1,
+     "vertices": 14826,
+     "t_surface_s": 0.543,
+     "t_write_s": 0.009
+    },
+    "c_part_gap": -0.18548133412172474
+   },
+   {
+    "arm": "cold",
+    "status": "converged",
+    "iterations": 79,
+    "compute_s": 57.498046999564394,
+    "wall_s": 57.52198310010135,
+    "s_per_iter": 0.7278233797413215,
+    "compliance": 1037554694.7146219,
+    "volume": 0.14999999999993874,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {},
+    "error": null,
+    "grid": [
+     320,
+     40,
+     40
+    ],
+    "n_elem": 512000,
+    "h": 4.0,
+    "c_own_phys": 2470.3683207490994,
+    "c_part": 2647.4480145452335,
+    "eval_s": 5.935351700056344,
+    "thickness": {
+     "p5_mm": 8.0,
+     "median_mm": 16.0,
+     "n_ridge": 13016,
+     "min_resolvable_mm": 9.6
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 50,
+     "b2": 0,
+     "chi": -49
+    },
+    "betti_pool": 1,
+    "stl": {
+     "triangles": 127628,
+     "bytes": 6381484,
+     "sha256": "fd9f5ba28fb1b0c5db0370c1c9a46ffc20a0a18d159737a0b6a5704e8b9a942d",
+     "pool": 1,
+     "vertices": 63672,
+     "t_surface_s": 0.009,
+     "t_write_s": 0.032
+    },
+    "c_part_gap": -0.20575752126589375
+   },
+   {
+    "arm": "cold",
+    "status": "converged",
+    "iterations": 79,
+    "compute_s": 204.28876190027222,
+    "wall_s": 204.8990436999593,
+    "s_per_iter": 2.5859336949401546,
+    "compliance": 600780876.5040739,
+    "volume": 0.15,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {},
+    "error": null,
+    "grid": [
+     640,
+     80,
+     80
+    ],
+    "n_elem": 4096000,
+    "h": 2.0,
+    "c_own_phys": 2860.861316686066,
+    "c_part": 2939.949808001631,
+    "eval_s": 6.411283199908212,
+    "thickness": {
+     "p5_mm": 4.0,
+     "median_mm": 16.0,
+     "n_ridge": 55975,
+     "min_resolvable_mm": 4.8
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 82,
+     "b2": 0,
+     "chi": -81
+    },
+    "betti_pool": 1,
+    "stl": {
+     "triangles": 545596,
+     "bytes": 27279884,
+     "sha256": "d350d8950f0f2d9c456570af31443ac6c537e052b0d61bcd2e57c5f5c46c2f99",
+     "pool": 1,
+     "vertices": 272428,
+     "t_surface_s": 0.045,
+     "t_write_s": 0.092
+    },
+    "c_part_gap": -0.11800609113672189
+   },
+   {
+    "arm": "cold",
+    "status": "converged",
+    "iterations": 81,
+    "compute_s": 465.81360149988905,
+    "wall_s": 466.3256540999282,
+    "s_per_iter": 5.750785203702334,
+    "compliance": 349996444.09916544,
+    "volume": 0.14999999999999233,
+    "certified": true,
+    "rmin_final": 1.2,
+    "warm_info": {},
+    "error": null,
+    "grid": [
+     1280,
+     160,
+     160
+    ],
+    "n_elem": 32768000,
+    "h": 1.0,
+    "c_own_phys": 3333.2994676110993,
+    "c_part": 3333.299446240695,
+    "eval_s": 6.506675999844447,
+    "thickness": {
+     "p5_mm": 2.8284270763397217,
+     "median_mm": 16.0,
+     "n_ridge": 201966,
+     "min_resolvable_mm": 2.4
+    },
+    "betti": {
+     "b0": 5,
+     "b1": 146,
+     "b2": 10,
+     "chi": -131
+    },
+    "betti_pool": 2,
+    "stl": {
+     "triangles": 2282364,
+     "bytes": 114118284,
+     "sha256": "f5661f2650f90e55ad228e52954d5d1282cf78ca7b0b12980b25d3dc569724f2",
+     "pool": 1,
+     "vertices": 1141088,
+     "t_surface_s": 0.346,
+     "t_write_s": 0.397
+    },
+    "c_part_gap": 0.0
+   }
+  ],
+  "chain_reopen_long": [
+   {
+    "arm": "cold",
+    "status": "converged",
+    "iterations": 80,
+    "compute_s": 24.43980069900863,
+    "wall_s": 24.484500100137666,
+    "s_per_iter": 0.30549750873760784,
+    "compliance": 1999104175.1280618,
+    "volume": 0.15,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {},
+    "error": null,
+    "grid": [
+     160,
+     20,
+     20
+    ],
+    "n_elem": 64000,
+    "h": 8.0,
+    "c_own_phys": 2379.885922771502,
+    "c_part": 2715.0346179247645,
+    "eval_s": 7.5656465999782085,
+    "thickness": {
+     "p5_mm": 16.0,
+     "median_mm": 16.0,
+     "n_ridge": 3246,
+     "min_resolvable_mm": 19.2
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 24,
+     "b2": 0,
+     "chi": -23
+    },
+    "c_part_gap_to_cold_fine": -0.18548133412172474
+   },
+   {
+    "arm": "reopen_long",
+    "status": "converged",
+    "iterations": 61,
+    "compute_s": 32.02331090089865,
+    "wall_s": 32.068862500134856,
+    "s_per_iter": 0.5249723098507976,
+    "compliance": 980501903.0106734,
+    "volume": 0.14999999999993874,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {
+     "smooth": true,
+     "beta0": 4.0,
+     "volume_before": 0.15068846277569964,
+     "volume_after": 0.15000000025837693,
+     "delta": -0.007069397483974171
+    },
+    "error": null,
+    "grid": [
+     320,
+     40,
+     40
+    ],
+    "n_elem": 512000,
+    "h": 4.0,
+    "c_own_phys": 2334.528340501603,
+    "c_part": 2506.337487767589,
+    "eval_s": 7.28201560000889,
+    "thickness": {
+     "p5_mm": 11.313708305358887,
+     "median_mm": 16.0,
+     "n_ridge": 12072,
+     "min_resolvable_mm": 9.6
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 24,
+     "b2": 2,
+     "chi": -21
+    },
+    "c_part_gap_to_cold_fine": -0.24809110966785652
+   },
+   {
+    "arm": "reopen_long",
+    "status": "converged",
+    "iterations": 61,
+    "compute_s": 123.79305910062976,
+    "wall_s": 123.90045140008442,
+    "s_per_iter": 2.029394411485734,
+    "compliance": 492987289.734129,
+    "volume": 0.14999999999999233,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {
+     "smooth": true,
+     "beta0": 4.0,
+     "volume_before": 0.15042273294368502,
+     "volume_after": 0.1500000001499213,
+     "delta": -0.00694975233545847
+    },
+    "error": null,
+    "grid": [
+     640,
+     80,
+     80
+    ],
+    "n_elem": 4096000,
+    "h": 2.0,
+    "c_own_phys": 2347.558522543471,
+    "c_part": 2422.3753636971965,
+    "eval_s": 6.975144499912858,
+    "thickness": {
+     "p5_mm": 8.9442720413208,
+     "median_mm": 16.0,
+     "n_ridge": 45308,
+     "min_resolvable_mm": 4.8
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 24,
+     "b2": 4,
+     "chi": -19
+    },
+    "c_part_gap_to_cold_fine": -0.27328000296248256
+   },
+   {
+    "arm": "reopen_long",
+    "status": "converged",
+    "iterations": 61,
+    "compute_s": 232.29273339919746,
+    "wall_s": 233.0194682001602,
+    "s_per_iter": 3.8080775967081553,
+    "compliance": 250141010.05412263,
+    "volume": 0.14999999999999905,
+    "certified": true,
+    "rmin_final": 1.2,
+    "warm_info": {
+     "smooth": true,
+     "beta0": 4.0,
+     "volume_before": 0.15023777432443247,
+     "volume_after": 0.1500000000177629,
+     "delta": -0.00567419058552332
+    },
+    "error": null,
+    "grid": [
+     1280,
+     160,
+     160
+    ],
+    "n_elem": 32768000,
+    "h": 1.0,
+    "c_own_phys": 2382.295333848787,
+    "c_part": 2382.2953247073706,
+    "eval_s": 6.343029799871147,
+    "thickness": {
+     "p5_mm": 10.0,
+     "median_mm": 16.0,
+     "n_ridge": 172546,
+     "min_resolvable_mm": 2.4
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 32,
+     "b2": 8,
+     "chi": -23
+    },
+    "shape_vs_cold_fine": {
+     "iou": 0.5339372759114822,
+     "hausdorff": {
+      "max": 21.77154105707724,
+      "p95": 8.246211251235321
+     }
+    },
+    "c_part_gap_to_cold_fine": -0.28530413689831247
+   }
+  ]
+ },
+ "b06": {
+  "spec": {
+   "schema_version": "agentto.spec/v0",
+   "name": "b06 motor mount",
+   "description": "",
+   "units": {
+    "length": "mm",
+    "force": "N"
+   },
+   "domain": {
+    "kind": "box",
+    "size": [
+     160.0,
+     60.0,
+     120.0
+    ]
+   },
+   "material": {
+    "name": "aluminium 6061",
+    "E": 69000.0,
+    "nu": 0.33
+   },
+   "volume_fraction": 0.2,
+   "supports": [
+    {
+     "id": "bolt_1",
+     "region": {
+      "kind": "patch",
+      "face": "y-",
+      "center": [
+       20.0,
+       20.0
+      ],
+      "size": [
+       24.0,
+       24.0
+      ],
+      "shape": "ellipse"
+     },
+     "fix": [
+      "x",
+      "y",
+      "z"
+     ],
+     "note": ""
+    },
+    {
+     "id": "bolt_2",
+     "region": {
+      "kind": "patch",
+      "face": "y-",
+      "center": [
+       20.0,
+       100.0
+      ],
+      "size": [
+       24.0,
+       24.0
+      ],
+      "shape": "ellipse"
+     },
+     "fix": [
+      "x",
+      "y",
+      "z"
+     ],
+     "note": ""
+    },
+    {
+     "id": "bolt_3",
+     "region": {
+      "kind": "patch",
+      "face": "y-",
+      "center": [
+       140.0,
+       20.0
+      ],
+      "size": [
+       24.0,
+       24.0
+      ],
+      "shape": "ellipse"
+     },
+     "fix": [
+      "x",
+      "y",
+      "z"
+     ],
+     "note": ""
+    },
+    {
+     "id": "bolt_4",
+     "region": {
+      "kind": "patch",
+      "face": "y-",
+      "center": [
+       140.0,
+       100.0
+      ],
+      "size": [
+       24.0,
+       24.0
+      ],
+      "shape": "ellipse"
+     },
+     "fix": [
+      "x",
+      "y",
+      "z"
+     ],
+     "note": ""
+    }
+   ],
+   "loads": [
+    {
+     "id": "motor",
+     "region": {
+      "kind": "patch",
+      "face": "y+",
+      "center": [
+       80.0,
+       60.0
+      ],
+      "size": [
+       40.0,
+       40.0
+      ],
+      "shape": "rect"
+     },
+     "force": [
+      800.0,
+      -2000.0,
+      0.0
+     ],
+     "distribution": "uniform_nodes",
+     "note": ""
+    }
+   ],
+   "passive": [
+    {
+     "id": "boss_1",
+     "kind": "solid",
+     "region": {
+      "kind": "cylinder",
+      "axis": "y",
+      "center": [
+       20.0,
+       20.0
+      ],
+      "radius": 12.0,
+      "span": [
+       0.0,
+       10.0
+      ]
+     },
+     "note": ""
+    },
+    {
+     "id": "boss_2",
+     "kind": "solid",
+     "region": {
+      "kind": "cylinder",
+      "axis": "y",
+      "center": [
+       20.0,
+       100.0
+      ],
+      "radius": 12.0,
+      "span": [
+       0.0,
+       10.0
+      ]
+     },
+     "note": ""
+    },
+    {
+     "id": "boss_3",
+     "kind": "solid",
+     "region": {
+      "kind": "cylinder",
+      "axis": "y",
+      "center": [
+       140.0,
+       20.0
+      ],
+      "radius": 12.0,
+      "span": [
+       0.0,
+       10.0
+      ]
+     },
+     "note": ""
+    },
+    {
+     "id": "boss_4",
+     "kind": "solid",
+     "region": {
+      "kind": "cylinder",
+      "axis": "y",
+      "center": [
+       140.0,
+       100.0
+      ],
+      "radius": 12.0,
+      "span": [
+       0.0,
+       10.0
+      ]
+     },
+     "note": ""
+    },
+    {
+     "id": "pad",
+     "kind": "solid",
+     "region": {
+      "kind": "box",
+      "min": [
+       60.0,
+       55.0,
+       40.0
+      ],
+      "max": [
+       100.0,
+       60.0,
+       80.0
+      ]
+     },
+     "note": ""
+    }
+   ],
+   "resolution": {
+    "h": 1.0,
+    "cells_short_edge": null
+   },
+   "min_feature": null,
+   "meta": {}
+  },
+  "fine_h": 0.25,
+  "fine_grid": [
+   640,
+   240,
+   480
+  ],
+  "rows": [
+   {
+    "arm": "cold",
+    "status": "converged",
+    "iterations": 80,
+    "compute_s": 6.977316199336201,
+    "wall_s": 7.019516200060025,
+    "s_per_iter": 0.08721645249170251,
+    "compliance": 269493.83715390257,
+    "volume": 0.199999999999788,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {},
+    "error": null,
+    "grid": [
+     80,
+     30,
+     60
+    ],
+    "n_elem": 144000,
+    "h": 2.0,
+    "c_own_phys": 3.9057077848391675,
+    "c_part": 4.012134880057512,
+    "eval_s": 17.406384199857712,
+    "thickness": {
+     "p5_mm": 20.0,
+     "median_mm": 22.627416610717773,
+     "n_ridge": 80,
+     "min_resolvable_mm": 4.8
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 0,
+     "b2": 0,
+     "chi": 1
+    },
+    "betti_pool": 1,
+    "stl": {
+     "triangles": 24904,
+     "bytes": 1245284,
+     "sha256": "50e0427137024b435e51d9d3a7c3797d6d3a796cb73939ced74b4409fffdeac2",
+     "pool": 1,
+     "vertices": 12454,
+     "t_surface_s": 0.003,
+     "t_write_s": 0.011
+    },
+    "c_part_gap": 0.02569075842620605
+   },
+   {
+    "arm": "cold",
+    "status": "converged",
+    "iterations": 76,
+    "compute_s": 13.969608099898323,
+    "wall_s": 14.004380099941045,
+    "s_per_iter": 0.183810632893399,
+    "compliance": 135806.12657331224,
+    "volume": 0.19999999999994708,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {},
+    "error": null,
+    "grid": [
+     160,
+     60,
+     120
+    ],
+    "n_elem": 1152000,
+    "h": 1.0,
+    "c_own_phys": 3.9364094658931084,
+    "c_part": 3.9601183332449392,
+    "eval_s": 16.267405099933967,
+    "thickness": {
+     "p5_mm": 19.79899024963379,
+     "median_mm": 21.354156494140625,
+     "n_ridge": 237,
+     "min_resolvable_mm": 2.4
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 0,
+     "b2": 0,
+     "chi": 1
+    },
+    "betti_pool": 1,
+    "stl": {
+     "triangles": 100024,
+     "bytes": 5001284,
+     "sha256": "778f29328ccd64f0f65b2c85dae9e11757a9aca51babc95bda4b199fc8958f8f",
+     "pool": 1,
+     "vertices": 50014,
+     "t_surface_s": 0.008,
+     "t_write_s": 0.022
+    },
+    "c_part_gap": 0.012392877635584387
+   },
+   {
+    "arm": "cold",
+    "status": "converged",
+    "iterations": 76,
+    "compute_s": 66.45989340171218,
+    "wall_s": 66.63006979995407,
+    "s_per_iter": 0.874472281601476,
+    "compliance": 67582.23261137398,
+    "volume": 0.19999999999998677,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {},
+    "error": null,
+    "grid": [
+     320,
+     120,
+     240
+    ],
+    "n_elem": 9216000,
+    "h": 0.5,
+    "c_own_phys": 3.9178105861666075,
+    "c_part": 3.927504169293915,
+    "eval_s": 16.046072099823505,
+    "thickness": {
+     "p5_mm": 4.242640495300293,
+     "median_mm": 20.0,
+     "n_ridge": 792,
+     "min_resolvable_mm": 1.2
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 0,
+     "b2": 0,
+     "chi": 1
+    },
+    "betti_pool": 2,
+    "stl": {
+     "triangles": 404952,
+     "bytes": 20247684,
+     "sha256": "0d25cb650b90cf173f860c255f9787a1e7d5d76739c9e7edf9137ddf25af5a4d",
+     "pool": 1,
+     "vertices": 202478,
+     "t_surface_s": 0.067,
+     "t_write_s": 0.071
+    },
+    "c_part_gap": 0.004055160295961313
+   },
+   {
+    "arm": "cold",
+    "status": "converged",
+    "iterations": 76,
+    "compute_s": 465.70513900043443,
+    "wall_s": 465.8665256998502,
+    "s_per_iter": 6.127699197374137,
+    "compliance": 33737.91526793652,
+    "volume": 0.19999999999999835,
+    "certified": true,
+    "rmin_final": 1.2,
+    "warm_info": {},
+    "error": null,
+    "grid": [
+     640,
+     240,
+     480
+    ],
+    "n_elem": 73728000,
+    "h": 0.25,
+    "c_own_phys": 3.9116423499056836,
+    "c_part": 3.911641834634086,
+    "eval_s": 16.529576299944893,
+    "thickness": {
+     "p5_mm": 4.949747562408447,
+     "median_mm": 20.0,
+     "n_ridge": 2168,
+     "min_resolvable_mm": 0.6
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 0,
+     "b2": 0,
+     "chi": 1
+    },
+    "betti_pool": 4,
+    "stl": {
+     "triangles": 1624668,
+     "bytes": 81233484,
+     "sha256": "7fa5c01f9c72bebee5b1bb8c092d9ec3a78b75ce2d01844051ef39970086a0ec",
+     "pool": 1,
+     "vertices": 812336,
+     "t_surface_s": 0.561,
+     "t_write_s": 0.288
+    },
+    "c_part_gap": 0.0
+   }
+  ],
+  "chain_reopen_long": [
+   {
+    "arm": "cold",
+    "status": "converged",
+    "iterations": 80,
+    "compute_s": 6.29035439924337,
+    "wall_s": 6.326782800024375,
+    "s_per_iter": 0.07862942999054212,
+    "compliance": 269493.83715390257,
+    "volume": 0.199999999999788,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {},
+    "error": null,
+    "grid": [
+     80,
+     30,
+     60
+    ],
+    "n_elem": 144000,
+    "h": 2.0,
+    "c_own_phys": 3.9057077848391675,
+    "c_part": 4.012134880057512,
+    "eval_s": 15.932468200102448,
+    "thickness": {
+     "p5_mm": 20.0,
+     "median_mm": 22.627416610717773,
+     "n_ridge": 80,
+     "min_resolvable_mm": 4.8
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 0,
+     "b2": 0,
+     "chi": 1
+    },
+    "c_part_gap_to_cold_fine": 0.02569075842620605
+   },
+   {
+    "arm": "reopen_long",
+    "status": "converged",
+    "iterations": 61,
+    "compute_s": 8.412937899585813,
+    "wall_s": 8.461596899898723,
+    "s_per_iter": 0.13791701474730841,
+    "compliance": 136180.9806195882,
+    "volume": 0.1999999999999206,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {
+     "smooth": true,
+     "beta0": 4.0,
+     "volume_before": 0.20134850024365172,
+     "volume_after": 0.20000000171709095,
+     "delta": -0.01925596501587279
+    },
+    "error": null,
+    "grid": [
+     160,
+     60,
+     120
+    ],
+    "n_elem": 1152000,
+    "h": 1.0,
+    "c_own_phys": 3.9472748005677736,
+    "c_part": 3.969520070281276,
+    "eval_s": 13.794024299830198,
+    "thickness": {
+     "p5_mm": 19.79899024963379,
+     "median_mm": 21.260292053222656,
+     "n_ridge": 317,
+     "min_resolvable_mm": 2.4
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 0,
+     "b2": 0,
+     "chi": 1
+    },
+    "c_part_gap_to_cold_fine": 0.01479640470523913
+   },
+   {
+    "arm": "reopen_long",
+    "status": "converged",
+    "iterations": 61,
+    "compute_s": 40.2977490008343,
+    "wall_s": 40.54962690011598,
+    "s_per_iter": 0.6606188360792509,
+    "compliance": 67680.78645571736,
+    "volume": 0.19999999999999338,
+    "certified": false,
+    "rmin_final": 1.2,
+    "warm_info": {
+     "smooth": true,
+     "beta0": 4.0,
+     "volume_before": 0.20004247146639192,
+     "volume_after": 0.19999999995774864,
+     "delta": -0.0008800141813480877
+    },
+    "error": null,
+    "grid": [
+     320,
+     120,
+     240
+    ],
+    "n_elem": 9216000,
+    "h": 0.5,
+    "c_own_phys": 3.923523852505354,
+    "c_part": 3.9333983074424523,
+    "eval_s": 15.088928900193423,
+    "thickness": {
+     "p5_mm": 19.10497283935547,
+     "median_mm": 20.51828384399414,
+     "n_ridge": 800,
+     "min_resolvable_mm": 1.2
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 0,
+     "b2": 0,
+     "chi": 1
+    },
+    "c_part_gap_to_cold_fine": 0.005561979784481252
+   },
+   {
+    "arm": "reopen_long",
+    "status": "converged",
+    "iterations": 61,
+    "compute_s": 259.8557501989417,
+    "wall_s": 260.743711899966,
+    "s_per_iter": 4.2599303311301915,
+    "compliance": 33767.70998295228,
+    "volume": 0.19999999999999793,
+    "certified": true,
+    "rmin_final": 1.2,
+    "warm_info": {
+     "smooth": true,
+     "beta0": 4.0,
+     "volume_before": 0.20006130705162353,
+     "volume_after": 0.2000000079634043,
+     "delta": -0.0015738903884994215
+    },
+    "error": null,
+    "grid": [
+     640,
+     240,
+     480
+    ],
+    "n_elem": 73728000,
+    "h": 0.25,
+    "c_own_phys": 3.9150968096176553,
+    "c_part": 3.915096003230938,
+    "eval_s": 14.256799699971452,
+    "thickness": {
+     "p5_mm": 18.39836883544922,
+     "median_mm": 20.155643463134766,
+     "n_ridge": 2719,
+     "min_resolvable_mm": 0.6
+    },
+    "betti": {
+     "b0": 1,
+     "b1": 0,
+     "b2": 0,
+     "chi": 1
+    },
+    "shape_vs_cold_fine": {
+     "iou": 0.9407195089446094,
+     "hausdorff": {
+      "max": 12.806248474865697,
+      "p95": 1.4142135623730951
+     }
+    },
+    "c_part_gap_to_cold_fine": 0.0008830482807162809
+   }
+  ]
+ }
+}

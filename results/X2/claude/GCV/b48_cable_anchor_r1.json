@@ -1,0 +1,156 @@
+{
+ "task": "b48_cable_anchor",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T15:10:24",
+ "gc_correct": false,
+ "gc_usage": {
+  "input_tokens": 73661,
+  "cached_input_tokens": 66095,
+  "cache_write_input_tokens": 7556,
+  "output_tokens": 2583
+ },
+ "gc_wall_s": 34.72094799997285,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14487,
+  "cached_input_tokens": 6282,
+  "cache_write_input_tokens": 8201,
+  "output_tokens": 1534
+ },
+ "verify_wall_s": 20.994919100077823,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 4117,
+  "cached_input_tokens": 72377,
+  "cache_write_input_tokens": 15757,
+  "input_tokens": 88148
+ },
+ "wall_s": 55.71586710005067,
+ "questions": 1,
+ "n_tool_calls": 11,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "guy-cable-anchor",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    60.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "base_bolted",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "bottom face bolted over full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "cable_pull",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      50.0,
+      30.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "ellipse"
+    },
+    "force": [
+     4000.0,
+     3000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "5 kN guy cable, rises 3 per 4 horizontal along +x"
+   }
+  ],
+  "passive": [
+   {
+    "id": "boss_keepin",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      50.0,
+      30.0
+     ],
+     "radius": 8.0,
+     "span": [
+      57.0,
+      60.0
+     ]
+    },
+    "note": "anchor boss under the load face"
+   }
+  ],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 21.385484599974006,
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 60, 60)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,224 @@
+{
+ "task": "b28_stool",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:24:12",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 10.026194100035354,
+ "usage": {
+  "input_tokens": 8667,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8016,
+  "output_tokens": 926
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"stool\",\"description\":\"200 mm cube stool envelope, y up, aluminium 6061. Solid 10 mm seat on top, four 20x20 mm corner feet fixed at y=0, central leg-room void under the seat, 1.2 kN downward load spread over the seat surface.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[200,200,200]},\"material\":{\"name\":\"aluminium 6061\",\"E\":68900.0,\"nu\":0.33},\"volume_fraction\":0.1,\"supports\":[{\"id\":\"foot_x0_z0\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[10,10],\"size\":[20,20]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"20x20 mm foot at corner x=0, z=0\"},{\"id\":\"foot_x0_z200\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[10,190],\"size\":[20,20]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"20x20 mm foot at corner x=0, z=200\"},{\"id\":\"foot_x200_z0\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[190,10],\"size\":[20,20]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"20x20 mm foot at corner x=200, z=0\"},{\"id\":\"foot_x200_z200\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[190,190],\"size\":[20,20]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"20x20 mm foot at corner x=200, z=200\"}],\"loads\":[{\"id\":\"seat_load\",\"region\":{\"kind\":\"face\",\"face\":\"y+\"},\"force\":[0,-1200,0],\"distribution\":\"uniform_nodes\",\"note\":\"1.2 kN downward spread over the whole seat surface\"}],\"passive\":[{\"id\":\"seat\",\"kind\":\"solid\",\"region\":{\"kind\":\"box\",\"min\":[0,190,0],\"max\":[200,200,200]},\"note\":\"top 10 mm seat stays solid\"},{\"id\":\"leg_room\",\"kind\":\"void\",\"region\":{\"kind\":\"box\",\"min\":[50,0,50],\"max\":[150,120,150]},\"note\":\"leg room under the middle of the seat stays empty\"}],\"resolution\":{\"h\":2},\"min_feature\":null,\"meta\":{\"up_axis\":\"y\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "stool",
+  "description": "200 mm cube stool envelope, y up, aluminium 6061. Solid 10 mm seat on top, four 20x20 mm corner feet fixed at y=0, central leg-room void under the seat, 1.2 kN downward load spread over the seat surface.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200,
+    200,
+    200
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.1,
+  "supports": [
+   {
+    "id": "foot_x0_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      10,
+      10
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "20x20 mm foot at corner x=0, z=0"
+   },
+   {
+    "id": "foot_x0_z200",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      10,
+      190
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "20x20 mm foot at corner x=0, z=200"
+   },
+   {
+    "id": "foot_x200_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      190,
+      10
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "20x20 mm foot at corner x=200, z=0"
+   },
+   {
+    "id": "foot_x200_z200",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      190,
+      190
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "20x20 mm foot at corner x=200, z=200"
+   }
+  ],
+  "loads": [
+   {
+    "id": "seat_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -1200,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "1.2 kN downward spread over the whole seat surface"
+   }
+  ],
+  "passive": [
+   {
+    "id": "seat",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0,
+      190,
+      0
+     ],
+     "max": [
+      200,
+      200,
+      200
+     ]
+    },
+    "note": "top 10 mm seat stays solid"
+   },
+   {
+    "id": "leg_room",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      50,
+      0,
+      50
+     ],
+     "max": [
+      150,
+      120,
+      150
+     ]
+    },
+    "note": "leg room under the middle of the seat stays empty"
+   }
+  ],
+  "resolution": {
+   "h": 2
+  },
+  "min_feature": null,
+  "meta": {
+   "up_axis": "y"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 10.23447520006448,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (100, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

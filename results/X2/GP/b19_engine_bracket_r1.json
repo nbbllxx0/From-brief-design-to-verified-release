@@ -1,0 +1,312 @@
+{
+ "task": "b19_engine_bracket",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:37:26",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief explicitly requests inches and pounds-force."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 7.0 x 2.5 x 4.0 in in x,y,z, y up; bottom y=0."
+   },
+   {
+    "key": "material",
+    "source": "derived",
+    "note": "Stated Ti-6Al-4V, nu=0.34; E=16.5 Mpsi converted to 16,500,000 lbf/in^2."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.2; agentto applies it to non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 0.05 in elements; h=0.05 in."
+   },
+   {
+    "key": "support:bolt_1",
+    "source": "assumed",
+    "note": "Brief gives y=0, x=0.5, z=0.5 and 0.5 in diameter washer. Assume the circular footprint fixes x,y,z translations to a rigid base."
+   },
+   {
+    "key": "support:bolt_2",
+    "source": "assumed",
+    "note": "Brief gives y=0, x=0.5, z=3.5 and 0.5 in diameter washer. Assume the circular footprint fixes x,y,z translations to a rigid base."
+   },
+   {
+    "key": "support:bolt_3",
+    "source": "assumed",
+    "note": "Brief gives y=0, x=2.5, z=0.5 and 0.5 in diameter washer. Assume the circular footprint fixes x,y,z translations to a rigid base."
+   },
+   {
+    "key": "support:bolt_4",
+    "source": "assumed",
+    "note": "Brief gives y=0, x=2.5, z=3.5 and 0.5 in diameter washer. Assume the circular footprint fixes x,y,z translations to a rigid base."
+   },
+   {
+    "key": "load:clevis_pull",
+    "source": "assumed",
+    "note": "Brief states total force (0,+8000,0) lbf carried by clevis. Assume equal distribution over all nodes of the retained cylinder because load contact details are unspecified."
+   },
+   {
+    "key": "passive:clevis",
+    "source": "stated",
+    "note": "Brief specifies retained solid cylinder, axis z, center x=6.0,y=1.75, radius 0.5 in, z span 1.25 to 2.75 in."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "support:bolt_1",
+   "support:bolt_2",
+   "support:bolt_3",
+   "support:bolt_4",
+   "load:clevis_pull"
+  ]
+ },
+ "n_tool_calls": 23,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b19_engine_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 29.840466000139713,
+ "usage": {
+  "input_tokens": 117899,
+  "cached_input_tokens": 103808,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1238,
+  "reasoning_output_tokens": 60
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Assumed all four washer footprints fully constrain x, y, and z translations, and the 8000 lbf pull is distributed equally over clevis nodes. Validation passed, render checked, and every spec item is source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Engine bracket",
+  "units": {
+   "length": "in",
+   "force": "lbf"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    7.0,
+    2.5,
+    4.0
+   ]
+  },
+  "material": {
+   "name": "Ti-6Al-4V",
+   "E": 16500000.0,
+   "nu": 0.34
+  },
+  "supports": [
+   {
+    "id": "bolt_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Stated 0.5 in diameter washer footprint at y=0; assume fully clamped translations to model bolting to a rigid base."
+   },
+   {
+    "id": "bolt_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      0.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Stated 0.5 in diameter washer footprint at y=0; assume fully clamped translations to model bolting to a rigid base."
+   },
+   {
+    "id": "bolt_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      0.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Stated 0.5 in diameter washer footprint at y=0; assume fully clamped translations to model bolting to a rigid base."
+   },
+   {
+    "id": "bolt_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      3.5
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Stated 0.5 in diameter washer footprint at y=0; assume fully clamped translations to model bolting to a rigid base."
+   }
+  ],
+  "loads": [
+   {
+    "id": "clevis_pull",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "force": [
+     0.0,
+     8000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Stated total 8000 lbf in +y carried by clevis; assume equal nodal distribution throughout the retained cylinder since contact geometry is unspecified."
+   }
+  ],
+  "passive": [
+   {
+    "id": "clevis",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "note": "Retain the entire solid clevis cylinder specified in the brief."
+   }
+  ],
+  "description": "Engine bracket; y up. Four bottom washer footprints clamped in x, y and z. The retained solid clevis carries an 8000 lbf total pull in +y, distributed across its nodes.",
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 0.05,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 30.071661199908704,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1.27, grid (140, 50, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

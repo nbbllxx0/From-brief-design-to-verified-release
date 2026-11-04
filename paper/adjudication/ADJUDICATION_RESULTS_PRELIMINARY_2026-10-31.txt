@@ -1,0 +1,58 @@
+AgenticTO adjudication — preliminary results
+Date: 2026-10-31
+Status: PARTIAL. 
+
+Contested cases — provisional adjudication
+# | verdict | rationale
+01 | W | 20% instead of oracle 15%; 33% more mass. Qualitative brief alone does not determine either budget.
+02 | W | -z load contradicts stipulated -y oracle; also assumes a solid plate. Before clarification, up axis is unspecified.
+03 | A | A 20 mm thick retained bearing plate at x=1.98–2 m is an admissible interpretation of the stated bearing plate, whose thickness and inclusion in envelope are unspecified. Extra material budget should be disclosed.
+04 | A | 6 mm retained mounting plate and 6 mm deep washer pads are plausible physical interpretations of named interfaces; adds constraints and mass. This is a judgment call, not an exact match.
+05 | W | -z/y axis orientation contradicts the supplied y-up oracle and adds retained lugs. Without oracle the axis interpretation is plausible.
+06 | W | 1000 N instead of 250 N oracle. Same linear compliance-optimal topology does not establish correct load or safe stress/displacement.
+07 | W | Assumed clearance is smaller than oracle clearance; reported intended keep-out is partly filled.
+08 | W | Adds an unstated 3 mm minimum and fixed layers, increasing mass. These assumptions are not implied by a lightweight target.
+09 | A | A 3 mm solid boss under the named boss face is a plausible interpretation; thickness is unspecified.
+10 | A | A conventional unidirectional roller restraining only y is consistent with a bearing that permits x expansion; the brief does not explicitly say it prevents z. This is an alternate boundary condition, not mechanically identical in general.
+11 | W | Same as case 02 under stipulated oracle.
+12 | A | Roller free in x and z is a conventional reading of a bearing free to slide along the span; the phrase does not explicitly exclude z motion. Revisit if authors mean a guided roller.
+13 | W | 8 mm lug and extra solid pad differ from oracle's 10 mm lug. Before oracle, an 8 mm footprint is plausible, but cannot be equated to stipulated 10 mm.
+14 | A | Square 0.5 inch support patch is a reasonable discretized approximation of a round washer, consistent with b06's existing accepted convention; it constrains a larger area.
+15 | A | Conventional roller with y-only restraint; x freedom does not explicitly prohibit z freedom.
+16 | A | Square 16 mm washer patches as an approximate support footprint, consistent with the existing b06 convention.
+17 | A | Square 10 mm washer patches as approximate support footprints.
+18 | A | Retaining the fixed shaft circle solid is a plausible reading of a keyed shaft interface; the brief does not specify material-budget treatment.
+19 | A | Square 12 mm washer patches as approximate support footprints.
+20 | A | Square 12 mm washer patches as approximate support footprints.
+21 | A | Restrict support to the actual remaining bottom surface on either side of the channel. Note that this exposes a conflict/ambiguity in the intended full-face support and void.
+22 | W | As 05, relative to stipulated oracle; y-up not stated in original brief.
+23 | W | 1000 N instead of oracle 250 N; topology-scale invariance does not validate specified load.
+24 | W | Missing stipulated connector clearance.
+25 | W | 12% rather than oracle 15%, plus extra retained pad; brief alone leaves target open.
+26 | W | Applies force in a volume instead of the stated face and adds retained boss; equal numerical geometry on a coarse mesh does not guarantee equivalent distribution.
+27 | A | A 2 mm retained camera plate is a plausible interpretation of the stated plate; thickness is not specified. Verify after clarification.
+28 | A | As 12: conventional y-only roller is a plausible unqualified bearing interpretation.
+29 | W | Edge line load differs from the oracle's 10 mm wide lug. Before clarification either may be guessed but they are not the same interface.
+30 | W | With kN/mm, E=210000 kN/mm² is 1000 times the specified modulus. Same optimum under uniform modulus scaling does not make the specification correct.
+31 | A | As 15: y-only roller is an admissible conventional interpretation.
+32 | W | E=70000 kN/mm² is 1000 times 70 GPa; reported displacements/stiffness would be wrong.
+33 | W | Agent uses z-up lugs; stipulated oracle says y-up. If clarification was not actually available, this is an admissible reading of the original wording, but not of the oracle.
+34 | A | As 09: a 3 mm solid boss is a plausible unstated depth for the named boss.
+35 | A | As 27: 2 mm retained camera plate.
+36 | A | As 12: y-only roller.
+37 | W | As 29: edge load differs from the oracle's 10 mm wide lug.
+38 | W | As 30: modulus inconsistent with kN/mm.
+39 | A | As 15: y-only roller.
+40 | W | As 32: modulus inconsistent with kN/mm.
+41 | A | As 09: 3 mm retained boss.
+
+Brief-level findings
+- b02: the brief explicitly says supports carry vertical and sideways load only. Existing admissible reading that also fixes x contradicts this, even if compliance changes little. Reconsider its counts=true status.
+- b07, b10, b44–b48: ambiguities are real. Oracle responses are plausible completions but cannot be independently verified as the actual author's answers from the supplied package. Different plausible assumptions made without clarification must be distinguished from incorrect answers after clarification.
+- b43: the keep-out intersects the entire specified bottom face over z=45–105. Either support the remaining surface and state that exception, or clarify/correct the brief. Support over void is not a physically well-defined bolted interface without additional modeling conventions. Case 21 is reasonable under the first interpretation.
+- b49: refusal is appropriate because the moment has no reaction. The intended JSON nevertheless encodes a fully fixed edge by default, which resists rotation about z and is not a freely rotating hinge; do not use that spec as a physical representation of the stated mechanism.
+- b50: refusal is appropriate because the specified load footprint lies inside the mandatory void. b08 also lacks a reaction in x for the specified force.
+- b12: Liu and Tovar's paper describes corner planar joints, not full fixation in all three translations; label the fixed-corner finite-pad problem as adapted and verify the actual support coding before asserting exact restatement. https://doi.org/10.1007/s00158-014-1107-x
+- b19: the 2013 GE challenge and fixed interfaces are real, but this rectangular envelope and load distribution should be called an adaptation, not a restatement. The official challenge specifies load through a 3/4 inch pin and fixed interfaces 2–5: https://blog.grabcad.com/ge-terms-of-service/
+- The remainder of the benchmark source labels and all precise geometry/source claims have not been independently verified. A citation to a benchmark family is not proof of an exact restatement.
+

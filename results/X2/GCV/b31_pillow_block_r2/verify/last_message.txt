@@ -1,0 +1,1 @@
+{"match":false,"issues":["The 3000 N shaft load points upward (+y); the brief requires downward (−y)."]}

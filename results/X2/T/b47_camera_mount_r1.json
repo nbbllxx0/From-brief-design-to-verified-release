@@ -1,0 +1,130 @@
+{
+ "task": "b47_camera_mount",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:34:45",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 12.139892100123689,
+ "usage": {
+  "input_tokens": 19960,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 421,
+  "reasoning_output_tokens": 73
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Inspection-camera mount\",\n  \"description\": \"Lightweight aluminium mount with a fully fixed gantry interface and a downward camera load.\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [120, 60, 60]\n  },\n  \"material\": {\n    \"name\": \"Aluminium 6061\",\n    \"E\": 69000,\n    \"nu\": 0.33\n  },\n  \"volume_fraction\": 0.2,\n  \"supports\": [\n    {\n      \"id\": \"gantry_interface\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"camera_weight\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x+\",\n        \"center\": [30, 30],\n        \"size\": [20, 20]\n      },\n      \"force\": [0, -80, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"passive\": [],\n  \"resolution\": {\n    \"h\": 1\n  },\n  \"meta\": {\n    \"assumptions\": [\n      \"The full gantry interface is modeled as fully fixed.\",\n      \"A 20% design-volume target is assumed to interpret the qualitative lightweight objective.\"\n    ]\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Inspection-camera mount",
+  "description": "Lightweight aluminium mount with a fully fixed gantry interface and a downward camera load.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120,
+    60,
+    60
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "gantry_interface",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera_weight",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      30,
+      30
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "force": [
+     0,
+     -80,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1
+  },
+  "meta": {
+   "assumptions": [
+    "The full gantry interface is modeled as fully fixed.",
+    "A 20% design-volume target is assumed to interpret the qualitative lightweight objective."
+   ]
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 12.222783099859953,
+ "cwe": {
+  "value": -0.2572918140867615,
+  "c_pred_under_intended": 0.2030012587452242,
+  "c_intended_opt": 0.2733257322263287,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.3333332538604736
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": false,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 60)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

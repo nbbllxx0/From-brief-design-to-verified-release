@@ -1,0 +1,207 @@
+{
+ "task": "b14_cube_torsion",
+ "cond": "GNR",
+ "rep": 1,
+ "t": "2026-10-31T22:32:39",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "add_load",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GNR\\b14_cube_torsion_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 23.72052550013177,
+ "usage": {
+  "input_tokens": 111821,
+  "cached_input_tokens": 89984,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 886,
+  "reasoning_output_tokens": 111
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: fully clamped bottom; linear-elastic steel, E = 210 GPa, \u03bd = 0.30; forces distributed equally over pad nodes. Each pad carries 100 N at a 45 mm moment arm, producing +18 N\u00b7m. Region checks, validation, and render inspection passed.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Block in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    100.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bottom_fixed",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bolted over full bottom area; idealized as fully clamped."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_xplus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      95.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Flush with x=100 edge; +y tangent, 45 mm lever arm."
+   },
+   {
+    "id": "top_yplus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50.0,
+      95.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -100.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Flush with y=100 edge; -x tangent, 45 mm lever arm."
+   },
+   {
+    "id": "top_xminus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      5.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Flush with x=0 edge; -y tangent, 45 mm lever arm."
+   },
+   {
+    "id": "top_yminus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50.0,
+      5.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     100.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Flush with y=0 edge; +x tangent, 45 mm lever arm. Four loads give zero net force and +18000 N mm torque."
+   }
+  ],
+  "passive": [],
+  "description": "100 mm steel cube, z up; bottom face fully fixed. Top face has four 10 x 10 mm pads flush with the midpoint of each edge, uniformly loaded tangentially for +18 N m torque about z. Pad centres have 45 mm moment arms; equal pad forces are 100 N. Linear elastic steel assumed; no additional passive volumes or minimum feature constraint.",
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 23.957264099968597,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

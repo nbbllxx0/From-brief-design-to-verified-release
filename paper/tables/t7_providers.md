@@ -1,0 +1,14 @@
+**Two providers at matched effort (high), all 50 briefs, repeat 1**
+
+| Condition | Provider | Right behavior | Delivered wrong | Questions | Median input tokens | McNemar p (vs Codex) |
+|---|---|---|---|---|---|---|
+| T text only | Codex gpt-6.1-sol | 37 | 1 | – | 20k |  |
+| T text only | Claude Code claude-opus-5-5 | 42 | 8 | – | 9k | 0.18 |
+| G+C + clarification | Codex gpt-6.1-sol | 50 | 0 | 59 | 104k |  |
+| G+C + clarification | Claude Code claude-opus-5-5 | 46 | 4 | 7 | 44k | 0.12 |
+| G+C+V + picture check | Codex gpt-6.1-sol | 50 | 0 | 59 | 135k |  |
+| G+C+V + picture check | Claude Code claude-opus-5-5 | 47 | 3 | 8 | 59k | 0.25 |
+| G+C+P provenance-gated questions | Codex gpt-6.1-sol | 47 | 3 | 6 | 107k |  |
+| G+C+P provenance-gated questions | Claude Code claude-opus-5-5 | 47 | 3 | 5 | 95k | 1 |
+
+Source: results/X2/<cond>/*_r1.json, results/X2/claude_high/<cond>/*_r1.json.

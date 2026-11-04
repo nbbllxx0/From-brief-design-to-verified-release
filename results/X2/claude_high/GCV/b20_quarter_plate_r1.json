@@ -1,0 +1,172 @@
+{
+ "task": "b20_quarter_plate",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:02:08",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 43205,
+  "cached_input_tokens": 36653,
+  "cache_write_input_tokens": 6546,
+  "output_tokens": 1775
+ },
+ "gc_wall_s": 27.229269600007683,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14571,
+  "cached_input_tokens": 8643,
+  "cache_write_input_tokens": 5924,
+  "output_tokens": 1176
+ },
+ "verify_wall_s": 15.605794999981299,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 57776,
+  "cached_input_tokens": 45296,
+  "output_tokens": 2951,
+  "cache_write_input_tokens": 12470
+ },
+ "wall_s": 42.83506459998898,
+ "questions": 0,
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "quarter_plate",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    24.0,
+    120.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "corner_pin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      4.0,
+      4.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "8x8 corner pad, pinned"
+   },
+   {
+    "id": "sym_x",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x"
+    ],
+    "note": "symmetry plane x=120"
+   },
+   {
+    "id": "sym_z",
+    "region": {
+     "kind": "face",
+     "face": "z+"
+    },
+    "fix": [
+     "z"
+    ],
+    "note": "symmetry plane z=120"
+   }
+  ],
+  "loads": [
+   {
+    "id": "centre_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      115.0,
+      115.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "quarter of 20x20 pad, quarter of 4 kN"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 16.028879299992695,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 24, 120)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

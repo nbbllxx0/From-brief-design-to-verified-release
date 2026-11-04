@@ -1,0 +1,216 @@
+{
+ "task": "b16_column",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:01:05",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 56466,
+  "cached_input_tokens": 49750,
+  "cache_write_input_tokens": 6708,
+  "output_tokens": 1546
+ },
+ "gc_wall_s": 17.15228749997914,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14474,
+  "cached_input_tokens": 8563,
+  "cache_write_input_tokens": 5907,
+  "output_tokens": 943
+ },
+ "verify_wall_s": 13.456572500057518,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 70940,
+  "cached_input_tokens": 58313,
+  "output_tokens": 2489,
+  "cache_write_input_tokens": 12615
+ },
+ "wall_s": 30.608860000036657,
+ "questions": 0,
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Column under combined load",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    60.0,
+    240.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "foot_x0_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      5.0,
+      5.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "foot_x60_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      55.0,
+      5.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "foot_x0_z60",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      5.0,
+      55.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "foot_x60_z60",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      55.0,
+      55.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "cap_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     1000.0,
+     -10000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "10 kN down (-y) + 1 kN sideways (+x)"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 13.893260000040755,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (30, 120, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

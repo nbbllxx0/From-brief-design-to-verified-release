@@ -1,0 +1,160 @@
+{
+ "task": "b34_antenna_bracket",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:04:55",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 71173,
+  "cached_input_tokens": 64932,
+  "cache_write_input_tokens": 6231,
+  "output_tokens": 1451
+ },
+ "gc_wall_s": 18.557701600017026,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14706,
+  "cached_input_tokens": 8772,
+  "cache_write_input_tokens": 5930,
+  "output_tokens": 1132
+ },
+ "verify_wall_s": 14.281593200052157,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 85879,
+  "cached_input_tokens": 73704,
+  "output_tokens": 2583,
+  "cache_write_input_tokens": 12161
+ },
+ "wall_s": 32.83929480006918,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Antenna wall bracket",
+  "units": {
+   "length": "m",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    0.4,
+    0.3,
+    0.2
+   ]
+  },
+  "material": {
+   "name": "S355 steel",
+   "E": 210000000000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "wall_weld",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Wall face welded over full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "antenna_load",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.33,
+      0.1
+     ],
+     "radius": 0.04,
+     "span": [
+      0.05,
+      0.3
+     ]
+    },
+    "force": [
+     0.0,
+     -300.0,
+     1200.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "300 N weight (-y) + 1200 N wind (+z) on clamp"
+   }
+  ],
+  "passive": [
+   {
+    "id": "mast_clamp",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.33,
+      0.1
+     ],
+     "radius": 0.04,
+     "span": [
+      0.05,
+      0.3
+     ]
+    },
+    "note": "Mast clamp keep-in cylinder"
+   }
+  ],
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 0.005,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 14.7610466000624,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=5, grid (80, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

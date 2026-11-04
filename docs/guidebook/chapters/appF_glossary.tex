@@ -1,0 +1,48 @@
+\chapter{Glossary}\label{app:glossary}
+
+\begin{description}[style=nextline,leftmargin=0pt,itemsep=0.35em]
+\item[Act mode] The assistant edits the live specification directly; a whole run can be undone in one step.
+\item[Actor] Who made a logged call: \code{user}, \code{agent}, \code{system} or \code{script}.
+\item[Admissible reading] An interpretation of a brief, other than the intended one, that the adjudication accepted as
+correct.
+\item[Brief] The written design requirement in natural language.
+\item[Card] One proposed change (add, change, remove, set) returned by the assistant in Propose mode.
+\item[Certificate] The solver-issued record of six numerical acceptance predicates. Certified means all six pass.
+\item[Clarification] A question with two to four concrete readings, asked when a brief leaves a design-changing fact
+open.
+\item[Cold start] A solve from uniform density with the full continuation schedule.
+\item[Compliance] $C = f^\mathsf{T}u$, the work done by the loads; lower is stiffer. Reported in force $\times$ length of
+the spec units.
+\item[Consequence preview] The sketch-rung design and compliance of one clarification option, shown on its chip.
+\item[Continuation schedule] The sequence of penalty $p$, projection sharpness $\beta$, move limit and filter radius
+during an optimization.
+\item[Design volume] The domain minus all keep-in and keep-out elements; the volume fraction refers to it.
+\item[FP64] 64-bit floating point.
+\item[Grounding] Checking a specification against geometric facts returned by tools: selected nodes, bounding boxes,
+rule findings, pictures.
+\item[Keep-in / keep-out region] A box or cylinder held solid (\code{solid}) or empty (\code{void}); a \emph{passive}
+item in the document.
+\item[Ladder] The sequence of grids, each twice as fine per axis as the one below, on which a specification is solved.
+\item[Long re-opening] The warm release policy behind \gui{Optimize release}: the cold schedule from its second phase.
+\item[MCP] Model Context Protocol, the interface through which agents call the tools.
+\item[\code{mg64}, \code{mg\_ir}] The FP64 multigrid state solver and its mixed-precision iterative-refinement variant.
+\item[Oracle] The scripted answerer of the benchmark, which answers clarification questions from the stored reference
+reading.
+\item[Profile] The tool set an MCP server offers: \code{spec}, \code{clarify} or \code{full}, or the provenance
+variants \code{spec\_prov} and \code{clarify\_prov}.
+\item[Propose mode] The assistant works on a private copy and returns its changes as cards.
+\item[Release rung] The finest rung of the ladder; only a certified result on it is a released design.
+\item[Replay] Re-running a session log without a language model, checking that every result reproduces.
+\item[Rule] A deterministic check of a specification with a stable code (R001--R013).
+\item[Rung] One grid of the ladder: sketch, preview, refine or release.
+\item[Silent wrong] A valid, non-refused specification that does not match the intended or an admissible reading.
+\item[SIMP] Solid isotropic material with penalization, the density-based topology optimization method used.
+\item[Specification] The typed JSON document \code{agentto.spec/v0} that states the design problem.
+\item[Spec hash] The first 16 hex digits of the SHA-256 of the normalized specification.
+\item[Spill] GPU memory moved into shared system memory by the driver; the spill guard stops a solve when it happens.
+\item[Stale] A result whose specification hash no longer matches the current specification.
+\item[Tail] The default warm release policy: the final continuation phase only. It certifies the transferred design.
+\item[\code{voxfem}] The GPU finite-element and SIMP package from the authors' companion work that AgenticTO runs on;
+distributed separately.
+\item[Warm start] A solve that starts from an earlier design: upsampled, filtered once and volume-matched.
+\end{description}

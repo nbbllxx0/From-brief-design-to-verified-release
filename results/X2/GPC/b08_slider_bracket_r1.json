@@ -1,0 +1,184 @@
+{
+ "task": "b08_slider_bracket",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:58:31",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief gives dimensions in mm and force in N."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 120 x 40 x 40 mm in (x,y,z), y up; origin at minimum corner."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; assume isotropic linear elasticity with E=210000 N/mm^2 and nu=0.3, since no grade or elastic constants are specified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.3."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:linear_rail",
+    "source": "stated",
+    "note": "Whole bottom face y=0 fixes y (vertical) and z (sideways), leaving x free as explicitly required."
+   },
+   {
+    "key": "load:left_push",
+    "source": "derived",
+    "note": "Brief states 300 N along +x on a centred 10 x 10 mm pad on x=0. Centre (y,z)=(40/2,40/2)=(20,20) mm; bounds 15 to 25 mm in both axes."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 15,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b08_slider_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 17.1967364999,
+ "usage": {
+  "input_tokens": 82384,
+  "cached_input_tokens": 73984,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 782,
+  "reasoning_output_tokens": 39
+ },
+ "returncode": 0,
+ "final": "REFUSE \u2014 The rail leaves x translation free, so the 300 N push cannot be balanced; validation reports an unconstrained rigid-body mode along x.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Slider bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "linear_rail",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Whole bottom face held vertically (y) and sideways (z); x translation is free."
+   }
+  ],
+  "loads": [
+   {
+    "id": "left_push",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "300 N total in +x on the centred 10 x 10 mm left-end pad."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 17.428087800042704,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

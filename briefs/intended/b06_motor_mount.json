@@ -1,0 +1,430 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b06 motor mount",
+  "domain": {
+   "size": [
+    160,
+    60,
+    120
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "bolt_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20,
+      20
+     ],
+     "size": [
+      24,
+      24
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "bolt_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20,
+      100
+     ],
+     "size": [
+      24,
+      24
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "bolt_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      140,
+      20
+     ],
+     "size": [
+      24,
+      24
+     ],
+     "shape": "ellipse"
+    }
+   },
+   {
+    "id": "bolt_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      140,
+      100
+     ],
+     "size": [
+      24,
+      24
+     ],
+     "shape": "ellipse"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "motor",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80,
+      60
+     ],
+     "size": [
+      40,
+      40
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     800,
+     -2000,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "boss_1",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "boss_2",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "boss_3",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      20
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "boss_4",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140,
+      100
+     ],
+     "radius": 12,
+     "span": [
+      0,
+      10
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      60,
+      55,
+      40
+     ],
+     "max": [
+      100,
+      60,
+      80
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "square 24 x 24 mm washer patches",
+   "why": "small change in support area",
+   "counts": true,
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "name": "b06 motor mount",
+    "domain": {
+     "size": [
+      160,
+      60,
+      120
+     ]
+    },
+    "material": {
+     "name": "aluminium 6061",
+     "E": 69000.0,
+     "nu": 0.33
+    },
+    "volume_fraction": 0.2,
+    "supports": [
+     {
+      "id": "bolt_1",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        20,
+        20
+       ],
+       "size": [
+        24,
+        24
+       ],
+       "shape": "rect"
+      }
+     },
+     {
+      "id": "bolt_2",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        20,
+        100
+       ],
+       "size": [
+        24,
+        24
+       ],
+       "shape": "rect"
+      }
+     },
+     {
+      "id": "bolt_3",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        140,
+        20
+       ],
+       "size": [
+        24,
+        24
+       ],
+       "shape": "rect"
+      }
+     },
+     {
+      "id": "bolt_4",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        140,
+        100
+       ],
+       "size": [
+        24,
+        24
+       ],
+       "shape": "rect"
+      }
+     }
+    ],
+    "loads": [
+     {
+      "id": "motor",
+      "region": {
+       "kind": "patch",
+       "face": "y+",
+       "center": [
+        80,
+        60
+       ],
+       "size": [
+        40,
+        40
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       800,
+       -2000,
+       0
+      ]
+     }
+    ],
+    "passive": [
+     {
+      "id": "boss_1",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "y",
+       "center": [
+        20,
+        20
+       ],
+       "radius": 12,
+       "span": [
+        0,
+        10
+       ]
+      },
+      "note": ""
+     },
+     {
+      "id": "boss_2",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "y",
+       "center": [
+        20,
+        100
+       ],
+       "radius": 12,
+       "span": [
+        0,
+        10
+       ]
+      },
+      "note": ""
+     },
+     {
+      "id": "boss_3",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "y",
+       "center": [
+        140,
+        20
+       ],
+       "radius": 12,
+       "span": [
+        0,
+        10
+       ]
+      },
+      "note": ""
+     },
+     {
+      "id": "boss_4",
+      "kind": "solid",
+      "region": {
+       "kind": "cylinder",
+       "axis": "y",
+       "center": [
+        140,
+        100
+       ],
+       "radius": 12,
+       "span": [
+        0,
+        10
+       ]
+      },
+      "note": ""
+     },
+     {
+      "id": "pad",
+      "kind": "solid",
+      "region": {
+       "kind": "box",
+       "min": [
+        60,
+        55,
+        40
+       ],
+       "max": [
+        100,
+        60,
+        80
+       ]
+      },
+      "note": ""
+     }
+    ],
+    "resolution": {
+     "h": 1.0
+    }
+   }
+  }
+ ],
+ "notes": "Bolt holes inside the bosses are not modelled: the bolt fills the hole, and a keep-out hole inside a keep-in boss would conflict (R007).",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Four 24 mm diameter, 10 mm bosses and the 5 mm motor pad agree. Bolt/washer contact is an idealization; stated passive solids are explicit."
+ }
+}

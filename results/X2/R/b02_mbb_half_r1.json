@@ -1,0 +1,17 @@
+{
+ "task": "b02_mbb_half",
+ "cond": "R",
+ "rep": 1,
+ "questions": 0,
+ "spec": null,
+ "reason": "no support",
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

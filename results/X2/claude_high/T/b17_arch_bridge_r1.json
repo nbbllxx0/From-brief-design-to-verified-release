@@ -1,0 +1,154 @@
+{
+ "task": "b17_arch_bridge",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:22:27",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 8.372421700041741,
+ "usage": {
+  "input_tokens": 8637,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7986,
+  "output_tokens": 503
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"arch_bridge_solid_deck\",\"description\":\"Arch bridge, 300x100x60 mm steel envelope, solid 6 mm deck on top, pinned along both bottom end edges across full width, 6 kN downward uniformly over deck surface.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[300,100,60]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.15,\"supports\":[{\"id\":\"pin_left\",\"region\":{\"kind\":\"edge\",\"axis\":\"z\",\"at\":[0,0]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"bottom edge at x=0, y=0, full width\"},{\"id\":\"pin_right\",\"region\":{\"kind\":\"edge\",\"axis\":\"z\",\"at\":[300,0]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"bottom edge at x=300, y=0, full width\"}],\"loads\":[{\"id\":\"deck_load\",\"region\":{\"kind\":\"face\",\"face\":\"y+\"},\"force\":[0,-6000,0],\"distribution\":\"uniform_nodes\",\"note\":\"6 kN downward uniformly over deck top surface y=100\"}],\"passive\":[{\"id\":\"deck\",\"kind\":\"solid\",\"region\":{\"kind\":\"box\",\"min\":[0,94,0],\"max\":[300,100,60]},\"note\":\"solid deck, top 6 mm\"}],\"resolution\":{\"h\":2},\"min_feature\":null,\"meta\":{}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "arch_bridge_solid_deck",
+  "description": "Arch bridge, 300x100x60 mm steel envelope, solid 6 mm deck on top, pinned along both bottom end edges across full width, 6 kN downward uniformly over deck surface.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300,
+    100,
+    60
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "pin_left",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "bottom edge at x=0, y=0, full width"
+   },
+   {
+    "id": "pin_right",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      300,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "bottom edge at x=300, y=0, full width"
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -6000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "6 kN downward uniformly over deck top surface y=100"
+   }
+  ],
+  "passive": [
+   {
+    "id": "deck",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0,
+      94,
+      0
+     ],
+     "max": [
+      300,
+      100,
+      60
+     ]
+    },
+    "note": "solid deck, top 6 mm"
+   }
+  ],
+  "resolution": {
+   "h": 2
+  },
+  "min_feature": null,
+  "meta": {}
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 8.57186929997988,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

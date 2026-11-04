@@ -1,0 +1,99 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b40 crank arm",
+  "domain": {
+   "size": [
+    180,
+    40,
+    30
+   ]
+  },
+  "material": {
+   "name": "aluminium 7075",
+   "E": 71700.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "spindle",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      20,
+      20
+     ],
+     "radius": 10,
+     "span": [
+      0,
+      30
+     ]
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "pedal",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      160,
+      20
+     ],
+     "size": [
+      16,
+      16
+     ],
+     "shape": "ellipse"
+    },
+    "force": [
+     0,
+     -1200,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "pedal_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      160,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      0,
+      30
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [],
+ "notes": "The load sits on the outer face, so the arm carries bending and torsion.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "The pedal load belongs on the outer z+ circular face, not the whole cylinder. Both specified spindle/boss regions agree."
+ }
+}

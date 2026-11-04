@@ -1,0 +1,172 @@
+{
+ "task": "b40_crank_arm",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:36:32",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 104296,
+  "cached_input_tokens": 96768,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1506,
+  "reasoning_output_tokens": 831
+ },
+ "gc_wall_s": 51.620223900070414,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 19656,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 278,
+  "reasoning_output_tokens": 258
+ },
+ "verify_wall_s": 13.691404600162059,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 1089,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1784,
+  "input_tokens": 123952,
+  "cached_input_tokens": 96768
+ },
+ "wall_s": 65.31162850023247,
+ "questions": 1,
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Crank arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    180.0,
+    40.0,
+    30.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 7075",
+   "E": 71700.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "axle_fixed",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "radius": 10.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Keyed spindle: all nodes inside the 20 mm diameter circle fixed through full thickness."
+   }
+  ],
+  "loads": [
+   {
+    "id": "rider_push",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      160.0,
+      20.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "ellipse"
+    },
+    "force": [
+     0.0,
+     -1200.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 1.2 kN downward push over the circular boss face at z=30 mm."
+   }
+  ],
+  "passive": [
+   {
+    "id": "pedal_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      160.0,
+      20.0
+     ],
+     "radius": 8.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "note": "Solid pedal boss, 16 mm diameter, through full thickness."
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 13.950593699933961,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (180, 40, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

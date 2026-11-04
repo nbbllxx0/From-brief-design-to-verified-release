@@ -1,0 +1,143 @@
+{
+ "task": "b08_slider_bracket",
+ "cond": "GCV",
+ "rep": 2,
+ "t": "2026-10-30T11:38:20",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 87252,
+  "cached_input_tokens": 80256,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 429,
+  "reasoning_output_tokens": 0
+ },
+ "gc_wall_s": 17.009117300156504,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17681,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 151,
+  "reasoning_output_tokens": 131
+ },
+ "verify_wall_s": 7.401829200098291,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 580,
+  "reasoning_output_tokens": 131,
+  "input_tokens": 104933,
+  "cache_write_input_tokens": 0,
+  "cached_input_tokens": 80256
+ },
+ "wall_s": 24.410946500254795,
+ "questions": 0,
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Slider bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bottom_rail",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Rail restrains vertical and sideways motion across the whole bottom face; x sliding is free."
+   }
+  ],
+  "loads": [
+   {
+    "id": "left_push",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "300 N along +x on the centered 10 x 10 mm pad."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.983037300175056,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

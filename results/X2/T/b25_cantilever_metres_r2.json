@@ -1,0 +1,117 @@
+{
+ "task": "b25_cantilever_metres",
+ "cond": "T",
+ "rep": 2,
+ "t": "2026-10-30T10:46:18",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 6.870418899925426,
+ "usage": {
+  "input_tokens": 20006,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 339,
+  "reasoning_output_tokens": 48
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"large_cantilever_metres_kilonewtons\",\n  \"units\": {\n    \"length\": \"m\",\n    \"force\": \"kN\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [2, 1, 1]\n  },\n  \"material\": {\n    \"name\": \"structural steel\",\n    \"E\": 210000000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.15,\n  \"supports\": [\n    {\n      \"id\": \"fixed_end\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"bearing_plate_load\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x+\",\n        \"center\": [0.5, 0.5],\n        \"size\": [0.2, 0.2]\n      },\n      \"force\": [0, -100, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 0.02\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "large_cantilever_metres_kilonewtons",
+  "units": {
+   "length": "m",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    2,
+    1,
+    1
+   ]
+  },
+  "material": {
+   "name": "structural steel",
+   "E": 210000000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "fixed_end",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "bearing_plate_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "size": [
+      0.2,
+      0.2
+     ]
+    },
+    "force": [
+     0,
+     -100,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "resolution": {
+   "h": 0.02
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 6.9244661999400705,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=20, grid (100, 50, 50)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

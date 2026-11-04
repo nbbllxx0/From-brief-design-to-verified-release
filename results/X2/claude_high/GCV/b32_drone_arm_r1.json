@@ -1,0 +1,160 @@
+{
+ "task": "b32_drone_arm",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:04:25",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 42225,
+  "cached_input_tokens": 36255,
+  "cache_write_input_tokens": 5964,
+  "output_tokens": 1212
+ },
+ "gc_wall_s": 15.232921299990267,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14596,
+  "cached_input_tokens": 8673,
+  "cache_write_input_tokens": 5919,
+  "output_tokens": 1095
+ },
+ "verify_wall_s": 15.658721299842,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 56821,
+  "cached_input_tokens": 44928,
+  "output_tokens": 2307,
+  "cache_write_input_tokens": 11883
+ },
+ "wall_s": 30.891642599832267,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "drone_arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150.0,
+    20.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 7075",
+   "E": 71700.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "root_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "root end clamped in frame"
+   }
+  ],
+  "loads": [
+   {
+    "id": "thrust",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      140.0,
+      10.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     15.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "full motor thrust upward on pad top"
+   }
+  ],
+  "passive": [
+   {
+    "id": "motor_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      130.0,
+      0.0,
+      15.0
+     ],
+     "max": [
+      150.0,
+      20.0,
+      20.0
+     ]
+    },
+    "note": "motor mount pad, keep"
+   }
+  ],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 0.5,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 16.092499900143594,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=0.5, grid (300, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

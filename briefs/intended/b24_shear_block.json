@@ -1,0 +1,61 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b24 shear block",
+  "domain": {
+   "size": [
+    80,
+    80,
+    80
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "base",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "shear",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     4000,
+     0,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "shear-loaded block (3D benchmark family)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Fixed y- face and whole y+ surface force +4000 N in x agree."
+ }
+}

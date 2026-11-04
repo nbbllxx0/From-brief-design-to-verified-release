@@ -1,0 +1,315 @@
+{
+ "task": "b39_tv_bracket",
+ "cond": "GNR",
+ "rep": 1,
+ "t": "2026-10-31T22:40:54",
+ "n_tool_calls": 15,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_support",
+  "add_passive",
+  "add_support",
+  "add_passive",
+  "add_support",
+  "add_passive",
+  "add_passive",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GNR\\b39_tv_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 21.801882199943066,
+ "usage": {
+  "input_tokens": 104266,
+  "cached_input_tokens": 92672,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 896,
+  "reasoning_output_tokens": 104
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: rigid anchorage over four \u00d812 mm washer footprints; 6 mm solid attachment pads and mounting plate; uniformly distributed plate load; steel E = 210 GPa, \u03bd = 0.30; volume fraction applies to non-passive material. list_regions and validate_spec passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "TV wall bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    200.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "anchor_y30_z10",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30.0,
+      10.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "12 mm diameter washer footprint; rigid wall/lag screw idealization."
+   },
+   {
+    "id": "anchor_y30_z30",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "12 mm diameter washer footprint; rigid wall/lag screw idealization."
+   },
+   {
+    "id": "anchor_y170_z10",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170.0,
+      10.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "12 mm diameter washer footprint; rigid wall/lag screw idealization."
+   },
+   {
+    "id": "anchor_y170_z30",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170.0,
+      30.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "12 mm diameter washer footprint; rigid wall/lag screw idealization."
+   }
+  ],
+  "loads": [
+   {
+    "id": "tv_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      100.0,
+      20.0
+     ],
+     "size": [
+      100.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     50.0,
+     -400.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 400 N downward and 50 N away from wall distributed uniformly on TV mounting plate."
+   }
+  ],
+  "passive": [
+   {
+    "id": "washer_y30_z10",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      30.0,
+      10.0
+     ],
+     "radius": 6.0,
+     "span": [
+      0.0,
+      6.0
+     ]
+    },
+    "note": "6 mm deep non-design solid washer attachment pad."
+   },
+   {
+    "id": "washer_y30_z30",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "radius": 6.0,
+     "span": [
+      0.0,
+      6.0
+     ]
+    },
+    "note": "6 mm deep non-design solid washer attachment pad."
+   },
+   {
+    "id": "washer_y170_z10",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      170.0,
+      10.0
+     ],
+     "radius": 6.0,
+     "span": [
+      0.0,
+      6.0
+     ]
+    },
+    "note": "6 mm deep non-design solid washer attachment pad."
+   },
+   {
+    "id": "washer_y170_z30",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      170.0,
+      30.0
+     ],
+     "radius": 6.0,
+     "span": [
+      0.0,
+      6.0
+     ]
+    },
+    "note": "6 mm deep non-design solid washer attachment pad."
+   },
+   {
+    "id": "tv_mounting_plate",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      294.0,
+      50.0,
+      0.0
+     ],
+     "max": [
+      300.0,
+      150.0,
+      40.0
+     ]
+    },
+    "note": "Retained steel mounting plate, assumed thickness 6 mm."
+   }
+  ],
+  "description": "TV wall bracket; x points away from wall, y upward. Four 12 mm diameter washer footprints at x=0 are fully fixed, idealizing rigid lag-screw anchorage. Retain 6 mm deep solid washer pads and a 6 mm thick mounting plate at x=294..300, y=50..150, z=0..40. Total plate force (50,-400,0) N is uniformly shared by end-face patch nodes. Volume fraction 0.15 applies to non-passive design volume; passive pads and plate are additional solid material. Linear elastic steel; minimum member size 5 mm.",
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  },
+  "min_feature": 5.0
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 22.138281000079587,
+ "cwe": {
+  "value": -0.022414711855406777,
+  "c_pred_under_intended": 2.8204591838950512,
+  "c_intended_opt": 2.885128508069243,
+  "h": 2.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0639201402664185
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 100, 20)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

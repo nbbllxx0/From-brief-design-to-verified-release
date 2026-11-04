@@ -1,0 +1,36 @@
+{
+ "task": "b07_sensor_arm",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:26:31",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 11.515409599989653,
+ "usage": {
+  "input_tokens": 19956,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 187,
+  "reasoning_output_tokens": 153
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The brief does not specify the frame attachment region and constrained directions or the direction of the 20 N camera load.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 11.574564199894667,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "clarify",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

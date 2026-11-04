@@ -1,0 +1,221 @@
+{
+ "task": "b43_press_riser",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:17:39",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies millimetres and kN; using mm and kN consistently."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 300 x 100 x 150 mm in (x,y,z), y up, with bottom y=0."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; isotropic linear-elastic E=210 kN/mm^2 (210 GPa), nu=0.30 are assumed since no grade or constants are given."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.3; tool convention applies this to non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "derived",
+    "note": "50 elements across shortest side 100 mm gives h=100/50=2 mm and 150 x 50 x 75 elements."
+   },
+   {
+    "key": "support:press_bed",
+    "source": "assumed",
+    "note": "Brief states full bottom face y=0 bolted to bed; idealize this as fixing all x,y,z degrees of freedom on that full face. The support selection overlaps the bottom-opening channel; keep-out geometry remains as stated. Validation reports no constraint or overlap errors."
+   },
+   {
+    "key": "load:tool_pad",
+    "source": "assumed",
+    "note": "20 kN downward (-y) plus 2 kN +z, centered top 100 x 50 mm pad are stated. Assume pad widths map to x=100 mm,z=50 mm, and total force is shared equally among selected nodes; center (x,z)=(150,75) derived from envelope."
+   },
+   {
+    "key": "passive:coolant_channel",
+    "source": "stated",
+    "note": "Keep empty for full x length [0,300] mm, y [0,30] mm, z [45,105] mm."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "support:press_bed",
+   "load:tool_pad"
+  ]
+ },
+ "n_tool_calls": 18,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_passive",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "set_source",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b43_press_riser_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 67.81670969980769,
+ "usage": {
+  "input_tokens": 143502,
+  "cached_input_tokens": 134528,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1906,
+  "reasoning_output_tokens": 862
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: steel E = 210 GPa, \u03bd = 0.30; full bottom fixed in x/y/z, including the channel opening; pad 100 mm along x \u00d7 50 mm along z, with force distributed equally among its nodes. Validation passed, render checked, and every item tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Press riser block",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    100.0,
+    150.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "press_bed",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full bottom face bolted to press bed; modeled as fixed in all directions."
+   }
+  ],
+  "loads": [
+   {
+    "id": "tool_pad",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      150.0,
+      75.0
+     ],
+     "size": [
+      100.0,
+      50.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -20.0,
+     2.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Centered top pad, 100 mm along x and 50 mm along z. Total force in kN."
+   }
+  ],
+  "passive": [
+   {
+    "id": "coolant_channel",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      0.0,
+      45.0
+     ],
+     "max": [
+      300.0,
+      30.0,
+      105.0
+     ]
+    },
+    "note": "Full-length coolant channel must remain empty."
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": null,
+   "cells_short_edge": 50
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 68.07207460002974,
+ "cwe": {
+  "value": -1.153511730578316e-10,
+  "c_pred_under_intended": 26.701241177321265,
+  "c_intended_opt": 26.701241180401283,
+  "h": 2.0,
+  "pred_status": "converged",
+  "passive_violation": {
+   "keep_out_filled": 0.0
+  },
+  "mass_ratio": 1.0
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=2, grid (150, 50, 75)"
+  ],
+  "matched": "admissible:1"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

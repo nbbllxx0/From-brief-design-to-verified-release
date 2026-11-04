@@ -1,0 +1,147 @@
+{
+ "task": "b44_gearbox_bracket",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:26:55",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 0,
+ "retry_errors": [],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 13.842863499885425,
+ "usage": {
+  "input_tokens": 19988,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 560,
+  "reasoning_output_tokens": 146
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Gearbox output bracket\",\n  \"description\": \"Steel bracket with a rigid gearbox attachment and a 40 N*m torque about +x applied through two end-face drive lugs; z is vertical.\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [160, 80, 80]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.3,\n  \"supports\": [\n    {\n      \"id\": \"gearbox_attachment\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"top_drive_lug\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x+\",\n        \"center\": [40, 72],\n        \"size\": [16, 16]\n      },\n      \"force\": [0, -625, 0],\n      \"distribution\": \"uniform_nodes\",\n      \"note\": \"With the bottom lug, forms a 40000 N*mm torque about +x across a 64 mm centre separation.\"\n    },\n    {\n      \"id\": \"bottom_drive_lug\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x+\",\n        \"center\": [40, 8],\n        \"size\": [16, 16]\n      },\n      \"force\": [0, 625, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 2\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Gearbox output bracket",
+  "description": "Steel bracket with a rigid gearbox attachment and a 40 N*m torque about +x applied through two end-face drive lugs; z is vertical.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160,
+    80,
+    80
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "gearbox_attachment",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_drive_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40,
+      72
+     ],
+     "size": [
+      16,
+      16
+     ]
+    },
+    "force": [
+     0,
+     -625,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "With the bottom lug, forms a 40000 N*mm torque about +x across a 64 mm centre separation."
+   },
+   {
+    "id": "bottom_drive_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40,
+      8
+     ],
+     "size": [
+      16,
+      16
+     ]
+    },
+    "force": [
+     0,
+     625,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "resolution": {
+   "h": 2
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 13.899358299793676,
+ "cwe": {
+  "value": 106163339.06130381,
+  "c_pred_under_intended": 152053482.1402571,
+  "c_intended_opt": 1.4322597805650623,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

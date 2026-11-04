@@ -1,0 +1,416 @@
+{
+ "what": [
+  "setup",
+  "ladder",
+  "overlays"
+ ],
+ "passed": 81,
+ "failed": 0,
+ "results": [
+  {
+   "check": "new design: blank 100x50x50 box, no BCs",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "checks: missing support and load are explained",
+   "ok": true,
+   "detail": "schema\nNo support yet: press S and click the face to fix.\nschema\nNo load yet: press L and click the face to load."
+  },
+  {
+   "check": "ladder: no rungs while the spec is incomplete",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "inspector shows the domain on a new design",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "S key arms the support tool",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "toolbar hint while a tool is armed",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "click on x- adds a fixed face support",
+   "ok": true,
+   "detail": "[{'id': 'support_1', 'region': {'kind': 'face', 'face': 'x-'}, 'fix': ['x', 'y', 'z']}]"
+  },
+  {
+   "check": "tool returns to select after placing",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "new support is selected in the inspector",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "click on x+ adds a 1 kN patch load into the face",
+   "ok": true,
+   "detail": "{'id': 'load_1', 'force': [-1000, 0, 0], 'region': {'kind': 'patch', 'face': 'x+', 'center': [15.02, 35], 'size': [5, 5], 'shape': 'rect'}}"
+  },
+  {
+   "check": "load patch is centred where the face was clicked",
+   "ok": true,
+   "detail": "([15.02, 35], [100, 15.0, 35.0])"
+  },
+  {
+   "check": "inspector: force edited in place",
+   "ok": true,
+   "detail": "[0, -2000, 0]"
+  },
+  {
+   "check": "valid spec once a support and a load exist",
+   "ok": true,
+   "detail": "AgenticTO\nuntitled\nNew design\u2026\nb01_cantilever_block\nb02_mbb_half\nb03_bridge_deck\nb04_torsion_shaft\nb05_l_bracket\nb06_motor_mount\nb07_sensor_arm\nb08_slider_bracket\nb09_duct_bridge\nb10_hook_plate\nb11_cantilever_line_load\nb12_wheel\nb13_cantilever_end_traction\nb14_cube_torsion\nb15_corner_plate\nb16_column\nb17_arch_bridge\nb18_cantilever_hole\nb19_engine_bracket\nb20_quarter_plate\nb21_mbb_z_up\nb22_cantilev"
+  },
+  {
+   "check": "ladder: four rungs on the small ladder",
+   "ok": true,
+   "detail": "4"
+  },
+  {
+   "check": "K and O add a keep-in slab on y+ and a keep-out slab on z+",
+   "ok": true,
+   "detail": "[('solid', [0, 45, 0], [100, 50, 50]), ('void', [0, 0, 45], [100, 50, 50])]"
+  },
+  {
+   "check": "intent tree lists every item",
+   "ok": true,
+   "detail": "DESIGN INTENT\nDomain\n100\u00d750\u00d750\nMaterial\nsteel\nSupports\n1\nsupport_1\nLoads\n1\nload_1\nKeep-in\n1\nkeep_in_1\nKeep-out\n1\nkeep_out_1"
+  },
+  {
+   "check": "timeline: the newest record is in view (not clipped)",
+   "ok": true,
+   "detail": "['USERadd keep-in keep_in_1 on y+', 'USERadd keep-out keep_out_1 on z+']"
+  },
+  {
+   "check": "composer keeps its width with a selection chip",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "keep-in and keep-out meeting at the y+/z+ edge are flagged (R007)",
+   "ok": true,
+   "detail": "R007 \u00b7 error\n160 elements are both keep-in and keep-out"
+  },
+  {
+   "check": "viewport pick selects the support under the pointer",
+   "ok": true,
+   "detail": "{\"kind\":\"support\",\"id\":\"support_1\"}"
+  },
+  {
+   "check": "tree pick selects the load",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "support DOF checkbox frees z",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "region kind converts face -> patch on the same face",
+   "ok": true,
+   "detail": "{'kind': 'patch', 'face': 'x-', 'center': [25, 25], 'size': [5, 5], 'shape': 'rect'}"
+  },
+  {
+   "check": "domain size and volume edited",
+   "ok": true,
+   "detail": "([120, 50, 50], 0.25)"
+  },
+  {
+   "check": "ladder follows the new domain (120 mm long)",
+   "ok": true,
+   "detail": "['48\u00d720\u00d720', '96\u00d740\u00d740', '192\u00d780\u00d780', '384\u00d7160\u00d7160']"
+  },
+  {
+   "check": "Delete removes the selected keep-out",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "overlap error clears with the keep-out gone",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "volume 150% is flagged",
+   "ok": true,
+   "detail": "schema\nvolume_fraction: Input should be less than 1"
+  },
+  {
+   "check": "ladder offers no runnable rung while an error stands",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "error clears when fixed",
+   "ok": true,
+   "detail": "[0.25, 'All rules pass.', 4]"
+  },
+  {
+   "check": "mesh-by switches cells -> h",
+   "ok": true,
+   "detail": "{'h': 2.5}"
+  },
+  {
+   "check": "Ctrl+Z undoes the last edit",
+   "ok": true,
+   "detail": "0.25"
+  },
+  {
+   "check": "Ctrl+Y redoes it",
+   "ok": true,
+   "detail": "0.4"
+  },
+  {
+   "check": "timeline logs labelled user edits",
+   "ok": true,
+   "detail": "['USERedit support_1', 'USERedit support_1', 'USERedit support_1', 'USERedit support_1', 'USERset_spec', 'USERdelete keep_out_1', 'USERset_spec', 'USERset_spec', 'USERset_spec', 'USERset_spec', 'USERset_spec', 'USERundo', 'USERredo', 'USERundo']"
+  },
+  {
+   "check": "release note shown before the first solve",
+   "ok": true,
+   "detail": "Release = the finest rung; only a certified release is a finished design."
+  },
+  {
+   "check": "rungs are Sketch / Preview / Refine / Release",
+   "ok": true,
+   "detail": "['Sketch', 'Preview', 'Refine', 'Release']"
+  },
+  {
+   "check": "sketch (16k) solves from the ladder button",
+   "ok": true,
+   "detail": "Sketch\n16k\n3.0s"
+  },
+  {
+   "check": "sketch wall time under 10 s",
+   "ok": true,
+   "detail": "4.4 s"
+  },
+  {
+   "check": "density frames stream to the viewport",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "result card appears with a certificate list",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "preview solves and warm-starts (\u2191)",
+   "ok": true,
+   "detail": "Preview\n128k\n0.4s \u2191"
+  },
+  {
+   "check": "refine solves and warm-starts (\u2191)",
+   "ok": true,
+   "detail": "Refine\n1.0M\n0.6s \u2191"
+  },
+  {
+   "check": "Optimize release appears once Refine has converged",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Stop button while a solve runs",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "release rung shows queued / setting up / it N while running",
+   "ok": true,
+   "detail": "Release\n8.2M\nsetting up 8.2M\u2026"
+  },
+  {
+   "check": "Stop clicked while the release still ran",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Stop cancels the running release",
+   "ok": true,
+   "detail": "[[2.5,\"converged\"],[1.25,\"converged\"],[0.625,\"converged\"],[0.3125,\"cancelled\"]]"
+  },
+  {
+   "check": "Stop button gone after cancel",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Optimize release (8M) converges",
+   "ok": true,
+   "detail": "Release\n8.2M\n32.1s \u2191\ncertified"
+  },
+  {
+   "check": "release is certified (seal on the rung)",
+   "ok": true,
+   "detail": "Release\n8.2M\n32.1s \u2191\ncertified"
+  },
+  {
+   "check": "result card: certified, release rung, all checks ticked",
+   "ok": true,
+   "detail": "\u25be RESULT\ncertified\n8.2M \u00b7 61 it \u00b7 32.1 s \u00b7 warm\ncompliance\n8.8323 N\u00b7mm\nvolume\n30.00%\ngrid\n320\u00d7160\u00d7160\n\u2713 converged\n\u2713 FP64 state solve accepted\n\u2713 no VRAM spill\n\u2713 spill monitored\n\u2713 volume within 0.1%\n\u2713 keep-in/out exact\nSurface\nExport STL + report"
+  },
+  {
+   "check": "certified release appears as its marching-cubes surface",
+   "ok": true,
+   "detail": "166160"
+  },
+  {
+   "check": "surface note reports triangles and pooling",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Voxels shows the density voxels",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Surface brings the isosurface back",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Export writes an STL and a report",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "STL / markdown / json links download (200, non-empty)",
+   "ok": true,
+   "detail": "[('/api/files/untitled_082fa7b029c2.stl', 200, 33248084), ('/api/files/untitled_082fa7b029c2_report.md', 200, 878), ('/api/files/untitled_082fa7b029c2_report.json', 200, 2273)]"
+  },
+  {
+   "check": "STL is binary with the triangle count in its header",
+   "ok": true,
+   "detail": "(33248084, 664960)"
+  },
+  {
+   "check": "result card turns stale after an edit",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "undo restores the solved spec: stale badge clears",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "rung states survive the undo (same spec hash)",
+   "ok": true,
+   "detail": "Sketch\n16k\n3.0s"
+  },
+  {
+   "check": "first-run tips shown on a fresh browser",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "tips dismiss",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "tips stay dismissed after a reload",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "? opens the keyboard map",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Esc closes it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "legend overlay is not a dim layer (regression)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Ctrl+K opens the command palette",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "palette input has focus",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "palette filters commands",
+   "ok": true,
+   "detail": "['Switch to dark theme']"
+  },
+  {
+   "check": "palette runs the command (theme toggles)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "palette closes after running",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "theme button toggles back",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "theme persists in localStorage",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "letter keys in a text field do not arm tools",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "picker loads a suite task with its brief",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "a loaded task validates",
+   "ok": true,
+   "detail": "AgenticTO\nNew design\u2026\nb01_cantilever_block\nb02_mbb_half\nb03_bridge_deck\nb04_torsion_shaft\nb05_l_bracket\nb06_motor_mount\nb07_sensor_arm\nb08_slider_bracket\nb09_duct_bridge\nb10_hook_plate\nb11_cantilever_line_load\nb12_wheel\nb13_cantilever_end_traction\nb14_cube_torsion\nb15_corner_plate\nb16_column\nb17_arch_bridge\nb18_cantilever_hole\nb19_engine_bracket\nb20_quarter_plate\nb21_mbb_z_up\nb22_cantilever_slab\nb"
+  },
+  {
+   "check": "picker loads a library problem (lib:bridge)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "chat bubbles are not squashed (text fits its box)",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "check": "timeline labels a clarification answer",
+   "ok": true,
+   "detail": "['USERload lib:bridge', 'USERload new', 'USERanswer: 10 x 10 mm']"
+  },
+  {
+   "check": "no uncaught exceptions or console errors",
+   "ok": true,
+   "detail": "[]"
+  }
+ ]
+}

@@ -1,0 +1,169 @@
+{
+ "task": "b40_crank_arm",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:06:20",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 42656,
+  "cached_input_tokens": 36475,
+  "cache_write_input_tokens": 6175,
+  "output_tokens": 1511
+ },
+ "gc_wall_s": 22.438815499888733,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14642,
+  "cached_input_tokens": 8721,
+  "cache_write_input_tokens": 5917,
+  "output_tokens": 979
+ },
+ "verify_wall_s": 13.624924700008705,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 57298,
+  "cached_input_tokens": 45196,
+  "output_tokens": 2490,
+  "cache_write_input_tokens": 12092
+ },
+ "wall_s": 36.06374019989744,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "crank_arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    180.0,
+    40.0,
+    30.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 7075",
+   "E": 71700.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "spindle",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "radius": 10.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "20 mm keyed spindle through thickness, all fixed"
+   }
+  ],
+  "loads": [
+   {
+    "id": "pedal_push",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      160.0,
+      20.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "ellipse"
+    },
+    "force": [
+     0.0,
+     -1200.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "1.2 kN downward rider push on boss outer face"
+   }
+  ],
+  "passive": [
+   {
+    "id": "pedal_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      160.0,
+      20.0
+     ],
+     "radius": 8.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 14.094172100070864,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (180, 40, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

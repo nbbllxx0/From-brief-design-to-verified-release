@@ -1,0 +1,213 @@
+{
+ "task": "b38_peek_bracket",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:47:48",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief uses mm for geometry and N for forces."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 80 x 60 x 40 mm in x,y,z; z normal to panel and base z=0."
+   },
+   {
+    "key": "material",
+    "source": "derived",
+    "note": "Brief specifies PEEK, E=3.6 GPa and nu=0.38; E=3600 N/mm^2 by unit conversion."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.25; tool applies this to non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:bonded_base",
+    "source": "stated",
+    "note": "Base z=0 bonded to panel over full area, modeled as fixing x,y,z displacement across that face."
+   },
+   {
+    "key": "load:launch_load",
+    "source": "assumed",
+    "note": "Brief states simultaneous +300 N x and -300 N z on pad. Assume uniform nodal distribution over its entire z=40 top face, x=[25,55], y=[15,45]; one vector [300,0,-300] N represents both together."
+   },
+   {
+    "key": "passive:interface_pad",
+    "source": "assumed",
+    "note": "Brief states solid 30 x 30 x 4 mm pad centered x=40,y=30 on top z=40. Assume thickness extends inward to respect envelope; derived bounds x=[25,55], y=[15,45], z=[36,40]."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "load:launch_load",
+   "passive:interface_pad"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b38_peek_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 27.455725699895993,
+ "usage": {
+  "input_tokens": 104810,
+  "cached_input_tokens": 92288,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 957,
+  "reasoning_output_tokens": 51
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: pad extends inward from z=40 to z=36 mm; simultaneous loads are uniformly distributed over its top face. Volume fraction applies to non-passive volume. Validation passed, render checked, and all items source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Satellite equipment bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    60.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "PEEK",
+   "E": 3600.0,
+   "nu": 0.38
+  },
+  "supports": [
+   {
+    "id": "bonded_base",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Ideal fully bonded panel attachment across the entire 80 x 60 mm base."
+   }
+  ],
+  "loads": [
+   {
+    "id": "launch_load",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      40.0,
+      30.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     -300.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Simultaneous force components, uniformly shared by nodes of the pad top face."
+   }
+  ],
+  "passive": [
+   {
+    "id": "interface_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      25.0,
+      15.0,
+      36.0
+     ],
+     "max": [
+      55.0,
+      45.0,
+      40.0
+     ]
+    },
+    "note": "30 x 30 x 4 mm pad centered at (40,30), placed inward from the z=40 envelope face."
+   }
+  ],
+  "description": "Full-area bonded base at z=0; preserved top interface pad; simultaneous launch force components +300 N x and -300 N z.",
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 27.684553999919444,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

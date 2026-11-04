@@ -1,0 +1,95 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b46 sensor housing",
+  "domain": {
+   "size": [
+    80,
+    50,
+    40
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "chassis",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "head",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      25,
+      20
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -200,
+     0,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "plug",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      20,
+      10,
+      0
+     ],
+     "max": [
+      50,
+      30,
+      15
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "clarify",
+ "source": "engineering",
+ "oracle": [
+  {
+   "about": "the connector clearance",
+   "answer": "The front is the z = 0 face. The plug needs an empty box from x = 20 to 50 mm, y = 10 to 30 mm, and from the front face 15 mm deep (z = 0 to 15)."
+  }
+ ],
+ "admissible": [],
+ "notes": "Gap: the size and place of a keep-out.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Y after oracle: required void x=20..50,y=10..30,z=0..15. Original front direction and plug dimensions are genuinely missing."
+ }
+}

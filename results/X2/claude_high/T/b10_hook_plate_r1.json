@@ -1,0 +1,152 @@
+{
+ "task": "b10_hook_plate",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:21:13",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 13.419874100014567,
+ "usage": {
+  "input_tokens": 8573,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7922,
+  "output_tokens": 1047
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"hook_plate\",\"description\":\"Steel hook plate 120 x 80 x 20 mm (y up), bolted along its top face (y = 80) to a beam, carrying a 1.5 kN hanging load at a lower corner. The brief does not say which lower corner; the x = 120, y = 0 corner is used. With the whole top face clamped, the problem is mirror-symmetric in x, so the other corner gives a mirrored result.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[120,80,20]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.3,\"supports\":[{\"id\":\"beam_bolted_top\",\"region\":{\"kind\":\"face\",\"face\":\"y+\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Top face (y = 80) bolted to the beam; modelled as fully fixed.\"}],\"loads\":[{\"id\":\"hanging_load\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[116,10],\"size\":[8,20]},\"force\":[0,-1500,0],\"distribution\":\"uniform_nodes\",\"note\":\"1.5 kN hanging (downward, -y) from the lower corner at x = 120, y = 0. It is spread over an 8 mm x full-thickness patch on the bottom face to avoid a point-load singularity.\"}],\"passive\":[{\"id\":\"load_pad\",\"kind\":\"solid\",\"region\":{\"kind\":\"box\",\"min\":[112,0,0],\"max\":[120,4,20]},\"note\":\"Solid pad under the load so that the hook point keeps material.\"}],\"resolution\":{\"h\":1.0},\"min_feature\":null,\"meta\":{\"assumptions\":[\"The lower corner was taken as x = 120, y = 0. The brief does not specify which corner; the result is symmetric.\",\"The bolted top face was modelled as fully clamped, because no bolt pattern is given.\",\"The load direction was taken as -y, since the load hangs under gravity with y up.\"]}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "hook_plate",
+  "description": "Steel hook plate 120 x 80 x 20 mm (y up), bolted along its top face (y = 80) to a beam, carrying a 1.5 kN hanging load at a lower corner. The brief does not say which lower corner; the x = 120, y = 0 corner is used. With the whole top face clamped, the problem is mirror-symmetric in x, so the other corner gives a mirrored result.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120,
+    80,
+    20
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "beam_bolted_top",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Top face (y = 80) bolted to the beam; modelled as fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "hanging_load",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      116,
+      10
+     ],
+     "size": [
+      8,
+      20
+     ]
+    },
+    "force": [
+     0,
+     -1500,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "1.5 kN hanging (downward, -y) from the lower corner at x = 120, y = 0. It is spread over an 8 mm x full-thickness patch on the bottom face to avoid a point-load singularity."
+   }
+  ],
+  "passive": [
+   {
+    "id": "load_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      112,
+      0,
+      0
+     ],
+     "max": [
+      120,
+      4,
+      20
+     ]
+    },
+    "note": "Solid pad under the load so that the hook point keeps material."
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  },
+  "min_feature": null,
+  "meta": {
+   "assumptions": [
+    "The lower corner was taken as x = 120, y = 0. The brief does not specify which corner; the result is symmetric.",
+    "The bolted top face was modelled as fully clamped, because no bolt pattern is given.",
+    "The load direction was taken as -y, since the load hangs under gravity with y up."
+   ]
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 13.618660799926147,
+ "cwe": {
+  "value": 0.003867456971035077,
+  "c_pred_under_intended": 2.5957204935633182,
+  "c_intended_opt": 2.5857203314423347,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0077776908874512
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 20)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

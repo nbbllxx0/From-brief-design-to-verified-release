@@ -1,0 +1,79 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b29 Michell cantilever",
+  "domain": {
+   "size": [
+    200,
+    100,
+    20
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "pin",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      30,
+      50
+     ],
+     "radius": 15,
+     "span": [
+      0,
+      20
+     ]
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50,
+      10
+     ],
+     "size": [
+      10,
+      20
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -500,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "Michell cantilever on a circular support (Michell 1904), as a 3D slab",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "Y",
+  "comment": "A fixed finite-radius region can react moment, unlike a free hinge. Circular-support Michell inspiration is supported [S5]; this 3D compliance slab is an adaptation, not the analytical truss solution."
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "task": "b49_hinged_arm",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 25.50752260000445,
+ "usage": {
+  "input_tokens": 92272,
+  "cached_input_tokens": 79232,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 787,
+  "reasoning_output_tokens": 238
+ },
+ "returncode": 0,
+ "final": "STOPPED \u2014 validate_spec failed (R003): free rotation about z; the load creates an unbalanced 76 N\u00b7m hinge moment, preventing a certified static release.",
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "stages": {
+  "spec_s": 4.370000123977661,
+  "total_s": 4.370000123977661
+ },
+ "released": false,
+ "exports": [],
+ "replay": {
+  "ok": true,
+  "calls": 7,
+  "solves_replayed": 0,
+  "skipped": 0,
+  "mismatches": [],
+  "final_spec_hash": "6a90407cc9460f38"
+ }
+}

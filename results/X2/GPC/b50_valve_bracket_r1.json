@@ -1,0 +1,211 @@
+{
+ "task": "b50_valve_bracket",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:21:00",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies mm and N."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 120 x 80 x 40 mm in x,y,z; y up, bottom y=0."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Aluminium 6061 is stated; isotropic linear elasticity E=69000 N/mm^2 and nu=0.33 are assumed because elastic constants and temper are not specified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.3; tool applies this to non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:bolted_bottom",
+    "source": "stated",
+    "note": "Bottom face y=0 bolted down over full area, represented by fixing x,y,z translations."
+   },
+   {
+    "key": "load:actuator",
+    "source": "stated",
+    "note": "600 N downward (-y), 20 x 20 mm pad on y=80 centred at x=90,z=20."
+   },
+   {
+    "key": "passive:handle_clearance",
+    "source": "stated",
+    "note": "x>70 mm and y>50 mm must remain void through z=0..40; selects element centres in that region."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_passive",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b50_valve_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 27.307238799985498,
+ "usage": {
+  "input_tokens": 106226,
+  "cached_input_tokens": 90496,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 869,
+  "reasoning_output_tokens": 79
+ },
+ "returncode": 0,
+ "final": "REFUSE \u2014 The entire load pad (x = 80\u2013100 mm, y = 80 mm, z = 10\u201330 mm) lies inside the required handle-clearance void, leaving no material to carry the 600 N load.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Valve actuator bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    80.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "bolted_bottom",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full bottom face y=0 bolted down; modelled as fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "actuator",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      90.0,
+      20.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -600.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "600 N downward on top-face pad; x=80..100, y=80, z=10..30."
+   }
+  ],
+  "passive": [
+   {
+    "id": "handle_clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      70.0,
+      50.0,
+      0.0
+     ],
+     "max": [
+      120.0,
+      80.0,
+      40.0
+     ]
+    },
+    "note": "Keep x>70 and y>50 clear through full depth. Element-centre selection represents strict inequalities at h=1 mm."
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 27.550558200106025,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

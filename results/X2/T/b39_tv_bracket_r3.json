@@ -1,0 +1,194 @@
+{
+ "task": "b39_tv_bracket",
+ "cond": "T",
+ "rep": 3,
+ "t": "2026-10-30T11:27:35",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 24.33094109990634,
+ "usage": {
+  "input_tokens": 20030,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1088,
+  "reasoning_output_tokens": 420
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"TV wall bracket\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [300, 200, 40]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.15,\n  \"supports\": [\n    {\n      \"id\": \"lag_screw_1\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [30, 10],\n        \"radius\": 6,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"lag_screw_2\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [30, 30],\n        \"radius\": 6,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"lag_screw_3\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [170, 10],\n        \"radius\": 6,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"lag_screw_4\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [170, 30],\n        \"radius\": 6,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"tv_plate_load\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x+\",\n        \"center\": [100, 20],\n        \"size\": [100, 40]\n      },\n      \"force\": [50, -400, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"mounting_plate\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"box\",\n        \"min\": [295, 50, 0],\n        \"max\": [300, 150, 40]\n      },\n      \"note\": \"Plate thickness assumed to be 5 mm, matching the minimum member thickness.\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 2\n  },\n  \"min_feature\": 5,\n  \"meta\": {\n    \"support_assumption\": \"Each 12 mm washer is modeled as a fully fixed circular footprint on x = 0; zero-length cylinder spans select the wall plane.\"\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "TV wall bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300,
+    200,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "lag_screw_1",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      30,
+      10
+     ],
+     "radius": 6,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "lag_screw_2",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      30,
+      30
+     ],
+     "radius": 6,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "lag_screw_3",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      170,
+      10
+     ],
+     "radius": 6,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "lag_screw_4",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      170,
+      30
+     ],
+     "radius": 6,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "tv_plate_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      100,
+      20
+     ],
+     "size": [
+      100,
+      40
+     ]
+    },
+    "force": [
+     50,
+     -400,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "passive": [
+   {
+    "id": "mounting_plate",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      295,
+      50,
+      0
+     ],
+     "max": [
+      300,
+      150,
+      40
+     ]
+    },
+    "note": "Plate thickness assumed to be 5 mm, matching the minimum member thickness."
+   }
+  ],
+  "resolution": {
+   "h": 2
+  },
+  "min_feature": 5,
+  "meta": {
+   "support_assumption": "Each 12 mm washer is modeled as a fully fixed circular footprint on x = 0; zero-length cylinder spans select the wall plane."
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 24.405330799985677,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": false,
+ "schema_error": "4 validation errors for Spec\nsupports.0.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...ius': 6, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nsupports.1.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kin",
+ "correct_spec": false,
+ "behaviour_ok": false
+}

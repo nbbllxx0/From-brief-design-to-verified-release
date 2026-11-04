@@ -1,0 +1,141 @@
+{
+ "task": "b21_mbb_z_up",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:23:14",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 11.059954599943012,
+ "usage": {
+  "input_tokens": 8662,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8011,
+  "output_tokens": 677
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"simply_supported_beam_z_up\",\"description\":\"Simply supported beam 320x40x40 mm, z up. Pinned bottom-left edge, roller bottom-right edge (free in x), 3 kN downward line load across full width at mid-span on top surface.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[320,40,40]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.3,\"supports\":[{\"id\":\"pin_left\",\"region\":{\"kind\":\"edge\",\"axis\":\"y\",\"at\":[0,0],\"span\":null},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Pinned bottom edge at x=0, z=0 across full width\"},{\"id\":\"roller_right\",\"region\":{\"kind\":\"edge\",\"axis\":\"y\",\"at\":[320,0],\"span\":null},\"fix\":[\"y\",\"z\"],\"note\":\"Roller bottom edge at x=320, z=0; free along x\"}],\"loads\":[{\"id\":\"midspan_line_load\",\"region\":{\"kind\":\"edge\",\"axis\":\"y\",\"at\":[160,40],\"span\":null},\"force\":[0,0,-3000],\"distribution\":\"uniform_nodes\",\"note\":\"3 kN downward line load across full width at mid-span on top surface\"}],\"passive\":[],\"resolution\":{\"h\":2},\"min_feature\":null,\"meta\":{}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "simply_supported_beam_z_up",
+  "description": "Simply supported beam 320x40x40 mm, z up. Pinned bottom-left edge, roller bottom-right edge (free in x), 3 kN downward line load across full width at mid-span on top surface.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    320,
+    40,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "pin_left",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      0,
+      0
+     ],
+     "span": null
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Pinned bottom edge at x=0, z=0 across full width"
+   },
+   {
+    "id": "roller_right",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      320,
+      0
+     ],
+     "span": null
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Roller bottom edge at x=320, z=0; free along x"
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_line_load",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      160,
+      40
+     ],
+     "span": null
+    },
+    "force": [
+     0,
+     0,
+     -3000
+    ],
+    "distribution": "uniform_nodes",
+    "note": "3 kN downward line load across full width at mid-span on top surface"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 2
+  },
+  "min_feature": null,
+  "meta": {}
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 11.250111399916932,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (160, 20, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

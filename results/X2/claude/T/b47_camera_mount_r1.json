@@ -1,0 +1,140 @@
+{
+ "task": "b47_camera_mount",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T15:05:59",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 10.662197999889031,
+ "usage": {
+  "input_tokens": 8593,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7942,
+  "output_tokens": 519
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"inspection_camera_mount\",\"description\":\"Cantilevered camera mount: x=0 face bolted to gantry over full area; 80 N downward (-y) camera load on a 20x20 mm pad centred on the x=120 end face. Minimise compliance at low material use.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[120,60,60]},\"material\":{\"name\":\"aluminium 6061\",\"E\":69000.0,\"nu\":0.33},\"volume_fraction\":0.15,\"supports\":[{\"id\":\"gantry_bolted_face\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"x=0 face bolted to gantry over its full area\"}],\"loads\":[{\"id\":\"camera_weight\",\"region\":{\"kind\":\"patch\",\"face\":\"x+\",\"center\":[30,30],\"size\":[20,20]},\"force\":[0,-80,0],\"distribution\":\"uniform_nodes\",\"note\":\"80 N camera hanging downward (y up) on 20x20 mm pad at centre of x=120 face\"}],\"passive\":[{\"id\":\"camera_pad\",\"kind\":\"solid\",\"region\":{\"kind\":\"box\",\"min\":[117,20,20],\"max\":[120,40,40]},\"note\":\"solid mounting pad under camera load\"}],\"resolution\":{\"h\":1.0},\"min_feature\":null,\"meta\":{\"up_axis\":\"y\",\"volume_fraction_basis\":\"'as light as practical' interpreted as low volume fraction 0.15\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "inspection_camera_mount",
+  "description": "Cantilevered camera mount: x=0 face bolted to gantry over full area; 80 N downward (-y) camera load on a 20x20 mm pad centred on the x=120 end face. Minimise compliance at low material use.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120,
+    60,
+    60
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "gantry_bolted_face",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "x=0 face bolted to gantry over its full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera_weight",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      30,
+      30
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "force": [
+     0,
+     -80,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "80 N camera hanging downward (y up) on 20x20 mm pad at centre of x=120 face"
+   }
+  ],
+  "passive": [
+   {
+    "id": "camera_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      117,
+      20,
+      20
+     ],
+     "max": [
+      120,
+      40,
+      40
+     ]
+    },
+    "note": "solid mounting pad under camera load"
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  },
+  "min_feature": null,
+  "meta": {
+   "up_axis": "y",
+   "volume_fraction_basis": "'as light as practical' interpreted as low volume fraction 0.15"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 10.858326100045815,
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 60)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

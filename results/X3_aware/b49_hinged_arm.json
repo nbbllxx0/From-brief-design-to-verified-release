@@ -1,0 +1,13 @@
+{
+ "task": "b49_hinged_arm",
+ "n_solves": 0,
+ "replay_calls_ok": true,
+ "x3_total_s": 4.370000123977661,
+ "solve_wall_voxfem_s": 0,
+ "solve_wall_aware_s": 0,
+ "total_aware_s": 4.370000123977661,
+ "release": null,
+ "solves": [],
+ "replay_wall_s": 0.07158750016242266,
+ "mismatches": []
+}

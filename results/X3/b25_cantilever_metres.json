@@ -1,0 +1,138 @@
+{
+ "task": "b25_cantilever_metres",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 197.47848019981757,
+ "usage": {
+  "input_tokens": 610593,
+  "cached_input_tokens": 593408,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1601,
+  "reasoning_output_tokens": 214
+ },
+ "returncode": 0,
+ "final": "DONE, 9c41d4cddd6a, compliance 0.007999412586373954 kN\u00b7m",
+ "n_tool_calls": 21,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "ladder",
+  "render",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "field_stats",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "export_stl",
+  "export_report"
+ ],
+ "questions": 0,
+ "stages": {
+  "spec_s": 9.651999950408936,
+  "solve_h0.04": {
+   "wall_s": 16.445000171661377,
+   "compute_s": 15.236720100743696,
+   "iterations": 76,
+   "n_elem": 31250,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.02": {
+   "wall_s": 10.641999959945679,
+   "compute_s": 10.512397300684825,
+   "iterations": 61,
+   "n_elem": 250000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.01": {
+   "wall_s": 22.9060001373291,
+   "compute_s": 22.560332299908623,
+   "iterations": 61,
+   "n_elem": 2000000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.005": {
+   "wall_s": 106.74600005149841,
+   "compute_s": 105.32739039929584,
+   "iterations": 61,
+   "n_elem": 16000000,
+   "warm": true,
+   "status": "converged",
+   "certified": true
+  },
+  "export_s": 1.2796999999999998,
+  "total_s": 182.39400005340576
+ },
+ "released": true,
+ "exports": [
+  {
+   "triangles": 651484,
+   "bytes": 32574284,
+   "sha256": "4cad8fd1068f44c5c4714cdf06bc1d8634cb969ca0651d58d9dad8c9a1861b38",
+   "path": "results\\X3\\b25_cantilever_metres\\session\\exports\\Large_steel_cantilever_metres_and_kilonewtons_9c41d4cddd6a.stl",
+   "pool": 1,
+   "vertices": 325734,
+   "t_surface_s": 0.719,
+   "t_write_s": 0.186,
+   "mesh": {
+    "closed": true,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "volume": 0.2999571142010606
+   },
+   "job": "9c41d4cddd6a",
+   "certified": true,
+   "released": true
+  },
+  {
+   "job": "9c41d4cddd6a",
+   "certified": true,
+   "json": "results\\X3\\b25_cantilever_metres\\session\\exports\\Large_steel_cantilever_metres_and_kilonewtons_9c41d4cddd6a_report.json",
+   "markdown": "results\\X3\\b25_cantilever_metres\\session\\exports\\Large_steel_cantilever_metres_and_kilonewtons_9c41d4cddd6a_report.md",
+   "stl": "results\\X3\\b25_cantilever_metres\\session\\exports\\Large_steel_cantilever_metres_and_kilonewtons_9c41d4cddd6a.stl"
+  }
+ ],
+ "release_spec_match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=20, grid (100, 50, 50)"
+  ],
+  "matched": "intended"
+ },
+ "replay": {
+  "ok": true,
+  "calls": 21,
+  "solves_replayed": 4,
+  "skipped": 6,
+  "mismatches": [],
+  "final_spec_hash": "e554a3d7a84c868c"
+ }
+}

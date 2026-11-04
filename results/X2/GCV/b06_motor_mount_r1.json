@@ -1,0 +1,311 @@
+{
+ "task": "b06_motor_mount",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:28:05",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 176742,
+  "cached_input_tokens": 158720,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2510,
+  "reasoning_output_tokens": 782
+ },
+ "gc_wall_s": 80.95483800000511,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 19672,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 260,
+  "reasoning_output_tokens": 240
+ },
+ "verify_wall_s": 12.441979099996388,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 1022,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2770,
+  "input_tokens": 196414,
+  "cached_input_tokens": 158720
+ },
+ "wall_s": 93.3968171000015,
+ "questions": 4,
+ "n_tool_calls": 20,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Motor mount",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    60.0,
+    120.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "bed_support_20_20",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "No-slip clamped washer footprint on machine bed."
+   },
+   {
+    "id": "bed_support_20_100",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20.0,
+      100.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "No-slip clamped washer footprint on machine bed."
+   },
+   {
+    "id": "bed_support_140_20",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      140.0,
+      20.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "No-slip clamped washer footprint on machine bed."
+   },
+   {
+    "id": "bed_support_140_100",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      140.0,
+      100.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "No-slip clamped washer footprint on machine bed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "motor_combined_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80.0,
+      60.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     800.0,
+     -2000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Simultaneous motor weight/downward load and belt tension, uniformly shared across top pad nodes."
+   }
+  ],
+  "passive": [
+   {
+    "id": "motor_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      60.0,
+      55.0,
+      40.0
+     ],
+     "max": [
+      100.0,
+      60.0,
+      80.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "bolt_boss_20_20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": "Solid bolt idealization selected: no explicit passage; \u00d824 mm \u00d7 10 mm boss within envelope."
+   },
+   {
+    "id": "bolt_boss_20_100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20.0,
+      100.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": "Solid bolt idealization selected: no explicit passage; \u00d824 mm \u00d7 10 mm boss within envelope."
+   },
+   {
+    "id": "bolt_boss_140_20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140.0,
+      20.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": "Solid bolt idealization selected: no explicit passage; \u00d824 mm \u00d7 10 mm boss within envelope."
+   },
+   {
+    "id": "bolt_boss_140_100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140.0,
+      100.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": "Solid bolt idealization selected: no explicit passage; \u00d824 mm \u00d7 10 mm boss within envelope."
+   }
+  ],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "description": "Motor mount; y up. Pad contained in envelope y=55\u201360. Four solid \u00d824\u00d710 bosses without explicit bolt holes; fully fixed \u00d824 washer footprints at y=0. Simultaneous total motor force (800,-2000,0) N uniformly distributed over the 40\u00d740 top pad. Volume fraction 0.2 of non-passive design volume. Isotropic linear-elastic Aluminium 6061: E=69000 N/mm\u00b2, nu=0.33."
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 12.860937800025567,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (160, 60, 120)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

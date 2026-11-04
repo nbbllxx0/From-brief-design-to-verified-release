@@ -1,0 +1,143 @@
+{
+ "task": "b05_l_bracket",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 258.0958016999066,
+ "usage": {
+  "input_tokens": 564483,
+  "cached_input_tokens": 538496,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2167,
+  "reasoning_output_tokens": 505
+ },
+ "returncode": 0,
+ "final": "DONE, 454ba021f11c, compliance 7.354022095799104 N\u00b7mm",
+ "n_tool_calls": 26,
+ "n_failed_calls": 1,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_passive",
+  "add_load",
+  "list_regions",
+  "ladder",
+  "ask_clarification",
+  "add_support",
+  "list_regions",
+  "render",
+  "validate_spec",
+  "ladder",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "field_stats",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "field_stats",
+  "export_stl",
+  "export_report"
+ ],
+ "questions": 1,
+ "stages": {
+  "spec_s": 23.44000005722046,
+  "solve_h2.0": {
+   "wall_s": 18.3510000705719,
+   "compute_s": 16.994873599149287,
+   "iterations": 76,
+   "n_elem": 50000,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h1.0": {
+   "wall_s": 19.26900005340576,
+   "compute_s": 19.116483199875802,
+   "iterations": 61,
+   "n_elem": 400000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.5": {
+   "wall_s": 26.369999885559082,
+   "compute_s": 25.780807899311185,
+   "iterations": 61,
+   "n_elem": 3200000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.25": {
+   "wall_s": 135.91499996185303,
+   "compute_s": 133.08376219915226,
+   "iterations": 61,
+   "n_elem": 25600000,
+   "warm": true,
+   "status": "converged",
+   "certified": true
+  },
+  "export_s": 2.0378,
+  "total_s": 236.15900015830994
+ },
+ "released": true,
+ "exports": [
+  {
+   "triangles": 1156292,
+   "bytes": 57814684,
+   "sha256": "c63213d16a165c95d52ddf5aff6628cd62b0eb7e0542c9afc8124512b699a730",
+   "path": "results\\X3\\b05_l_bracket\\session\\exports\\Steel_L-bracket_454ba021f11c.stl",
+   "pool": 1,
+   "vertices": 578150,
+   "t_surface_s": 1.105,
+   "t_write_s": 0.317,
+   "mesh": {
+    "closed": true,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "volume": 76794.15837372719
+   },
+   "job": "454ba021f11c",
+   "certified": true,
+   "released": true
+  },
+  {
+   "job": "454ba021f11c",
+   "certified": true,
+   "json": "results\\X3\\b05_l_bracket\\session\\exports\\Steel_L-bracket_454ba021f11c_report.json",
+   "markdown": "results\\X3\\b05_l_bracket\\session\\exports\\Steel_L-bracket_454ba021f11c_report.md",
+   "stl": "results\\X3\\b05_l_bracket\\session\\exports\\Steel_L-bracket_454ba021f11c.stl"
+  }
+ ],
+ "release_spec_match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 40)"
+  ],
+  "matched": "intended"
+ },
+ "replay": {
+  "ok": true,
+  "calls": 26,
+  "solves_replayed": 4,
+  "skipped": 6,
+  "mismatches": [],
+  "final_spec_hash": "64a5c7cb68d76981"
+ }
+}

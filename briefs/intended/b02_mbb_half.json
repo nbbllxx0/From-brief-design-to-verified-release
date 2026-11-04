@@ -1,0 +1,169 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b02 MBB half",
+  "domain": {
+   "size": [
+    120,
+    40,
+    40
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "end_support",
+    "fix": [
+     "y",
+     "z"
+    ],
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0,
+      0
+     ],
+     "span": null
+    }
+   },
+   {
+    "id": "symmetry",
+    "fix": [
+     "x"
+    ],
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120,
+      40
+     ],
+     "span": null
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "3D MBB beam (half model), as in Liu & Tovar 2014, top3d",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "full 240 mm model with both end supports and the full 2 kN",
+   "why": "the brief asks for the half model; the full model is equivalent but not what was asked",
+   "counts": false
+  },
+  {
+   "reading": "the end support also fixes x (pinned)",
+   "why": "withdrawn in adjudication (J. Wang, 2026-10-31): the brief says the supports carry vertical and sideways load only; earlier: over-constrains a roller; changes the design little because the symmetry face already restrains x",
+   "counts": false,
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "name": "b02 MBB half",
+    "domain": {
+     "size": [
+      120,
+      40,
+      40
+     ]
+    },
+    "material": {
+     "name": "aluminium 6061",
+     "E": 69000.0,
+     "nu": 0.33
+    },
+    "volume_fraction": 0.3,
+    "supports": [
+     {
+      "id": "end_support",
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "region": {
+       "kind": "edge",
+       "axis": "z",
+       "at": [
+        0,
+        0
+       ],
+       "span": null
+      }
+     },
+     {
+      "id": "symmetry",
+      "fix": [
+       "x"
+      ],
+      "region": {
+       "kind": "face",
+       "face": "x+"
+      }
+     }
+    ],
+    "loads": [
+     {
+      "id": "midspan",
+      "region": {
+       "kind": "edge",
+       "axis": "z",
+       "at": [
+        120,
+        40
+       ],
+       "span": null
+      },
+      "force": [
+       0,
+       -1000,
+       0
+      ]
+     }
+    ],
+    "resolution": {
+     "h": 1.0
+    }
+   },
+   "adjudicated": "2026-10-31"
+  }
+ ],
+ "notes": "Half of the 2 kN acts on the half model.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "Y",
+  "comment": "Half model takes 1000 N with x-normal symmetry. Remove the existing x-fixed-end admissible variant: it contradicts vertical/sideways only. Top3d covers the MBB family [S1], not these exact physical dimensions."
+ }
+}

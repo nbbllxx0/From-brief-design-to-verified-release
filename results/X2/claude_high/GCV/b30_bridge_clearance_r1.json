@@ -1,0 +1,198 @@
+{
+ "task": "b30_bridge_clearance",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:04:03",
+ "gc_correct": false,
+ "gc_usage": {
+  "input_tokens": 43988,
+  "cached_input_tokens": 37076,
+  "cache_write_input_tokens": 6906,
+  "output_tokens": 1792
+ },
+ "gc_wall_s": 23.68064729985781,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14684,
+  "cached_input_tokens": 8751,
+  "cache_write_input_tokens": 5929,
+  "output_tokens": 796
+ },
+ "verify_wall_s": 11.994867499917746,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 58672,
+  "cached_input_tokens": 45827,
+  "output_tokens": 2588,
+  "cache_write_input_tokens": 12835
+ },
+ "wall_s": 35.675514799775556,
+ "questions": 0,
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Bridge over a clearance",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    320.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "pin_left",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Left bottom edge pinned, full width"
+   },
+   {
+    "id": "roller_right",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      320.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "y"
+    ],
+    "note": "Right bottom edge roller, free along x"
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -5000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "5 kN down over whole deck surface"
+   }
+  ],
+  "passive": [
+   {
+    "id": "deck",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      76.0,
+      0.0
+     ],
+     "max": [
+      320.0,
+      80.0,
+      80.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      100.0,
+      0.0,
+      0.0
+     ],
+     "max": [
+      220.0,
+      40.0,
+      80.0
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 12.491047499934211,
+ "cwe": {
+  "value": 9.68896948476683e-05,
+  "c_pred_under_intended": 147.95992181465496,
+  "c_intended_opt": 147.94558741183658,
+  "h": 2.0,
+  "pred_status": "converged",
+  "passive_violation": {
+   "keep_in_missing": 0.0,
+   "keep_out_filled": 0.0
+  },
+  "mass_ratio": 0.9999999403953552
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (160, 40, 40)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

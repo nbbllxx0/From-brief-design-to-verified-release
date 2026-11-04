@@ -1,0 +1,36 @@
+{
+ "task": "b08_slider_bracket",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:26:43",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 7.7119753998704255,
+ "usage": {
+  "input_tokens": 19977,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 68,
+  "reasoning_output_tokens": 31
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The rail leaves rigid translation along x unconstrained, so the 300 N push has no opposing reaction and no static equilibrium exists.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.774717399850488,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": true
+}

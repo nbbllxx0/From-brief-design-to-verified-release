@@ -1,0 +1,219 @@
+{
+ "task": "b43_press_riser",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:51:00",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "derived",
+    "note": "Brief gives mm and kN; use mm and N, converting 20 kN to 20000 N and 2 kN to 2000 N."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope x=300, y=100, z=150 mm; y up, origin at minimum corner."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; unspecified elastic constants assumed E=210000 N/mm^2, Poisson ratio 0.3, isotropic linear elasticity."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.3; tool defines fraction over non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "derived",
+    "note": "50 elements across shortest side of 100 mm gives h=2 mm; grid 150 x 50 x 75."
+   },
+   {
+    "key": "support:press_bed",
+    "source": "stated",
+    "note": "Bottom face y=0 bolted over its full area; model bolts as fixed x,y,z translations."
+   },
+   {
+    "key": "load:tool_pad",
+    "source": "assumed",
+    "note": "Brief states centered top 100 x 50 mm pad and resultant 20 kN downward plus 2 kN +z; assume 100 mm along x, 50 mm along z and uniform nodal sharing. Center (x,z)=(150,75); total force (0,-20000,2000) N."
+   },
+   {
+    "key": "passive:coolant_channel",
+    "source": "stated",
+    "note": "Must stay empty: full x=0..300 mm, y=0..30 mm, z=45..105 mm."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "load:tool_pad"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b43_press_riser_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 93.73148810002021,
+ "usage": {
+  "input_tokens": 115306,
+  "cached_input_tokens": 99968,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1248,
+  "reasoning_output_tokens": 255
+ },
+ "returncode": 0,
+ "final": "DONE\n\nAssumptions: isotropic steel with E = 210 GPa and \u03bd = 0.30; bolts fix all translations; pad dimensions are 100 mm along x and 50 mm along z, with force shared uniformly among pad nodes. Validation passed, render inspected, and every item source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Press riser block",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    100.0,
+    150.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "press_bed",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full bottom face bolted to press bed; all translation components constrained."
+   }
+  ],
+  "loads": [
+   {
+    "id": "tool_pad",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      150.0,
+      75.0
+     ],
+     "size": [
+      100.0,
+      50.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -20000.0,
+     2000.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "100 mm pad dimension along x, 50 mm along z; resultant shared across central top pad."
+   }
+  ],
+  "passive": [
+   {
+    "id": "coolant_channel",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      0.0,
+      45.0
+     ],
+     "max": [
+      300.0,
+      30.0,
+      105.0
+     ]
+    },
+    "note": "Coolant channel stays empty over full x length."
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": null,
+   "cells_short_edge": 50
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 93.98649849998765,
+ "cwe": {
+  "value": -1.153511730578316e-10,
+  "c_pred_under_intended": 26.701241177321265,
+  "c_intended_opt": 26.701241180401283,
+  "h": 2.0,
+  "pred_status": "converged",
+  "passive_violation": {
+   "keep_out_filled": 0.0
+  },
+  "mass_ratio": 1.0
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 75)"
+  ],
+  "matched": "admissible:1"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

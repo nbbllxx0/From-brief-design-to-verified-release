@@ -1,0 +1,79 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b36 pedal arm",
+  "domain": {
+   "size": [
+    200,
+    40,
+    20
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "shaft",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      15,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      0,
+      20
+     ]
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "foot",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      185,
+      10
+     ],
+     "size": [
+      30,
+      20
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Finite fixed shaft circle correctly reacts pedal moment. Adding that circle as a passive solid changes the material budget; it is not implied by fixed displacement alone."
+ }
+}

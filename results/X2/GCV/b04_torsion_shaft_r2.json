@@ -1,0 +1,168 @@
+{
+ "task": "b04_torsion_shaft",
+ "cond": "GCV",
+ "rep": 2,
+ "t": "2026-10-30T11:37:20",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 127675,
+  "cached_input_tokens": 98816,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2300,
+  "reasoning_output_tokens": 1243
+ },
+ "gc_wall_s": 61.78899529995397,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17697,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 357,
+  "reasoning_output_tokens": 313
+ },
+ "verify_wall_s": 16.43253509979695,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 2657,
+  "reasoning_output_tokens": 1556,
+  "input_tokens": 145372,
+  "cache_write_input_tokens": 0,
+  "cached_input_tokens": 98816
+ },
+ "wall_s": 78.22153039975092,
+ "questions": 1,
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Shaft bracket in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_fixed_end",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigidly bolted gearbox end, x=0; all translations fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_lug_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top drive lug footprint x=160, y=64..80, z=32..48. +z force; force-pair torque +40000 N*mm about x."
+   },
+   {
+    "id": "bottom_lug_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     -625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bottom drive lug footprint x=160, y=0..16, z=32..48. -z force; net force zero and force-pair torque +40 N*m."
+   }
+  ],
+  "passive": [],
+  "description": "160 x 80 x 80 mm shaft bracket. Coordinates: x along shaft, y up. Rigid gearbox attachment at x=0. End-face drive footprints at x=160: top y=64..80, bottom y=0..16, both z=32..48. Equal and opposite z forces produce +40 N*m about x.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 17.011161799775437,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,215 @@
+{
+ "task": "b46_sensor_housing",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:19:24",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies mm and N."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 80 x 50 x 40 mm in x,y,z; y is up."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Aluminium 6061 is stated; isotropic linear elastic E=68,900 N/mm^2 and nu=0.33 are assumed nominal values because elastic constants and temper are unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.3."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:chassis_base",
+    "source": "assumed",
+    "note": "Brief states full-area bolted attachment on y=0; idealize it as ux=uy=uz=0 over that face."
+   },
+   {
+    "key": "load:sensor_force",
+    "source": "derived",
+    "note": "Brief states total 200 N along -x on centred 10 x 10 mm pad at x=80. Centre (y,z)=(50/2,40/2)=(25,20), bounds y=20..30,z=15..25; force=(-200,0,0) N."
+   },
+   {
+    "key": "passive:connector_clearance",
+    "source": "answered",
+    "note": "Clarification explicitly defines front z=0 and empty connector box x=20..50 mm, y=10..30 mm, z=0..15 mm."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "support:chassis_base"
+  ]
+ },
+ "n_tool_calls": 20,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_passive",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "ask_clarification",
+  "update_item",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 1,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b46_sensor_housing_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 34.30246969987638,
+ "usage": {
+  "input_tokens": 116695,
+  "cached_input_tokens": 102912,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1456,
+  "reasoning_output_tokens": 56
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: fully fixed bolted base; isotropic aluminium 6061 with E = 68,900 N/mm\u00b2 and \u03bd = 0.33. Validation passed, render checked, and every item tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Sensor housing bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    50.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "chassis_base",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full bottom face y=0 bolted to chassis; modelled as fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "sensor_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      25.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -200.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 200 N along -x, centred on x=80 face (y=25,z=20)."
+   }
+  ],
+  "passive": [
+   {
+    "id": "connector_clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      20.0,
+      10.0,
+      0.0
+     ],
+     "max": [
+      50.0,
+      30.0,
+      15.0
+     ]
+    },
+    "note": "Clarification: front is z=0, plug requires empty box x=20..50, y=10..30, z=0..15 mm."
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 34.53709820006043,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 50, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

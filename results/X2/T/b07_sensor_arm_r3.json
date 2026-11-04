@@ -1,0 +1,125 @@
+{
+ "task": "b07_sensor_arm",
+ "cond": "T",
+ "rep": 3,
+ "t": "2026-10-30T11:26:06",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 9.156355599872768,
+ "usage": {
+  "input_tokens": 21921,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 387,
+  "reasoning_output_tokens": 94
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Sensor arm\",\n  \"description\": \"Cantilever sensor arm; robot attachment assumed fixed at x = 0 and gravity along -z.\",\n  \"units\": {\"length\": \"mm\", \"force\": \"N\"},\n  \"domain\": {\"kind\": \"box\", \"size\": [150, 30, 30]},\n  \"material\": {\"name\": \"steel\", \"E\": 210000, \"nu\": 0.3},\n  \"volume_fraction\": 0.25,\n  \"supports\": [\n    {\n      \"id\": \"robot_frame\",\n      \"region\": {\"kind\": \"face\", \"face\": \"x-\"},\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"camera_weight\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"x+\",\n        \"center\": [15, 15],\n        \"size\": [20, 20]\n      },\n      \"force\": [0, 0, -20],\n      \"distribution\": \"uniform_nodes\",\n      \"note\": \"Approximate weight of the 2 kg camera distributed over its mounting footprint.\"\n    }\n  ],\n  \"passive\": [],\n  \"resolution\": {\"h\": 1}\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Sensor arm",
+  "description": "Cantilever sensor arm; robot attachment assumed fixed at x = 0 and gravity along -z.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150,
+    30,
+    30
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "robot_frame",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera_weight",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      15,
+      15
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "force": [
+     0,
+     0,
+     -20
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Approximate weight of the 2 kg camera distributed over its mounting footprint."
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 9.232226600171998,
+ "cwe": {
+  "value": 0.992530296960769,
+  "c_pred_under_intended": 0.13856453574489905,
+  "c_intended_opt": 0.06954199690526826,
+  "h": 0.5,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (150, 30, 30)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

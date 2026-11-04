@@ -1,0 +1,90 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b38 PEEK bracket",
+  "domain": {
+   "size": [
+    80,
+    60,
+    40
+   ]
+  },
+  "material": {
+   "name": "PEEK",
+   "E": 3600.0,
+   "nu": 0.38
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "panel",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "launch",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      40,
+      30
+     ],
+     "size": [
+      30,
+      30
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300,
+     0,
+     -300
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "interface_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      25,
+      15,
+      36
+     ],
+     "max": [
+      55,
+      45,
+      40
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "PEEK E=3600 N/mm^2 and simultaneous (300,0,-300) N load agree. Retained interface is 4 mm deep."
+ }
+}

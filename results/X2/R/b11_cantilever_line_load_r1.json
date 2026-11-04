@@ -1,0 +1,87 @@
+{
+ "task": "b11_cantilever_line_load",
+ "cond": "R",
+ "rep": 1,
+ "questions": 0,
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "R",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "size": [
+    120.0,
+    40.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "support_1",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "load_1",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120.0,
+      0.0
+     ]
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ]
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

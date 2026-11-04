@@ -1,0 +1,274 @@
+{
+ "task": "b04_torsion_shaft",
+ "cond": "GP",
+ "rep": 2,
+ "t": "2026-11-01T01:22:39",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief uses mm and N*m; use mm and N, with 40 N*m = 40000 N*mm."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 160 mm in x and 80 mm in y and z; y up, origin at minimum corner."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; assume isotropic linear-elastic steel E=210000 N/mm^2 and nu=0.3 because grade and elastic constants are unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.3; applied to design volume excluding passive lugs per tool convention."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 2 mm elements; h=2 mm."
+   },
+   {
+    "key": "support:gearbox_clamp",
+    "source": "stated",
+    "note": "Brief says x=0 end bolted rigidly to gearbox; clamp entire end face in x, y and z."
+   },
+   {
+    "key": "load:top_lug_force",
+    "source": "derived",
+    "note": "16x16 top lug flush y=80 has centroid (x,y,z)=(160,72,40). Bottom centroid y=8, separation 64 mm. F=40000/64=625 N. Top +z and bottom -z give positive right-hand-rule x torque."
+   },
+   {
+    "key": "load:bottom_lug_force",
+    "source": "derived",
+    "note": "16x16 bottom lug flush y=0 has centroid (160,8,40). Equal opposite force -625 N along z; net force zero and Mx=625*(72-8)=40000 N*mm."
+   },
+   {
+    "key": "passive:top_drive_lug",
+    "source": "assumed",
+    "note": "Preserve stated top 16x16 end-face lug as solid over y=64..80 and z=32..48; assume 4 mm axial depth x=156..160 inside envelope."
+   },
+   {
+    "key": "passive:bottom_drive_lug",
+    "source": "assumed",
+    "note": "Preserve stated bottom 16x16 end-face lug as solid over y=0..16 and z=32..48; assume 4 mm axial depth x=156..160 inside envelope."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "passive:top_drive_lug",
+   "passive:bottom_drive_lug"
+  ]
+ },
+ "n_tool_calls": 21,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "add_passive",
+  "add_passive",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b04_torsion_shaft_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 38.65466789994389,
+ "usage": {
+  "input_tokens": 117324,
+  "cached_input_tokens": 97536,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1385,
+  "reasoning_output_tokens": 127
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: isotropic steel with E = 210 GPa and \u03bd = 0.3; solid drive lugs extend 4 mm inward. Validation passed, render confirmed placement, and every item is source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Shaft bracket in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Entire x=0 end rigidly bolted to gearbox; fix all translations."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_lug_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top lug y=64..80, z=32..48 at x=160. +625 N along z; pair separation 64 mm gives +40000 N*mm about x."
+   },
+   {
+    "id": "bottom_lug_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     -625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bottom lug y=0..16, z=32..48 at x=160. -625 N along z, balancing top force and producing +x torque."
+   }
+  ],
+  "passive": [
+   {
+    "id": "top_drive_lug",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      64.0,
+      32.0
+     ],
+     "max": [
+      160.0,
+      80.0,
+      48.0
+     ]
+    },
+    "note": "Preserve top 16 x 16 mm drive lug; assumed 4 mm axial depth within envelope."
+   },
+   {
+    "id": "bottom_drive_lug",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      0.0,
+      32.0
+     ],
+     "max": [
+      160.0,
+      16.0,
+      48.0
+     ]
+    },
+    "note": "Preserve bottom 16 x 16 mm drive lug; assumed 4 mm axial depth within envelope."
+   }
+  ],
+  "description": "160 x 80 x 80 mm shaft bracket, y up. Clamp x=0. Apply +40 N*m about x through equal opposite z forces on 16 x 16 mm end-face drive lugs. Assume 4 mm axial solid lug depth within envelope and isotropic linear-elastic steel E=210 GPa, nu=0.3.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 38.934011599980295,
+ "cwe": {
+  "value": -0.0036352128871500744,
+  "c_pred_under_intended": 1.4270532113530054,
+  "c_intended_opt": 1.4322597805650623,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0046666860580444
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

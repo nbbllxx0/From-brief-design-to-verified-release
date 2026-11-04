@@ -1,0 +1,79 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b08 slider bracket",
+  "domain": {
+   "size": [
+    120,
+    40,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "rail",
+    "fix": [
+     "y",
+     "z"
+    ],
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "push",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20,
+      20
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300,
+     0,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "refuse",
+ "source": "engineering",
+ "oracle": [
+  {
+   "about": "any other support or an end stop",
+   "answer": "No, it is supported only by the rail."
+  }
+ ],
+ "admissible": [],
+ "notes": "As stated the part is a mechanism along x (rule R003): nothing reacts the push. A correct agent reports that and asks for an x restraint rather than inventing one.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Refusal correct: an unbalanced 300 N resultant acts in the free x translation. Do not invent an end stop."
+ }
+}

@@ -1,0 +1,192 @@
+{
+ "task": "b41_hinge_bracket",
+ "cond": "T",
+ "rep": 2,
+ "t": "2026-10-30T10:49:44",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 18.552181700011715,
+ "usage": {
+  "input_tokens": 20040,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 828,
+  "reasoning_output_tokens": 286
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Door hinge bracket\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [140, 80, 30]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.3,\n  \"supports\": [\n    {\n      \"id\": \"bolt_left\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [20, 15],\n        \"size\": [12, 12]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"12 mm washer approximated by a 12 x 12 mm support patch.\"\n    },\n    {\n      \"id\": \"bolt_right\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [120, 15],\n        \"size\": [12, 12]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"12 mm washer approximated by a 12 x 12 mm support patch.\"\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"door_load\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [70, 65],\n        \"radius\": 10,\n        \"span\": [0, 30]\n      },\n      \"force\": [300, -800, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"hinge_boss\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [70, 65],\n        \"radius\": 10,\n        \"span\": [0, 30]\n      }\n    },\n    {\n      \"id\": \"cable_slot\",\n      \"kind\": \"void\",\n      \"region\": {\n        \"kind\": \"box\",\n        \"min\": [40, 20, 0],\n        \"max\": [100, 35, 30]\n      }\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Door hinge bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    140,
+    80,
+    30
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "bolt_left",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20,
+      15
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "12 mm washer approximated by a 12 x 12 mm support patch."
+   },
+   {
+    "id": "bolt_right",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      120,
+      15
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "12 mm washer approximated by a 12 x 12 mm support patch."
+   }
+  ],
+  "loads": [
+   {
+    "id": "door_load",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      70,
+      65
+     ],
+     "radius": 10,
+     "span": [
+      0,
+      30
+     ]
+    },
+    "force": [
+     300,
+     -800,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "passive": [
+   {
+    "id": "hinge_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      70,
+      65
+     ],
+     "radius": 10,
+     "span": [
+      0,
+      30
+     ]
+    }
+   },
+   {
+    "id": "cable_slot",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      40,
+      20,
+      0
+     ],
+     "max": [
+      100,
+      35,
+      30
+     ]
+    }
+   }
+  ],
+  "resolution": {
+   "h": 1
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 18.615269900066778,
+ "cwe": {
+  "value": 0.007912173558875857,
+  "c_pred_under_intended": 0.6430117391270503,
+  "c_intended_opt": 0.6379640567854394,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {
+   "keep_in_missing": 0.0,
+   "keep_out_filled": 0.0
+  },
+  "mass_ratio": 1.0
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (140, 80, 30)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

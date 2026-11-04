@@ -1,0 +1,87 @@
+\chapter{Limits and troubleshooting}\label{ch:limits}
+\chapterintro{What this version of AgenticTO does not do, what the paper's evidence does not establish, and what to do
+when something goes wrong.}
+
+\section{Scope of the software}\label{sec:scope}
+\begin{itemize}
+  \item \textbf{One physics model.} Isotropic, small-displacement, linear-elastic compliance minimization under one
+  volume constraint, with one load case: all loads act together. No stress limits, buckling, fatigue, contact,
+  nonlinear materials, multiple load cases or manufacturing constraints.
+  \item \textbf{Box domains on a regular voxel grid.} No import of existing geometry (STL or STEP) as a design domain;
+  complex envelopes are described with keep-out regions.
+  \item \textbf{Element-unit filters.} The density filter radius is given in elements, so the smallest member shrinks in
+  physical size as the grid is refined. \code{min\_feature} only feeds a warning (\rref{R009}); it does not impose a
+  physical length scale.
+  \item \textbf{GPU memory bounds the release.} The default ladder stops below \LadderMax\ elements. In the paper the
+  certified releases were 12.3--73.7 million elements in the session study and 25.6--73.7 million in the release-policy
+  study; a guarded $1.13\times10^{8}$-element attempt did not fit beside a normal desktop's GPU memory use \claim{C3.2}.
+  \item \textbf{Interaction set.} The workspace has no brush editing, design variants, comparison views, parameter sweeps
+  or automatic sketch on every edit. It has been tested in Chrome on Windows with one user per session.
+  \item \textbf{Agents.} The built-in assistant uses Codex; other agents connect through MCP. How much clarification
+  helps depends on whether the model asks (Section~\ref{sec:x2}).
+  \item \textbf{Platform.} Tested on Windows 11 with an NVIDIA RTX 4090. The spill guard reads Windows GPU-memory
+  counters.
+\end{itemize}
+
+\section{What the evidence does not establish}\label{sec:validity}
+The paper states these limits; they apply to every use of the numbers in this book.
+\begin{itemize}
+  \item The 50 reference readings and all 41 contested responses were adjudicated by two authors, not by independent
+  engineers; they agreed on 49 of 50 readings and 33 of 41 contested responses. Accuracy counts and paired $p$
+  values stay provisional until an adjudication outside the author team exists.
+  \item The suite is small and was developed alongside the system. Only two providers, one model each, were tested.
+  \item A certificate is a set of numerical acceptance checks on one computation. It is not a structural safety
+  assessment, and the exported surface needs further analysis before anything is built.
+  \item Warm releases reach different local optima from cold runs. Neither warm policy guarantees the cold optimum or new
+  members; a duct-bridge problem gave no usable comparison at all.
+  \item Timings are single-workstation measurements on a shared desktop GPU. Backend latency excludes browser rendering,
+  and the interaction model excludes waiting, errors and learning. No participant study has been run.
+  \item Replay shows that recorded decisions reproduce recorded results. It does not show that a fresh agent run would
+  decide the same way.
+\end{itemize}
+
+\section{Troubleshooting}\label{sec:trouble}
+\index{troubleshooting}
+
+\begin{reftable}{@{}>{\raggedright\arraybackslash}p{0.32\linewidth}X@{}}
+Symptom & Cause and fix \\ \midrule
+The \gui{GPU} pill stays \emph{starting} or turns \emph{dead}. & The worker could not load CuPy or the solver. Check
+\code{AGENTTO\_VOXFEM\_SRC} and the CUDA 12 installation, then read the backend console. \\
+The ladder is missing or greyed out. & The specification has an error, or is still incomplete. Fix what \gui{Checks}
+lists in red. \\
+A release stops with a spill message. & Another program holds GPU memory and the solve would spill into shared memory.
+Close GPU-heavy programs (browsers with hardware acceleration, games, other CUDA jobs), or release a coarser rung with
+\code{--ladder-max}. \\
+A release is \gui{not certified}. & Read the \fail{} on the card. \emph{converged} failing means the iteration cap was
+reached: try \gui{Optimize release} or check the specification. \emph{spill monitored} failing means the result is not
+on the release rung. A volume or keep-in/out failure points to a problem worth reporting. \\
+The first sketch of a new specification takes several seconds. & Expected: the first solve builds the multigrid
+hierarchy and runs the cold schedule (2.5--6.7~s in the latency study). Later sketches after an edit are warm. \\
+A rung takes far longer than its neighbours. & The grid may be padded for multigrid (rule \rref{R012} may say so) or
+the problem converges slowly; preview and refine can reach their iteration cap. \gui{Stop} cancels the solve. \\
+The release grid is finer than the specification's $h$. & By design: the release rung is the finest that fits on the
+GPU. \tool{ladder} explains this in a note. The certificate's \code{regularization} record gives both element edges
+and the filter length at each, so the shorter physical filter of the release is on record. \\
+Rule \rref{R013} on a large rung. & The memory estimate exceeds the GPU. Use a coarser rung, or cap the ladder. \\
+The assistant refuses to start: \code{PolicyError}. & An API-key variable is set, or the CLI is not on a subscription
+login. Unset the variable or log in again (Section~\ref{sec:agents}). \\
+The assistant answers but changes nothing. & In Propose mode changes come back as cards: accept them. In Act mode, open
+the steps drawer and look for failed calls. \\
+The assistant asks about details the brief already states. & Known behaviour (Section~\ref{sec:x2}). Answer, or choose
+the reading that matches the brief. \\
+An external agent's calls are all rejected. & For Codex set \code{default\_tools\_approval\_mode = "approve"}; for
+Claude Code allow the \code{mcp\_\_agentto} tools. \\
+An agent cancels and resubmits a long solve. & Its tool call timed out. Tell it to call \tool{wait_job}; raise the
+client's tool timeout. \\
+\tool{solve} from a script fails with ``spec is not complete/valid''. & Set the volume fraction and the resolution with
+\tool{set_params} first (Section~\ref{sec:python}). \\
+The workspace shows \gui{live session} instead of b06. & The backend session already holds a design (yours or an
+agent's). Pick a task from the problem picker, or restart the backend for an empty session. \\
+The front end cannot reach the backend. & The backend listens on \code{127.0.0.1:8765} and the front end proxies
+\code{/api} and \code{/ws} to it; start the backend first and open \url{http://127.0.0.1:5173}. \\
+\end{reftable}
+
+\section{Reporting a problem}
+Include the session folder (at least \code{session.jsonl} and the report of the affected design), the output of the
+backend console, the AgenticTO version and the GPU model. A log lets the authors replay exactly what happened. The
+repository's issue tracker will be at \url{\repourl} once the code is public.

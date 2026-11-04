@@ -1,0 +1,41 @@
+\chapter{Certificate, report and log fields}\label{app:certificate}
+\chapterintro{The fields of the solver's certificate record, of the design report written at export, and of the
+records in the session log. The certificate and report tables are generated from \code{solver.py} and
+\code{export.py}.}
+
+\section{Certificate checks}
+\input{generated/certificate_checks}
+
+\section{Certificate record}
+The solver attaches the full certificate to the worker's \emph{done} event, which the backend forwards to the
+workspace. The session log, the tool responses and the design report keep the verdict (\code{certified}) and the six
+\code{checks}.
+
+\input{generated/certificate_fields}
+
+\section{Design report}
+\tool{export_report} writes these fields to \meta{name}\code{\_}\meta{job}\code{\_report.json} and renders the same
+content as Markdown.
+
+\input{generated/report_fields}
+
+\section{Solve result}
+\sloppy
+Every \tool{solve} that finishes, and every \code{result} record in the log, contains: \code{job}, \code{status}
+(\code{converged}, \code{not\_converged}, \code{cancelled}, \code{solve\_failed}, \code{failed}, \code{error} or
+\code{skipped}), \code{h}, \code{grid}, \code{n\_elem}, \code{solver}, \code{warm\_used}, \code{warm\_from\_seq},
+\code{warm\_kind} (\code{coarser} or \code{same\_grid}), \code{iterations}, \code{compliance\_phys}, \code{volume},
+\code{compute\_s}, \code{wall\_s}, \code{certified}, \code{checks}, \code{release\_rung}, \code{spec\_hash} and
+\code{preview} (true for a clarification preview), plus \code{coarse\_pad} (the coarse-level policy) and, after a
+solver retry, \code{retry}.
+
+\section{Log records}
+\begin{reftable}{@{}l>{\raggedright\arraybackslash}X@{}}
+Type & Fields \\ \midrule
+\code{session} & \code{t}, \code{agentto} (version), \code{schema}, \code{id}, \code{profile} \\
+\code{call} & \code{seq}, \code{t}, \code{actor}, \code{tool}, \code{args}, \code{ok}, \code{result} or \code{error},
+\code{spec\_hash}, \code{dt\_s}, optional \code{meta} \\
+\code{result} & \code{seq} (of the solve call), \code{t}, \code{job}, \code{result} (the solve result above) \\
+\code{answer} & \code{seq} (of the question), \code{t}, \code{answer} (\code{choice}, \code{label}, \code{by},
+\code{comment}), optional \code{previews} \\
+\end{reftable}

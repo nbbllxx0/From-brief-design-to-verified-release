@@ -1,0 +1,159 @@
+{
+ "task": "b33_shelf_bracket",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:50:22",
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b33_shelf_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 36.92109169997275,
+ "usage": {
+  "input_tokens": 111387,
+  "cached_input_tokens": 88576,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1017,
+  "reasoning_output_tokens": 317
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: 10 mm washers mean diameter; washer footprints clamp all three directions; screw holes and compliance omitted. Aluminium 6061: E = 68.9 GPa, \u03bd = 0.33. Load distributed equally across top-face nodes. list_regions and validate_spec passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Shelf bracket \u2014 aluminium 6061",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150.0,
+    150.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "lower_wall_washer",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20.0,
+      10.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "10 mm diameter washer at x=0, y=20, z=10; idealized clamped screw attachment."
+   },
+   {
+    "id": "upper_wall_washer",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      130.0,
+      10.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "10 mm diameter washer at x=0, y=130, z=10; idealized clamped screw attachment."
+   }
+  ],
+  "loads": [
+   {
+    "id": "shelf_downward_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -600.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 600 N downward shared across all nodes of the whole top face y=150 mm."
+   }
+  ],
+  "passive": [],
+  "description": "Shelf bracket: x projects from wall; y is up; z is thickness. Two 10 mm diameter circular washer footprints on x=0, centred at (y,z)=(20,10) and (130,10), idealized as clamped in x,y,z. Shelf force totals 600 N in -y, distributed across the whole y=150 face. Linear isotropic elasticity; E=68,900 N/mm^2, nu=0.33. Screw holes and fastener compliance are not explicitly modelled.",
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "min_feature": 3.0
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 37.51020140014589,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (150, 150, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,145 @@
+{
+ "task": "b47_camera_mount",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:38:18",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 170674,
+  "cached_input_tokens": 148864,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1305,
+  "reasoning_output_tokens": 264
+ },
+ "gc_wall_s": 43.75884880009107,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17622,
+  "cached_input_tokens": 15104,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 224,
+  "reasoning_output_tokens": 204
+ },
+ "verify_wall_s": 10.45973449992016,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 468,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1529,
+  "input_tokens": 188296,
+  "cached_input_tokens": 163968
+ },
+ "wall_s": 54.21858330001123,
+ "questions": 3,
+ "n_tool_calls": 13,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Inspection-camera mount",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    60.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "gantry_mount",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full x=0 face bolted to gantry; fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera_weight",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -80.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total downward camera force, distributed over central 20 x 20 mm end-face pad."
+   }
+  ],
+  "passive": [],
+  "description": "Inspection-camera mount; y up. Full x=0 face fixed to gantry. Total 80 N in -y on a centred 20 x 20 mm pad on x=120. Lightweight topology optimization.",
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "volume_fraction": 0.15
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 10.753866099985316,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 60)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

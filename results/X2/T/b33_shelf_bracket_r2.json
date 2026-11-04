@@ -1,0 +1,125 @@
+{
+ "task": "b33_shelf_bracket",
+ "cond": "T",
+ "rep": 2,
+ "t": "2026-10-30T10:47:50",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 21.821660900022835,
+ "usage": {
+  "input_tokens": 19997,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 814,
+  "reasoning_output_tokens": 373
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"shelf_bracket\",\n  \"description\": \"Aluminium shelf bracket with two wall screw supports and a uniformly distributed downward shelf load.\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [150, 150, 20]\n  },\n  \"material\": {\n    \"name\": \"aluminium 6061\",\n    \"E\": 69000,\n    \"nu\": 0.33\n  },\n  \"volume_fraction\": 0.2,\n  \"supports\": [\n    {\n      \"id\": \"lower_wall_screw\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [20, 10],\n        \"radius\": 5,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular 10 mm diameter washer footprint on x=0, idealized as fully fixed.\"\n    },\n    {\n      \"id\": \"upper_wall_screw\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [130, 10],\n        \"radius\": 5,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Circular 10 mm diameter washer footprint on x=0, idealized as fully fixed.\"\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"shelf_load\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"y+\"\n      },\n      \"force\": [0, -600, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"passive\": [],\n  \"resolution\": {\n    \"h\": 1\n  },\n  \"min_feature\": 3\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "shelf_bracket",
+  "description": "Aluminium shelf bracket with two wall screw supports and a uniformly distributed downward shelf load.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150,
+    150,
+    20
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 69000,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "lower_wall_screw",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      20,
+      10
+     ],
+     "radius": 5,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular 10 mm diameter washer footprint on x=0, idealized as fully fixed."
+   },
+   {
+    "id": "upper_wall_screw",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      130,
+      10
+     ],
+     "radius": 5,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Circular 10 mm diameter washer footprint on x=0, idealized as fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "shelf_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -600,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1
+  },
+  "min_feature": 3
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 21.878072700230405,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": false,
+ "schema_error": "2 validation errors for Spec\nsupports.0.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...ius': 5, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nsupports.1.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kin",
+ "correct_spec": false,
+ "behaviour_ok": false
+}

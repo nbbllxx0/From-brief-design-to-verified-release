@@ -1,0 +1,194 @@
+{
+ "task": "b15_corner_plate",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:22:08",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 9.439800000051036,
+ "usage": {
+  "input_tokens": 8615,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7964,
+  "output_tokens": 784
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"corner_plate\",\"description\":\"Square plate 200 x 20 x 200 mm (y up), pinned at four 6 x 6 mm corner pads on the bottom face, 3 kN downward load on a 20 x 20 mm pad at the centre of the top face.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[200,20,200]},\"material\":{\"name\":\"aluminium 6061\",\"E\":68900.0,\"nu\":0.33},\"volume_fraction\":0.3,\"supports\":[{\"id\":\"pad_x0_z0\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[3,3],\"size\":[6,6]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner pad at x=0, z=0, pinned\"},{\"id\":\"pad_x0_z200\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[3,197],\"size\":[6,6]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner pad at x=0, z=200, pinned\"},{\"id\":\"pad_x200_z0\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[197,3],\"size\":[6,6]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner pad at x=200, z=0, pinned\"},{\"id\":\"pad_x200_z200\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[197,197],\"size\":[6,6]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"corner pad at x=200, z=200, pinned\"}],\"loads\":[{\"id\":\"centre_load\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[100,100],\"size\":[20,20]},\"force\":[0,-3000,0],\"distribution\":\"uniform_nodes\",\"note\":\"3 kN downward on 20 x 20 mm pad at top-face centre\"}],\"passive\":[],\"resolution\":{\"h\":2},\"meta\":{\"up_axis\":\"y\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "corner_plate",
+  "description": "Square plate 200 x 20 x 200 mm (y up), pinned at four 6 x 6 mm corner pads on the bottom face, 3 kN downward load on a 20 x 20 mm pad at the centre of the top face.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200,
+    20,
+    200
+   ]
+  },
+  "material": {
+   "name": "aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "pad_x0_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      3,
+      3
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner pad at x=0, z=0, pinned"
+   },
+   {
+    "id": "pad_x0_z200",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      3,
+      197
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner pad at x=0, z=200, pinned"
+   },
+   {
+    "id": "pad_x200_z0",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      197,
+      3
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner pad at x=200, z=0, pinned"
+   },
+   {
+    "id": "pad_x200_z200",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      197,
+      197
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "corner pad at x=200, z=200, pinned"
+   }
+  ],
+  "loads": [
+   {
+    "id": "centre_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      100,
+      100
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "force": [
+     0,
+     -3000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "3 kN downward on 20 x 20 mm pad at top-face centre"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 2
+  },
+  "meta": {
+   "up_axis": "y"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 9.63349590008147,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (100, 10, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

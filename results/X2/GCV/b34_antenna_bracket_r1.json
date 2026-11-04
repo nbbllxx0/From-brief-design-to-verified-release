@@ -1,0 +1,163 @@
+{
+ "task": "b34_antenna_bracket",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:35:13",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 127957,
+  "cached_input_tokens": 119424,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1536,
+  "reasoning_output_tokens": 409
+ },
+ "gc_wall_s": 44.30725169996731,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 19692,
+  "cached_input_tokens": 17024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 353,
+  "reasoning_output_tokens": 333
+ },
+ "verify_wall_s": 14.331983600044623,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 742,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1889,
+  "input_tokens": 147649,
+  "cached_input_tokens": 136448
+ },
+ "wall_s": 58.63923530001193,
+ "questions": 2,
+ "n_tool_calls": 12,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Antenna wall bracket",
+  "units": {
+   "length": "m",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    0.4,
+    0.3,
+    0.2
+   ]
+  },
+  "material": {
+   "name": "S355 steel",
+   "E": 210000000000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "welded_wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full x=0 wall face welded; all translations fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "antenna_load",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.33,
+      0.1
+     ],
+     "radius": 0.04,
+     "span": [
+      0.05,
+      0.3
+     ]
+    },
+    "force": [
+     0.0,
+     -300.0,
+     1200.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "User-selected transfer: simultaneous weight and wind distributed over all clamp nodes."
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_mast_clamp",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.33,
+      0.1
+     ],
+     "radius": 0.04,
+     "span": [
+      0.05,
+      0.3
+     ]
+    },
+    "note": "Required solid mast clamp, from y=0.05 m to domain top."
+   }
+  ],
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 0.005,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 14.649085799930617,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=5, grid (80, 60, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

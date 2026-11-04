@@ -1,0 +1,170 @@
+\chapter{Working with the assistant}\label{ch:assistant}
+\chapterintro{The assistant panel connects the workspace to a Codex session on your ChatGPT subscription. It builds and
+edits the specification through the same tools you use, grounds every region, and asks when a brief leaves a
+design-changing fact open. This chapter covers the two autonomy modes, clarification questions with consequence
+previews, proposal cards, and what the paper's benchmark says about when this helps.}
+
+\section{What the assistant can do}
+Describe a part or a change in words, or paste a whole design brief, and press \keycap{Enter}. Each message starts one
+headless Codex session (model \code{gpt-6.1-sol}, reasoning effort high) that has exactly one tool server: the AgenticTO
+tool contract. It has no shell, no file access beyond a read-only sandbox, and no other tools, so everything it does is
+a logged tool call.
+
+The prompt it receives contains its instructions, the current specification, the item you have selected (so ``this''
+and ``it'' refer to your selection), the current rule findings, the latest solve result, and the last turns of the
+conversation. Its instructions tell it to:
+\begin{itemize}
+  \item ground every region with \tool{list_regions} and run \tool{validate_spec} after each change, fixing what it
+  reports;
+  \item keep the ids that already exist;
+  \item when the request is ambiguous in a way that changes the design (which face, how large, what force), not guess but
+  call \tool{ask_clarification} once with two to four concrete readings, then apply the reading you choose;
+  \item finish with one to three plain sentences: what it changed and anything it assumed.
+\end{itemize}
+
+\section{Propose and Act}\label{sec:modes}
+\index{Propose mode}\index{Act mode}
+The dial in the panel header sets the autonomy (Table~\ref{tab:modes}).
+
+\begin{table}[h]
+\caption{The two autonomy modes.}\label{tab:modes}
+\begin{fixtable}{@{}>{\raggedright\arraybackslash}p{0.13\linewidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+Mode & What the assistant may do & How you see it \\ \midrule
+\gui{Propose} (default) & Works on a private copy of your specification: a stand-alone session seeded with it, with the
+\code{clarify} tool profile. It can edit, ground, validate and ask; it cannot solve. & When it finishes, every
+difference from your specification becomes a card. Nothing changes until you accept. \\
+\gui{Act} & Attached to the live session with the \code{full} profile. Its edits apply at once. Its instructions allow
+the sketch and preview rungs to check its work and leave refine and release to you. & Edits appear immediately in the
+tree, the viewport and the timeline, tagged \gui{AGENT}. \gui{Undo this run's edits} reverts the whole run in one
+step. \\
+\end{fixtable}
+\end{table}
+
+\begin{notebox}[An instruction, not a lock]
+In Act mode the restriction to sketch and preview is part of the assistant's instructions. The \code{full} profile it
+uses does contain \tool{solve} for every rung. Even if an agent did release a design, the certificate would still come
+from the solver, and you would see the solve in the timeline.
+\end{notebox}
+
+\section{Clarification questions with consequence previews}\label{sec:clarify}
+\index{clarification}\index{consequence preview}
+When a brief leaves something open that changes the design, the assistant asks instead of guessing. Each possible
+reading is a concrete option, either a complete support, load or keep-in/keep-out item, or parameter values such as a
+volume fraction. The workspace solves each reading on the sketch rung, all starting from the same latest design so that
+their compliances compare fairly, and shows it as a chip with a thumbnail of the design it leads to and its compliance
+(Figures~\ref{fig:clarify} and~\ref{fig:chips}). Pick a chip, or type your own answer under \gui{None of these}.
+
+\begin{figure}[t]
+\wideshot{20_clarify.png}
+\caption{Building a part from the ambiguous brief b44, the assistant asks which axis is vertical and which way the
+torque turns. Each reading is shown with the design it produces. In Propose mode your own specification is untouched
+until you accept, so the viewport still shows the empty starting box.}
+\label{fig:clarify}
+\end{figure}
+
+\begin{figure}[tb]
+\begin{minipage}[b]{0.4\linewidth}\shot[\linewidth]{21_clarify_chips.png}\end{minipage}\hfill
+\begin{minipage}[b]{0.55\linewidth}
+\caption{The clarification chips, each with its sketch design and compliance. Picking a chip answers the question
+with that reading.}
+\label{fig:chips}
+\end{minipage}
+\end{figure}
+
+The question, its options, the previews and your answer are written to the session log, so the chosen interpretation
+becomes part of the record, and a replay reuses the recorded answer without asking again.
+
+\begin{tipbox}[Take your time]
+A question stays open for ten minutes. The assistant is told to keep waiting for your answer. If its session has ended
+by the time you answer, your answer starts a follow-up run that applies it, so the answer is not lost.
+\end{tipbox}
+
+\section{Cards and the ghost overlay}\label{sec:cards}
+\index{cards}
+In Propose mode the result is a set of cards, one per change: \emph{add}, \emph{change} or \emph{remove} for an item,
+\emph{set} for a field such as the volume fraction. Hover a card to see its ghost in the viewport
+(Figure~\ref{fig:cards}). \gui{Accept} or \gui{Reject} each card, or use \gui{Accept all} and \gui{Reject all}. Accepted
+cards are applied as one undoable step, logged as yours (actor \code{user}), with the cards and the agent run recorded
+beside it.
+
+\begin{figure}[t]
+\wideshot{22_cards.png}
+\caption{Proposed changes as cards. Hovering a card draws its ghost in the viewport.}
+\label{fig:cards}
+\end{figure}
+
+\begin{figure}[t]
+\wideshot{23_accepted.png}
+\caption{After \gui{Accept all}: the specification is built and valid, and the ladder is ready.}
+\label{fig:accepted}
+\end{figure}
+
+\section{An Act run}
+In Figure~\ref{fig:act} the assistant in Act mode lowers the volume fraction and runs a sketch to check the design. The
+steps drawer lists every tool call. A failed call shows its error, which the assistant then fixes. The footer gives the
+wall time and the token use. \gui{Undo this run's edits} reverts the run as a whole.
+
+\begin{figure}[p]
+\wideshot[150mm]{24_act.png}
+\caption{An Act run: six tool calls (list the regions, set the volume fraction, validate, solve the sketch, wait, read the field
+statistics), the 16,000-element sketch in the viewport, and \gui{AGENT} records in the timeline. The run took 14~s.}
+\label{fig:act}
+\vspace{8mm}
+\begin{minipage}[b]{0.30\linewidth}\shot[\linewidth]{25_act_panel.png}\end{minipage}\hfill
+\begin{minipage}[b]{0.65\linewidth}
+\caption{The assistant panel after an Act run: the instruction, the steps drawer with the six numbered tool calls and
+their arguments, the link that undoes the run, the footer with wall time and token use, and the reply.}
+\label{fig:actpanel}
+\end{minipage}
+\end{figure}
+
+\section{When the assistant helps, and what it costs}\label{sec:x2}
+The paper measured how often agents recover the intended specification from a brief, on a suite of 50 three-dimensional
+briefs: 40 to solve, 7 that need a clarification, and 3 that must be refused because they are ill-posed as stated.
+
+\begin{evidencebox}[Specification grounding on 50 briefs, primary provider, first repeat]
+Right behaviour means a specification equivalent to the intended or an admissible reading, or a refusal where the
+brief must be refused \claim{C2.1, C2.3}.
+
+\smallskip
+{\centering\sffamily\footnotesize
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Condition & Right behaviour & Silent wrong \\ \midrule
+T: text only, JSON from the brief and schema & 37 / 50 & 1 \\
+G: grounding tools, no questions allowed & 44 / 50 & 6 \\
+G+C: grounding and clarification & 50 / 50 & 0 \\
+G+C+V: G+C followed by a three-view picture check & 50 / 50 & 0 \\
+\bottomrule
+\end{tabular}\par}
+
+\smallskip
+T to G corrected 8 tasks and broke 1 ($p \approx 0.039$); G to G+C corrected 6 and broke none ($p \approx 0.031$)
+\claim{C2.2}. A deterministic rule parser without a language model got 9 right.
+\end{evidencebox}
+
+Three lessons for use:
+\begin{enumerate}
+  \item \textbf{Grounding fixes representation errors.} Text-only output often failed to encode valid geometry (for
+  example zero-length cylinders for washers). With the tools these errors largely disappear.
+  \item \textbf{Clarification fixes intent errors, at a price.} The G condition was not allowed to ask and guessed; its
+  6 silent errors all passed the rules. Allowed to ask, the agent fixed all six, but it asked 59 questions, 45 of them on
+  fully stated briefs \claim{C2.5}. Expect to confirm details that the brief already states.
+  \item \textbf{The benefit depends on the agent choosing to ask.} A second provider (Claude Code, \code{claude-opus-5-5},
+  effort high) with the same tools asked 7 questions instead of 59 and reached 46 of 50 under G+C, keeping 4 silent
+  wrong specifications; two of them were unit slips. The difference in right outcomes was not significant on this sample
+  ($p \approx 0.12$) \claim{C2.6}.
+\end{enumerate}
+
+\begin{warnbox}[Read the cards, not the summary]
+An agent can explain its assumption fluently and still return a specification that differs from what you meant. The
+cards, the tree and the viewport show what the specification actually says. Accept a card only when you would have
+written that item yourself.
+\end{warnbox}
+
+\begin{notebox}[What the benchmark does and does not show]
+In the benchmark a scripted oracle answered the questions from the stored reference reading; it ignored the
+consequence previews. The results therefore show that asking and using the answer works under a cooperative oracle,
+not that the previews improve a person's choice. The reference readings were adjudicated by two authors, the second blind to condition and provider, and no
+participant study has been run.
+\end{notebox}

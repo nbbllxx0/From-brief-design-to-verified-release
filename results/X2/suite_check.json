@@ -1,0 +1,855 @@
+{
+ "b01_cantilever_block": {
+  "h": 2.0,
+  "grid": [
+   100,
+   50,
+   50
+  ],
+  "n_elem": 250000,
+  "wall_s": 9.901347000151873,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 9.496456999331713,
+  "compliance": 948518.5726367752,
+  "volume": 0.3,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.3
+ },
+ "b02_mbb_half": {
+  "h": 0.5,
+  "grid": [
+   240,
+   80,
+   80
+  ],
+  "n_elem": 1536000,
+  "wall_s": 9.942488600034267,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 9.892492099199444,
+  "compliance": 1723115.7344629674,
+  "volume": 0.2999999999999806,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.3
+ },
+ "b03_bridge_deck": {
+  "h": 2.0,
+  "grid": [
+   200,
+   50,
+   50
+  ],
+  "n_elem": 500000,
+  "wall_s": 161.11310980003327,
+  "status": "not_converged",
+  "iterations": 300,
+  "compute_s": 160.38359589874744,
+  "compliance": 7100763.580513151,
+  "volume": 0.24999999999940395,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.24997,
+  "c_tail_spread": 6.386298462325247e-07
+ },
+ "b04_torsion_shaft": {
+  "h": 1.0,
+  "grid": [
+   160,
+   80,
+   80
+  ],
+  "n_elem": 1024000,
+  "wall_s": 3.7623689000029117,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 3.7199730002321303,
+  "compliance": 150387.27813050276,
+  "volume": 0.3,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.3
+ },
+ "b05_l_bracket": {
+  "h": 1.0,
+  "grid": [
+   100,
+   100,
+   40
+  ],
+  "n_elem": 400000,
+  "wall_s": 19.814942500088364,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 19.73817550064996,
+  "compliance": 786055.12939123,
+  "volume": 0.2999999999998836,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.192
+ },
+ "b06_motor_mount": {
+  "h": 1.0,
+  "grid": [
+   160,
+   60,
+   120
+  ],
+  "n_elem": 1152000,
+  "wall_s": 12.593055499950424,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 12.519891198491678,
+  "compliance": 135806.12657331224,
+  "volume": 0.19999999999994708,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.218
+ },
+ "b07_sensor_arm": {
+  "h": 0.5,
+  "grid": [
+   300,
+   60,
+   60
+  ],
+  "n_elem": 1080000,
+  "wall_s": 66.13348449999467,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 65.92126420000568,
+  "compliance": 3650.954880931893,
+  "volume": 0.24999999999925493,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.25000092592592593
+ },
+ "b09_duct_bridge": {
+  "h": 1.0,
+  "grid": [
+   300,
+   60,
+   60
+  ],
+  "n_elem": 1080000,
+  "wall_s": 170.32740000006743,
+  "status": "not_converged",
+  "iterations": 300,
+  "compute_s": 169.98166029783897,
+  "compliance": 3243346.882444626,
+  "volume": 0.24999999999991626,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.24710370370370371,
+  "c_tail_spread": 4.5826193888797424e-08
+ },
+ "b10_hook_plate": {
+  "h": 0.5,
+  "grid": [
+   240,
+   160,
+   40
+  ],
+  "n_elem": 1536000,
+  "wall_s": 18.230422399938107,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 18.12562970095314,
+  "compliance": 135605.35373639065,
+  "volume": 0.2999999999999418,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.3
+ },
+ "b11_cantilever_line_load": {
+  "h": 0.5,
+  "grid": [
+   240,
+   80,
+   40
+  ],
+  "n_elem": 768000,
+  "wall_s": 20.762635600054637,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 20.70218969974667,
+  "compliance": 3163120.0144878044,
+  "volume": 0.3,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.3
+ },
+ "b12_wheel": {
+  "h": 1.0,
+  "grid": [
+   100,
+   50,
+   100
+  ],
+  "n_elem": 500000,
+  "wall_s": 19.786610799841583,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 19.567086400464177,
+  "compliance": 606030.6984847696,
+  "volume": 0.2,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.2
+ },
+ "b13_cantilever_end_traction": {
+  "h": 1.0,
+  "grid": [
+   160,
+   80,
+   80
+  ],
+  "n_elem": 1024000,
+  "wall_s": 18.277482300065458,
+  "status": "converged",
+  "iterations": 79,
+  "compute_s": 17.86860659904778,
+  "compliance": 27631972.722989645,
+  "volume": 0.11999999999991046,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.142,
+  "c_tail_spread": 4.437524756692025e-08
+ },
+ "b14_cube_torsion": {
+  "h": 1.0,
+  "grid": [
+   100,
+   100,
+   100
+  ],
+  "n_elem": 1000000,
+  "wall_s": 14.564813100034371,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 14.442487299675122,
+  "compliance": 13545.175658985685,
+  "volume": 0.14999999999988078,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.15
+ },
+ "b15_corner_plate": {
+  "h": 1.0,
+  "grid": [
+   200,
+   20,
+   200
+  ],
+  "n_elem": 800000,
+  "wall_s": 130.221682399977,
+  "status": "converged",
+  "iterations": 82,
+  "compute_s": 129.3595026009716,
+  "compliance": 13243557.981719842,
+  "volume": 0.29999999999996274,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.3
+ },
+ "b16_column": {
+  "h": 1.0,
+  "grid": [
+   60,
+   240,
+   60
+  ],
+  "n_elem": 864000,
+  "wall_s": 20.342697100015357,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 20.288660500897095,
+  "compliance": 18361805.079903148,
+  "volume": 0.2,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.2
+ },
+ "b17_arch_bridge": {
+  "h": 1.0,
+  "grid": [
+   300,
+   100,
+   60
+  ],
+  "n_elem": 1800000,
+  "wall_s": 67.11260019987822,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 66.9921910003759,
+  "compliance": 3287134.9621421457,
+  "volume": 0.1499999999999824,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.201
+ },
+ "b18_cantilever_hole": {
+  "h": 1.0,
+  "grid": [
+   200,
+   100,
+   40
+  ],
+  "n_elem": 800000,
+  "wall_s": 17.869140800088644,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 17.80473340069875,
+  "compliance": 5028335.024663242,
+  "volume": 0.3,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.28104
+ },
+ "b19_engine_bracket": {
+  "h": 1.27,
+  "grid": [
+   140,
+   50,
+   80
+  ],
+  "n_elem": 560000,
+  "wall_s": 56.17357029998675,
+  "status": "converged",
+  "iterations": 82,
+  "compute_s": 55.95628759916872,
+  "compliance": 1004568117.4506131,
+  "volume": 0.2,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.21354285714285715
+ },
+ "b20_quarter_plate": {
+  "h": 1.0,
+  "grid": [
+   120,
+   24,
+   120
+  ],
+  "n_elem": 345600,
+  "wall_s": 24.98336989991367,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 24.946046000812203,
+  "compliance": 5616838.872339556,
+  "volume": 0.24999999999991376,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.25
+ },
+ "b21_mbb_z_up": {
+  "h": 1.0,
+  "grid": [
+   320,
+   40,
+   40
+  ],
+  "n_elem": 512000,
+  "wall_s": 26.212020199978724,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 26.174315199488774,
+  "compliance": 29970537.144199375,
+  "volume": 0.3,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.3
+ },
+ "b22_cantilever_slab": {
+  "h": 1.0,
+  "grid": [
+   150,
+   20,
+   200
+  ],
+  "n_elem": 600000,
+  "wall_s": 372.32734590000473,
+  "status": "not_converged",
+  "iterations": 300,
+  "compute_s": 371.4249483994208,
+  "compliance": 40094469.60691282,
+  "volume": 0.3,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.2999583333333333,
+  "c_tail_spread": 5.467803158319832e-07
+ },
+ "b23_clamped_beam": {
+  "h": 1.0,
+  "grid": [
+   240,
+   40,
+   40
+  ],
+  "n_elem": 384000,
+  "wall_s": 15.12268070015125,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 15.075842500664294,
+  "compliance": 6949616.058433388,
+  "volume": 0.25,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.25
+ },
+ "b24_shear_block": {
+  "h": 1.0,
+  "grid": [
+   80,
+   80,
+   80
+  ],
+  "n_elem": 512000,
+  "wall_s": 85.34563419991173,
+  "status": "not_converged",
+  "iterations": 300,
+  "compute_s": 85.13474410050549,
+  "compliance": 3905682.665626537,
+  "volume": 0.19999999999982537,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.199998046875,
+  "c_tail_spread": 1.8971763914305647e-06
+ },
+ "b25_cantilever_metres": {
+  "h": 20.0,
+  "grid": [
+   100,
+   50,
+   50
+  ],
+  "n_elem": 250000,
+  "wall_s": 14.085880700033158,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 14.00721840094775,
+  "compliance": 17349091745.06402,
+  "volume": 0.15,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.15
+ },
+ "b26_canopy": {
+  "h": 2.0,
+  "grid": [
+   150,
+   20,
+   100
+  ],
+  "n_elem": 300000,
+  "wall_s": 67.43077739980072,
+  "status": "not_converged",
+  "iterations": 300,
+  "compute_s": 67.26251580170356,
+  "compliance": 3322419.438376734,
+  "volume": 0.25,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.24999,
+  "c_tail_spread": 1.0444908578760143e-08
+ },
+ "b27_eccentric_cantilever": {
+  "h": 1.0,
+  "grid": [
+   160,
+   40,
+   40
+  ],
+  "n_elem": 256000,
+  "wall_s": 6.4348549998831,
+  "status": "converged",
+  "iterations": 80,
+  "compute_s": 6.366011498263106,
+  "compliance": 7496548.039592597,
+  "volume": 0.25,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.25
+ },
+ "b28_stool": {
+  "h": 2.0,
+  "grid": [
+   100,
+   100,
+   100
+  ],
+  "n_elem": 1000000,
+  "wall_s": 51.82628389983438,
+  "status": "converged",
+  "iterations": 82,
+  "compute_s": 51.7419540011324,
+  "compliance": 117092.12673666398,
+  "volume": 0.09999999999996274,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.13
+ },
+ "b29_michell_cantilever": {
+  "h": 1.0,
+  "grid": [
+   200,
+   100,
+   20
+  ],
+  "n_elem": 400000,
+  "wall_s": 56.24029780016281,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 56.00752770132385,
+  "compliance": 1026364.2176924087,
+  "volume": 0.1999999999999255,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.2
+ },
+ "b30_bridge_clearance": {
+  "h": 2.0,
+  "grid": [
+   160,
+   40,
+   40
+  ],
+  "n_elem": 256000,
+  "wall_s": 10.2369240000844,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 10.142015100922436,
+  "compliance": 31068573.259081777,
+  "volume": 0.19999999999984733,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.2025,
+  "c_tail_spread": 3.7113657305614596e-05
+ },
+ "b31_pillow_block": {
+  "h": 1.0,
+  "grid": [
+   120,
+   60,
+   40
+  ],
+  "n_elem": 288000,
+  "wall_s": 9.329527399968356,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 9.138928499538451,
+  "compliance": 383047.5068964929,
+  "volume": 0.3,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.3696111111111111
+ },
+ "b32_drone_arm": {
+  "h": 0.5,
+  "grid": [
+   300,
+   40,
+   40
+  ],
+  "n_elem": 480000,
+  "wall_s": 68.59143180004321,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 68.51331420056522,
+  "compliance": 8598.466748063733,
+  "volume": 0.2,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.22666666666666666
+ },
+ "b33_shelf_bracket": {
+  "h": 1.0,
+  "grid": [
+   150,
+   150,
+   20
+  ],
+  "n_elem": 450000,
+  "wall_s": 59.27859749994241,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 59.009312900016084,
+  "compliance": 107909.53279128636,
+  "volume": 0.2,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.2
+ },
+ "b34_antenna_bracket": {
+  "h": 2.5,
+  "grid": [
+   160,
+   120,
+   80
+  ],
+  "n_elem": 1536000,
+  "wall_s": 23.965259600197896,
+  "status": "converged",
+  "iterations": 82,
+  "compute_s": 23.84264319925569,
+  "compliance": 607618.348600514,
+  "volume": 0.15,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.19493489583333334
+ },
+ "b35_padeye": {
+  "h": 1.0,
+  "grid": [
+   100,
+   80,
+   30
+  ],
+  "n_elem": 240000,
+  "wall_s": 7.71889269980602,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 7.648655702592805,
+  "compliance": 951573.7280747823,
+  "volume": 0.3,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.36265
+ },
+ "b36_pedal_arm": {
+  "h": 0.5,
+  "grid": [
+   400,
+   80,
+   40
+  ],
+  "n_elem": 1280000,
+  "wall_s": 229.28940339991823,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 229.0164173017256,
+  "compliance": 11290584.223810589,
+  "volume": 0.25,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.24999921875
+ },
+ "b37_battery_crossmember": {
+  "h": 2.0,
+  "grid": [
+   300,
+   30,
+   40
+  ],
+  "n_elem": 360000,
+  "wall_s": 95.2254192000255,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 95.18265190068632,
+  "compliance": 14903763.037337102,
+  "volume": 0.2,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.2
+ },
+ "b38_peek_bracket": {
+  "h": 0.5,
+  "grid": [
+   160,
+   120,
+   80
+  ],
+  "n_elem": 1536000,
+  "wall_s": 8.908455800032243,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 8.660600998904556,
+  "compliance": 2960.5003657072734,
+  "volume": 0.24999999999998024,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.2640625
+ },
+ "b39_tv_bracket": {
+  "h": 2.0,
+  "grid": [
+   150,
+   100,
+   20
+  ],
+  "n_elem": 300000,
+  "wall_s": 90.59925239998847,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 90.45022819982842,
+  "compliance": 605877.0032062684,
+  "volume": 0.14999999999980132,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.15
+ },
+ "b40_crank_arm": {
+  "h": 0.5,
+  "grid": [
+   360,
+   80,
+   60
+  ],
+  "n_elem": 1728000,
+  "wall_s": 55.590536599978805,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 55.4675803987775,
+  "compliance": 4129667.412860304,
+  "volume": 0.3,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.3197361111111111
+ },
+ "b41_hinge_bracket": {
+  "h": 1.0,
+  "grid": [
+   140,
+   80,
+   30
+  ],
+  "n_elem": 336000,
+  "wall_s": 19.365460200002417,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 19.303757401183248,
+  "compliance": 66986.23977959847,
+  "volume": 0.3,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.29564285714285715
+ },
+ "b42_snap_hook": {
+  "h": 0.25,
+  "grid": [
+   160,
+   40,
+   48
+  ],
+  "n_elem": 307200,
+  "wall_s": 13.439275099895895,
+  "status": "converged",
+  "iterations": 82,
+  "compute_s": 13.249293700093403,
+  "compliance": 929.9952472172129,
+  "volume": 0.349999999999903,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.35
+ },
+ "b43_press_riser": {
+  "h": 2.0,
+  "grid": [
+   150,
+   50,
+   75
+  ],
+  "n_elem": 562500,
+  "wall_s": 4.278719700174406,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 4.229131601052359,
+  "compliance": 5607261.10719086,
+  "volume": 0.29999999999993954,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.2628
+ },
+ "b44_gearbox_bracket": {
+  "h": 1.0,
+  "grid": [
+   160,
+   80,
+   80
+  ],
+  "n_elem": 1024000,
+  "wall_s": 4.171733600087464,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 4.12113290047273,
+  "compliance": 150387.27813050276,
+  "volume": 0.3,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.3
+ },
+ "b45_pump_bracket": {
+  "h": 1.0,
+  "grid": [
+   160,
+   100,
+   60
+  ],
+  "n_elem": 960000,
+  "wall_s": 4.701638099970296,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 4.644391299458221,
+  "compliance": 984.4336126326907,
+  "volume": 0.25,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.25
+ },
+ "b46_sensor_housing": {
+  "h": 0.5,
+  "grid": [
+   160,
+   100,
+   80
+  ],
+  "n_elem": 1280000,
+  "wall_s": 5.042833299841732,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 4.954215600853786,
+  "compliance": 1283.9790177500065,
+  "volume": 0.29999999999980265,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.283125
+ },
+ "b47_camera_mount": {
+  "h": 1.0,
+  "grid": [
+   120,
+   60,
+   60
+  ],
+  "n_elem": 432000,
+  "wall_s": 17.592026500031352,
+  "status": "converged",
+  "iterations": 76,
+  "compute_s": 17.521393100731075,
+  "compliance": 9429.737085707877,
+  "volume": 0.15,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.15
+ },
+ "b48_cable_anchor": {
+  "h": 1.0,
+  "grid": [
+   100,
+   60,
+   60
+  ],
+  "n_elem": 360000,
+  "wall_s": 4.394949699984863,
+  "status": "converged",
+  "iterations": 79,
+  "compute_s": 4.360445601167157,
+  "compliance": 1753083.5974332935,
+  "volume": 0.24999999999975164,
+  "certified": false,
+  "error": null,
+  "solid_fraction": 0.25
+ }
+}

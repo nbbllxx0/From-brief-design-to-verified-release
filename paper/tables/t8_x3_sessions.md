@@ -1,0 +1,22 @@
+**End-to-end agent sessions: brief to certified release and STL (Codex, G+C)**
+
+| Task | Release elements | Tool calls | Questions | Input tokens | Session (s), X3 | Session (s), pad-aware rule | Certified release | Replay exact |
+|---|---|---|---|---|---|---|---|---|
+| b01 | 16.0M | 23 | 1 | 475k | 125 | 92 | yes | yes |
+| b02 | 12.3M | 22 | 1 | 422k | 77 | 89 | yes | yes |
+| b04 | 65.5M | 21 | 0 | 478k | 140 | 154 | yes | yes |
+| b05 | 25.6M | 26 | 1 | 564k | 236 | 140 | yes | yes |
+| b06 | 73.7M | 36 | 4 | 549k | 176 | 154 | yes | yes |
+| b11 | 49.2M | 25 | 1 | 567k | 273 | 232 | yes | yes |
+| b17 | 14.4M | 27 | 1 | 823k | 351 | 119 | yes | yes |
+| b19 | 35.8M | 59 | 1 | 2959k | 1877 | 334 | yes | yes |
+| b25 | 16.0M | 21 | 0 | 611k | 182 | 102 | yes | yes |
+| b31 | 18.4M | 28 | 2 | 584k | 128 | 124 | yes | yes |
+| b35 | 15.4M | 21 | 0 | 419k | 116 | 86 | yes | yes |
+| b40 | 13.8M | 32 | 0 | 1179k | 463 | 106 | yes | yes |
+| b44 | 65.5M | 25 | 1 | 521k | 138 | 145 | yes | yes |
+| b47 | 27.6M | 27 | 1 | 730k | 287 | 148 | yes | yes |
+| b49 | – | 7 | 0 | 92k | 4 | 4 | stopped (refuse) | yes |
+
+Source: results/X3/b*.json, results/X3_aware/b*.json.
+Pad-aware column: the same session with every solve replayed under the pad-aware coarse rule; agent time is taken from the original run.

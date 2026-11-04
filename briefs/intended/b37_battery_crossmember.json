@@ -1,0 +1,98 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "name": "b37 battery crossmember",
+  "domain": {
+   "size": [
+    600,
+    60,
+    80
+   ]
+  },
+  "material": {
+   "name": "aluminium 6082-T6",
+   "E": 70.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "rail_left",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   },
+   {
+    "id": "rail_right",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "foot_1",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      200,
+      40
+     ],
+     "size": [
+      40,
+      40
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -1.5,
+     0
+    ]
+   },
+   {
+    "id": "foot_2",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      400,
+      40
+     ],
+     "size": [
+      40,
+      40
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -1.5,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [],
+ "notes": "E = 70 GPa = 70 kN/mm^2.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "70 GPa equals 70 kN/mm^2. Both clamped ends and two -1.5 kN feet agree."
+ }
+}

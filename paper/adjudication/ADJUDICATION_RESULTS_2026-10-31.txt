@@ -1,0 +1,352 @@
+AGENTICTO RE-ADJUDICATION RESULTS
+Date: 2026-10-31
+Adjudicator: jun
+
+
+BRIEFS
+b01_cantilever_block: intended Y; source N
+Dimensions, fixed face, centred patch, -1000 N and E conversion agree. FEAD/Sigmund is not a traceable article citation.
+
+b02_mbb_half: intended Y; source Y
+Half model takes 1000 N with x-normal symmetry. Remove the existing x-fixed-end admissible variant: it contradicts vertical/sideways only. Top3d covers the MBB family [S1], not these exact physical dimensions.
+
+b03_bridge_deck: intended Y; source N
+Intended guided bearing is reasonable; a y-only roller is also admissible. FEAD without title/DOI/figure is insufficient provenance.
+Additional reading: Right bearing fixes y only, free in x and z; left pin unchanged.
+
+b04_torsion_shaft: intended Y; source N
+Lug centres y=72 and 8 give 64 mm separation; +/-625 N gives +40000 N mm. FEAD citation is incomplete.
+
+b05_l_bracket: intended Y; source N
+Support and 60 x 60 mm keep-out agree. Le et al. exists [S2], but accessible metadata does not establish this particular 3D extrusion; source not cleared.
+
+b06_motor_mount: intended Y; source n.a.
+Four 24 mm diameter, 10 mm bosses and the 5 mm motor pad agree. Bolt/washer contact is an idealization; stated passive solids are explicit.
+
+b07_sensor_arm: intended Y; source n.a.
+Y after oracle: root fully fixed and gravity -y. Both gaps are real. A thin retained layer behind the named camera plate is also admissible; it is not uniquely specified.
+Additional reading: 20 x 20 x 2 mm retained plate at x=148..150; oracle -y load and fixed root unchanged.
+
+b08_slider_bracket: intended Y; source n.a.
+Refusal correct: an unbalanced 300 N resultant acts in the free x translation. Do not invent an end stop.
+
+b09_duct_bridge: intended Y; source n.a.
+Duct and 3 mm minimum agree. Guided y,z roller is reasonable, but the wording does not explicitly require z restraint.
+Additional reading: Right bearing fixes y only, free in x and z; duct/minimum feature unchanged.
+
+b10_hook_plate: intended Y; source n.a.
+Y after oracle: 10 mm bottom lug x=110..120. Before clarification neither corner nor attachment size is determined. Equal mirrored compliance does not identify the actual attachment.
+
+b11_cantilever_line_load: intended Y; source Y
+Matches the lower-free-edge load family in top3d section 6.1 [S1]; physical sizes and force are rescaled.
+
+b12_wheel: intended Y; source Y
+Matches the wheel problem family [S1], with finite support/load pads as regularizations. Do not infer a support-DOF mismatch solely from the term planar joint.
+
+b13_cantilever_end_traction: intended Y; source N
+End plate, -4000 N and 12% design budget agree. Source not cleared as a restatement: current primary PETSc code uses an end-edge line load [S3]; identify the claimed paper figure/version.
+
+b14_cube_torsion: intended Y; source n.a.
+Four 45 mm moment arms at 100 N give +18000 N mm with zero net force. Generic family description is treated as an engineering example, not verified historical provenance.
+
+b15_corner_plate: intended Y; source n.a.
+Four 6 mm corner pads and centred top load agree. Generic family description; no specific published benchmark claimed as verified.
+
+b16_column: intended Y; source n.a.
+Four footing patches and simultaneous (1000,-10000,0) N cap load agree. Linear compliance example; no buckling qualification is implied.
+
+b17_arch_bridge: intended Y; source n.a.
+6 mm solid deck and both pinned end edges agree. Retained deck is additional to the non-passive design budget under package convention.
+
+b18_cantilever_hole: intended Y; source n.a.
+40 mm through-hole along z and centred tip force agree. Hole is a passive void, not material available to optimization.
+
+b19_engine_bracket: intended Y; source Y
+E=16.5e6 lbf/in^2 is correct. GE/GrabCAD inspiration is supported [S4]; the box/cylinder and single case are an adaptation, not the original challenge geometry.
+Additional reading: Square 0.5 x 0.5 in washer support patches at the specified centres.
+
+b20_quarter_plate: intended Y; source n.a.
+Quarter model gets 1000 N over 10 x 10 mm at the symmetry corner. Symmetry restrains x and z normals only. Full model is physically equivalent but disobeys the requested model extent.
+
+b21_mbb_z_up: intended Y; source Y
+z-up mapping and the roller fixing y,z agree. MBB family attribution is supported by [S1]; not an exact reproduction of its dimensions.
+
+b22_cantilever_slab: intended Y; source n.a.
+Whole-top load is consistent. A surface load can share fixed-edge nodes; do not call the finite nodal fraction a continuum area fraction.
+
+b23_clamped_beam: intended Y; source n.a.
+Two clamped faces and 10 x 40 mm central top strip agree.
+
+b24_shear_block: intended Y; source n.a.
+Fixed y- face and whole y+ surface force +4000 N in x agree.
+
+b25_cantilever_metres: intended Y; source N
+E=2.1e8 kN/m^2 and h=0.02 m are correct. Named bearing plate also permits a thin retained interface. Aage-family label does not verify this centred-patch case [S3].
+Additional reading: 20 mm retained bearing plate at x=1.98..2 m, y,z=0.4..0.6 m; other inputs unchanged.
+
+b26_canopy: intended Y; source n.a.
+Four interior support heads, full top load and units agree. Generic family description treated as engineering.
+
+b27_eccentric_cantilever: intended Y; source n.a.
+Patch centre (y,z)=(35,35) and -1000 N give bending plus torsion. The explicit coordinate ranges control placement.
+
+b28_stool: intended Y; source n.a.
+10 mm seat and central leg-room box agree; active volume excludes both passive solid and void under package convention.
+
+b29_michell_cantilever: intended Y; source Y
+A fixed finite-radius region can react moment, unlike a free hinge. Circular-support Michell inspiration is supported [S5]; this 3D compliance slab is an adaptation, not the analytical truss solution.
+
+b30_bridge_clearance: intended Y; source n.a.
+4 mm deck and clearance agree. A y-only conventional roller is an additional admissible bearing interpretation; z guidance is not explicit.
+Additional reading: Right roller fixes y only, free in x and z; deck/void unchanged.
+
+b31_pillow_block: intended Y; source n.a.
+16 mm washer footprints and 30 mm retained seat cylinder agree; load on the named seat is an idealized transfer region.
+Additional reading: Square 16 x 16 mm washer support patches at the specified centres.
+
+b32_drone_arm: intended Y; source n.a.
+z-up thrust +15 N and retained x=130..150, z=15..20 motor pad agree.
+
+b33_shelf_bracket: intended Y; source n.a.
+Wall screw positions, whole top load and 3 mm minimum agree. Square washer patches admitted consistently with b06.
+Additional reading: Square 10 x 10 mm washer support patches at the specified centres.
+
+b34_antenna_bracket: intended Y; source n.a.
+E=2.1e11 N/m^2, h=0.005 m, vertical cylinder and combined (0,-300,1200) N agree.
+
+b35_padeye: intended Y; source n.a.
+30 mm retained boss and combined (2500,6000,0) N agree; cylinder load is an idealized transfer region.
+
+b36_pedal_arm: intended Y; source n.a.
+Finite fixed shaft circle correctly reacts pedal moment. Adding that circle as a passive solid changes the material budget; it is not implied by fixed displacement alone.
+
+b37_battery_crossmember: intended Y; source n.a.
+70 GPa equals 70 kN/mm^2. Both clamped ends and two -1.5 kN feet agree.
+
+b38_peek_bracket: intended Y; source n.a.
+PEEK E=3600 N/mm^2 and simultaneous (300,0,-300) N load agree. Retained interface is 4 mm deep.
+
+b39_tv_bracket: intended Y; source n.a.
+Loaded mounting-plate footprint and 5 mm minimum agree. Plate thickness is unspecified; extra 6 mm support bosses are not implied by washer contact.
+Additional reading: Square 12 x 12 mm washer support patches at the specified centres.
+
+b40_crank_arm: intended Y; source n.a.
+The pedal load belongs on the outer z+ circular face, not the whole cylinder. Both specified spindle/boss regions agree.
+
+b41_hinge_bracket: intended Y; source n.a.
+Retained hinge boss, cable slot, washer supports and combined load agree.
+Additional reading: Square 12 x 12 mm washer support patches at the specified centres.
+
+b42_snap_hook: intended Y; source n.a.
+Underside strip x=36..40 and upward +15 N agree. This is the stated linear compliance problem, not certification of snap action.
+
+b43_press_riser: intended N; source n.a.
+Correct the support region to the two remaining bottom strips beside the open coolant channel. The problem is solvable; this is a footprint clarification, not a refusal. h=100/50=2 mm.
+Correction: On y-, fix patches centred (x,z)=(150,22.5) and (150,127.5) mm, both size (300,45) mm; leave the channel opening unsupported. Preserve all other fields.
+
+b44_gearbox_bracket: intended Y; source n.a.
+Y after oracle: y-up, flush 16 mm patches and either torque sense. Real axis/placement ambiguity exists before clarification. Equal net torque alone does not fix lug locations.
+
+b45_pump_bracket: intended Y; source n.a.
+Y after oracle: (0,-250,0) N only. Load magnitude and other components are missing from the original brief. Uniform load scaling does not validate an invented engineering load.
+
+b46_sensor_housing: intended Y; source n.a.
+Y after oracle: required void x=20..50,y=10..30,z=0..15. Original front direction and plug dimensions are genuinely missing.
+
+b47_camera_mount: intended Y; source n.a.
+Y after oracle: vf=0.15. As light as practical supplies neither a unique compliance budget nor a strength/displacement constraint.
+
+b48_cable_anchor: intended Y; source n.a.
+Y after oracle: (4000,3000,0) N gives 5 kN with 3:4 rise/run. Horizontal azimuth is genuinely unspecified before clarification.
+Additional reading: Retain a 16 mm diameter boss 3 mm deep at y=57..60; load remains on the top circular face.
+
+b49_hinged_arm: intended Y; source n.a.
+Refusal correct: rotation about the z pin line remains free, with unbalanced moment -76000 N mm. Fixing line translations does not clamp rotation about the line.
+
+b50_valve_bracket: intended Y; source n.a.
+Refusal correct: the entire loaded x=80..100 top patch lies in mandatory void. Neither feature may move under the oracle.
+
+CONTESTED RUNS
+01 b47_camera_mount / T: W
+vf 0.20 replaces oracle 0.15; mass ratio 1.333. A stiffness gain purchased with this extra mass is not a correct budget.
+Evidence: contested/01_b47_T.json
+
+02 b07_sensor_arm / G: W
+-z gravity differs from oracle -y; interface retention does not cure the load-axis error. The original brief requires clarification.
+Evidence: contested/02_b07_G.json
+
+03 b25_cantilever_metres / G: A
+Named bearing plate has no thickness. This modest interface idealization is admissible, not an exact spec match; supplied mass ratio 1.00227.
+Accepted reading: One-element-thick 0.02 m retained bearing plate inside the stated envelope.
+Evidence: contested/03_b25_G.json
+
+04 b39_tv_bracket / G: W
+A mounting plate can be retained, but four additional 6 mm deep support bosses are not specified. Full candidate adds 6.39% mass; do not admit all added solids from the plate wording.
+Evidence: contested/04_b39_G.json
+
+05 b44_gearbox_bracket / G: W
+z-up lug locations contradict the y-up oracle. +40 N m resultant does not identify the intended load application regions.
+Evidence: contested/05_b44_G.json
+
+06 b45_pump_bracket / G: W
+1000 N rather than oracle 250 N. Same compliance-optimal topology under load scaling does not establish a correct engineering specification.
+Evidence: contested/06_b45_G.json
+
+07 b46_sensor_housing / G: W
+Guessed void differs from oracle bounds and permits material in required clearance; supplied filled fraction 0.163.
+Evidence: contested/07_b46_G.json
+
+08 b47_camera_mount / G: W
+Adds unstated 3 mm minimum and two retained interface layers; supplied mass increases 10.49%. Correct vf alone is insufficient.
+Evidence: contested/08_b47_G.json
+
+09 b48_cable_anchor / G: A
+Named boss implies an interface with unspecified depth. Small local retention is admissible; supplied mass ratio 1.00520. Not a license for arbitrary bosses.
+Accepted reading: Retained 16 mm diameter, 3 mm deep anchor boss at y=57..60; force on y+ circle.
+Evidence: contested/09_b48_G.json
+
+10 b03_bridge_deck / Claude T: A
+No explicit z guidance in the brief. This is a conventional bearing model. Supplied optimization was not converged; its tiny compliance change is not equivalence proof.
+Accepted reading: Right roller fixes y only; x and z free, left pinned edge unchanged.
+Evidence: contested/10_b03_ClaudeT.json
+
+11 b07_sensor_arm / Claude T: W
+-z load conflicts with oracle -y; matches the axis error in case 02.
+Evidence: contested/11_b07_ClaudeT.json
+
+12 b09_duct_bridge / Claude T: A
+Brief says free along span, not free only along span. Both guided and unguided bearings are plausible. Supplied optimization not converged.
+Accepted reading: Right bearing fixes y only; x and z free; retain left pin, duct and 3 mm minimum.
+Evidence: contested/12_b09_ClaudeT.json
+
+13 b10_hook_plate / Claude T: W
+8 mm lug plus extra solid pad differs from the oracle 10 mm lug. Small compliance difference does not authorize changing clarified footprint.
+Evidence: contested/13_b10_ClaudeT.json
+
+14 b19_engine_bracket / Claude T: A
+Accept the disclosed footprint approximation consistently with existing b06 square-washer admissibility; not exact circular contact.
+Accepted reading: Square 0.5 x 0.5 in washer patches at all four specified centres.
+Evidence: contested/14_b19_ClaudeT.json
+
+15 b30_bridge_clearance / Claude T: A
+No explicit transverse guidance; conventional roller is admissible. This does not imply exact elastic equivalence to y,z restraint.
+Accepted reading: Right roller fixes y only; x and z free; retain deck and clearance.
+Evidence: contested/15_b30_ClaudeT.json
+
+16 b31_pillow_block / Claude T: A
+Local fixture-footprint approximation admitted consistently with b06; other physical requirements unchanged.
+Accepted reading: Two square 16 x 16 mm washer support patches, centres unchanged.
+Evidence: contested/16_b31_ClaudeT.json
+
+17 b33_shelf_bracket / Claude T: A
+Local fixture-footprint approximation consistent with b06. E=68.9 vs 69 GPa is an ordinary unstated-material default difference.
+Accepted reading: Two square 10 x 10 mm washer support patches, centres unchanged.
+Evidence: contested/17_b33_ClaudeT.json
+
+18 b36_pedal_arm / Claude T: W
+Fixing displacement inside a shaft circle does not require adding it to excluded passive material. Supplied mass ratio 1.078; this changes the budget accounting.
+Evidence: contested/18_b36_ClaudeT.json
+
+19 b39_tv_bracket / Claude T: A
+Admit the disclosed fixture-footprint approximation consistently with b06; do not add retained support bosses.
+Accepted reading: Four square 12 x 12 mm washer support patches, centres unchanged.
+Evidence: contested/19_b39_ClaudeT.json
+
+20 b41_hinge_bracket / Claude T: A
+Admit local support-footprint approximation consistently with b06; retained boss and slot remain correct.
+Accepted reading: Two square 12 x 12 mm washer support patches, centres unchanged.
+Evidence: contested/20_b41_ClaudeT.json
+
+21 b43_press_riser / Claude T: A
+Physically appropriate remaining footprint beside open channel. Supplied consequence ~1.4e-10 at equal mass supports negligible numerical effect; correct b43 reference footprint.
+Accepted reading: Support only y- strips z=0..45 and 105..150 across x=0..300.
+Evidence: contested/21_b43_ClaudeT.json
+
+22 b44_gearbox_bracket / Claude T: W
+z-up lugs conflict with oracle y-up. Extra retained lugs do not remedy the different application regions.
+Evidence: contested/22_b44_ClaudeT.json
+
+23 b45_pump_bracket / Claude T: W
+1000 N placeholder differs from oracle 250 N. Final message explicitly asks for missing load; record as wrong final spec, not an unqualified silent misunderstanding.
+Evidence: contested/23_b45_ClaudeT.json
+
+24 b46_sensor_housing / Claude T: W
+Required connector clearance absent; supplied keep-out filled fraction 0.250. Final message explicitly requests bounds, so silent-error wording needs qualification.
+Evidence: contested/24_b46_ClaudeT.json
+
+25 b47_camera_mount / Claude T: W
+vf 0.12 differs from oracle 0.15 and adds retained material. This is a different material budget, not an alternate reading after clarification.
+Evidence: contested/25_b47_ClaudeT.json
+
+26 b48_cable_anchor / Claude T: W
+Force selects a cylinder volume y=59..60 rather than the explicitly stated top boss face. The correct resultant and small compliance effect do not establish the same distribution or moment arm.
+Evidence: contested/26_b48_ClaudeT.json
+
+27 b07_sensor_arm / Claude GC: A
+Named mounting plate permits a thin local retained interface when thickness is unspecified. Supplied mass ratio 1.01778; accept this narrow variant, not arbitrary retained layers.
+Accepted reading: 20 x 20 x 2 mm retained camera plate at x=148..150, with oracle root and -y load.
+Evidence: contested/27_b07_ClaudeGC.json
+
+28 b09_duct_bridge / Claude GC: A
+Same admissible unguided-bearing reading as case 12. Supplied optimization not converged.
+Accepted reading: Right bearing fixes y only; x and z free; duct and feature size unchanged.
+Evidence: contested/28_b09_ClaudeGC.json
+
+29 b10_hook_plate / Claude GC: W
+Line at x=120,y=0 replaces clarified 10 mm wide bottom lug x=110..120. Mirror symmetry does not justify changing attachment extent.
+Evidence: contested/29_b10_ClaudeGC.json
+
+30 b13_cantilever_end_traction / Claude GC: W
+For mm,kN, steel E must be 210 kN/mm^2, not 210000. Factor-1000 modulus error remains wrong despite identical supplied topology.
+Evidence: contested/30_b13_ClaudeGC.json
+
+31 b30_bridge_clearance / Claude GC: A
+Same conventional unguided-roller interpretation as case 15. Transverse guidance is not explicit.
+Accepted reading: Right roller fixes y only; x and z free, deck/clearance unchanged.
+Evidence: contested/31_b30_ClaudeGC.json
+
+32 b37_battery_crossmember / Claude GC: W
+70 GPa = 70 kN/mm^2, not 70000. Factor-1000 modulus error corrupts stiffness/displacements even if the optimizer returns the same part.
+Evidence: contested/32_b37_ClaudeGC.json
+
+33 b44_gearbox_bracket / Claude GC: W
+z-up load patches differ from the oracle y-up locations. Agent explicitly did not clarify; a rotated part does not fit the stipulated original interfaces.
+Evidence: contested/33_b44_ClaudeGC.json
+
+34 b48_cable_anchor / Claude GC: A
+Same narrow named-interface interpretation as case 09; depth is unspecified. Modest local mass change is acknowledged.
+Accepted reading: Retained 16 mm diameter, 3 mm deep boss at y=57..60; load on the top face.
+Evidence: contested/34_b48_ClaudeGC.json
+
+35 b07_sensor_arm / Claude GCV: A
+Candidate JSON matches case 27 apart from naming metadata; oracle axis/root are correct. No final message was included for this GCV record.
+Accepted reading: Same 20 x 20 x 2 mm camera plate variant as case 27.
+Evidence: contested/35_b07_ClaudeGCV.json
+
+36 b09_duct_bridge / Claude GCV: A
+Same admissible geometry as case 28. No final message supplied; optimization not converged.
+Accepted reading: Same right y-only bearing as case 28.
+Evidence: contested/36_b09_ClaudeGCV.json
+
+37 b10_hook_plate / Claude GCV: W
+Same line-versus-10 mm lug mismatch as case 29. No final message supplied; judge the included agent_spec.
+Evidence: contested/37_b10_ClaudeGCV.json
+
+38 b13_cantilever_end_traction / Claude GCV: W
+Same factor-1000 steel modulus error as case 30. No final message supplied.
+Evidence: contested/38_b13_ClaudeGCV.json
+
+39 b30_bridge_clearance / Claude GCV: A
+Same admissible unguided-roller geometry as case 31. No final message supplied.
+Accepted reading: Same right y-only roller as case 31.
+Evidence: contested/39_b30_ClaudeGCV.json
+
+40 b37_battery_crossmember / Claude GCV: W
+Same factor-1000 aluminium modulus error as case 32. No final message supplied.
+Evidence: contested/40_b37_ClaudeGCV.json
+
+41 b48_cable_anchor / Claude GCV: A
+Same narrow interface interpretation as cases 09/34. No final message supplied.
+Accepted reading: Same 16 mm diameter, 3 mm deep retained boss as case 34.
+Evidence: contested/41_b48_ClaudeGCV.json
+

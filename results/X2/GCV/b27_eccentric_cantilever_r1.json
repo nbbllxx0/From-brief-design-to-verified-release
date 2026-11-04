@@ -1,0 +1,145 @@
+{
+ "task": "b27_eccentric_cantilever",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:33:07",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 102062,
+  "cached_input_tokens": 84480,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 711,
+  "reasoning_output_tokens": 193
+ },
+ "gc_wall_s": 26.680157500086352,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17667,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 136,
+  "reasoning_output_tokens": 116
+ },
+ "verify_wall_s": 6.641490200068802,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 309,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 847,
+  "input_tokens": 119729,
+  "cached_input_tokens": 84480
+ },
+ "wall_s": 33.321647700155154,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Cantilever with an eccentric end load",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_root",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Entire x=0 face fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "eccentric_end_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      35.0,
+      35.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -1000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 1 kN downward, shared across pad nodes at x=160, y=30..40, z=30..40 mm."
+   }
+  ],
+  "passive": [],
+  "description": "Cantilever along x; y up. Fully fixed x=0 face. Total 1000 N downward (-y) on x=160 pad spanning y=30..40 mm and z=30..40 mm.",
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 6.881621000124142,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (160, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,161 @@
+\chapter{Logs, replay and provenance}\label{ch:provenance}
+\chapterintro{Every session writes a log of everything that happened in it, by whom, and to which specification. This
+chapter describes the session folder, the four record types, the specification hash, the replay that re-runs a log
+without any language model, and the tool contract from Python.}
+
+\section{The session folder}\label{sec:folder}
+\index{session folder}
+The backend writes each workspace session to \code{sessions/}\meta{yyyymmdd-hhmmss}\code{/} in the repository root. A
+stand-alone MCP session or a script writes to the directory you give it. The layout is the same:
+
+\begin{table}[h]
+\caption{The session folder.}\label{tab:folder}
+\begin{fixtable}{@{}>{\raggedright\arraybackslash}p{0.26\linewidth}X@{}}
+Path & Contents \\ \midrule
+\code{session.jsonl} & The log: one JSON record per line (Section~\ref{sec:records}). \\
+\code{fields/} & The final density of every finished solve, \code{rho\_}\meta{job}\code{.npy}, as float16 (2 bytes per
+element). \tool{field_stats}, the surface view and the export read them. \\
+\code{exports/} & STL files and design reports. \\
+\code{renders/} & The PNG pictures made by \tool{render}, named by call number and view. \\
+\code{agent/}\meta{run}\code{/} & One folder per assistant run: the run's Codex event stream (\code{work/events.jsonl}),
+its standard error, its final message and, in Propose mode, the seed specification and the private session it worked
+in. \\
+\end{fixtable}
+\end{table}
+
+\section{Records}\label{sec:records}
+\index{session log!records}
+The log has four record types. The examples below are real records from the paper's agent session on brief b06
+(\code{results/X3/b06\_motor\_mount/session/session.jsonl}), reformatted and shortened.
+
+\paragraph{\code{session}} opens the log: time, software version, schema version, a session id and the tool profile.
+\begin{jsoncode}
+{"type": "session", "t": "2026-10-30T12:19:37.880+00:00", "agentto": "0.0.1",
+ "schema": "agentto.spec/v0", "id": "f5f023ceb534", "profile": "full"}
+\end{jsoncode}
+
+\paragraph{\code{call}} records one tool call: its sequence number, time, actor, tool, arguments, whether it succeeded,
+its result (or error), the hash of the specification after the call, and its duration. Binary payloads such as PNG
+images are dropped from the log; their hashes are kept.
+\begin{jsoncode}
+{"type": "call", "seq": 2, "t": "2026-10-30T12:20:00.035+00:00", "actor": "agent",
+ "tool": "set_params",
+ "args": {"material_name": "Aluminium 6061", "E": 69000, "nu": 0.33, "h": 1,
+          "volume_fraction": 0.2},
+ "ok": true, "spec_hash": "be59dc4a6544fc93", "dt_s": 0.0001,
+ "result": {"changed": ["E", "nu", "material_name", "volume_fraction", "h"]}}
+\end{jsoncode}
+
+\paragraph{\code{result}} records a solve that finished after its call returned: the job, its grid and solver, whether
+it was warm-started and from which call, iterations, compliance, volume, compute and wall time, the certificate
+verdict and its six checks, and the hash of the specification it solved. This one is the cold sketch; note that
+\code{spill\_monitored} is false, so it is not certified.
+\begin{jsoncode}
+{"type": "result", "seq": 25, "job": "39cd686c8342",
+ "result": {"status": "converged", "h": 2.0, "grid": [80, 30, 60],
+   "n_elem": 144000, "solver": "mg64", "warm_used": false, "iterations": 80,
+   "compliance_phys": 3.9057077848391675, "volume": 0.199999999999788,
+   "compute_s": 6.29, "wall_s": 6.67, "certified": false,
+   "checks": {"converged": true, "state_solve_accepted": true,
+              "no_vram_spill": true, "spill_monitored": false,
+              "volume_ok": true, "passive_exact": true},
+   "release_rung": false, "spec_hash": "c9bd97c53d933b5b"}}
+\end{jsoncode}
+
+\paragraph{\code{answer}} records the answer to a clarification question (who answered, which option or none, and any
+comment) and, when previews were computed, their summaries.
+\begin{jsoncode}
+{"type": "answer", "seq": 3, "t": "2026-10-30T12:20:00.065+00:00",
+ "answer": {"choice": null, "label": null, "by": "oracle",
+            "comment": "None of these is what the brief means."}}
+\end{jsoncode}
+
+The actor is \code{user} for workspace edits, \code{agent} for the assistant and attached MCP clients, \code{system} for
+a seed, and \code{script} for Python calls unless you pass another name. A workspace call also carries a
+\code{meta} field with its origin and a human-readable label (for example ``accept 3 agent cards''); replay ignores it.
+
+\section{The specification hash}\label{sec:hash}
+\index{specification hash}
+\code{spec\_hash} is the first 16 hexadecimal digits of the SHA-256 of the specification in canonical JSON (sorted keys,
+no spaces). A schema-valid specification is first normalized through the model, so default values count and two
+documents that differ only in omitted defaults hash the same. Every call records the hash after it; every solve records
+the hash it solved; every report records the hash of its specification. This is how the workspace knows that a result
+is stale, and how anyone can check later that a released design belongs to a given specification.
+
+The report also records the SHA-256 of \code{session.jsonl} at the moment of export, which ties the release to the full
+history that produced it.
+
+\section{Replay without a language model}\label{sec:replay}
+\index{replay}
+\begin{pycode}
+import sys; sys.path.insert(0, "src")
+from agentto.tools import replay
+print(replay("sessions/20261031-101500/session.jsonl", root="runs/replayed"))
+\end{pycode}
+
+Replay starts a fresh session and re-runs every recorded call in order, with the recorded arguments and actors. It
+checks:
+\begin{itemize}
+  \item every call's success flag and the specification hash after it;
+  \item every \tool{render} picture's hash and every exported STL's hash;
+  \item every clarification, by reusing the recorded answer instead of asking;
+  \item every finished solve, which must reproduce its status, iteration count, certificate verdict, warm start and
+  compliance, bit for bit.
+\end{itemize}
+Calls whose outcome depends on timing (\tool{status}, \tool{wait_job}, \tool{cancel}) are skipped, as are solves that
+were cancelled or superseded. The result lists the number of calls, the solves replayed, the calls skipped, every
+mismatch, and the final specification hash:
+
+\begin{jsoncode}
+{"ok": true, "calls": 36, "solves_replayed": 5, "skipped": 3, "mismatches": [],
+ "final_spec_hash": "c9bd97c53d933b5b"}
+\end{jsoncode}
+(the replay record of the b06 session above).
+
+\begin{notebox}[Why the solves reproduce bit for bit]
+The upstream solver assembles its coarsest multigrid matrix with atomic scatter-add operations, whose reduction order
+varies from run to run, and at the sharpest projection a difference of $10^{-12}$ can flip single elements of the final
+design. Sessions use a deterministic coarsest assembly with a fixed reduction order instead. Each solve also records
+the coarse-level policy it used, and replay re-runs it with that policy.
+\end{notebox}
+
+\begin{evidencebox}
+All 15 complete agent sessions of the paper's study X3, including the one that ended in a refusal, replayed with no
+mismatch \claim{C1.4}. Replay checks that the recorded decisions reproduce the recorded results. It does not show that
+a fresh language-model run would make the same decisions, and it does not check that the decisions matched the
+engineer's intent.
+\end{evidencebox}
+
+\section{The tool contract from Python}\label{sec:python}
+\index{Session@\code{Session}}
+Scripts use the same contract. Each \code{call} is validated, applied and logged exactly as a workspace edit or an agent
+call would be, and returns \code{\{"ok", "seq", "spec\_hash", "result"\}} or an \code{"error"} in place of the result.
+
+\needspace{19\baselineskip}
+\begin{pycode}
+import sys; sys.path.insert(0, "src")
+from agentto.tools import Session
+
+if __name__ == "__main__":                     # the GPU worker is a spawned process
+    s = Session("runs/demo", profile="full")   # writes runs/demo/session.jsonl
+    s.call("new_spec", {"name": "bracket", "size": [100, 50, 50]})
+    s.call("set_params", {"volume_fraction": 0.3, "cells_short_edge": 20})
+    s.call("add_support", {"id": "wall", "region": {"kind": "face", "face": "x-"}})
+    s.call("add_load", {"id": "tip", "force": [0, -2000, 0],
+                        "region": {"kind": "patch", "face": "x+",
+                                   "center": [25, 25], "size": [10, 20]}})
+    print(s.call("validate_spec"))
+    print(s.call("ladder"))
+    print(s.call("solve", {"rung": "sketch"}))  # blocks until the sketch is done
+    s.runner.close()                            # stop the GPU worker
+\end{pycode}
+
+\begin{warnbox}[A solve needs a complete specification]
+\tool{new_spec} creates a draft without a volume fraction or a resolution, and the schema requires both. Until
+\tool{set_params} supplies them, \tool{validate_spec} returns schema errors and \tool{solve} is refused with
+``spec is not complete/valid''.
+\end{warnbox}
+
+A \code{Session} without a directory (\code{Session(None)}) keeps no log and no density fields, which is enough for
+building and validating specifications in a test. A script that solves must protect its entry point, as above,
+because the GPU worker is started as a spawned process that re-imports the script.

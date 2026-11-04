@@ -1,0 +1,1010 @@
+[
+ {
+  "task": "b01_cantilever_block",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 967,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 25
+   },
+   "actions": 967,
+   "s": 304.5,
+   "lines": 24,
+   "chars": 953,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 542,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 12
+   },
+   "actions": 542,
+   "s": 168.0,
+   "chars": 528
+  },
+  "B": {
+   "ops": {
+    "K": 38,
+    "P": 20,
+    "B": 36,
+    "H": 18,
+    "M": 18
+   },
+   "actions": 56,
+   "s": 67.7
+  },
+  "C_typed": {
+   "ops": {
+    "K": 372,
+    "P": 4,
+    "B": 8,
+    "H": 2,
+    "M": 11
+   },
+   "actions": 376,
+   "s": 125.0
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 4,
+    "B": 8,
+    "H": 2,
+    "M": 10
+   },
+   "actions": 7,
+   "s": 20.3
+  },
+  "agent_wait_s": 20.3,
+  "questions": 0,
+  "cards": 7,
+  "gc_correct": true
+ },
+ {
+  "task": "b02_mbb_half",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 995,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 26
+   },
+   "actions": 995,
+   "s": 313.7,
+   "lines": 25,
+   "chars": 981,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 679,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 14
+   },
+   "actions": 679,
+   "s": 209.0,
+   "chars": 665
+  },
+  "B": {
+   "ops": {
+    "K": 67,
+    "P": 28,
+    "B": 56,
+    "H": 26,
+    "M": 26
+   },
+   "actions": 95,
+   "s": 100.7
+  },
+  "C_typed": {
+   "ops": {
+    "K": 471,
+    "P": 4,
+    "B": 8,
+    "H": 2,
+    "M": 12
+   },
+   "actions": 475,
+   "s": 154.1
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 4,
+    "B": 8,
+    "H": 2,
+    "M": 11
+   },
+   "actions": 7,
+   "s": 21.7
+  },
+  "agent_wait_s": 36.8,
+  "questions": 0,
+  "cards": 8,
+  "gc_correct": true
+ },
+ {
+  "task": "b04_torsion_shaft",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 1110,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 27
+   },
+   "actions": 1110,
+   "s": 347.2,
+   "lines": 26,
+   "chars": 1096,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 664,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 13
+   },
+   "actions": 664,
+   "s": 203.5,
+   "chars": 650
+  },
+  "B": {
+   "ops": {
+    "K": 67,
+    "P": 29,
+    "B": 54,
+    "H": 34,
+    "M": 28
+   },
+   "actions": 94,
+   "s": 107.5
+  },
+  "C_typed": {
+   "ops": {
+    "K": 478,
+    "P": 5,
+    "B": 10,
+    "H": 2,
+    "M": 13
+   },
+   "actions": 483,
+   "s": 158.7
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 5,
+    "B": 10,
+    "H": 2,
+    "M": 12
+   },
+   "actions": 8,
+   "s": 24.3
+  },
+  "agent_wait_s": 46.7,
+  "questions": 1,
+  "cards": 8,
+  "gc_correct": true
+ },
+ {
+  "task": "b05_l_bracket",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 1976,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 48
+   },
+   "actions": 1976,
+   "s": 618.1,
+   "lines": 47,
+   "chars": 2078,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 698,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 13
+   },
+   "actions": 698,
+   "s": 213.0,
+   "chars": 684
+  },
+  "B": {
+   "ops": {
+    "K": 60,
+    "P": 25,
+    "B": 50,
+    "H": 28,
+    "M": 25
+   },
+   "actions": 85,
+   "s": 94.2
+  },
+  "C_typed": {
+   "ops": {
+    "K": 447,
+    "P": 5,
+    "B": 10,
+    "H": 2,
+    "M": 13
+   },
+   "actions": 452,
+   "s": 150.0
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 5,
+    "B": 10,
+    "H": 2,
+    "M": 12
+   },
+   "actions": 8,
+   "s": 24.3
+  },
+  "agent_wait_s": 50.9,
+  "questions": 1,
+  "cards": 8,
+  "gc_correct": true
+ },
+ {
+  "task": "b06_motor_mount",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 2669,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 56
+   },
+   "actions": 2669,
+   "s": 822.9,
+   "lines": 55,
+   "chars": 2771,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 1608,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 21
+   },
+   "actions": 1608,
+   "s": 478.6,
+   "chars": 1594
+  },
+  "B": {
+   "ops": {
+    "K": 245,
+    "P": 104,
+    "B": 204,
+    "H": 110,
+    "M": 94
+   },
+   "actions": 347,
+   "s": 374.3
+  },
+  "C_typed": {
+   "ops": {
+    "K": 528,
+    "P": 8,
+    "B": 16,
+    "H": 2,
+    "M": 23
+   },
+   "actions": 536,
+   "s": 190.1
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 8,
+    "B": 16,
+    "H": 2,
+    "M": 22
+   },
+   "actions": 11,
+   "s": 41.7
+  },
+  "agent_wait_s": 81.0,
+  "questions": 4,
+  "cards": 15,
+  "gc_correct": true
+ },
+ {
+  "task": "b11_cantilever_line_load",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 938,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 25
+   },
+   "actions": 938,
+   "s": 296.4,
+   "lines": 24,
+   "chars": 924,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 522,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 12
+   },
+   "actions": 522,
+   "s": 162.4,
+   "chars": 508
+  },
+  "B": {
+   "ops": {
+    "K": 33,
+    "P": 21,
+    "B": 38,
+    "H": 16,
+    "M": 18
+   },
+   "actions": 52,
+   "s": 66.8
+  },
+  "C_typed": {
+   "ops": {
+    "K": 300,
+    "P": 4,
+    "B": 8,
+    "H": 2,
+    "M": 11
+   },
+   "actions": 304,
+   "s": 104.9
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 4,
+    "B": 8,
+    "H": 2,
+    "M": 10
+   },
+   "actions": 7,
+   "s": 20.3
+  },
+  "agent_wait_s": 21.0,
+  "questions": 0,
+  "cards": 7,
+  "gc_correct": true
+ },
+ {
+  "task": "b17_arch_bridge",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 1950,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 49
+   },
+   "actions": 1950,
+   "s": 612.1,
+   "lines": 48,
+   "chars": 2052,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 706,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 14
+   },
+   "actions": 706,
+   "s": 216.6,
+   "chars": 692
+  },
+  "B": {
+   "ops": {
+    "K": 44,
+    "P": 25,
+    "B": 50,
+    "H": 20,
+    "M": 24
+   },
+   "actions": 69,
+   "s": 85.2
+  },
+  "C_typed": {
+   "ops": {
+    "K": 378,
+    "P": 5,
+    "B": 10,
+    "H": 2,
+    "M": 14
+   },
+   "actions": 383,
+   "s": 132.0
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 5,
+    "B": 10,
+    "H": 2,
+    "M": 13
+   },
+   "actions": 8,
+   "s": 25.7
+  },
+  "agent_wait_s": 32.9,
+  "questions": 1,
+  "cards": 9,
+  "gc_correct": true
+ },
+ {
+  "task": "b19_engine_bracket",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 2278,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 51
+   },
+   "actions": 2278,
+   "s": 706.7,
+   "lines": 50,
+   "chars": 2380,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 1170,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 18
+   },
+   "actions": 1170,
+   "s": 351.9,
+   "chars": 1156
+  },
+  "B": {
+   "ops": {
+    "K": 195,
+    "P": 77,
+    "B": 150,
+    "H": 80,
+    "M": 67
+   },
+   "actions": 270,
+   "s": 276.8
+  },
+  "C_typed": {
+   "ops": {
+    "K": 550,
+    "P": 7,
+    "B": 14,
+    "H": 2,
+    "M": 18
+   },
+   "actions": 557,
+   "s": 188.2
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 7,
+    "B": 14,
+    "H": 2,
+    "M": 17
+   },
+   "actions": 10,
+   "s": 33.7
+  },
+  "agent_wait_s": 47.3,
+  "questions": 3,
+  "cards": 11,
+  "gc_correct": true
+ },
+ {
+  "task": "b25_cantilever_metres",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 963,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 25
+   },
+   "actions": 963,
+   "s": 303.4,
+   "lines": 24,
+   "chars": 949,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 639,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 14
+   },
+   "actions": 639,
+   "s": 197.8,
+   "chars": 625
+  },
+  "B": {
+   "ops": {
+    "K": 79,
+    "P": 30,
+    "B": 56,
+    "H": 28,
+    "M": 26
+   },
+   "actions": 107,
+   "s": 107.0
+  },
+  "C_typed": {
+   "ops": {
+    "K": 350,
+    "P": 5,
+    "B": 10,
+    "H": 2,
+    "M": 12
+   },
+   "actions": 355,
+   "s": 121.5
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 5,
+    "B": 10,
+    "H": 2,
+    "M": 11
+   },
+   "actions": 8,
+   "s": 23.0
+  },
+  "agent_wait_s": 37.8,
+  "questions": 1,
+  "cards": 7,
+  "gc_correct": true
+ },
+ {
+  "task": "b31_pillow_block",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 2078,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 49
+   },
+   "actions": 2078,
+   "s": 648.0,
+   "lines": 48,
+   "chars": 2180,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 937,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 15
+   },
+   "actions": 937,
+   "s": 282.6,
+   "chars": 923
+  },
+  "B": {
+   "ops": {
+    "K": 109,
+    "P": 48,
+    "B": 92,
+    "H": 46,
+    "M": 42
+   },
+   "actions": 155,
+   "s": 167.6
+  },
+  "C_typed": {
+   "ops": {
+    "K": 442,
+    "P": 10,
+    "B": 20,
+    "H": 2,
+    "M": 19
+   },
+   "actions": 452,
+   "s": 163.2
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 10,
+    "B": 20,
+    "H": 2,
+    "M": 18
+   },
+   "actions": 13,
+   "s": 38.9
+  },
+  "agent_wait_s": 144.7,
+  "questions": 6,
+  "cards": 9,
+  "gc_correct": true
+ },
+ {
+  "task": "b35_padeye",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 2005,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 49
+   },
+   "actions": 2005,
+   "s": 627.6,
+   "lines": 48,
+   "chars": 2107,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 680,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 13
+   },
+   "actions": 680,
+   "s": 208.0,
+   "chars": 666
+  },
+  "B": {
+   "ops": {
+    "K": 42,
+    "P": 26,
+    "B": 48,
+    "H": 20,
+    "M": 23
+   },
+   "actions": 66,
+   "s": 84.2
+  },
+  "C_typed": {
+   "ops": {
+    "K": 373,
+    "P": 6,
+    "B": 12,
+    "H": 2,
+    "M": 14
+   },
+   "actions": 379,
+   "s": 131.9
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 6,
+    "B": 12,
+    "H": 2,
+    "M": 13
+   },
+   "actions": 9,
+   "s": 27.0
+  },
+  "agent_wait_s": 62.2,
+  "questions": 2,
+  "cards": 8,
+  "gc_correct": true
+ },
+ {
+  "task": "b40_crank_arm",
+  "expected": "solve",
+  "A1": {
+   "ops": {
+    "K": 2004,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 48
+   },
+   "actions": 2004,
+   "s": 625.9,
+   "lines": 47,
+   "chars": 2106,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 823,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 14
+   },
+   "actions": 823,
+   "s": 249.3,
+   "chars": 809
+  },
+  "B": {
+   "ops": {
+    "K": 91,
+    "P": 33,
+    "B": 66,
+    "H": 34,
+    "M": 31
+   },
+   "actions": 124,
+   "s": 123.8
+  },
+  "C_typed": {
+   "ops": {
+    "K": 498,
+    "P": 5,
+    "B": 10,
+    "H": 2,
+    "M": 13
+   },
+   "actions": 503,
+   "s": 164.3
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 5,
+    "B": 10,
+    "H": 2,
+    "M": 12
+   },
+   "actions": 8,
+   "s": 24.3
+  },
+  "agent_wait_s": 51.6,
+  "questions": 1,
+  "cards": 8,
+  "gc_correct": true
+ },
+ {
+  "task": "b44_gearbox_bracket",
+  "expected": "clarify",
+  "A1": {
+   "ops": {
+    "K": 1110,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 27
+   },
+   "actions": 1110,
+   "s": 347.2,
+   "lines": 26,
+   "chars": 1096,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 666,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 13
+   },
+   "actions": 666,
+   "s": 204.0,
+   "chars": 652
+  },
+  "B": {
+   "ops": {
+    "K": 67,
+    "P": 29,
+    "B": 54,
+    "H": 34,
+    "M": 28
+   },
+   "actions": 94,
+   "s": 107.5
+  },
+  "C_typed": {
+   "ops": {
+    "K": 371,
+    "P": 6,
+    "B": 12,
+    "H": 2,
+    "M": 14
+   },
+   "actions": 377,
+   "s": 131.4
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 6,
+    "B": 12,
+    "H": 2,
+    "M": 13
+   },
+   "actions": 9,
+   "s": 27.0
+  },
+  "agent_wait_s": 73.4,
+  "questions": 2,
+  "cards": 8,
+  "gc_correct": true
+ },
+ {
+  "task": "b47_camera_mount",
+  "expected": "clarify",
+  "A1": {
+   "ops": {
+    "K": 964,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 25
+   },
+   "actions": 964,
+   "s": 303.7,
+   "lines": 24,
+   "chars": 950,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 606,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 13
+   },
+   "actions": 606,
+   "s": 187.2,
+   "chars": 592
+  },
+  "B": {
+   "ops": {
+    "K": 75,
+    "P": 27,
+    "B": 50,
+    "H": 30,
+    "M": 25
+   },
+   "actions": 100,
+   "s": 101.5
+  },
+  "C_typed": {
+   "ops": {
+    "K": 280,
+    "P": 7,
+    "B": 14,
+    "H": 2,
+    "M": 14
+   },
+   "actions": 287,
+   "s": 107.2
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 7,
+    "B": 14,
+    "H": 2,
+    "M": 13
+   },
+   "actions": 10,
+   "s": 28.3
+  },
+  "agent_wait_s": 43.8,
+  "questions": 3,
+  "cards": 7,
+  "gc_correct": true
+ },
+ {
+  "task": "b49_hinged_arm",
+  "expected": "refuse",
+  "A1": {
+   "ops": {
+    "K": 994,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 25
+   },
+   "actions": 994,
+   "s": 312.1,
+   "lines": 24,
+   "chars": 980,
+   "setup_verified": true
+  },
+  "A2": {
+   "ops": {
+    "K": 553,
+    "P": 0,
+    "B": 0,
+    "H": 0,
+    "M": 12
+   },
+   "actions": 553,
+   "s": 171.0,
+   "chars": 539
+  },
+  "B": {
+   "ops": {
+    "K": 51,
+    "P": 22,
+    "B": 44,
+    "H": 24,
+    "M": 21
+   },
+   "actions": 73,
+   "s": 80.8,
+   "note": "includes release and export, which a refused task never reaches"
+  },
+  "C_typed": {
+   "ops": {
+    "K": 384,
+    "P": 4,
+    "B": 8,
+    "H": 2,
+    "M": 11
+   },
+   "actions": 388,
+   "s": 128.4,
+   "note": "includes release and export, which a refused task never reaches"
+  },
+  "C_pasted": {
+   "ops": {
+    "K": 3,
+    "P": 4,
+    "B": 8,
+    "H": 2,
+    "M": 10
+   },
+   "actions": 7,
+   "s": 20.3,
+   "note": "includes release and export, which a refused task never reaches"
+  },
+  "agent_wait_s": 25.7,
+  "questions": 0,
+  "cards": 7,
+  "gc_correct": true
+ }
+]

@@ -1,0 +1,187 @@
+{
+ "task": "b12_wheel",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:21:13",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 0,
+ "retry_errors": [],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 9.619676699861884,
+ "usage": {
+  "input_tokens": 19971,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 574,
+  "reasoning_output_tokens": 55
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Wheel problem\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [100, 50, 100]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.2,\n  \"supports\": [\n    {\n      \"id\": \"corner_xmin_zmin\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [2.5, 2.5],\n        \"size\": [5, 5]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"corner_xmax_zmin\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [97.5, 2.5],\n        \"size\": [5, 5]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"corner_xmin_zmax\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [2.5, 97.5],\n        \"size\": [5, 5]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"corner_xmax_zmax\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [97.5, 97.5],\n        \"size\": [5, 5]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"central_downward_load\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [50, 50],\n        \"size\": [10, 10]\n      },\n      \"force\": [0, -2000, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Wheel problem",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100,
+    50,
+    100
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "corner_xmin_zmin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      2.5
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "corner_xmax_zmin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      97.5,
+      2.5
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "corner_xmin_zmax",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      2.5,
+      97.5
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "corner_xmax_zmax",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      97.5,
+      97.5
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "central_downward_load",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      50,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     -2000,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "resolution": {
+   "h": 1
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 9.676350299967453,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 50, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

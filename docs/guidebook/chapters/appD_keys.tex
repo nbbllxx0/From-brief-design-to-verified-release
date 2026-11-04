@@ -1,0 +1,34 @@
+\chapter{Keyboard, mouse and command palette}\label{app:keys}
+\chapterintro{Shortcuts of the workspace. The key table is generated from the keyboard map in
+\code{web/src/components/Overlays.tsx}, the same list that \keycap{?} shows.}
+
+\section{Keys}
+Shortcuts are off while you type in a field.
+\input{generated/keys}
+
+\section{Mouse}
+\begin{reftable}{@{}>{\raggedright\arraybackslash}p{0.38\linewidth}X@{}}
+Action & Effect \\ \midrule
+Left-drag in the viewport & Orbit \\
+Right-drag & Pan \\
+Wheel & Zoom \\
+Click a face of the orientation cube & Look along that axis \\
+Click an item (viewport or tree) & Select it; the inspector shows its values \\
+Click a face with a tool armed & Add a support, load, keep-in or keep-out region there \\
+Hover a timeline record & Show its time and details \\
+Hover a proposal card & Draw its ghost in the viewport \\
+\end{reftable}
+
+\section{Command palette}
+\keycap{Ctrl}+\keycap{K} opens the palette (Figure~\ref{fig:palette}). Type to filter, move with the arrow keys and
+press \keycap{Enter} to run a command; \keycap{Esc} closes it. Only commands that can run now are listed: run any rung,
+\gui{Optimize release} (once the rung below the release has converged), \gui{Stop the running solve}, \gui{Show the
+surface of the last design}, \gui{Export STL and report}, \gui{Undo}, \gui{Redo}, the five tools, and the theme switch.
+
+\begin{figure}[h]
+\centering
+\shot[0.40\linewidth]{16_keymap.png}\hfill
+\shot[0.46\linewidth]{17_palette.png}
+\caption{Left: the keyboard map (\keycap{?}). Right: the command palette (\keycap{Ctrl}+\keycap{K}).}
+\label{fig:palette}
+\end{figure}

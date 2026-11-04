@@ -1,0 +1,152 @@
+{
+ "task": "b37_battery_crossmember",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:25:03",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 0,
+ "retry_errors": [],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 7.79322319990024,
+ "usage": {
+  "input_tokens": 20027,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 468,
+  "reasoning_output_tokens": 56
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"battery_tray_crossmember\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"kN\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [600, 60, 80]\n  },\n  \"material\": {\n    \"name\": \"aluminium 6082-T6\",\n    \"E\": 70,\n    \"nu\": 0.33\n  },\n  \"volume_fraction\": 0.2,\n  \"supports\": [\n    {\n      \"id\": \"left_side_rail\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"right_side_rail\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x+\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"battery_foot_1\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y+\",\n        \"center\": [200, 40],\n        \"size\": [40, 40]\n      },\n      \"force\": [0, -1.5, 0],\n      \"distribution\": \"uniform_nodes\"\n    },\n    {\n      \"id\": \"battery_foot_2\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y+\",\n        \"center\": [400, 40],\n        \"size\": [40, 40]\n      },\n      \"force\": [0, -1.5, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 2\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "battery_tray_crossmember",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    600,
+    60,
+    80
+   ]
+  },
+  "material": {
+   "name": "aluminium 6082-T6",
+   "E": 70,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "left_side_rail",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "right_side_rail",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "battery_foot_1",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      200,
+      40
+     ],
+     "size": [
+      40,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -1.5,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   },
+   {
+    "id": "battery_foot_2",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      400,
+      40
+     ],
+     "size": [
+      40,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -1.5,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "resolution": {
+   "h": 2
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.849384499946609,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (300, 30, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

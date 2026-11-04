@@ -1,0 +1,277 @@
+{
+ "task": "b14_cube_torsion",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:34:28",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Use mm and N, as given by 100 mm, 1 mm and 18 N m in the brief; torque converts to 18000 N mm."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "100 mm cube in x,y,z, z up. Tool origin at minimum corner yields [0,100]^3."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated. Isotropic linear elasticity with E=210000 N/mm^2 and nu=0.30 is assumed because grade and elastic constants are unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.15."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm, 100 x 100 x 100 elements."
+   },
+   {
+    "key": "support:bottom_clamp",
+    "source": "assumed",
+    "note": "Brief states full bottom face z=0 bolted down. Idealize this as a full-face clamp fixing x,y,z translations; bolt details and compliance are unspecified."
+   },
+   {
+    "key": "load:pad_y_min",
+    "source": "derived",
+    "note": "Stated 10x10 mm pad centered along top y=0 edge and flush: x=[45,55], y=[0,10], z=100; centroid radius 45 mm. Equal F=18000/(4*45)=100 N. Force +x produces +z torque."
+   },
+   {
+    "key": "load:pad_x_max",
+    "source": "derived",
+    "note": "Stated 10x10 mm pad centered along top x=100 edge and flush: x=[90,100], y=[45,55], z=100; centroid radius 45 mm. Equal F=18000/(4*45)=100 N. Force +y produces +z torque."
+   },
+   {
+    "key": "load:pad_y_max",
+    "source": "derived",
+    "note": "Stated 10x10 mm pad centered along top y=100 edge and flush: x=[45,55], y=[90,100], z=100; centroid radius 45 mm. Equal F=18000/(4*45)=100 N. Force -x produces +z torque."
+   },
+   {
+    "key": "load:pad_x_min",
+    "source": "derived",
+    "note": "Stated 10x10 mm pad centered along top x=0 edge and flush: x=[0,10], y=[45,55], z=100; centroid radius 45 mm. Equal F=18000/(4*45)=100 N. Force -y produces +z torque. Pad loads distributed equally among selected nodes; no passive pad thickness is introduced because none is specified."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "support:bottom_clamp"
+  ]
+ },
+ "n_tool_calls": 21,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "add_load",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "list_sources",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b14_cube_torsion_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 43.61641940008849,
+ "usage": {
+  "input_tokens": 106796,
+  "cached_input_tokens": 96128,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1638,
+  "reasoning_output_tokens": 248
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Assumptions: isotropic steel with E = 210 GPa and \u03bd = 0.30; fully clamped bottom; pads modeled as surface loads without passive volumes. Four 100 N forces produce +18 N\u00b7m. Validation passed, render confirmed placement, and every item is source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Block in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    100.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bottom_clamp",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full bottom face z=0 bolted down, modeled as fixed in all three translations."
+   }
+  ],
+  "loads": [
+   {
+    "id": "pad_y_min",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50.0,
+      5.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     100.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top south edge midpoint, flush y=0. +x force contributes +4500 N mm about cube center."
+   },
+   {
+    "id": "pad_x_max",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      95.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top east edge midpoint, flush x=100. +y force contributes +4500 N mm about cube center."
+   },
+   {
+    "id": "pad_y_max",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50.0,
+      95.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -100.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top north edge midpoint, flush y=100. -x force contributes +4500 N mm about cube center."
+   },
+   {
+    "id": "pad_x_min",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      5.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top west edge midpoint, flush x=0. -y force contributes +4500 N mm about cube center. All four forces sum to zero."
+   }
+  ],
+  "passive": [],
+  "description": "100 mm cube, z up, fully fixed bottom face. Four 10 x 10 mm top-face traction patches flush with the top edges, carrying equal 100 N tangential forces for net +18 N m torque about z. Linear isotropic elastic steel; no additional passive regions.",
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 43.84744519996457,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

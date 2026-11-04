@@ -1,0 +1,149 @@
+{
+ "task": "b40_crank_arm",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 477.2431067000143,
+ "usage": {
+  "input_tokens": 1179327,
+  "cached_input_tokens": 1134080,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2552,
+  "reasoning_output_tokens": 288
+ },
+ "returncode": 0,
+ "final": "DONE, 9417ebd3ee8a, compliance 228.1788876294472 N\u00b7mm",
+ "n_tool_calls": 32,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "ladder",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "field_stats",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "field_stats",
+  "export_stl",
+  "export_report"
+ ],
+ "questions": 0,
+ "stages": {
+  "spec_s": 17.304999828338623,
+  "solve_h2.0": {
+   "wall_s": 32.01100015640259,
+   "compute_s": 30.786335700191557,
+   "iterations": 76,
+   "n_elem": 27000,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h1.0": {
+   "wall_s": 34.14199995994568,
+   "compute_s": 33.928227798314765,
+   "iterations": 65,
+   "n_elem": 216000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.5": {
+   "wall_s": 64.75300002098083,
+   "compute_s": 64.31325400038622,
+   "iterations": 65,
+   "n_elem": 1728000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.25": {
+   "wall_s": 300.18300008773804,
+   "compute_s": 298.3488100003451,
+   "iterations": 61,
+   "n_elem": 13824000,
+   "warm": true,
+   "status": "converged",
+   "certified": true
+  },
+  "export_s": 1.4088,
+  "total_s": 463.19599986076355
+ },
+ "released": true,
+ "exports": [
+  {
+   "triangles": 888460,
+   "bytes": 44423084,
+   "sha256": "14990bb9ab7fc8a7f7025187a4b2668e438d7b1d9ddc76372a6a615f61b39bb6",
+   "path": "results\\X3\\b40_crank_arm\\session\\exports\\Crank_arm_aluminium_7075_9417ebd3ee8a.stl",
+   "pool": 1,
+   "vertices": 444232,
+   "t_surface_s": 0.724,
+   "t_write_s": 0.239,
+   "mesh": {
+    "closed": true,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "volume": 69029.86995841622
+   },
+   "job": "9417ebd3ee8a",
+   "certified": true,
+   "released": true
+  },
+  {
+   "job": "9417ebd3ee8a",
+   "certified": true,
+   "json": "results\\X3\\b40_crank_arm\\session\\exports\\Crank_arm_aluminium_7075_9417ebd3ee8a_report.json",
+   "markdown": "results\\X3\\b40_crank_arm\\session\\exports\\Crank_arm_aluminium_7075_9417ebd3ee8a_report.md",
+   "stl": "results\\X3\\b40_crank_arm\\session\\exports\\Crank_arm_aluminium_7075_9417ebd3ee8a.stl"
+  }
+ ],
+ "release_spec_match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (180, 40, 30)"
+  ],
+  "matched": "intended"
+ },
+ "replay": {
+  "ok": true,
+  "calls": 32,
+  "solves_replayed": 4,
+  "skipped": 15,
+  "mismatches": [],
+  "final_spec_hash": "c22f5b0738fe4e94"
+ }
+}

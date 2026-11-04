@@ -1,0 +1,673 @@
+{
+ "$defs": {
+  "BoxDomain": {
+   "additionalProperties": false,
+   "properties": {
+    "kind": {
+     "const": "box",
+     "default": "box",
+     "title": "Kind",
+     "type": "string"
+    },
+    "size": {
+     "maxItems": 3,
+     "minItems": 3,
+     "prefixItems": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      }
+     ],
+     "title": "Size",
+     "type": "array"
+    }
+   },
+   "required": [
+    "size"
+   ],
+   "title": "BoxDomain",
+   "type": "object"
+  },
+  "BoxRegion": {
+   "additionalProperties": false,
+   "properties": {
+    "kind": {
+     "const": "box",
+     "default": "box",
+     "title": "Kind",
+     "type": "string"
+    },
+    "min": {
+     "maxItems": 3,
+     "minItems": 3,
+     "prefixItems": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      }
+     ],
+     "title": "Min",
+     "type": "array"
+    },
+    "max": {
+     "maxItems": 3,
+     "minItems": 3,
+     "prefixItems": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      }
+     ],
+     "title": "Max",
+     "type": "array"
+    }
+   },
+   "required": [
+    "min",
+    "max"
+   ],
+   "title": "BoxRegion",
+   "type": "object"
+  },
+  "CylinderRegion": {
+   "additionalProperties": false,
+   "description": "Solid circular cylinder: axis direction, a point on the axis, radius and [start, end] along the axis.",
+   "properties": {
+    "kind": {
+     "const": "cylinder",
+     "default": "cylinder",
+     "title": "Kind",
+     "type": "string"
+    },
+    "axis": {
+     "enum": [
+      "x",
+      "y",
+      "z"
+     ],
+     "title": "Axis",
+     "type": "string"
+    },
+    "center": {
+     "description": "axis position in the other two axes (increasing axis order)",
+     "maxItems": 2,
+     "minItems": 2,
+     "prefixItems": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      }
+     ],
+     "title": "Center",
+     "type": "array"
+    },
+    "radius": {
+     "exclusiveMinimum": 0,
+     "title": "Radius",
+     "type": "number"
+    },
+    "span": {
+     "maxItems": 2,
+     "minItems": 2,
+     "prefixItems": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      }
+     ],
+     "title": "Span",
+     "type": "array"
+    }
+   },
+   "required": [
+    "axis",
+    "center",
+    "radius",
+    "span"
+   ],
+   "title": "CylinderRegion",
+   "type": "object"
+  },
+  "EdgeRegion": {
+   "additionalProperties": false,
+   "description": "Grid line parallel to `axis`, through the point `at` in the other two axes (increasing axis order).",
+   "properties": {
+    "kind": {
+     "const": "edge",
+     "default": "edge",
+     "title": "Kind",
+     "type": "string"
+    },
+    "axis": {
+     "enum": [
+      "x",
+      "y",
+      "z"
+     ],
+     "title": "Axis",
+     "type": "string"
+    },
+    "at": {
+     "maxItems": 2,
+     "minItems": 2,
+     "prefixItems": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      }
+     ],
+     "title": "At",
+     "type": "array"
+    },
+    "span": {
+     "anyOf": [
+      {
+       "maxItems": 2,
+       "minItems": 2,
+       "prefixItems": [
+        {
+         "type": "number"
+        },
+        {
+         "type": "number"
+        }
+       ],
+       "type": "array"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "optional [start, end] along the axis; default: full length",
+     "title": "Span"
+    }
+   },
+   "required": [
+    "axis",
+    "at"
+   ],
+   "title": "EdgeRegion",
+   "type": "object"
+  },
+  "FaceRegion": {
+   "additionalProperties": false,
+   "properties": {
+    "kind": {
+     "const": "face",
+     "default": "face",
+     "title": "Kind",
+     "type": "string"
+    },
+    "face": {
+     "enum": [
+      "x-",
+      "x+",
+      "y-",
+      "y+",
+      "z-",
+      "z+"
+     ],
+     "title": "Face",
+     "type": "string"
+    }
+   },
+   "required": [
+    "face"
+   ],
+   "title": "FaceRegion",
+   "type": "object"
+  },
+  "Load": {
+   "additionalProperties": false,
+   "description": "Total force on the region, shared equally by its nodes (mesh-independent total).",
+   "properties": {
+    "id": {
+     "title": "Id",
+     "type": "string"
+    },
+    "region": {
+     "discriminator": {
+      "mapping": {
+       "box": "#/$defs/BoxRegion",
+       "cylinder": "#/$defs/CylinderRegion",
+       "edge": "#/$defs/EdgeRegion",
+       "face": "#/$defs/FaceRegion",
+       "patch": "#/$defs/PatchRegion"
+      },
+      "propertyName": "kind"
+     },
+     "oneOf": [
+      {
+       "$ref": "#/$defs/FaceRegion"
+      },
+      {
+       "$ref": "#/$defs/PatchRegion"
+      },
+      {
+       "$ref": "#/$defs/EdgeRegion"
+      },
+      {
+       "$ref": "#/$defs/BoxRegion"
+      },
+      {
+       "$ref": "#/$defs/CylinderRegion"
+      }
+     ],
+     "title": "Region"
+    },
+    "force": {
+     "maxItems": 3,
+     "minItems": 3,
+     "prefixItems": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      }
+     ],
+     "title": "Force",
+     "type": "array"
+    },
+    "distribution": {
+     "const": "uniform_nodes",
+     "default": "uniform_nodes",
+     "title": "Distribution",
+     "type": "string"
+    },
+    "note": {
+     "default": "",
+     "title": "Note",
+     "type": "string"
+    }
+   },
+   "required": [
+    "id",
+    "region",
+    "force"
+   ],
+   "title": "Load",
+   "type": "object"
+  },
+  "Material": {
+   "additionalProperties": false,
+   "properties": {
+    "name": {
+     "default": "steel",
+     "title": "Name",
+     "type": "string"
+    },
+    "E": {
+     "default": 210000.0,
+     "description": "Young's modulus in force/length^2 of the spec units",
+     "exclusiveMinimum": 0,
+     "title": "E",
+     "type": "number"
+    },
+    "nu": {
+     "default": 0.3,
+     "exclusiveMaximum": 0.5,
+     "exclusiveMinimum": -1.0,
+     "title": "Nu",
+     "type": "number"
+    }
+   },
+   "title": "Material",
+   "type": "object"
+  },
+  "Passive": {
+   "additionalProperties": false,
+   "properties": {
+    "id": {
+     "title": "Id",
+     "type": "string"
+    },
+    "kind": {
+     "enum": [
+      "solid",
+      "void"
+     ],
+     "title": "Kind",
+     "type": "string"
+    },
+    "region": {
+     "discriminator": {
+      "mapping": {
+       "box": "#/$defs/BoxRegion",
+       "cylinder": "#/$defs/CylinderRegion"
+      },
+      "propertyName": "kind"
+     },
+     "oneOf": [
+      {
+       "$ref": "#/$defs/BoxRegion"
+      },
+      {
+       "$ref": "#/$defs/CylinderRegion"
+      }
+     ],
+     "title": "Region"
+    },
+    "note": {
+     "default": "",
+     "title": "Note",
+     "type": "string"
+    }
+   },
+   "required": [
+    "id",
+    "kind",
+    "region"
+   ],
+   "title": "Passive",
+   "type": "object"
+  },
+  "PatchRegion": {
+   "additionalProperties": false,
+   "description": "Rectangle on a domain face; nodes within half the size (plus a rounding tolerance) of the centre.",
+   "properties": {
+    "kind": {
+     "const": "patch",
+     "default": "patch",
+     "title": "Kind",
+     "type": "string"
+    },
+    "face": {
+     "enum": [
+      "x-",
+      "x+",
+      "y-",
+      "y+",
+      "z-",
+      "z+"
+     ],
+     "title": "Face",
+     "type": "string"
+    },
+    "center": {
+     "maxItems": 2,
+     "minItems": 2,
+     "prefixItems": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      }
+     ],
+     "title": "Center",
+     "type": "array"
+    },
+    "size": {
+     "description": "full widths along the face's two in-plane axes",
+     "maxItems": 2,
+     "minItems": 2,
+     "prefixItems": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      }
+     ],
+     "title": "Size",
+     "type": "array"
+    }
+   },
+   "required": [
+    "face",
+    "center",
+    "size"
+   ],
+   "title": "PatchRegion",
+   "type": "object"
+  },
+  "Resolution": {
+   "additionalProperties": false,
+   "description": "Mesh size: either `h` (element edge, length units) or `cells_short_edge` (elements on the shortest side).",
+   "properties": {
+    "h": {
+     "anyOf": [
+      {
+       "exclusiveMinimum": 0,
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "H"
+    },
+    "cells_short_edge": {
+     "anyOf": [
+      {
+       "minimum": 2,
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cells Short Edge"
+    }
+   },
+   "title": "Resolution",
+   "type": "object"
+  },
+  "Support": {
+   "additionalProperties": false,
+   "properties": {
+    "id": {
+     "title": "Id",
+     "type": "string"
+    },
+    "region": {
+     "discriminator": {
+      "mapping": {
+       "box": "#/$defs/BoxRegion",
+       "cylinder": "#/$defs/CylinderRegion",
+       "edge": "#/$defs/EdgeRegion",
+       "face": "#/$defs/FaceRegion",
+       "patch": "#/$defs/PatchRegion"
+      },
+      "propertyName": "kind"
+     },
+     "oneOf": [
+      {
+       "$ref": "#/$defs/FaceRegion"
+      },
+      {
+       "$ref": "#/$defs/PatchRegion"
+      },
+      {
+       "$ref": "#/$defs/EdgeRegion"
+      },
+      {
+       "$ref": "#/$defs/BoxRegion"
+      },
+      {
+       "$ref": "#/$defs/CylinderRegion"
+      }
+     ],
+     "title": "Region"
+    },
+    "fix": {
+     "items": {
+      "enum": [
+       "x",
+       "y",
+       "z"
+      ],
+      "type": "string"
+     },
+     "minItems": 1,
+     "title": "Fix",
+     "type": "array"
+    },
+    "note": {
+     "default": "",
+     "title": "Note",
+     "type": "string"
+    }
+   },
+   "required": [
+    "id",
+    "region"
+   ],
+   "title": "Support",
+   "type": "object"
+  },
+  "Units": {
+   "additionalProperties": false,
+   "properties": {
+    "length": {
+     "default": "mm",
+     "enum": [
+      "mm",
+      "m",
+      "in"
+     ],
+     "title": "Length",
+     "type": "string"
+    },
+    "force": {
+     "default": "N",
+     "enum": [
+      "N",
+      "kN",
+      "lbf"
+     ],
+     "title": "Force",
+     "type": "string"
+    }
+   },
+   "title": "Units",
+   "type": "object"
+  }
+ },
+ "additionalProperties": false,
+ "properties": {
+  "schema_version": {
+   "const": "agentto.spec/v0",
+   "default": "agentto.spec/v0",
+   "title": "Schema Version",
+   "type": "string"
+  },
+  "name": {
+   "title": "Name",
+   "type": "string"
+  },
+  "description": {
+   "default": "",
+   "title": "Description",
+   "type": "string"
+  },
+  "units": {
+   "$ref": "#/$defs/Units",
+   "default": {
+    "length": "mm",
+    "force": "N"
+   }
+  },
+  "domain": {
+   "$ref": "#/$defs/BoxDomain"
+  },
+  "material": {
+   "$ref": "#/$defs/Material",
+   "default": {
+    "name": "steel",
+    "E": 210000.0,
+    "nu": 0.3
+   }
+  },
+  "volume_fraction": {
+   "description": "fraction of the design (non-passive) volume",
+   "exclusiveMaximum": 1,
+   "exclusiveMinimum": 0,
+   "title": "Volume Fraction",
+   "type": "number"
+  },
+  "supports": {
+   "items": {
+    "$ref": "#/$defs/Support"
+   },
+   "minItems": 1,
+   "title": "Supports",
+   "type": "array"
+  },
+  "loads": {
+   "items": {
+    "$ref": "#/$defs/Load"
+   },
+   "minItems": 1,
+   "title": "Loads",
+   "type": "array"
+  },
+  "passive": {
+   "items": {
+    "$ref": "#/$defs/Passive"
+   },
+   "title": "Passive",
+   "type": "array"
+  },
+  "resolution": {
+   "$ref": "#/$defs/Resolution"
+  },
+  "min_feature": {
+   "anyOf": [
+    {
+     "exclusiveMinimum": 0,
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "description": "smallest member the user needs, length units",
+   "title": "Min Feature"
+  },
+  "meta": {
+   "additionalProperties": true,
+   "title": "Meta",
+   "type": "object"
+  }
+ },
+ "required": [
+  "name",
+  "domain",
+  "volume_fraction",
+  "supports",
+  "loads",
+  "resolution"
+ ],
+ "title": "Spec",
+ "type": "object"
+}

@@ -1,0 +1,304 @@
+{
+ "task": "b33_shelf_bracket",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:45:01",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief uses mm and N."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 150 mm in x, 150 mm in y and 20 mm in z; wall x=0; y upward."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "6061 aluminium is stated. Elastic constants chosen as E=68900 N/mm^2 and nu=0.33; temper unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.2; tool defines this over non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements (h=1 mm) and no member thinner than 3 mm (min_feature=3 mm). The source API groups this minimum-feature provenance here because it has no separate min_feature item."
+   },
+   {
+    "key": "support:lower_screw",
+    "source": "assumed",
+    "note": "Location x=0,y=20,z=10 mm and 10 mm washer are stated. Interpret washer size as outside diameter and use a filled circular footprint fully fixed in x,y,z; screw bore unspecified, so not modeled."
+   },
+   {
+    "key": "support:upper_screw",
+    "source": "assumed",
+    "note": "Location x=0,y=130,z=10 mm and 10 mm washer are stated. Interpret washer size as outside diameter and use a filled circular footprint fully fixed in x,y,z; screw bore unspecified, so not modeled."
+   },
+   {
+    "key": "load:shelf_load",
+    "source": "stated",
+    "note": "Whole top face y=150 bears total 600 N downward, represented by [0,-600,0] N equally shared by selected nodes."
+   },
+   {
+    "key": "passive:top_skin",
+    "source": "assumed",
+    "note": "Retain whole contact face with a solid 3 mm skin from y=147 to 150 mm, using the stated 3 mm minimum thickness."
+   },
+   {
+    "key": "passive:lower_mount_pad",
+    "source": "assumed",
+    "note": "Retain a solid pad of radius 5 mm under lower washer, x=0 to 3 mm. Radius derives from interpreting stated washer size as 10 mm diameter; pad depth chosen as stated minimum member thickness."
+   },
+   {
+    "key": "passive:upper_mount_pad",
+    "source": "assumed",
+    "note": "Retain a solid pad of radius 5 mm under upper washer, x=0 to 3 mm. Radius derives from interpreting stated washer size as 10 mm diameter; pad depth chosen as stated minimum member thickness."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "support:lower_screw",
+   "support:upper_screw",
+   "passive:top_skin",
+   "passive:lower_mount_pad",
+   "passive:upper_mount_pad"
+  ]
+ },
+ "n_tool_calls": 25,
+ "n_failed_calls": 1,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_load",
+  "add_passive",
+  "add_passive",
+  "add_passive",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "set_source",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b33_shelf_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 41.48475500009954,
+ "usage": {
+  "input_tokens": 118375,
+  "cached_input_tokens": 98304,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1634,
+  "reasoning_output_tokens": 189
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: E = 68.9 GPa, \u03bd = 0.33; 10 mm washers modeled as fully fixed circular footprints without screw holes; 3 mm solid top skin and mounting pads. Volume fraction applies to non-passive volume. Validation passed, render confirmed placement, and all items are source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Shelf bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150.0,
+    150.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "lower_screw",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20.0,
+      10.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "10 mm diameter washer footprint on x=0 at y=20, z=10 mm; idealized fully clamped screw attachment."
+   },
+   {
+    "id": "upper_screw",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      130.0,
+      10.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "10 mm diameter washer footprint on x=0 at y=130, z=10 mm; idealized fully clamped screw attachment."
+   }
+  ],
+  "loads": [
+   {
+    "id": "shelf_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -600.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "600 N total force shared equally across all nodes on top face y=150 mm."
+   }
+  ],
+  "passive": [
+   {
+    "id": "top_skin",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      147.0,
+      0.0
+     ],
+     "max": [
+      150.0,
+      150.0,
+      20.0
+     ]
+    },
+    "note": "Assumed 3 mm solid load-transfer skin retaining entire shelf-contact top face; excluded from design volume fraction."
+   },
+   {
+    "id": "lower_mount_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      20.0,
+      10.0
+     ],
+     "radius": 5.0,
+     "span": [
+      0.0,
+      3.0
+     ]
+    },
+    "note": "Assumed 3 mm deep solid mounting pad under 10 mm washer footprint; excluded from design volume fraction."
+   },
+   {
+    "id": "upper_mount_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      130.0,
+      10.0
+     ],
+     "radius": 5.0,
+     "span": [
+      0.0,
+      3.0
+     ]
+    },
+    "note": "Assumed 3 mm deep solid mounting pad under 10 mm washer footprint; excluded from design volume fraction."
+   }
+  ],
+  "description": "Shelf bracket: x extends from the wall, y is up, z spans thickness. Two 10 mm diameter washer footprints at x=0, (y,z)=(20,10) and (130,10), idealized as fully clamped. 600 N total downward on whole y=150 face. Keep 3 mm top skin and 3 mm deep mounting pads solid. Minimum member size 3 mm. Volume fraction applies to non-passive design volume.",
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "min_feature": 3.0
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 41.7633706999477,
+ "cwe": {
+  "value": -0.04663843217047381,
+  "c_pred_under_intended": 2.9819335408878835,
+  "c_intended_opt": 3.1278096805147206,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0842666625976562
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (150, 150, 20)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

@@ -1,0 +1,215 @@
+{
+ "task": "b28_stool",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:23:26",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 0,
+ "retry_errors": [],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 12.5960136000067,
+ "usage": {
+  "input_tokens": 21986,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 712,
+  "reasoning_output_tokens": 108
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Stool\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [200, 200, 200]\n  },\n  \"material\": {\n    \"name\": \"Aluminium 6061\",\n    \"E\": 69000,\n    \"nu\": 0.33\n  },\n  \"volume_fraction\": 0.1,\n  \"supports\": [\n    {\n      \"id\": \"foot_1\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [10, 10],\n        \"size\": [20, 20]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"foot_2\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [190, 10],\n        \"size\": [20, 20]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"foot_3\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [10, 190],\n        \"size\": [20, 20]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"foot_4\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"y-\",\n        \"center\": [190, 190],\n        \"size\": [20, 20]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"seat_load\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"y+\"\n      },\n      \"force\": [0, -1200, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"solid_seat\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"box\",\n        \"min\": [0, 190, 0],\n        \"max\": [200, 200, 200]\n      }\n    },\n    {\n      \"id\": \"leg_room\",\n      \"kind\": \"void\",\n      \"region\": {\n        \"kind\": \"box\",\n        \"min\": [50, 0, 50],\n        \"max\": [150, 120, 150]\n      }\n    }\n  ],\n  \"resolution\": {\n    \"h\": 2\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Stool",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200,
+    200,
+    200
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.1,
+  "supports": [
+   {
+    "id": "foot_1",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      10,
+      10
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "foot_2",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      190,
+      10
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "foot_3",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      10,
+      190
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "foot_4",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      190,
+      190
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "seat_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -1200,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_seat",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0,
+      190,
+      0
+     ],
+     "max": [
+      200,
+      200,
+      200
+     ]
+    }
+   },
+   {
+    "id": "leg_room",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      50,
+      0,
+      50
+     ],
+     "max": [
+      150,
+      120,
+      150
+     ]
+    }
+   }
+  ],
+  "resolution": {
+   "h": 2
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 12.663494599983096,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (100, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

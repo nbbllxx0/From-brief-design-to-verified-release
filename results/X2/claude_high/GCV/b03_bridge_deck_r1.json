@@ -1,0 +1,154 @@
+{
+ "task": "b03_bridge_deck",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T17:58:25",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 42589,
+  "cached_input_tokens": 36412,
+  "cache_write_input_tokens": 6171,
+  "output_tokens": 1582
+ },
+ "gc_wall_s": 21.50828399998136,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14499,
+  "cached_input_tokens": 8572,
+  "cache_write_input_tokens": 5923,
+  "output_tokens": 439
+ },
+ "verify_wall_s": 6.797746199881658,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 57088,
+  "cached_input_tokens": 44984,
+  "output_tokens": 2021,
+  "cache_write_input_tokens": 12094
+ },
+ "wall_s": 28.306030199863017,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Bridge segment",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    400.0,
+    100.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Pinned bearing, bottom-left edge across full width"
+   },
+   {
+    "id": "right_roller",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      400.0,
+      0.0
+     ],
+     "span": null
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Sliding bearing, bottom-right edge; free along span (x)"
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -5000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Uniform 5 kN downward on top surface"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 7.207604199880734,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (200, 50, 50)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,36 @@
+{
+ "task": "b49_hinged_arm",
+ "cond": "T",
+ "rep": 2,
+ "t": "2026-10-30T10:51:08",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 6.737073400057852,
+ "usage": {
+  "input_tokens": 19997,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 88,
+  "reasoning_output_tokens": 47
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The single freely rotating hinge cannot resist the 76,000 N\u00b7mm moment from the downward end load, so the arm has no static equilibrium.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 6.790405999869108,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": true
+}

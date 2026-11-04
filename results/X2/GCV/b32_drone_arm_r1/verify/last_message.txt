@@ -1,0 +1,1 @@
+{"match":false,"issues":["The 15 N motor thrust points in the −z direction; the brief requires upward thrust in +z on the pad’s top face."]}

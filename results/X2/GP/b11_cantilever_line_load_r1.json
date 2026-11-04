@@ -1,0 +1,184 @@
+{
+ "task": "b11_cantilever_line_load",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:33:08",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief uses mm for geometry and kN for load; spec uses mm and kN."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "120 mm along x, 40 mm along y (up), 20 mm along z; origin at minimum corner."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated. Elastic constants are assumed: E=210 GPa (210 kN/mm^2), Poisson ratio nu=0.30; isotropic linear elasticity."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.3."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:fixed_end",
+    "source": "stated",
+    "note": "Entire x=0 end face fully fixed in x, y and z."
+   },
+   {
+    "key": "load:end_line_load",
+    "source": "stated",
+    "note": "Total 1 kN downward (-y), distributed evenly over the z-directed edge x=120 mm, y=0, z=0 to 20 mm."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 15,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b11_cantilever_line_load_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 21.461832700064406,
+ "usage": {
+  "input_tokens": 81196,
+  "cached_input_tokens": 73344,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 779,
+  "reasoning_output_tokens": 86
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic linear-elastic steel with E = 210 GPa and \u03bd = 0.30. Validation passed; render confirmed support and load placement; all items source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Cantilever with an end line load",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_end",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Entire x=0 end face fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "end_line_load",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      20.0
+     ]
+    },
+    "force": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 1 kN downward (-y), shared evenly by nodes across the full-width bottom edge at x=120 mm, y=0."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 21.671633099904284,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=1, grid (120, 40, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

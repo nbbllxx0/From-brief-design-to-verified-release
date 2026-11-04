@@ -1,0 +1,213 @@
+{
+ "task": "b15_corner_plate",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:41:52",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b15_corner_plate_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 29.53029779996723,
+ "usage": {
+  "input_tokens": 79762,
+  "cached_input_tokens": 68608,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 809,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic aluminium 6061 with E = 68.9 GPa and \u03bd = 0.33; corner pads flush with plate edges; load shared equally among pad nodes. Validation passed; render confirmed placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Plate on four corner supports",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    200.0,
+    20.0,
+    200.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "corner_xmin_zmin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      3.0,
+      3.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom corner pad x=0..6, z=0..6 mm; all translations fixed."
+   },
+   {
+    "id": "corner_xmax_zmin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      197.0,
+      3.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom corner pad x=194..200, z=0..6 mm; all translations fixed."
+   },
+   {
+    "id": "corner_xmin_zmax",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      3.0,
+      197.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom corner pad x=0..6, z=194..200 mm; all translations fixed."
+   },
+   {
+    "id": "corner_xmax_zmax",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      197.0,
+      197.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom corner pad x=194..200, z=194..200 mm; all translations fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "center_downward",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      100.0,
+      100.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -3000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 3 kN downward (-y), centered top pad x,z=90..110 mm at y=20 mm."
+   }
+  ],
+  "passive": [],
+  "description": "200 x 20 x 200 mm plate, y up. Four 6 x 6 mm corner pads on bottom y=0 fixed in x,y,z. Total 3000 N downward load over centered 20 x 20 mm top pad. Assumed isotropic linear elasticity E=68900 N/mm^2, nu=0.33; corner pads flush with envelope edges; force shared equally among selected pad nodes.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 30.281528699910268,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (100, 10, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

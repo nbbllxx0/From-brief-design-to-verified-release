@@ -1,0 +1,163 @@
+{
+ "task": "b03_bridge_deck",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:27:16",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 125873,
+  "cached_input_tokens": 114048,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1731,
+  "reasoning_output_tokens": 429
+ },
+ "gc_wall_s": 49.058826099848375,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17636,
+  "cached_input_tokens": 15104,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 93,
+  "reasoning_output_tokens": 73
+ },
+ "verify_wall_s": 6.294030999997631,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 502,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1824,
+  "input_tokens": 143509,
+  "cached_input_tokens": 129152
+ },
+ "wall_s": 55.352857099846005,
+ "questions": 2,
+ "n_tool_calls": 11,
+ "n_failed_calls": 1,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Bridge segment",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    400.0,
+    100.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_pinned_bearing",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      100.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Pinned bearing across full width at x=0, y=0; translations fixed."
+   },
+   {
+    "id": "right_expansion_bearing",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      400.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      100.0
+     ]
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Guided expansion bearing, confirmed by clarification: x free; y,z fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_uniform_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -5000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 5 kN downward distributed uniformly over the entire top surface."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 6.5254772999323905,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (200, 50, 50)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

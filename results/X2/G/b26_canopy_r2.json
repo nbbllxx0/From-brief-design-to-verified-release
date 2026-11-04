@@ -1,0 +1,204 @@
+{
+ "task": "b26_canopy",
+ "cond": "G",
+ "rep": 2,
+ "t": "2026-10-30T11:00:50",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_support",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b26_canopy_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 19.608453900087625,
+ "usage": {
+  "input_tokens": 87209,
+  "cached_input_tokens": 74240,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 671,
+  "reasoning_output_tokens": 69
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic linear-elastic aluminium 6061, E = 68.9 GPa, \u03bd = 0.33; columns represented by fully fixed head patches. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Canopy on four columns",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    40.0,
+    200.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "column_40_40",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      40.0,
+      40.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid 20 x 20 mm column head at y=0"
+   },
+   {
+    "id": "column_40_160",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      40.0,
+      160.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid 20 x 20 mm column head at y=0"
+   },
+   {
+    "id": "column_260_40",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      260.0,
+      40.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid 20 x 20 mm column head at y=0"
+   },
+   {
+    "id": "column_260_160",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      260.0,
+      160.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid 20 x 20 mm column head at y=0"
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_downward_8kN",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -8000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 8 kN downward, uniformly shared over the whole top face y=40 mm"
+   }
+  ],
+  "passive": [],
+  "description": "Canopy plate, y up. Four rigid column heads fixed in x,y,z on y=0, each 20 x 20 mm, centred at (x,z)=(40,40),(40,160),(260,40),(260,160). Total downward 8000 N uniformly distributed over y=40. Assumed isotropic linear elastic aluminium 6061 with E=68900 N/mm^2, nu=0.33; columns represented by fixed head interfaces.",
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 19.861131199868396,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 20, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

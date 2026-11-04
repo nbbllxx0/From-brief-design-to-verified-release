@@ -1,0 +1,36 @@
+{
+ "task": "b48_cable_anchor",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:34:57",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 8.965985900023952,
+ "usage": {
+  "input_tokens": 21937,
+  "cached_input_tokens": 17024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 142,
+  "reasoning_output_tokens": 98
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The cable slope determines a 3 kN upward force and a 4 kN horizontal force, but its horizontal direction in the x\u2013z plane is unspecified.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 9.04406820004806,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "clarify",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": false
+}

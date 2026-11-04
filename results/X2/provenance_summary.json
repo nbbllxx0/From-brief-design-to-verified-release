@@ -1,0 +1,770 @@
+{
+ "T": {
+  "n": 50,
+  "right": 37,
+  "right_ci95": [
+   0.6044657801100008,
+   0.8412862034863262
+  ],
+  "delivered_wrong": [
+   "b47_camera_mount"
+  ],
+  "schema_invalid": [
+   "b06_motor_mount",
+   "b19_engine_bracket",
+   "b31_pillow_block",
+   "b33_shelf_bracket",
+   "b39_tv_bracket",
+   "b40_crank_arm",
+   "b41_hinge_bracket"
+  ],
+  "questions": 0,
+  "input_tokens_median": 20044.5
+ },
+ "TS": {
+  "n": 50,
+  "right": 42,
+  "right_ci95": [
+   0.7148551903823401,
+   0.9166267863791231
+  ],
+  "delivered_wrong": [
+   "b07_sensor_arm",
+   "b10_hook_plate",
+   "b44_gearbox_bracket",
+   "b47_camera_mount"
+  ],
+  "schema_invalid": [],
+  "questions": 0,
+  "input_tokens_median": 20015.5,
+  "retries": {
+   "b06_motor_mount": 1,
+   "b19_engine_bracket": 1,
+   "b31_pillow_block": 1,
+   "b33_shelf_bracket": 1,
+   "b39_tv_bracket": 1,
+   "b40_crank_arm": 1
+  }
+ },
+ "G": {
+  "n": 50,
+  "right": 44,
+  "right_ci95": [
+   0.7619492111337642,
+   0.9438247628937535
+  ],
+  "delivered_wrong": [
+   "b07_sensor_arm",
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b45_pump_bracket",
+   "b46_sensor_housing",
+   "b47_camera_mount"
+  ],
+  "schema_invalid": [],
+  "questions": 0,
+  "input_tokens_median": 86454.0
+ },
+ "GP": {
+  "n": 50,
+  "right": 42,
+  "right_ci95": [
+   0.7148551903823401,
+   0.9166267863791231
+  ],
+  "delivered_wrong": [
+   "b07_sensor_arm",
+   "b10_hook_plate",
+   "b33_shelf_bracket",
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b45_pump_bracket",
+   "b46_sensor_housing",
+   "b47_camera_mount"
+  ],
+  "schema_invalid": [],
+  "questions": 0,
+  "input_tokens_median": 106085.0
+ },
+ "GC": {
+  "n": 50,
+  "right": 50,
+  "right_ci95": [
+   0.9286499658256813,
+   1.0
+  ],
+  "delivered_wrong": [],
+  "schema_invalid": [],
+  "questions": 59,
+  "input_tokens_median": 104215.0
+ },
+ "GPC": {
+  "n": 50,
+  "right": 47,
+  "right_ci95": [
+   0.8378265662912299,
+   0.9793854036353695
+  ],
+  "delivered_wrong": [
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b47_camera_mount"
+  ],
+  "schema_invalid": [],
+  "questions": 6,
+  "input_tokens_median": 107098.5
+ },
+ "T_to_TS": {
+  "n": 50,
+  "corrected": [
+   "b06_motor_mount",
+   "b19_engine_bracket",
+   "b31_pillow_block",
+   "b33_shelf_bracket",
+   "b39_tv_bracket",
+   "b40_crank_arm",
+   "b41_hinge_bracket"
+  ],
+  "broken": [
+   "b43_press_riser",
+   "b44_gearbox_bracket"
+  ],
+  "p_mcnemar": 0.1796875
+ },
+ "G_to_GP": {
+  "n": 50,
+  "corrected": [],
+  "broken": [
+   "b10_hook_plate",
+   "b33_shelf_bracket"
+  ],
+  "p_mcnemar": 0.5
+ },
+ "GC_to_GPC": {
+  "n": 50,
+  "corrected": [],
+  "broken": [
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b47_camera_mount"
+  ],
+  "p_mcnemar": 0.25
+ },
+ "TS_to_G": {
+  "n": 50,
+  "corrected": [
+   "b10_hook_plate",
+   "b43_press_riser",
+   "b48_cable_anchor"
+  ],
+  "broken": [
+   "b39_tv_bracket"
+  ],
+  "p_mcnemar": 0.625
+ },
+ "GP_flags": {
+  "delivered": 47,
+  "untagged_any": 0,
+  "wrong": 8,
+  "wrong_flagged": [
+   "b07_sensor_arm",
+   "b10_hook_plate",
+   "b33_shelf_bracket",
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b45_pump_bracket",
+   "b46_sensor_housing",
+   "b47_camera_mount"
+  ],
+  "wrong_flag_on_failed_field": [
+   "b07_sensor_arm",
+   "b10_hook_plate",
+   "b33_shelf_bracket",
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b45_pump_bracket",
+   "b46_sensor_housing",
+   "b47_camera_mount"
+  ],
+  "right": 39,
+  "right_flagged": [
+   "b01_cantilever_block",
+   "b02_mbb_half",
+   "b03_bridge_deck",
+   "b04_torsion_shaft",
+   "b05_l_bracket",
+   "b06_motor_mount",
+   "b09_duct_bridge",
+   "b11_cantilever_line_load",
+   "b12_wheel",
+   "b13_cantilever_end_traction",
+   "b14_cube_torsion",
+   "b15_corner_plate",
+   "b16_column",
+   "b17_arch_bridge",
+   "b18_cantilever_hole",
+   "b19_engine_bracket",
+   "b20_quarter_plate",
+   "b21_mbb_z_up",
+   "b22_cantilever_slab",
+   "b23_clamped_beam",
+   "b24_shear_block",
+   "b25_cantilever_metres",
+   "b26_canopy",
+   "b27_eccentric_cantilever",
+   "b28_stool",
+   "b29_michell_cantilever",
+   "b30_bridge_clearance",
+   "b31_pillow_block",
+   "b32_drone_arm",
+   "b34_antenna_bracket",
+   "b35_padeye",
+   "b36_pedal_arm",
+   "b38_peek_bracket",
+   "b40_crank_arm",
+   "b41_hinge_bracket",
+   "b42_snap_hook",
+   "b43_press_riser",
+   "b48_cable_anchor"
+  ]
+ },
+ "GPC_flags": {
+  "delivered": 47,
+  "untagged_any": 0,
+  "wrong": 3,
+  "wrong_flagged": [
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b47_camera_mount"
+  ],
+  "wrong_flag_on_failed_field": [
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b47_camera_mount"
+  ],
+  "right": 44,
+  "right_flagged": [
+   "b02_mbb_half",
+   "b03_bridge_deck",
+   "b04_torsion_shaft",
+   "b05_l_bracket",
+   "b06_motor_mount",
+   "b07_sensor_arm",
+   "b09_duct_bridge",
+   "b10_hook_plate",
+   "b11_cantilever_line_load",
+   "b12_wheel",
+   "b13_cantilever_end_traction",
+   "b14_cube_torsion",
+   "b15_corner_plate",
+   "b16_column",
+   "b17_arch_bridge",
+   "b18_cantilever_hole",
+   "b19_engine_bracket",
+   "b20_quarter_plate",
+   "b21_mbb_z_up",
+   "b22_cantilever_slab",
+   "b23_clamped_beam",
+   "b24_shear_block",
+   "b25_cantilever_metres",
+   "b26_canopy",
+   "b27_eccentric_cantilever",
+   "b28_stool",
+   "b29_michell_cantilever",
+   "b30_bridge_clearance",
+   "b31_pillow_block",
+   "b32_drone_arm",
+   "b33_shelf_bracket",
+   "b34_antenna_bracket",
+   "b35_padeye",
+   "b36_pedal_arm",
+   "b37_battery_crossmember",
+   "b38_peek_bracket",
+   "b40_crank_arm",
+   "b41_hinge_bracket",
+   "b43_press_riser",
+   "b45_pump_bracket",
+   "b46_sensor_housing",
+   "b48_cable_anchor"
+  ]
+ },
+ "GP_flags_without_material": {
+  "delivered": 47,
+  "untagged_any": 0,
+  "wrong": 8,
+  "wrong_flagged": [
+   "b07_sensor_arm",
+   "b10_hook_plate",
+   "b33_shelf_bracket",
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b45_pump_bracket",
+   "b46_sensor_housing",
+   "b47_camera_mount"
+  ],
+  "wrong_flag_on_failed_field": [
+   "b07_sensor_arm",
+   "b10_hook_plate",
+   "b33_shelf_bracket",
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b45_pump_bracket",
+   "b46_sensor_housing",
+   "b47_camera_mount"
+  ],
+  "right": 39,
+  "right_flagged": [
+   "b01_cantilever_block",
+   "b03_bridge_deck",
+   "b04_torsion_shaft",
+   "b05_l_bracket",
+   "b06_motor_mount",
+   "b09_duct_bridge",
+   "b14_cube_torsion",
+   "b15_corner_plate",
+   "b16_column",
+   "b17_arch_bridge",
+   "b19_engine_bracket",
+   "b20_quarter_plate",
+   "b25_cantilever_metres",
+   "b29_michell_cantilever",
+   "b30_bridge_clearance",
+   "b31_pillow_block",
+   "b32_drone_arm",
+   "b34_antenna_bracket",
+   "b35_padeye",
+   "b36_pedal_arm",
+   "b38_peek_bracket",
+   "b41_hinge_bracket",
+   "b42_snap_hook",
+   "b43_press_riser",
+   "b48_cable_anchor"
+  ]
+ },
+ "GPC_flags_without_material": {
+  "delivered": 47,
+  "untagged_any": 0,
+  "wrong": 3,
+  "wrong_flagged": [
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b47_camera_mount"
+  ],
+  "wrong_flag_on_failed_field": [
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b47_camera_mount"
+  ],
+  "right": 44,
+  "right_flagged": [
+   "b03_bridge_deck",
+   "b05_l_bracket",
+   "b06_motor_mount",
+   "b07_sensor_arm",
+   "b09_duct_bridge",
+   "b10_hook_plate",
+   "b17_arch_bridge",
+   "b19_engine_bracket",
+   "b20_quarter_plate",
+   "b25_cantilever_metres",
+   "b30_bridge_clearance",
+   "b31_pillow_block",
+   "b33_shelf_bracket",
+   "b34_antenna_bracket",
+   "b35_padeye",
+   "b37_battery_crossmember",
+   "b38_peek_bracket",
+   "b41_hinge_bracket",
+   "b43_press_riser",
+   "b46_sensor_housing",
+   "b48_cable_anchor"
+  ]
+ },
+ "questions_on_stated_briefs": {
+  "GC": {
+   "stated_briefs": 40,
+   "asked_on": 26,
+   "questions": 45
+  },
+  "GPC": {
+   "stated_briefs": 40,
+   "asked_on": 0,
+   "questions": 0
+  }
+ },
+ "consequences": {
+  "T": {
+   "b47_camera_mount": {
+    "cwe": -0.2572918140867615,
+    "mass_ratio": 1.3333332538604736,
+    "passive_violation": {}
+   }
+  },
+  "TS": {
+   "b07_sensor_arm": {
+    "cwe": 0.992530296960769,
+    "mass_ratio": 1.0,
+    "passive_violation": {}
+   },
+   "b10_hook_plate": {
+    "cwe": 0.059393955186248126,
+    "mass_ratio": 1.0,
+    "passive_violation": {}
+   },
+   "b44_gearbox_bracket": {
+    "cwe": 106163339.06130381,
+    "mass_ratio": 1.0,
+    "passive_violation": {}
+   },
+   "b47_camera_mount": {
+    "cwe": -0.2572918140867615,
+    "mass_ratio": 1.3333332538604736,
+    "passive_violation": {}
+   }
+  },
+  "G": {
+   "b07_sensor_arm": {
+    "cwe": 1.6413769762855903,
+    "mass_ratio": 1.0177778005599976,
+    "passive_violation": {}
+   },
+   "b39_tv_bracket": {
+    "cwe": -0.022414711855406777,
+    "mass_ratio": 1.0639201402664185,
+    "passive_violation": {}
+   },
+   "b44_gearbox_bracket": {
+    "cwe": 106439653.56850198,
+    "mass_ratio": 1.0046666860580444,
+    "passive_violation": {}
+   },
+   "b45_pump_bracket": {
+    "cwe": -5.912859091239397e-11,
+    "mass_ratio": 1.0,
+    "passive_violation": {}
+   },
+   "b46_sensor_housing": {
+    "cwe": -0.024510881089355507,
+    "mass_ratio": 1.0341722965240479,
+    "passive_violation": {
+     "keep_out_filled": 0.1629861111111111
+    }
+   },
+   "b47_camera_mount": {
+    "cwe": -0.007051762663358385,
+    "mass_ratio": 1.104938268661499,
+    "passive_violation": {}
+   }
+  },
+  "GP": {
+   "b07_sensor_arm": {
+    "cwe": 0.8481549734712335,
+    "mass_ratio": 1.008888840675354,
+    "passive_violation": {}
+   },
+   "b10_hook_plate": {
+    "cwe": 0.059393955186248126,
+    "mass_ratio": 1.0,
+    "passive_violation": {}
+   },
+   "b33_shelf_bracket": {
+    "cwe": -0.04663843217047381,
+    "mass_ratio": 1.0842666625976562,
+    "passive_violation": {}
+   },
+   "b39_tv_bracket": {
+    "cwe": -0.022414711855406777,
+    "mass_ratio": 1.0639201402664185,
+    "passive_violation": {}
+   },
+   "b44_gearbox_bracket": {
+    "cwe": 105693840.27874024,
+    "mass_ratio": 1.0023328065872192,
+    "passive_violation": {}
+   },
+   "b45_pump_bracket": {
+    "cwe": -5.912859091239397e-11,
+    "mass_ratio": 1.0,
+    "passive_violation": {}
+   },
+   "b46_sensor_housing": {
+    "cwe": -0.025397068777498588,
+    "mass_ratio": 1.0331125259399414,
+    "passive_violation": {
+     "keep_out_filled": 0.2338888888888889
+    }
+   },
+   "b47_camera_mount": {
+    "cwe": -0.25719274014522253,
+    "mass_ratio": 1.3827158212661743,
+    "passive_violation": {}
+   }
+  },
+  "GPC": {
+   "b39_tv_bracket": {
+    "cwe": -0.022414711855406777,
+    "mass_ratio": 1.0639201402664185,
+    "passive_violation": {}
+   },
+   "b44_gearbox_bracket": {
+    "cwe": 105693840.27874024,
+    "mass_ratio": 1.0023328065872192,
+    "passive_violation": {}
+   },
+   "b47_camera_mount": {
+    "cwe": -0.2572918140867615,
+    "mass_ratio": 1.3333332538604736,
+    "passive_violation": {}
+   }
+  }
+ },
+ "GP_r2": {
+  "n": 20,
+  "right": 13,
+  "right_ci95": [
+   0.43285051021946463,
+   0.8188104521320554
+  ],
+  "delivered_wrong": [
+   "b07_sensor_arm",
+   "b10_hook_plate",
+   "b39_tv_bracket",
+   "b44_gearbox_bracket",
+   "b45_pump_bracket",
+   "b46_sensor_housing",
+   "b47_camera_mount"
+  ],
+  "schema_invalid": [],
+  "questions": 0,
+  "input_tokens_median": 106821.5,
+  "flags": {
+   "delivered": 17,
+   "untagged_any": 0,
+   "wrong": 7,
+   "wrong_flagged": [
+    "b07_sensor_arm",
+    "b10_hook_plate",
+    "b39_tv_bracket",
+    "b44_gearbox_bracket",
+    "b45_pump_bracket",
+    "b46_sensor_housing",
+    "b47_camera_mount"
+   ],
+   "wrong_flag_on_failed_field": [
+    "b07_sensor_arm",
+    "b10_hook_plate",
+    "b39_tv_bracket",
+    "b44_gearbox_bracket",
+    "b45_pump_bracket",
+    "b46_sensor_housing",
+    "b47_camera_mount"
+   ],
+   "right": 10,
+   "right_flagged": [
+    "b01_cantilever_block",
+    "b03_bridge_deck",
+    "b04_torsion_shaft",
+    "b06_motor_mount",
+    "b09_duct_bridge",
+    "b19_engine_bracket",
+    "b22_cantilever_slab",
+    "b25_cantilever_metres",
+    "b31_pillow_block",
+    "b48_cable_anchor"
+   ]
+  },
+  "flags_without_material": {
+   "delivered": 17,
+   "untagged_any": 0,
+   "wrong": 7,
+   "wrong_flagged": [
+    "b07_sensor_arm",
+    "b10_hook_plate",
+    "b39_tv_bracket",
+    "b44_gearbox_bracket",
+    "b45_pump_bracket",
+    "b46_sensor_housing",
+    "b47_camera_mount"
+   ],
+   "wrong_flag_on_failed_field": [
+    "b07_sensor_arm",
+    "b10_hook_plate",
+    "b39_tv_bracket",
+    "b44_gearbox_bracket",
+    "b45_pump_bracket",
+    "b46_sensor_housing",
+    "b47_camera_mount"
+   ],
+   "right": 10,
+   "right_flagged": [
+    "b01_cantilever_block",
+    "b03_bridge_deck",
+    "b04_torsion_shaft",
+    "b06_motor_mount",
+    "b09_duct_bridge",
+    "b19_engine_bracket",
+    "b25_cantilever_metres",
+    "b31_pillow_block",
+    "b48_cable_anchor"
+   ]
+  },
+  "consequences": {
+   "b07_sensor_arm": {
+    "cwe": 0.8481549734712335,
+    "mass_ratio": 1.008888840675354,
+    "passive_violation": {}
+   },
+   "b10_hook_plate": {
+    "cwe": 0.03208603266659793,
+    "mass_ratio": 1.0,
+    "passive_violation": {}
+   },
+   "b39_tv_bracket": {
+    "cwe": -0.022414711855406777,
+    "mass_ratio": 1.0639201402664185,
+    "passive_violation": {}
+   },
+   "b44_gearbox_bracket": {
+    "cwe": 106439653.56850198,
+    "mass_ratio": 1.0046666860580444,
+    "passive_violation": {}
+   },
+   "b45_pump_bracket": {
+    "cwe": -0.05636565175977115,
+    "mass_ratio": 1.2300000190734863,
+    "passive_violation": {}
+   },
+   "b46_sensor_housing": {
+    "cwe": -0.02808398901732989,
+    "mass_ratio": 1.0384104251861572,
+    "passive_violation": {
+     "keep_out_filled": 0.23644444444444446
+    }
+   },
+   "b47_camera_mount": {
+    "cwe": -0.2581640321272016,
+    "mass_ratio": 1.4320987462997437,
+    "passive_violation": {}
+   }
+  },
+  "paired_vs_G_r2": {
+   "n": 20,
+   "corrected": [],
+   "broken": [],
+   "p_mcnemar": 1.0
+  }
+ },
+ "claude_GPC": {
+  "n": 50,
+  "right": 47,
+  "right_ci95": [
+   0.8378265662912299,
+   0.9793854036353695
+  ],
+  "delivered_wrong": [
+   "b10_hook_plate",
+   "b12_wheel",
+   "b44_gearbox_bracket"
+  ],
+  "schema_invalid": [],
+  "questions": 5,
+  "input_tokens_median": 95123.0,
+  "flags": {
+   "delivered": 47,
+   "untagged_any": 0,
+   "wrong": 3,
+   "wrong_flagged": [
+    "b10_hook_plate",
+    "b44_gearbox_bracket"
+   ],
+   "wrong_flag_on_failed_field": [
+    "b10_hook_plate",
+    "b44_gearbox_bracket"
+   ],
+   "right": 44,
+   "right_flagged": [
+    "b02_mbb_half",
+    "b04_torsion_shaft",
+    "b07_sensor_arm",
+    "b09_duct_bridge",
+    "b13_cantilever_end_traction",
+    "b15_corner_plate",
+    "b20_quarter_plate",
+    "b21_mbb_z_up",
+    "b26_canopy",
+    "b27_eccentric_cantilever",
+    "b29_michell_cantilever",
+    "b30_bridge_clearance",
+    "b31_pillow_block",
+    "b35_padeye",
+    "b40_crank_arm",
+    "b43_press_riser",
+    "b47_camera_mount",
+    "b48_cable_anchor"
+   ]
+  },
+  "flags_without_material": {
+   "delivered": 47,
+   "untagged_any": 0,
+   "wrong": 3,
+   "wrong_flagged": [
+    "b10_hook_plate",
+    "b44_gearbox_bracket"
+   ],
+   "wrong_flag_on_failed_field": [
+    "b10_hook_plate",
+    "b44_gearbox_bracket"
+   ],
+   "right": 44,
+   "right_flagged": [
+    "b07_sensor_arm",
+    "b09_duct_bridge",
+    "b30_bridge_clearance",
+    "b31_pillow_block",
+    "b43_press_riser",
+    "b47_camera_mount",
+    "b48_cable_anchor"
+   ]
+  },
+  "consequences": {
+   "b10_hook_plate": {
+    "cwe": 0.059393955186248126,
+    "mass_ratio": 1.0,
+    "passive_violation": {}
+   },
+   "b12_wheel": {
+    "cwe": 0.0,
+    "mass_ratio": 1.0,
+    "passive_violation": {}
+   },
+   "b44_gearbox_bracket": {
+    "cwe": 106439653.56850198,
+    "mass_ratio": 1.0046666860580444,
+    "passive_violation": {}
+   }
+  },
+  "paired_vs_claude_GC": {
+   "n": 50,
+   "corrected": [
+    "b13_cantilever_end_traction",
+    "b37_battery_crossmember"
+   ],
+   "broken": [
+    "b12_wheel"
+   ],
+   "p_mcnemar": 1.0
+  },
+  "questions_on_stated_briefs": {
+   "claude_GC": {
+    "stated_briefs": 40,
+    "asked_on": 0,
+    "questions": 0
+   },
+   "claude_GPC": {
+    "stated_briefs": 40,
+    "asked_on": 0,
+    "questions": 0
+   }
+  }
+ }
+}

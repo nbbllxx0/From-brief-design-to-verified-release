@@ -1,0 +1,36 @@
+{
+ "task": "b50_valve_bracket",
+ "cond": "T",
+ "rep": 3,
+ "t": "2026-10-30T11:28:55",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 4.657775999978185,
+ "usage": {
+  "input_tokens": 21961,
+  "cached_input_tokens": 17024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 79,
+  "reasoning_output_tokens": 40
+ },
+ "returncode": 0,
+ "final": "{\"refuse\":\"The actuator load pad lies entirely within the required valve-handle clearance region, so the bracket cannot support the load while keeping that region clear.\"}",
+ "spec": null,
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 4.731070100096986,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": true
+}

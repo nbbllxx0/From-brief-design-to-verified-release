@@ -1,0 +1,81 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b10 hook plate",
+  "domain": {
+   "size": [
+    120,
+    80,
+    20
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "beam",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "hook",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      115,
+      10
+     ],
+     "size": [
+      10,
+      20
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -1500,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "clarify",
+ "source": "engineering",
+ "oracle": [
+  {
+   "about": "which lower corner, and the attachment size",
+   "answer": "The lower right corner (x = 120). The hook hangs from a 10 mm wide lug on the bottom face at the right end (x from 110 to 120), across the full thickness."
+  }
+ ],
+ "admissible": [
+  {
+   "reading": "the mirror image (lower left corner)",
+   "why": "the design is the mirror image; it is not the intended corner, but compliance is equal",
+   "counts": false
+  }
+ ],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Y after oracle: 10 mm bottom lug x=110..120. Before clarification neither corner nor attachment size is determined. Equal mirrored compliance does not identify the actual attachment."
+ }
+}

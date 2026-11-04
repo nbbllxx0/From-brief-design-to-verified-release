@@ -1,0 +1,303 @@
+{
+ "task": "b06_motor_mount",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T15:07:15",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 60233,
+  "cached_input_tokens": 42198,
+  "cache_write_input_tokens": 18027,
+  "output_tokens": 2374
+ },
+ "gc_wall_s": 27.77713520010002,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14698,
+  "cached_input_tokens": 6389,
+  "cache_write_input_tokens": 8305,
+  "output_tokens": 1208
+ },
+ "verify_wall_s": 16.862874899990857,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 3582,
+  "cached_input_tokens": 48587,
+  "cache_write_input_tokens": 26332,
+  "input_tokens": 74931
+ },
+ "wall_s": 44.640010100090876,
+ "questions": 0,
+ "n_tool_calls": 15,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Motor mount",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    60.0,
+    120.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "bolt_x20_z20",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "bolt_x140_z20",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      140.0,
+      20.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "bolt_x20_z100",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20.0,
+      100.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   },
+   {
+    "id": "bolt_x140_z100",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      140.0,
+      100.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": ""
+   }
+  ],
+  "loads": [
+   {
+    "id": "motor_load",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80.0,
+      60.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     800.0,
+     -2000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "2 kN down + 0.8 kN +x belt tension on motor pad"
+   }
+  ],
+  "passive": [
+   {
+    "id": "boss_x20_z20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "boss_x140_z20",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140.0,
+      20.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "boss_x20_z100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      20.0,
+      100.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "boss_x140_z100",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      140.0,
+      100.0
+     ],
+     "radius": 12.0,
+     "span": [
+      0.0,
+      10.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "motor_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      60.0,
+      55.0,
+      40.0
+     ],
+     "max": [
+      100.0,
+      60.0,
+      80.0
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 17.390349899884313,
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (160, 60, 120)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

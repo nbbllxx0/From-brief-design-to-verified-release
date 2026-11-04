@@ -1,0 +1,1761 @@
+{
+ "rule": "E converted to MPa outside [100, 1e+06]",
+ "groups": [
+  {
+   "provider": "primary",
+   "condition": "T",
+   "delivered": 42,
+   "wrong": 8,
+   "right": 34,
+   "flag_wrong": 0,
+   "flag_right": 0,
+   "flagged": [],
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b02_mbb_half",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b03_bridge_deck",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b05_l_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b06_motor_mount",
+     "correct": false,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b09_duct_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b12_wheel",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b14_cube_torsion",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b15_corner_plate",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b16_column",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b17_arch_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b19_engine_bracket",
+     "correct": false,
+     "E_MPa": 113763.49533727797,
+     "flag": false
+    },
+    {
+     "task": "b20_quarter_plate",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b23_clamped_beam",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b24_shear_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b26_canopy",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b28_stool",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b31_pillow_block",
+     "correct": false,
+     "E_MPa": 110000.0,
+     "flag": false
+    },
+    {
+     "task": "b32_drone_arm",
+     "correct": true,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "correct": false,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b35_padeye",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b36_pedal_arm",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "correct": true,
+     "E_MPa": 70000.0,
+     "flag": false
+    },
+    {
+     "task": "b38_peek_bracket",
+     "correct": true,
+     "E_MPa": 3600.0,
+     "flag": false
+    },
+    {
+     "task": "b39_tv_bracket",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b40_crank_arm",
+     "correct": false,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b42_snap_hook",
+     "correct": true,
+     "E_MPa": 1700.0,
+     "flag": false
+    },
+    {
+     "task": "b43_press_riser",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b47_camera_mount",
+     "correct": false,
+     "E_MPa": 69000.0,
+     "flag": false
+    }
+   ]
+  },
+  {
+   "provider": "primary",
+   "condition": "G",
+   "delivered": 47,
+   "wrong": 6,
+   "right": 41,
+   "flag_wrong": 0,
+   "flag_right": 0,
+   "flagged": [],
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b02_mbb_half",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b03_bridge_deck",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b05_l_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b06_motor_mount",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b07_sensor_arm",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b09_duct_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b10_hook_plate",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b12_wheel",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b14_cube_torsion",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b15_corner_plate",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b16_column",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b17_arch_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b19_engine_bracket",
+     "correct": true,
+     "E_MPa": 113763.49533727797,
+     "flag": false
+    },
+    {
+     "task": "b20_quarter_plate",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b23_clamped_beam",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b24_shear_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b26_canopy",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b28_stool",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b31_pillow_block",
+     "correct": true,
+     "E_MPa": 110000.0,
+     "flag": false
+    },
+    {
+     "task": "b32_drone_arm",
+     "correct": true,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b35_padeye",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b36_pedal_arm",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "correct": true,
+     "E_MPa": 70000.0,
+     "flag": false
+    },
+    {
+     "task": "b38_peek_bracket",
+     "correct": true,
+     "E_MPa": 3600.0,
+     "flag": false
+    },
+    {
+     "task": "b39_tv_bracket",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b40_crank_arm",
+     "correct": true,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b42_snap_hook",
+     "correct": true,
+     "E_MPa": 1700.0,
+     "flag": false
+    },
+    {
+     "task": "b43_press_riser",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b45_pump_bracket",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b46_sensor_housing",
+     "correct": false,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b47_camera_mount",
+     "correct": false,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b48_cable_anchor",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    }
+   ]
+  },
+  {
+   "provider": "primary",
+   "condition": "GC",
+   "delivered": 47,
+   "wrong": 0,
+   "right": 47,
+   "flag_wrong": 0,
+   "flag_right": 0,
+   "flagged": [],
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b02_mbb_half",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b03_bridge_deck",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b05_l_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b06_motor_mount",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b07_sensor_arm",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b09_duct_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b10_hook_plate",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b12_wheel",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b14_cube_torsion",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b15_corner_plate",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b16_column",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b17_arch_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b19_engine_bracket",
+     "correct": true,
+     "E_MPa": 113763.49533727797,
+     "flag": false
+    },
+    {
+     "task": "b20_quarter_plate",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b23_clamped_beam",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b24_shear_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b26_canopy",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b28_stool",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b31_pillow_block",
+     "correct": true,
+     "E_MPa": 110000.0,
+     "flag": false
+    },
+    {
+     "task": "b32_drone_arm",
+     "correct": true,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b35_padeye",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b36_pedal_arm",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "correct": true,
+     "E_MPa": 70000.0,
+     "flag": false
+    },
+    {
+     "task": "b38_peek_bracket",
+     "correct": true,
+     "E_MPa": 3600.0,
+     "flag": false
+    },
+    {
+     "task": "b39_tv_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b40_crank_arm",
+     "correct": true,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b42_snap_hook",
+     "correct": true,
+     "E_MPa": 1700.0,
+     "flag": false
+    },
+    {
+     "task": "b43_press_riser",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b45_pump_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b46_sensor_housing",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b47_camera_mount",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b48_cable_anchor",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    }
+   ]
+  },
+  {
+   "provider": "second",
+   "condition": "GC",
+   "delivered": 47,
+   "wrong": 4,
+   "right": 43,
+   "flag_wrong": 2,
+   "flag_right": 0,
+   "flagged": [
+    [
+     "b13_cantilever_end_traction",
+     210000000.0,
+     false
+    ],
+    [
+     "b37_battery_crossmember",
+     70000000.0,
+     false
+    ]
+   ],
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b02_mbb_half",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b03_bridge_deck",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b05_l_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b06_motor_mount",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b07_sensor_arm",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b09_duct_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b10_hook_plate",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b12_wheel",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "correct": false,
+     "E_MPa": 210000000.0,
+     "flag": true
+    },
+    {
+     "task": "b14_cube_torsion",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b15_corner_plate",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b16_column",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b17_arch_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b19_engine_bracket",
+     "correct": true,
+     "E_MPa": 113763.49533727797,
+     "flag": false
+    },
+    {
+     "task": "b20_quarter_plate",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b23_clamped_beam",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b24_shear_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b26_canopy",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b28_stool",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b31_pillow_block",
+     "correct": true,
+     "E_MPa": 110000.0,
+     "flag": false
+    },
+    {
+     "task": "b32_drone_arm",
+     "correct": true,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b35_padeye",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b36_pedal_arm",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "correct": false,
+     "E_MPa": 70000000.0,
+     "flag": true
+    },
+    {
+     "task": "b38_peek_bracket",
+     "correct": true,
+     "E_MPa": 3600.0,
+     "flag": false
+    },
+    {
+     "task": "b39_tv_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b40_crank_arm",
+     "correct": true,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b42_snap_hook",
+     "correct": true,
+     "E_MPa": 1700.0,
+     "flag": false
+    },
+    {
+     "task": "b43_press_riser",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b45_pump_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b46_sensor_housing",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b47_camera_mount",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b48_cable_anchor",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    }
+   ]
+  },
+  {
+   "provider": "second",
+   "condition": "GCV",
+   "delivered": 47,
+   "wrong": 3,
+   "right": 44,
+   "flag_wrong": 2,
+   "flag_right": 0,
+   "flagged": [
+    [
+     "b13_cantilever_end_traction",
+     210000000.0,
+     false
+    ],
+    [
+     "b37_battery_crossmember",
+     70000000.0,
+     false
+    ]
+   ],
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b02_mbb_half",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b03_bridge_deck",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b05_l_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b06_motor_mount",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b07_sensor_arm",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b09_duct_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b10_hook_plate",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b12_wheel",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "correct": false,
+     "E_MPa": 210000000.0,
+     "flag": true
+    },
+    {
+     "task": "b14_cube_torsion",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b15_corner_plate",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b16_column",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b17_arch_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b19_engine_bracket",
+     "correct": true,
+     "E_MPa": 113763.49533727797,
+     "flag": false
+    },
+    {
+     "task": "b20_quarter_plate",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b23_clamped_beam",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b24_shear_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b26_canopy",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b28_stool",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b31_pillow_block",
+     "correct": true,
+     "E_MPa": 110000.0,
+     "flag": false
+    },
+    {
+     "task": "b32_drone_arm",
+     "correct": true,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b35_padeye",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b36_pedal_arm",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "correct": false,
+     "E_MPa": 70000000.0,
+     "flag": true
+    },
+    {
+     "task": "b38_peek_bracket",
+     "correct": true,
+     "E_MPa": 3600.0,
+     "flag": false
+    },
+    {
+     "task": "b39_tv_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b40_crank_arm",
+     "correct": true,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b42_snap_hook",
+     "correct": true,
+     "E_MPa": 1700.0,
+     "flag": false
+    },
+    {
+     "task": "b43_press_riser",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b45_pump_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b46_sensor_housing",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b47_camera_mount",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b48_cable_anchor",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    }
+   ]
+  },
+  {
+   "provider": "second",
+   "condition": "T",
+   "delivered": 47,
+   "wrong": 8,
+   "right": 39,
+   "flag_wrong": 0,
+   "flag_right": 0,
+   "flagged": [],
+   "rows": [
+    {
+     "task": "b01_cantilever_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b02_mbb_half",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b03_bridge_deck",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b04_torsion_shaft",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b05_l_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b06_motor_mount",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b07_sensor_arm",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b09_duct_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b10_hook_plate",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b11_cantilever_line_load",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b12_wheel",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b13_cantilever_end_traction",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b14_cube_torsion",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b15_corner_plate",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b16_column",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b17_arch_bridge",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b18_cantilever_hole",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b19_engine_bracket",
+     "correct": true,
+     "E_MPa": 113763.49533727797,
+     "flag": false
+    },
+    {
+     "task": "b20_quarter_plate",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b21_mbb_z_up",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b22_cantilever_slab",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b23_clamped_beam",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b24_shear_block",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b25_cantilever_metres",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b26_canopy",
+     "correct": true,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b27_eccentric_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b28_stool",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b29_michell_cantilever",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b30_bridge_clearance",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b31_pillow_block",
+     "correct": true,
+     "E_MPa": 110000.0,
+     "flag": false
+    },
+    {
+     "task": "b32_drone_arm",
+     "correct": true,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b33_shelf_bracket",
+     "correct": true,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b34_antenna_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b35_padeye",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b36_pedal_arm",
+     "correct": false,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b37_battery_crossmember",
+     "correct": true,
+     "E_MPa": 70000.0,
+     "flag": false
+    },
+    {
+     "task": "b38_peek_bracket",
+     "correct": true,
+     "E_MPa": 3600.0,
+     "flag": false
+    },
+    {
+     "task": "b39_tv_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b40_crank_arm",
+     "correct": true,
+     "E_MPa": 71700.0,
+     "flag": false
+    },
+    {
+     "task": "b41_hinge_bracket",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b42_snap_hook",
+     "correct": true,
+     "E_MPa": 1700.0,
+     "flag": false
+    },
+    {
+     "task": "b43_press_riser",
+     "correct": true,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b44_gearbox_bracket",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b45_pump_bracket",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    },
+    {
+     "task": "b46_sensor_housing",
+     "correct": false,
+     "E_MPa": 68900.0,
+     "flag": false
+    },
+    {
+     "task": "b47_camera_mount",
+     "correct": false,
+     "E_MPa": 69000.0,
+     "flag": false
+    },
+    {
+     "task": "b48_cable_anchor",
+     "correct": false,
+     "E_MPa": 210000.0,
+     "flag": false
+    }
+   ]
+  }
+ ]
+}

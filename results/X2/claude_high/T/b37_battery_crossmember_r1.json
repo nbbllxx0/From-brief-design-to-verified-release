@@ -1,0 +1,159 @@
+{
+ "task": "b37_battery_crossmember",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:25:49",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 8.30050850007683,
+ "usage": {
+  "input_tokens": 8698,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8047,
+  "output_tokens": 682
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"battery_tray_crossmember\",\"description\":\"Aluminium 6082-T6 battery-tray crossmember, 600x60x80 mm, both ends fully fixed to side rails, two 40x40 mm battery feet on top face each carrying 1.5 kN downward.\",\"units\":{\"length\":\"mm\",\"force\":\"kN\"},\"domain\":{\"kind\":\"box\",\"size\":[600,60,80]},\"material\":{\"name\":\"aluminium 6082-T6\",\"E\":70.0,\"nu\":0.33},\"volume_fraction\":0.2,\"supports\":[{\"id\":\"rail_x0\",\"region\":{\"kind\":\"face\",\"face\":\"x-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"bolted to side rail at x=0, fully fixed\"},{\"id\":\"rail_x600\",\"region\":{\"kind\":\"face\",\"face\":\"x+\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"bolted to side rail at x=600, fully fixed\"}],\"loads\":[{\"id\":\"foot_1\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[200,40],\"size\":[40,40]},\"force\":[0,-1.5,0],\"distribution\":\"uniform_nodes\",\"note\":\"battery foot at x=200, z=40, 1.5 kN downward\"},{\"id\":\"foot_2\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[400,40],\"size\":[40,40]},\"force\":[0,-1.5,0],\"distribution\":\"uniform_nodes\",\"note\":\"battery foot at x=400, z=40, 1.5 kN downward\"}],\"passive\":[],\"resolution\":{\"h\":2},\"meta\":{\"E_conversion\":\"70 GPa = 70 kN/mm^2 in kN-mm units\",\"up_axis\":\"y\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "battery_tray_crossmember",
+  "description": "Aluminium 6082-T6 battery-tray crossmember, 600x60x80 mm, both ends fully fixed to side rails, two 40x40 mm battery feet on top face each carrying 1.5 kN downward.",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    600,
+    60,
+    80
+   ]
+  },
+  "material": {
+   "name": "aluminium 6082-T6",
+   "E": 70.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "rail_x0",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "bolted to side rail at x=0, fully fixed"
+   },
+   {
+    "id": "rail_x600",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "bolted to side rail at x=600, fully fixed"
+   }
+  ],
+  "loads": [
+   {
+    "id": "foot_1",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      200,
+      40
+     ],
+     "size": [
+      40,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -1.5,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "battery foot at x=200, z=40, 1.5 kN downward"
+   },
+   {
+    "id": "foot_2",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      400,
+      40
+     ],
+     "size": [
+      40,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -1.5,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "battery foot at x=400, z=40, 1.5 kN downward"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 2
+  },
+  "meta": {
+   "E_conversion": "70 GPa = 70 kN/mm^2 in kN-mm units",
+   "up_axis": "y"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 8.500842600129545,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (300, 30, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

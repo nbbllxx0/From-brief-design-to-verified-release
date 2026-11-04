@@ -1,0 +1,141 @@
+{
+ "task": "b47_camera_mount",
+ "cond": "GC",
+ "rep": 1,
+ "t": "2026-10-30T10:24:33",
+ "n_tool_calls": 13,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "get_spec",
+  "ask_clarification",
+  "set_params",
+  "ask_clarification",
+  "ask_clarification",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 3,
+ "oracle_hits": 2,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b47_camera_mount_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 43.75884880009107,
+ "usage": {
+  "input_tokens": 170674,
+  "cached_input_tokens": 148864,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1305,
+  "reasoning_output_tokens": 264
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Validated and render checked. Assumptions: fully fixed gantry face; aluminium E=69 GPa, \u03bd=0.33. Clarified: 15% volume fraction, pad is load footprint only, no minimum-feature constraint.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Inspection-camera mount",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    60.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "gantry_mount",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full x=0 face bolted to gantry; fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "camera_weight",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -80.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total downward camera force, distributed over central 20 x 20 mm end-face pad."
+   }
+  ],
+  "passive": [],
+  "description": "Inspection-camera mount; y up. Full x=0 face fixed to gantry. Total 80 N in -y on a centred 20 x 20 mm pad on x=120. Lightweight topology optimization.",
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  },
+  "volume_fraction": 0.15
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 43.96832970017567,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 60)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

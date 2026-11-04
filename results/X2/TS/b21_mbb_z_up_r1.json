@@ -1,0 +1,146 @@
+{
+ "task": "b21_mbb_z_up",
+ "cond": "TS",
+ "rep": 1,
+ "t": "2026-11-01T01:22:34",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "retries": 0,
+ "retry_errors": [],
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 8.00729570002295,
+ "usage": {
+  "input_tokens": 21974,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 423,
+  "reasoning_output_tokens": 64
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"simply_supported_beam_z_up\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [320, 40, 40]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.3,\n  \"supports\": [\n    {\n      \"id\": \"left_pin\",\n      \"region\": {\n        \"kind\": \"edge\",\n        \"axis\": \"y\",\n        \"at\": [0, 0],\n        \"span\": [0, 40]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"right_roller\",\n      \"region\": {\n        \"kind\": \"edge\",\n        \"axis\": \"y\",\n        \"at\": [320, 0],\n        \"span\": [0, 40]\n      },\n      \"fix\": [\"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"midspan_downward_line_load\",\n      \"region\": {\n        \"kind\": \"edge\",\n        \"axis\": \"y\",\n        \"at\": [160, 40],\n        \"span\": [0, 40]\n      },\n      \"force\": [0, 0, -3000],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 2\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "simply_supported_beam_z_up",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    320,
+    40,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "left_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      0,
+      0
+     ],
+     "span": [
+      0,
+      40
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "right_roller",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      320,
+      0
+     ],
+     "span": [
+      0,
+      40
+     ]
+    },
+    "fix": [
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_downward_line_load",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      160,
+      40
+     ],
+     "span": [
+      0,
+      40
+     ]
+    },
+    "force": [
+     0,
+     0,
+     -3000
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "resolution": {
+   "h": 2
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 8.064097500173375,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (160, 20, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

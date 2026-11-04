@@ -1,0 +1,160 @@
+{
+ "task": "b43_press_riser",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:07:03",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 73027,
+  "cached_input_tokens": 66241,
+  "cache_write_input_tokens": 6776,
+  "output_tokens": 2296
+ },
+ "gc_wall_s": 32.08973650005646,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14565,
+  "cached_input_tokens": 8645,
+  "cache_write_input_tokens": 5916,
+  "output_tokens": 861
+ },
+ "verify_wall_s": 12.497547700069845,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 87592,
+  "cached_input_tokens": 74886,
+  "output_tokens": 3157,
+  "cache_write_input_tokens": 12692
+ },
+ "wall_s": 44.587284200126305,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Press riser block",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    100.0,
+    150.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bed_bolted",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom face bolted to press bed over full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "tool_press",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      150.0,
+      75.0
+     ],
+     "size": [
+      100.0,
+      50.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -20000.0,
+     2000.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Tool pad 100 (x) x 50 (z) mm at top-face centre: 20 kN down, 2 kN +z"
+   }
+  ],
+  "passive": [
+   {
+    "id": "coolant_channel",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      0.0,
+      45.0
+     ],
+     "max": [
+      300.0,
+      30.0,
+      105.0
+     ]
+    },
+    "note": "Coolant channel, full length in x, must stay empty"
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": null,
+   "cells_short_edge": 50
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 13.010229399893433,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": false,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 50, 75)"
+  ],
+  "matched": "admissible:1"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,203 @@
+{
+ "task": "b44_gearbox_bracket",
+ "cond": "GNR",
+ "rep": 1,
+ "t": "2026-10-31T22:42:41",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_passive",
+  "add_load",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GNR\\b44_gearbox_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 25.783490299945697,
+ "usage": {
+  "input_tokens": 80478,
+  "cached_input_tokens": 70656,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1023,
+  "reasoning_output_tokens": 186
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: z is vertical; steel E = 210 GPa, \u03bd = 0.3; solid lugs extend 4 mm inward; volume fraction applies to non-passive material; opposite 625 N lug forces produce +40 N\u00b7m about x. list_regions checked, validation passed, and render confirmed support/load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Gearbox output bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigid gearbox mounting: all translations fixed across x=0 end face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_torque_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40.0,
+      72.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -625.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Upper lug total force -625 N in y. Together with lower lug gives pure +x torque, 625 N times 64 mm = 40000 N mm."
+   },
+   {
+    "id": "bottom_torque_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      40.0,
+      8.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     625.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Lower lug total force +625 N in y; equal and opposite to upper lug force."
+   }
+  ],
+  "passive": [
+   {
+    "id": "top_drive_lug",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      32.0,
+      64.0
+     ],
+     "max": [
+      160.0,
+      48.0,
+      80.0
+     ]
+    },
+    "note": "16x16 mm upper drive lug; assumed 4 mm inward thickness."
+   },
+   {
+    "id": "bottom_drive_lug",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      32.0,
+      0.0
+     ],
+     "max": [
+      160.0,
+      48.0,
+      16.0
+     ]
+    },
+    "note": "16x16 mm lower drive lug; assumed 4 mm inward thickness."
+   }
+  ],
+  "description": "Gearbox output bracket. x is the long axis, z is vertical, y is depth. Entire x=0 face clamped to gearbox. Two 16x16 mm drive-lug patches on x=160 are centered at (y,z)=(40,72) and (40,8), flush with top and bottom edges. Opposed 625 N y-directed forces form a pure +x torque of 40000 N mm (40 N m), with zero resultant force. Assume solid drive lugs extend 4 mm inward from the end face; these passive volumes are excluded from the 0.3 design-volume fraction. Linear isotropic steel E=210000 N/mm^2, nu=0.3.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 26.074272899888456,
+ "cwe": {
+  "value": 106439653.56850198,
+  "c_pred_under_intended": 152449236.29570368,
+  "c_intended_opt": 1.4322597805650623,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0046666860580444
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

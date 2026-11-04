@@ -1,0 +1,142 @@
+{
+ "task": "b11_cantilever_line_load",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 285.7752246998716,
+ "usage": {
+  "input_tokens": 566769,
+  "cached_input_tokens": 525696,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1635,
+  "reasoning_output_tokens": 218
+ },
+ "returncode": 0,
+ "final": "DONE, a58cc35ec686, compliance 60.72720889920402 N\u00b7mm",
+ "n_tool_calls": 25,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "ladder",
+  "ask_clarification",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "field_stats",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "export_stl",
+  "export_report"
+ ],
+ "questions": 1,
+ "stages": {
+  "spec_s": 15.083000183105469,
+  "solve_h1.0": {
+   "wall_s": 20.751999855041504,
+   "compute_s": 19.417457799892873,
+   "iterations": 82,
+   "n_elem": 96000,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.5": {
+   "wall_s": 18.771999835968018,
+   "compute_s": 18.628914698259905,
+   "iterations": 61,
+   "n_elem": 768000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.25": {
+   "wall_s": 62.81100010871887,
+   "compute_s": 62.16174309956841,
+   "iterations": 67,
+   "n_elem": 6144000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.125": {
+   "wall_s": 143.1600000858307,
+   "compute_s": 141.12246449990198,
+   "iterations": 61,
+   "n_elem": 49152000,
+   "warm": true,
+   "status": "converged",
+   "certified": true
+  },
+  "export_s": 4.0938,
+  "total_s": 272.50100016593933
+ },
+ "released": true,
+ "exports": [
+  {
+   "triangles": 2911864,
+   "bytes": 145593284,
+   "sha256": "8378af6d06d976a309ba988de9f875e39d580595b19dbae20fc666488ece7dc0",
+   "path": "results\\X3\\b11_cantilever_line_load\\session\\exports\\Cantilever_with_end_line_load_a58cc35ec686.stl",
+   "pool": 1,
+   "vertices": 1455918,
+   "t_surface_s": 1.598,
+   "t_write_s": 0.856,
+   "mesh": {
+    "closed": true,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "volume": 28798.707520030905
+   },
+   "job": "a58cc35ec686",
+   "certified": true,
+   "released": true
+  },
+  {
+   "job": "a58cc35ec686",
+   "certified": true,
+   "json": "results\\X3\\b11_cantilever_line_load\\session\\exports\\Cantilever_with_end_line_load_a58cc35ec686_report.json",
+   "markdown": "results\\X3\\b11_cantilever_line_load\\session\\exports\\Cantilever_with_end_line_load_a58cc35ec686_report.md",
+   "stl": "results\\X3\\b11_cantilever_line_load\\session\\exports\\Cantilever_with_end_line_load_a58cc35ec686.stl"
+  }
+ ],
+ "release_spec_match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 20)"
+  ],
+  "matched": "intended"
+ },
+ "replay": {
+  "ok": true,
+  "calls": 25,
+  "solves_replayed": 4,
+  "skipped": 8,
+  "mismatches": [],
+  "final_spec_hash": "1f53115c8ac55e8b"
+ }
+}

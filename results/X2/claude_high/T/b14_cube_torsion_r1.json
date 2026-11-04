@@ -1,0 +1,191 @@
+{
+ "task": "b14_cube_torsion",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:21:54",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 13.381650799885392,
+ "usage": {
+  "input_tokens": 8645,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7994,
+  "output_tokens": 1136
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"cube_torsion\",\"description\":\"100 mm steel cube, bottom face fully fixed, 18 N*m torque about +z applied through four 10x10 mm pads flush with the midpoints of the top edges. Each pad centre sits 45 mm from the z axis, so each carries 18000/(4*45) = 100 N tangential to its edge, counter-clockwise seen from above.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[100,100,100]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.15,\"supports\":[{\"id\":\"bottom_bolted\",\"region\":{\"kind\":\"face\",\"face\":\"z-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"bottom face bolted over full area\"}],\"loads\":[{\"id\":\"pad_y0\",\"region\":{\"kind\":\"patch\",\"face\":\"z+\",\"center\":[50,5],\"size\":[10,10]},\"force\":[100,0,0],\"distribution\":\"uniform_nodes\",\"note\":\"pad at midpoint of top edge y=0, force +x\"},{\"id\":\"pad_x100\",\"region\":{\"kind\":\"patch\",\"face\":\"z+\",\"center\":[95,50],\"size\":[10,10]},\"force\":[0,100,0],\"distribution\":\"uniform_nodes\",\"note\":\"pad at midpoint of top edge x=100, force +y\"},{\"id\":\"pad_y100\",\"region\":{\"kind\":\"patch\",\"face\":\"z+\",\"center\":[50,95],\"size\":[10,10]},\"force\":[-100,0,0],\"distribution\":\"uniform_nodes\",\"note\":\"pad at midpoint of top edge y=100, force -x\"},{\"id\":\"pad_x0\",\"region\":{\"kind\":\"patch\",\"face\":\"z+\",\"center\":[5,50],\"size\":[10,10]},\"force\":[0,-100,0],\"distribution\":\"uniform_nodes\",\"note\":\"pad at midpoint of top edge x=0, force -y\"}],\"passive\":[],\"resolution\":{\"h\":1.0},\"meta\":{\"torque_Nmm\":18000,\"lever_arm_mm\":45,\"force_per_pad_N\":100}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "cube_torsion",
+  "description": "100 mm steel cube, bottom face fully fixed, 18 N*m torque about +z applied through four 10x10 mm pads flush with the midpoints of the top edges. Each pad centre sits 45 mm from the z axis, so each carries 18000/(4*45) = 100 N tangential to its edge, counter-clockwise seen from above.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100,
+    100,
+    100
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "bottom_bolted",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "bottom face bolted over full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "pad_y0",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50,
+      5
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     100,
+     0,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "pad at midpoint of top edge y=0, force +x"
+   },
+   {
+    "id": "pad_x100",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      95,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     100,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "pad at midpoint of top edge x=100, force +y"
+   },
+   {
+    "id": "pad_y100",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50,
+      95
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     -100,
+     0,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "pad at midpoint of top edge y=100, force -x"
+   },
+   {
+    "id": "pad_x0",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      5,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     -100,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "pad at midpoint of top edge x=0, force -y"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1.0
+  },
+  "meta": {
+   "torque_Nmm": 18000,
+   "lever_arm_mm": 45,
+   "force_per_pad_N": 100
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 13.588092500111088,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

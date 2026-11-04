@@ -1,0 +1,221 @@
+{
+ "task": "b46_sensor_housing",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:53:04",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief uses mm for envelope/elements and N for force."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 80 x 50 x 40 mm in x,y,z; y up; minimum corner at origin."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Aluminium 6061 is stated. Assume homogeneous isotropic linear elasticity, E=69000 N/mm^2 and Poisson ratio 0.33; temper unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.3; tool applies this to non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:chassis_bottom",
+    "source": "assumed",
+    "note": "Full bottom face at y=0 bolted to chassis is stated; idealize the full face as fixed in x,y,z, with rigid chassis and no bolt compliance."
+   },
+   {
+    "key": "load:sensor_push",
+    "source": "derived",
+    "note": "Brief gives total force 200 N along -x on 10 x 10 mm pad at centre of x=80 face. Centre (y,z)=(50/2,40/2)=(25,20) mm; bounds y=20..30,z=15..25; force=(-200,0,0) N shared over patch nodes."
+   },
+   {
+    "key": "passive:connector_clearance",
+    "source": "assumed",
+    "note": "Brief requests front connector room without defining front or plug size. Choose front=z+ (z=40); reserve open void x=30..50,y=15..35,z=30..40 mm: 20 x 20 mm opening, 10 mm depth, centred on front face."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "support:chassis_bottom",
+   "passive:connector_clearance"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_passive",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "list_sources",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b46_sensor_housing_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 30.30914989998564,
+ "usage": {
+  "input_tokens": 90077,
+  "cached_input_tokens": 80768,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1152,
+  "reasoning_output_tokens": 126
+ },
+ "returncode": 0,
+ "final": "DONE\n\nAssumptions: rigidly fixed bottom face; isotropic aluminium 6061 with E = 69 GPa, \u03bd = 0.33; front is z = 40 mm, with a centred 20 \u00d7 20 mm connector opening extending 10 mm inward. Volume fraction applies to non-passive volume.\n\nValidation passed, all items source-tagged, and render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Sensor housing bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    50.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "chassis_bottom",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full bottom face at y=0 bolted to chassis, idealized as fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "sensor_push",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      25.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -200.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 200 N toward -x on 10 x 10 mm pad, x=80, y=20..30, z=15..25."
+   }
+  ],
+  "passive": [
+   {
+    "id": "connector_clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      30.0,
+      15.0,
+      30.0
+     ],
+     "max": [
+      50.0,
+      35.0,
+      40.0
+     ]
+    },
+    "note": "Assume front is z=40. Connector clearance 20 mm x 20 mm in x,y and 10 mm deep, open to front; external plug approach continues along +z."
+   }
+  ],
+  "description": "Y is up. Full bottom face fixed to chassis. Sensor load on the centre of x=80. Assume front is z=40; reserve an open 20 x 20 x 10 mm connector pocket centred on the front face.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 30.52867619995959,
+ "cwe": {
+  "value": -0.025397068777498588,
+  "c_pred_under_intended": 0.07089004099881882,
+  "c_intended_opt": 0.07273735664830938,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {
+   "keep_out_filled": 0.2338888888888889
+  },
+  "mass_ratio": 1.0331125259399414
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 50, 40)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

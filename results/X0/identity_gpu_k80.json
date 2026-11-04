@@ -1,0 +1,85 @@
+{
+ "device": "NVIDIA GeForce RTX 4090",
+ "criterion": "same iterations, compliance within 1e-9, max|d rho| = 0",
+ "all_pass": true,
+ "rows": [
+  {
+   "problem": "cantilever",
+   "k": 80,
+   "voxfem": {
+    "converged": true,
+    "valid": true,
+    "iterations": 76,
+    "compliance": 0.5848176037054071,
+    "volume_phys": 0.3,
+    "mnd": 4.1669325634291486e-08,
+    "wall_s": 42.662623800104484
+   },
+   "spec": {
+    "converged": true,
+    "valid": true,
+    "iterations": 76,
+    "compliance": 0.5848176037054071,
+    "volume_phys": 0.3,
+    "mnd": 4.1669325634291486e-08,
+    "wall_s": 25.669766400009394
+   },
+   "same_iterations": true,
+   "compliance_rel_diff": 0.0,
+   "max_abs_drho": 0.0,
+   "pass": true
+  },
+  {
+   "problem": "bridge",
+   "k": 80,
+   "voxfem": {
+    "converged": true,
+    "valid": true,
+    "iterations": 83,
+    "compliance": 0.10648826596404457,
+    "volume_phys": 0.3,
+    "mnd": 2.4993114264668104e-08,
+    "wall_s": 31.909553200006485
+   },
+   "spec": {
+    "converged": true,
+    "valid": true,
+    "iterations": 83,
+    "compliance": 0.10648826596404457,
+    "volume_phys": 0.3,
+    "mnd": 2.4993114264668104e-08,
+    "wall_s": 31.585088799940422
+   },
+   "same_iterations": true,
+   "compliance_rel_diff": 0.0,
+   "max_abs_drho": 0.0,
+   "pass": true
+  },
+  {
+   "problem": "torsion",
+   "k": 80,
+   "voxfem": {
+    "converged": true,
+    "valid": true,
+    "iterations": 76,
+    "compliance": 0.20628321428198793,
+    "volume_phys": 0.3,
+    "mnd": 7.665842377567456e-09,
+    "wall_s": 25.356506299925968
+   },
+   "spec": {
+    "converged": true,
+    "valid": true,
+    "iterations": 76,
+    "compliance": 0.20628321428198793,
+    "volume_phys": 0.3,
+    "mnd": 7.665842377567456e-09,
+    "wall_s": 25.323704400099814
+   },
+   "same_iterations": true,
+   "compliance_rel_diff": 0.0,
+   "max_abs_drho": 0.0,
+   "pass": true
+  }
+ ]
+}

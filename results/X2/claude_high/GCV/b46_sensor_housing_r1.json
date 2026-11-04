@@ -1,0 +1,160 @@
+{
+ "task": "b46_sensor_housing",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:08:51",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 72964,
+  "cached_input_tokens": 65963,
+  "cache_write_input_tokens": 6991,
+  "output_tokens": 2227
+ },
+ "gc_wall_s": 29.52340940013528,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14517,
+  "cached_input_tokens": 8588,
+  "cache_write_input_tokens": 5925,
+  "output_tokens": 978
+ },
+ "verify_wall_s": 15.385828399797902,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 87481,
+  "cached_input_tokens": 74551,
+  "output_tokens": 3205,
+  "cache_write_input_tokens": 12916
+ },
+ "wall_s": 44.90923779993318,
+ "questions": 1,
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Sensor housing bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    50.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "chassis_bolt",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom face bolted to chassis over full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "sensor_push",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      25.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -200.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Sensor head 200 N along -x, 10x10 pad at centre of x=80 face"
+   }
+  ],
+  "passive": [
+   {
+    "id": "connector_keepout",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      20.0,
+      10.0,
+      0.0
+     ],
+     "max": [
+      50.0,
+      30.0,
+      15.0
+     ]
+    },
+    "note": "Connector plug clearance at front (z=0) face"
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 15.835036899894476,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 50, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

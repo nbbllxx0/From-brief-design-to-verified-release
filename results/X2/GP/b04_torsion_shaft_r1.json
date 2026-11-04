@@ -1,0 +1,274 @@
+{
+ "task": "b04_torsion_shaft",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:29:34",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies mm dimensions and N*m torque; use mm and N, so 40 N*m = 40000 N*mm."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 160 mm along x, 80 mm along y (up), 80 mm along z; origin at minimum corner."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; assume isotropic linear elasticity with E=210000 N/mm^2 and Poisson ratio 0.3 because grade and elastic constants are unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.3; tool applies it to non-passive design volume."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 2 mm elements; h=2 mm."
+   },
+   {
+    "key": "support:gearbox_fixed",
+    "source": "stated",
+    "note": "x=0 end bolted rigidly to gearbox; fix x,y,z translations over full x- face."
+   },
+   {
+    "key": "load:top_lug",
+    "source": "derived",
+    "note": "16x16 mm footprint flush y=80 gives center (y,z)=(72,40). Opposing lug center y=8 gives 64 mm couple arm. F=40*1000/64=625 N along +z for +x right-hand torque."
+   },
+   {
+    "key": "load:bottom_lug",
+    "source": "derived",
+    "note": "16x16 mm footprint flush y=0 gives center (y,z)=(8,40). Equal opposite force -625 N along z yields zero resultant and +40000 N*mm about x."
+   },
+   {
+    "key": "passive:top_lug_solid",
+    "source": "assumed",
+    "note": "Top lug footprint is stated; assume a solid pad one 2 mm element deep, x=158..160, y=64..80, z=32..48, to retain the load interface."
+   },
+   {
+    "key": "passive:bottom_lug_solid",
+    "source": "assumed",
+    "note": "Bottom lug footprint is stated; assume a solid pad one 2 mm element deep, x=158..160, y=0..16, z=32..48, to retain the load interface."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "passive:top_lug_solid",
+   "passive:bottom_lug_solid"
+  ]
+ },
+ "n_tool_calls": 21,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_load",
+  "add_passive",
+  "add_passive",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b04_torsion_shaft_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 40.67781129991636,
+ "usage": {
+  "input_tokens": 106859,
+  "cached_input_tokens": 75264,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1507,
+  "reasoning_output_tokens": 172
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: isotropic steel with E = 210 GPa and \u03bd = 0.30; solid lug pads extend 2 mm into the envelope and are excluded from the design-volume fraction. Validation passed, render checked, and every item source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Shaft bracket in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_fixed",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Rigidly bolted x=0 end: fix all three translations across the end face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top lug bounds y=64..80, z=32..48 at x=160. F=40000/(72-8)=625 N; top force +z gives +x torque."
+   },
+   {
+    "id": "bottom_lug",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     -625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bottom lug bounds y=0..16, z=32..48 at x=160. Equal opposite -z force, net force zero and net torque +40000 N mm."
+   }
+  ],
+  "passive": [
+   {
+    "id": "top_lug_solid",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      158.0,
+      64.0,
+      32.0
+     ],
+     "max": [
+      160.0,
+      80.0,
+      48.0
+     ]
+    },
+    "note": "Preserve the 16 x 16 mm top drive lug footprint; assume 2 mm axial thickness (one element)."
+   },
+   {
+    "id": "bottom_lug_solid",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      158.0,
+      0.0,
+      32.0
+     ],
+     "max": [
+      160.0,
+      16.0,
+      48.0
+     ]
+    },
+    "note": "Preserve the 16 x 16 mm bottom drive lug footprint; assume 2 mm axial thickness (one element)."
+   }
+  ],
+  "description": "160 mm x 80 mm x 80 mm shaft bracket; y up. Fully fixed gearbox interface at x=0. At x=160, 16 x 16 mm top and bottom drive lugs centered at z=40 carry a pure +x torque of 40 N m: +625 N along z on the top lug and -625 N along z on the bottom lug (64 mm centroid separation). Assume isotropic steel E=210000 N/mm^2, nu=0.3 and 2 mm axial depth for solid drive lug pads.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 40.94012250006199,
+ "cwe": {
+  "value": -0.0018598949522260488,
+  "c_pred_under_intended": 1.429595927828913,
+  "c_intended_opt": 1.4322597805650623,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0023326873779297
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "admissible:1"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

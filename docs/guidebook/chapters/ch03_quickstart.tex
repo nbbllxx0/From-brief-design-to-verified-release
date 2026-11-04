@@ -1,0 +1,162 @@
+\chapter{Quick start: a certified release in ten minutes}\label{ch:quickstart}
+\chapterintro{This chapter takes the motor-mount brief b06 from the task suite to a certified, exported design of
+73.7 million elements. You start two processes, read the specification against the brief, climb the resolution
+ladder, read the certificate and export the STL with its report. No language model is involved.}
+
+\begin{notebox}[What you need]
+A finished installation (Chapter~\ref{ch:install}) with the solver connected, and a GPU with about 24~GB of memory
+that no other CUDA program is using. On a smaller GPU, start the backend with a lower ladder cap
+(Section~\ref{sec:qs-small}); everything else in this chapter stays the same.
+\end{notebox}
+
+\section{The brief}
+The brief is a plain-text file, \code{briefs/b06\_motor\_mount.md}:
+
+\begin{quote}\small\sffamily
+Plate envelope 160 x 60 x 120 mm (x, y, z), y up, aluminium 6061. It bolts to the machine bed through four M10 bolts on
+its bottom face (y = 0) at x = 20 and 140 mm, z = 20 and 100 mm; each bolt clamps through a 24 mm washer. Keep a solid
+boss of 24 mm diameter and 10 mm height around each bolt.
+
+The motor sits on a 40 x 40 mm, 5 mm thick solid pad on the top face, centred at x = 80, z = 60. Its mounting pad
+carries 2 kN downward and 0.8 kN sideways (+x) from belt tension.
+
+Volume fraction 0.2, 1 mm elements.
+\end{quote}
+
+\section{Start the workspace}
+\begin{steps}
+\item Start the backend and its GPU worker. It listens on \code{127.0.0.1:8765}.
+\begin{shell}
+python -B scripts/serve.py
+\end{shell}
+\item In a second terminal, start the web front end:
+\begin{shell}
+node web/node_modules/vite/bin/vite.js web     # or: cd web && npm run dev
+\end{shell}
+\item Open \url{http://127.0.0.1:5173} in Chrome. The \gui{GPU} pill at the bottom right reads \emph{starting} until the
+worker has loaded CUDA and the solver, then \emph{ready}.
+\end{steps}
+
+When the backend session is still empty, the workspace opens the suite task \code{b06\_motor\_mount} with its reference
+specification, and shows the brief in the assistant panel. If the session already holds a design (the problem picker
+then reads \gui{live session}), choose \gui{b06\_motor\_mount} in the problem picker at the top left.
+
+\section{Read the specification against the brief}
+Before solving anything, check that the specification says what the brief says. This is the intent check of
+Section~\ref{sec:threechecks}, and no software can do it for you. The \gui{Design intent} tree on the left lists every
+item; click one to see its exact values in the \gui{Inspector} and to highlight it in the viewport.
+Table~\ref{tab:b06} maps the brief to the specification.
+
+\begin{table}[h]
+\caption{Brief b06 and its specification. Coordinates are absolute, in millimetres, with the origin at the domain's
+minimum corner.}\label{tab:b06}
+\begin{fixtable}{@{}>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}X@{}}
+Brief & Specification \\ \midrule
+envelope 160 x 60 x 120 mm, aluminium 6061 & domain \code{[160, 60, 120]}; material $E = 69000$~N/mm$^2$,
+$\nu = 0.33$ \\
+four M10 bolts through 24 mm washers on the bottom face & supports \code{bolt\_1}--\code{bolt\_4}: elliptical
+\code{patch} regions of size 24 x 24 on face \code{y-}, centred at $(x,z)$ = (20, 20), (20, 100), (140, 20), (140, 100);
+all directions fixed \\
+solid boss, 24 mm diameter, 10 mm high & keep-in \code{boss\_1}--\code{boss\_4}: cylinders along $y$, radius 12,
+span 0--10 \\
+40 x 40 mm, 5 mm solid pad on top, centred at x = 80, z = 60 & keep-in \code{pad}: box from (60, 55, 40) to
+(100, 60, 80) \\
+2 kN down and 0.8 kN in +x on the pad & load \code{motor}: force \code{[800, -2000, 0]}~N on a 40 x 40 patch of face
+\code{y+} \\
+volume fraction 0.2, 1 mm elements & \code{volume\_fraction} 0.2 (of the design volume); resolution $h = 1$ \\
+\end{fixtable}
+\end{table}
+
+The \gui{Checks} panel should read \emph{All rules pass}, and the top bar \emph{valid spec}. The ladder at the bottom
+then shows four buttons.
+
+\section{Climb the ladder}
+The ladder for this specification has four named rungs. The spec's 1~mm elements are the base mesh; the release rung is
+the finest grid that fits on the GPU, here 0.25~mm:
+
+\begin{center}\small\sffamily
+\begin{tabular}{@{}lrrl@{}}
+\toprule
+Rung & Element edge & Grid & Elements \\ \midrule
+Sketch & 2 mm & 80 x 30 x 60 & 144,000 \\
+Preview & 1 mm & 160 x 60 x 120 & 1.15 million \\
+Refine & 0.5 mm & 320 x 120 x 240 & 9.2 million \\
+Release & 0.25 mm & 640 x 240 x 480 & 73.7 million \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{steps}
+\item Click \gui{Sketch}. Density frames stream into the viewport while it runs. The first sketch of a new
+specification builds its multigrid hierarchy and takes a few seconds; on the paper's workstation the cold b06 sketch
+took 3.4~s.
+\item Click \gui{Preview}, then \gui{Refine}. Each starts from the design of the rung below (marked \gui{$\uparrow$}
+on the button) and takes seconds. Figure~\ref{fig:b06refine} shows the refine design.
+\item When Refine has converged, click \gui{Optimize release}. It re-opens the optimization on the 73.7-million-element
+grid for about 60 iterations. On the paper's workstation this policy used 61\% of the compute of a cold release-rung run
+(423~s) and ended within 0.03\% of its compliance \claim{C3.1}. Alternatively, \gui{Release} certifies the upsampled
+refine design in about 12 iterations (18~s of compute for b06 in the latency study \claim{C6.4}), but it barely changes
+the design (Section~\ref{sec:policies}).
+\end{steps}
+
+\begin{figure}[t]
+\wideshot{b06_refine.png}
+\caption{The motor mount after Refine (9.2 million elements). The result card at the top right shows the checks: five
+pass, but \emph{spill monitored} fails because spill monitoring runs only on the release rung, so the card says
+\emph{not certified}. That is expected for every rung below Release. Screenshot from \code{scripts/gui\_screenshots.py}.}
+\label{fig:b06refine}
+\end{figure}
+
+\section{Read the certificate}
+When the release finishes, the result card shows the latest design and its certificate. A release is finished only
+when the card reads \gui{certified}: all six checks carry a \pass, and the grid is the release grid (here
+640 x 240 x 480). Chapter~\ref{ch:ladder} explains each check. The certified design is shown as its $\rho = 0.5$
+surface; \gui{Voxels} switches to the raw density field.
+
+\begin{figure}[t]
+\centering
+\shot[0.47\linewidth]{11_result_card.png}\hfill
+\shot[0.47\linewidth]{13_export.png}
+\caption{Left: the result card of a certified release, with all six checks passing. Right: the card after export,
+with links to the STL and the two report files. These two screenshots come from the bracket of
+Chapter~\ref{ch:spec} on a reduced ladder; the card for b06 has the same layout.}
+\label{fig:qs-card}
+\end{figure}
+
+\section{Export}
+Click \gui{Export STL + report}. Three files are written to the session's \code{exports/} folder, under
+\code{sessions/}\meta{date-time}\code{/exports/}, and linked from the card (Figure~\ref{fig:qs-card}):
+
+\begin{itemize}
+  \item \code{b06\_motor\_mount\_}\meta{job}\code{.stl}: a closed binary STL of the full-resolution $\rho = 0.5$ surface
+  (in the latency study the export at release took 0.3--2.2~s \claim{C6.4});
+  \item \code{b06\_motor\_mount\_}\meta{job}\code{\_report.md} and \code{\_report.json}: the specification and its hash,
+  the rung, grid and solver, iterations and compute time, the compliance, every certificate check, the STL's hash, and
+  the hash of the session log at the moment of export (Appendix~\ref{app:certificate}).
+\end{itemize}
+
+A design that is not a certified release is exported with \code{\_draft} in its file name, so a draft cannot be
+mistaken for a release later.
+
+\begin{tipbox}[You are done]
+You now hold a certified design, its STL, a report that ties it to the exact specification and solver settings, and a
+session log in \code{sessions/}\meta{date-time}\code{/session.jsonl} from which the whole session can be replayed
+(Chapter~\ref{ch:provenance}).
+\end{tipbox}
+
+\section{On a smaller GPU}\label{sec:qs-small}
+Cap the ladder when you start the backend:
+\begin{shell}
+python -B scripts/serve.py --ladder-max 1.2e7
+\end{shell}
+The cap can lower the default of \LadderMax\ elements but never raise it. With this cap b06 gets the rungs 18,000 /
+144,000 / 1.15 million / 9.2 million, and the 9.2-million-element rung becomes its release rung. The certificate means
+the same on any rung that is the release rung of its ladder: the result is certified on the grid it reports, and the
+report states that grid.
+
+\section{The same task with an agent}
+The paper ran this task without a person: a Codex agent connected over MCP built the specification from the brief,
+asked four clarification questions (answered by a scripted oracle holding the reference reading), climbed the ladder and
+exported a certified 73.7-million-element release in 176~s from its first tool call. Its specification equalled the
+reference reading in every field, and the log replayed exactly. Chapter~\ref{ch:assistant} shows how to do the same with
+the built-in assistant, and Chapter~\ref{ch:mcp} how to connect an agent of your own.

@@ -1,0 +1,211 @@
+{
+ "task": "b14_cube_torsion",
+ "cond": "GC",
+ "rep": 1,
+ "t": "2026-10-30T10:01:00",
+ "n_tool_calls": 14,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "get_spec",
+  "add_support",
+  "add_load",
+  "add_load",
+  "add_load",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "ask_clarification",
+  "set_params",
+  "validate_spec"
+ ],
+ "questions": 1,
+ "oracle_hits": 1,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b14_cube_torsion_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 59.62797149992548,
+ "usage": {
+  "input_tokens": 151623,
+  "cached_input_tokens": 131328,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1788,
+  "reasoning_output_tokens": 749
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Assumptions: fully clamped bottom; pad forces distributed uniformly over each pad.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Block in torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    100.0,
+    100.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bottom_bolted_full_face",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom z=0 face bolted down over its full area; all translations fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_y_minus_pad",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50.0,
+      5.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     100.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top pad x=45..55, y=0..10, flush with y=0 edge. +x force gives +z torque."
+   },
+   {
+    "id": "top_x_plus_pad",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      95.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top pad x=90..100, y=45..55, flush with x=100 edge. +y force gives +z torque."
+   },
+   {
+    "id": "top_y_plus_pad",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50.0,
+      95.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -100.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top pad x=45..55, y=90..100, flush with y=100 edge. -x force gives +z torque."
+   },
+   {
+    "id": "top_x_minus_pad",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      5.0,
+      50.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -100.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top pad x=0..10, y=45..55, flush with x=0 edge. -y force gives +z torque. Four equal 100 N forces at 45 mm arms produce 18000 N mm = 18 N m with zero resultant force."
+   }
+  ],
+  "passive": [],
+  "description": "100 mm steel cube; full bottom face clamped; top face carries +z torque of 18 N m through four 10 x 10 mm edge-midpoint pads. Equal tangential forces at pad centroids 45 mm from the central z axis.",
+  "volume_fraction": 0.15,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 59.88037190004252,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

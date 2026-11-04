@@ -1,0 +1,148 @@
+{
+ "task": "b40_crank_arm",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:33:04",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 17.86594430007972,
+ "usage": {
+  "input_tokens": 20026,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 703,
+  "reasoning_output_tokens": 189
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Crank arm\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [180, 40, 30]\n  },\n  \"material\": {\n    \"name\": \"Aluminium 7075\",\n    \"E\": 71700,\n    \"nu\": 0.33\n  },\n  \"volume_fraction\": 0.3,\n  \"supports\": [\n    {\n      \"id\": \"keyed_spindle\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [20, 20],\n        \"radius\": 10,\n        \"span\": [0, 30]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"pedal_push\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [160, 20],\n        \"radius\": 8,\n        \"span\": [30, 30]\n      },\n      \"force\": [0, -1200, 0],\n      \"distribution\": \"uniform_nodes\",\n      \"note\": \"Total downward force on the circular boss face at z = 30 mm.\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"axle_attachment\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [20, 20],\n        \"radius\": 10,\n        \"span\": [0, 30]\n      }\n    },\n    {\n      \"id\": \"pedal_boss\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [160, 20],\n        \"radius\": 8,\n        \"span\": [0, 30]\n      }\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  },\n  \"meta\": {\n    \"material_assumption\": \"Nominal isotropic elastic properties: E = 71700 N/mm\u00b2 and nu = 0.33.\"\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Crank arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    180,
+    40,
+    30
+   ]
+  },
+  "material": {
+   "name": "Aluminium 7075",
+   "E": 71700,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "keyed_spindle",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      20,
+      20
+     ],
+     "radius": 10,
+     "span": [
+      0,
+      30
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "pedal_push",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      160,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      30,
+      30
+     ]
+    },
+    "force": [
+     0,
+     -1200,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total downward force on the circular boss face at z = 30 mm."
+   }
+  ],
+  "passive": [
+   {
+    "id": "axle_attachment",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      20,
+      20
+     ],
+     "radius": 10,
+     "span": [
+      0,
+      30
+     ]
+    }
+   },
+   {
+    "id": "pedal_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      160,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      0,
+      30
+     ]
+    }
+   }
+  ],
+  "resolution": {
+   "h": 1
+  },
+  "meta": {
+   "material_assumption": "Nominal isotropic elastic properties: E = 71700 N/mm\u00b2 and nu = 0.33."
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 17.92475249990821,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": false,
+ "schema_error": "1 validation error for Spec\nloads.0.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...s': 8, 'span': [30, 30]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error",
+ "correct_spec": false,
+ "behaviour_ok": false
+}

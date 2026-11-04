@@ -1,0 +1,190 @@
+{
+ "task": "b19_engine_bracket",
+ "cond": "T",
+ "rep": 3,
+ "t": "2026-10-30T11:26:39",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 17.193936900002882,
+ "usage": {
+  "input_tokens": 20086,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 851,
+  "reasoning_output_tokens": 185
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"engine_bracket\",\n  \"units\": {\n    \"length\": \"in\",\n    \"force\": \"lbf\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [7.0, 2.5, 4.0]\n  },\n  \"material\": {\n    \"name\": \"Ti-6Al-4V\",\n    \"E\": 16500000,\n    \"nu\": 0.34\n  },\n  \"volume_fraction\": 0.2,\n  \"supports\": [\n    {\n      \"id\": \"bolt_1\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [0.5, 0.5],\n        \"radius\": 0.25,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"bolt_2\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [0.5, 3.5],\n        \"radius\": 0.25,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"bolt_3\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [2.5, 0.5],\n        \"radius\": 0.25,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    },\n    {\n      \"id\": \"bolt_4\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"y\",\n        \"center\": [2.5, 3.5],\n        \"radius\": 0.25,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"clevis_pull\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [6.0, 1.75],\n        \"radius\": 0.5,\n        \"span\": [1.25, 2.75]\n      },\n      \"force\": [0, 8000, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"clevis\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"z\",\n        \"center\": [6.0, 1.75],\n        \"radius\": 0.5,\n        \"span\": [1.25, 2.75]\n      }\n    }\n  ],\n  \"resolution\": {\n    \"h\": 0.05\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "engine_bracket",
+  "units": {
+   "length": "in",
+   "force": "lbf"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    7.0,
+    2.5,
+    4.0
+   ]
+  },
+  "material": {
+   "name": "Ti-6Al-4V",
+   "E": 16500000,
+   "nu": 0.34
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "bolt_1",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.5,
+      0.5
+     ],
+     "radius": 0.25,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "bolt_2",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      0.5,
+      3.5
+     ],
+     "radius": 0.25,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "bolt_3",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      2.5,
+      0.5
+     ],
+     "radius": 0.25,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "id": "bolt_4",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      2.5,
+      3.5
+     ],
+     "radius": 0.25,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "clevis_pull",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    },
+    "force": [
+     0,
+     8000,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "passive": [
+   {
+    "id": "clevis",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      6.0,
+      1.75
+     ],
+     "radius": 0.5,
+     "span": [
+      1.25,
+      2.75
+     ]
+    }
+   }
+  ],
+  "resolution": {
+   "h": 0.05
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 17.282478699926287,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": false,
+ "schema_error": "4 validation errors for Spec\nsupports.0.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...': 0.25, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nsupports.1.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kin",
+ "correct_spec": false,
+ "behaviour_ok": false
+}

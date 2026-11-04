@@ -1,0 +1,1 @@
+{"match":false,"issues":["The plate load is reversed: it points upward (+y) and toward the wall (−x), instead of 400 N downward (−y) and 50 N away from the wall (+x)."]}

@@ -1,0 +1,144 @@
+{
+ "task": "b47_camera_mount",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 304.72738769999705,
+ "usage": {
+  "input_tokens": 730326,
+  "cached_input_tokens": 700672,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2044,
+  "reasoning_output_tokens": 324
+ },
+ "returncode": 0,
+ "final": "DONE, a38a1b7905f3, compliance 0.2621719800696313 N\u00b7mm",
+ "n_tool_calls": 27,
+ "n_failed_calls": 1,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "ladder",
+  "ask_clarification",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "ladder",
+  "render",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "field_stats",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "wait_job",
+  "field_stats",
+  "export_stl",
+  "export_report"
+ ],
+ "questions": 1,
+ "stages": {
+  "spec_s": 14.4760000705719,
+  "solve_h2.0": {
+   "wall_s": 15.039000034332275,
+   "compute_s": 13.685441300738603,
+   "iterations": 76,
+   "n_elem": 54000,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h1.0": {
+   "wall_s": 13.16599988937378,
+   "compute_s": 13.026803099317476,
+   "iterations": 61,
+   "n_elem": 432000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.5": {
+   "wall_s": 30.98099994659424,
+   "compute_s": 30.494129101047292,
+   "iterations": 61,
+   "n_elem": 3456000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.25": {
+   "wall_s": 201.49000000953674,
+   "compute_s": 199.42883490025997,
+   "iterations": 61,
+   "n_elem": 27648000,
+   "warm": true,
+   "status": "converged",
+   "certified": true
+  },
+  "export_s": 2.1109,
+  "total_s": 287.3140001296997
+ },
+ "released": true,
+ "exports": [
+  {
+   "triangles": 1001868,
+   "bytes": 50093484,
+   "sha256": "aad49fc36d9d5bfa10776f8c58a46e0fa121321d47f89f82936abef5dce375c3",
+   "path": "results\\X3\\b47_camera_mount\\session\\exports\\Inspection-camera_mount_a38a1b7905f3.stl",
+   "pool": 1,
+   "vertices": 500932,
+   "t_surface_s": 1.25,
+   "t_write_s": 0.306,
+   "mesh": {
+    "closed": true,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "volume": 64793.276001644
+   },
+   "job": "a38a1b7905f3",
+   "certified": true,
+   "released": true
+  },
+  {
+   "job": "a38a1b7905f3",
+   "certified": true,
+   "json": "results\\X3\\b47_camera_mount\\session\\exports\\Inspection-camera_mount_a38a1b7905f3_report.json",
+   "markdown": "results\\X3\\b47_camera_mount\\session\\exports\\Inspection-camera_mount_a38a1b7905f3_report.md",
+   "stl": "results\\X3\\b47_camera_mount\\session\\exports\\Inspection-camera_mount_a38a1b7905f3.stl"
+  }
+ ],
+ "release_spec_match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 60, 60)"
+  ],
+  "matched": "intended"
+ },
+ "replay": {
+  "ok": true,
+  "calls": 27,
+  "solves_replayed": 4,
+  "skipped": 8,
+  "mismatches": [],
+  "final_spec_hash": "4ec5218ae0a1782b"
+ }
+}

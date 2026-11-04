@@ -1,0 +1,138 @@
+{
+ "task": "b02_mbb_half",
+ "n_solves": 4,
+ "replay_calls_ok": true,
+ "x3_total_s": 76.79099988937378,
+ "solve_wall_voxfem_s": 51.144690699875355,
+ "solve_wall_aware_s": 63.47579799988307,
+ "total_aware_s": 89.1221071893815,
+ "release": {
+  "h": 0.25,
+  "n_elem": 12288000,
+  "status": [
+   "converged",
+   "converged"
+  ],
+  "iterations": [
+   61,
+   61
+  ],
+  "compute_s": [
+   32.03932830016129,
+   34.488331499975175
+  ],
+  "wall_s": [
+   32.830886099953204,
+   35.16073210001923
+  ],
+  "certified": [
+   true,
+   true
+  ],
+  "rel_dC": 0.0
+ },
+ "solves": [
+  {
+   "h": 2.0,
+   "n_elem": 24000,
+   "status": [
+    "converged",
+    "converged"
+   ],
+   "iterations": [
+    76,
+    76
+   ],
+   "compute_s": [
+    3.9138226995710284,
+    8.319944901159033
+   ],
+   "wall_s": [
+    4.2775391000323,
+    9.210648400010541
+   ],
+   "certified": [
+    false,
+    false
+   ],
+   "rel_dC": 0.0
+  },
+  {
+   "h": 1.0,
+   "n_elem": 192000,
+   "status": [
+    "converged",
+    "converged"
+   ],
+   "iterations": [
+    61,
+    61
+   ],
+   "compute_s": [
+    4.395655499771237,
+    9.145219900645316
+   ],
+   "wall_s": [
+    4.5030699998606,
+    9.321392399957404
+   ],
+   "certified": [
+    false,
+    false
+   ],
+   "rel_dC": 0.0
+  },
+  {
+   "h": 0.5,
+   "n_elem": 1536000,
+   "status": [
+    "converged",
+    "converged"
+   ],
+   "iterations": [
+    61,
+    61
+   ],
+   "compute_s": [
+    9.404618601081893,
+    9.59617989975959
+   ],
+   "wall_s": [
+    9.533195500029251,
+    9.783025099895895
+   ],
+   "certified": [
+    false,
+    false
+   ],
+   "rel_dC": 0.0
+  },
+  {
+   "h": 0.25,
+   "n_elem": 12288000,
+   "status": [
+    "converged",
+    "converged"
+   ],
+   "iterations": [
+    61,
+    61
+   ],
+   "compute_s": [
+    32.03932830016129,
+    34.488331499975175
+   ],
+   "wall_s": [
+    32.830886099953204,
+    35.16073210001923
+   ],
+   "certified": [
+    true,
+    true
+   ],
+   "rel_dC": 0.0
+  }
+ ],
+ "replay_wall_s": 69.20237169996835,
+ "mismatches": []
+}

@@ -1,0 +1,80 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b49 hinged arm",
+  "domain": {
+   "size": [
+    200,
+    40,
+    20
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "hinge",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      10,
+      20
+     ],
+     "span": null
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      20,
+      10
+     ],
+     "size": [
+      10,
+      20
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -400,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "refuse",
+ "source": "engineering",
+ "oracle": [
+  {
+   "about": "any other support or a stop",
+   "answer": "No. The arm must stay free to turn on the pin."
+  }
+ ],
+ "admissible": [],
+ "notes": "A mechanism: the arm rotates freely about the pin axis (rule R003, rotation about z). A correct agent says that nothing reacts the moment and asks for a stop, rather than clamping the pin.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Refusal correct: rotation about the z pin line remains free, with unbalanced moment -76000 N mm. Fixing line translations does not clamp rotation about the line."
+ }
+}

@@ -1,0 +1,140 @@
+{
+ "task": "b08_slider_bracket",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T17:59:32",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 41555,
+  "cached_input_tokens": 35911,
+  "cache_write_input_tokens": 5638,
+  "output_tokens": 982
+ },
+ "gc_wall_s": 14.510150299873203,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14497,
+  "cached_input_tokens": 8575,
+  "cache_write_input_tokens": 5918,
+  "output_tokens": 483
+ },
+ "verify_wall_s": 9.545187799958512,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 56052,
+  "cached_input_tokens": 44486,
+  "output_tokens": 1465,
+  "cache_write_input_tokens": 11556
+ },
+ "wall_s": 24.055338099831715,
+ "questions": 0,
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "slider_bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "rail",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "linear rail: holds vertical and sideways, free to slide along x"
+   }
+  ],
+  "loads": [
+   {
+    "id": "push",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": ""
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 10.014126800000668,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

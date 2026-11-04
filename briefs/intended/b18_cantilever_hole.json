@@ -1,0 +1,90 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b18 cantilever hole",
+  "domain": {
+   "size": [
+    200,
+    100,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50,
+      20
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -2000,
+     0
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "hole",
+    "kind": "void",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      100,
+      50
+     ],
+     "radius": 20,
+     "span": [
+      0,
+      40
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "cantilever with a circular keep-out (passive-void benchmark family)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "40 mm through-hole along z and centred tip force agree. Hole is a passive void, not material available to optimization."
+ }
+}

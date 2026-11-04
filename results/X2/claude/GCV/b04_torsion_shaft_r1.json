@@ -1,0 +1,197 @@
+{
+ "task": "b04_torsion_shaft",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T15:07:02",
+ "gc_correct": false,
+ "gc_usage": {
+  "input_tokens": 44007,
+  "cached_input_tokens": 37060,
+  "cache_write_input_tokens": 6941,
+  "output_tokens": 1929
+ },
+ "gc_wall_s": 21.567173999967054,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14616,
+  "cached_input_tokens": 6345,
+  "cache_write_input_tokens": 8267,
+  "output_tokens": 933
+ },
+ "verify_wall_s": 12.472161900019273,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 2862,
+  "cached_input_tokens": 43405,
+  "cache_write_input_tokens": 15208,
+  "input_tokens": 58623
+ },
+ "wall_s": 34.03933589998633,
+ "questions": 0,
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "shaft_bracket_torsion",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "gearbox_mount",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "x=0 end bolted rigidly to gearbox"
+   }
+  ],
+  "loads": [
+   {
+    "id": "lug_top",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      72.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Top lug; 625 N x 64 mm arm = 40 N*m about +x"
+   },
+   {
+    "id": "lug_bottom",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      8.0,
+      40.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     0.0,
+     -625.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Bottom lug; opposite force completes the couple"
+   }
+  ],
+  "passive": [
+   {
+    "id": "lug_top_solid",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      64.0,
+      32.0
+     ],
+     "max": [
+      160.0,
+      80.0,
+      48.0
+     ]
+    },
+    "note": ""
+   },
+   {
+    "id": "lug_bottom_solid",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      156.0,
+      0.0,
+      32.0
+     ],
+     "max": [
+      160.0,
+      16.0,
+      48.0
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 12.977893599774688,
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 40, 40)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

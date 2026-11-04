@@ -1,0 +1,185 @@
+{
+ "task": "b08_slider_bracket",
+ "cond": "GP",
+ "rep": 2,
+ "t": "2026-11-01T01:24:37",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief specifies mm for dimensions and element size, N for force."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 120 x 40 x 40 mm in x,y,z; y up; minimum corner at origin."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; unspecified elastic constants chosen as E=210000 N/mm^2 and nu=0.3, isotropic linear elasticity."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Volume fraction 0.3."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "1 mm elements: h=1 mm."
+   },
+   {
+    "key": "support:bottom_rail",
+    "source": "stated",
+    "note": "Whole bottom face y=0 restrains vertical y and sideways z displacement, allows free sliding along x."
+   },
+   {
+    "key": "load:left_push",
+    "source": "derived",
+    "note": "Brief states total 300 N +x, x=0, centered 10 x 10 mm pad. Center y=z=40/2=20 mm; pad spans y,z=15..25 mm."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 15,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b08_slider_bracket_r2\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 24.05613090004772,
+ "usage": {
+  "input_tokens": 89744,
+  "cached_input_tokens": 80512,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 853,
+  "reasoning_output_tokens": 0
+ },
+ "returncode": 0,
+ "final": "REFUSE \u2014 The rail leaves x translation free, so it cannot balance the 300 N push along +x; validation reports an unconstrained rigid-body mode.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Slider bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bottom_rail",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Entire bottom face y=0; rail holds vertically (y) and sideways (z), free along x as stated."
+   }
+  ],
+  "loads": [
+   {
+    "id": "left_push",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     300.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "300 N total along +x on 10 x 10 mm pad; center (y,z)=(40/2,40/2)=(20,20) mm."
+   }
+  ],
+  "passive": [],
+  "description": "Slider bracket, y up. Bottom rail restrains y and z over the entire y=0 face and allows free x translation. 300 N in +x on a centered 10 x 10 mm pad on x=0.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 24.27944769989699,
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": true,
+ "rules_ok": false,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

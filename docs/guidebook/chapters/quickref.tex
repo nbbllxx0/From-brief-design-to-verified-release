@@ -1,0 +1,89 @@
+\chapter{Quick reference}\label{app:quickref}
+\newtcolorbox{qrbox}[2]{enhanced,boxrule=0pt,borderline west={2pt}{0pt}{#1},colback=paper,left=6pt,right=4pt,
+  top=3pt,bottom=3pt,title={#2},fonttitle=\bfseries\small,coltitle=ink,colbacktitle=paper,
+  fontupper=\raggedright,attach title to upper={\par},before skip=0pt,after skip=8pt}
+\vspace{-4mm}
+{\small\sffamily
+\noindent\begin{minipage}[t]{0.485\linewidth}\vspace{0pt}
+\begin{qrbox}{guigrey}{Start}
+\code{python -B scripts/serve.py}\\
+\code{node web/node\_modules/vite/bin/vite.js web}\\
+open \code{http://127.0.0.1:5173}\\[2pt]
+small GPU: \code{serve.py --ladder-max 1.2e7}\\
+solver: \code{AGENTTO\_VOXFEM\_SRC=}\meta{dir}
+\end{qrbox}
+
+\begin{qrbox}{guigrey}{Workflow}
+1. State: \keycap{S} support, \keycap{L} load, \keycap{K} keep-in, \keycap{O} keep-out, then click a face; edit in the
+inspector.\\
+2. Check: fix every red finding.\\
+3. Solve: \gui{Sketch} $\rightarrow$ \gui{Preview} $\rightarrow$ \gui{Refine} $\rightarrow$ \gui{Optimize release}.\\
+4. Accept: card reads \gui{certified}, grid is the release grid.\\
+5. Export: \gui{Export STL + report}.
+\end{qrbox}
+
+\begin{qrbox}{okgreen}{Certified = all six}
+converged $\cdot$ FP64 state solve accepted ($r_\mathrm{true}\le\tau$) $\cdot$ no VRAM spill $\cdot$ spill monitored
+(release rung only) $\cdot$ volume within 0.1\% $\cdot$ keep-in/out exact
+\end{qrbox}
+
+\begin{qrbox}{guigrey}{Release policies}
+\gui{Release}: tail, $\approx$12 it., certifies the upsampled design.\\
+\gui{Optimize release}: long re-opening, $\approx$60 it., re-optimizes.\\
+after an edit: short re-opening on the same grid.
+\end{qrbox}
+
+\begin{qrbox}{guigrey}{Keys}
+\keycap{V} select \enspace \keycap{Esc} cancel \enspace \keycap{?} keymap\\[2pt]
+\keycap{Ctrl}+\keycap{K} palette \enspace \keycap{Ctrl}+\keycap{Z} undo\\[2pt]
+\keycap{Ctrl}+\keycap{Shift}+\keycap{Z} / \keycap{Ctrl}+\keycap{Y} redo
+\end{qrbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.485\linewidth}\vspace{0pt}
+\begin{qrbox}{okamber}{Rules (errors block solving)}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}l@{\enspace}l@{}}
+R001 & no grid fits \\
+R002 & support selects nothing \\
+R003 & rigid-body mode free \\
+R004 & load empty or zero \\
+R005 & load on fixed DOFs (err $>$50\%) \\
+R006 & no design elements \\
+R007 & keep-in overlaps keep-out \\
+R008 & item inside keep-out \\
+R009 & min feature too small (warn) \\
+R010 & region snapped (warn) \\
+R011 & passive region empty (warn) \\
+R012 & coarse multigrid (warn/info) \\
+R013 & GPU memory \\
+\end{tabular}
+\end{qrbox}
+
+\begin{qrbox}{okblue}{Agents (MCP)}
+\code{python -B -m agentto.mcp\_server}\\
+\quad\code{--attach http://127.0.0.1:8765}\\
+\quad\emph{or} \code{--session DIR}\\
+\quad\code{--profile spec|clarify|full}\\
+\quad\code{[--seed spec.json] [--answer-url URL]}\\[2pt]
+Codex: \code{default\_tools\_approval\_mode="approve"}\\
+Claude Code: allow \code{mcp\_\_agentto}\\
+No API keys: subscription logins only.
+\end{qrbox}
+
+\begin{qrbox}{okblue}{Tools}
+\textbf{build} new\_spec, set\_spec, load\_template, set\_params, add\_support, add\_load, add\_passive, update\_item,
+remove\_item, undo, redo\\
+\textbf{inspect} get\_spec, list\_regions, validate\_spec, explain\_spec, render, ladder\\
+\textbf{ask} ask\_clarification\\
+\textbf{solve} solve, status, wait\_job, cancel, field\_stats\\
+\textbf{export} export\_stl, export\_report
+\end{qrbox}
+
+\begin{qrbox}{guigrey}{Files}
+\code{sessions/}\meta{time}\code{/session.jsonl} \enspace log\\
+\code{.../fields/} \enspace densities (float16)\\
+\code{.../exports/} \enspace STL, report \code{.md}/\code{.json}\\
+replay: \code{agentto.tools.replay(log)}
+\end{qrbox}
+\end{minipage}
+}

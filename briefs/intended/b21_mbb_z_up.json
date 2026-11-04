@@ -1,0 +1,87 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b21 MBB z up",
+  "domain": {
+   "size": [
+    320,
+    40,
+    40
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "pin",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      0,
+      0
+     ],
+     "span": null
+    }
+   },
+   {
+    "id": "roller",
+    "fix": [
+     "y",
+     "z"
+    ],
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      320,
+      0
+     ],
+     "span": null
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan",
+    "region": {
+     "kind": "edge",
+     "axis": "y",
+     "at": [
+      160,
+      40
+     ],
+     "span": null
+    },
+    "force": [
+     0,
+     0,
+     -3000
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "solve",
+ "source": "3D MBB beam, full model (Liu & Tovar 2014), stated with z up",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "Y",
+  "comment": "z-up mapping and the roller fixing y,z agree. MBB family attribution is supported by [S1]; not an exact reproduction of its dimensions."
+ }
+}

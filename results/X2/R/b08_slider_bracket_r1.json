@@ -1,0 +1,17 @@
+{
+ "task": "b08_slider_bracket",
+ "cond": "R",
+ "rep": 1,
+ "questions": 0,
+ "spec": null,
+ "reason": "support other than a whole face",
+ "cwe": {
+  "value": null,
+  "note": "refuse task: scored on behaviour only"
+ },
+ "expected": "refuse",
+ "refused": true,
+ "schema_valid": false,
+ "correct_spec": false,
+ "behaviour_ok": true
+}

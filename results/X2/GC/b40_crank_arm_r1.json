@@ -1,0 +1,165 @@
+{
+ "task": "b40_crank_arm",
+ "cond": "GC",
+ "rep": 1,
+ "t": "2026-10-30T10:19:23",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_passive",
+  "add_load",
+  "list_regions",
+  "ask_clarification",
+  "set_params",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 1,
+ "oracle_hits": 1,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GC\\b40_crank_arm_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 51.620223900070414,
+ "usage": {
+  "input_tokens": 104296,
+  "cached_input_tokens": 96768,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1506,
+  "reasoning_output_tokens": 831
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Assumed isotropic aluminium 7075: E = 71.7 GPa, \u03bd = 0.33. Validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Crank arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    180.0,
+    40.0,
+    30.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 7075",
+   "E": 71700.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "axle_fixed",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "radius": 10.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Keyed spindle: all nodes inside the 20 mm diameter circle fixed through full thickness."
+   }
+  ],
+  "loads": [
+   {
+    "id": "rider_push",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      160.0,
+      20.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "ellipse"
+    },
+    "force": [
+     0.0,
+     -1200.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 1.2 kN downward push over the circular boss face at z=30 mm."
+   }
+  ],
+  "passive": [
+   {
+    "id": "pedal_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      160.0,
+      20.0
+     ],
+     "radius": 8.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "note": "Solid pedal boss, 16 mm diameter, through full thickness."
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 51.87989600002766,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (180, 40, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

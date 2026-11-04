@@ -1,0 +1,221 @@
+{
+ "task": "b05_l_bracket",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:30:15",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief uses mm for dimensions and N for load."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "Envelope 100 x 100 x 40 mm in x,y,z; y up. Tool origin at minimum corner."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated; assume isotropic linear elastic steel with E=210000 N/mm^2 and Poisson ratio 0.3 because no grade or elastic constants are specified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies 0.3; applied to non-passive design volume per tool convention."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:ceiling_attachment",
+    "source": "assumed",
+    "note": "Location stated: y=100, x=0..40, full depth z=0..40. Assume bolting to a rigid ceiling clamps all three translations across the entire attachment face; bolt positions and compliance are unspecified."
+   },
+   {
+    "key": "load:end_pad_downward",
+    "source": "derived",
+    "note": "Stated total downward load 500 N, x=100, 10 x 10 mm pad centered y=20 and mid-depth. z center=40/2=20; bounds y,z=20 +/- 5 =15..25. y up gives force [0,-500,0] N."
+   },
+   {
+    "key": "passive:upper_right_clearance",
+    "source": "stated",
+    "note": "Brief requires x>40 and y>40 empty through full 40 mm depth; box [40,40,0] to [100,100,40] selects the corresponding element centers."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material",
+   "support:ceiling_attachment"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_passive",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b05_l_bracket_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 28.350203699897975,
+ "usage": {
+  "input_tokens": 114998,
+  "cached_input_tokens": 106496,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1060,
+  "reasoning_output_tokens": 48
+ },
+ "returncode": 0,
+ "final": "DONE, assumptions: isotropic steel with E = 210,000 N/mm\u00b2 and \u03bd = 0.3; ceiling attachment fully fixed across the stated top face. Validation passed, rendered placements confirmed, and every spec item source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "L-bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    100.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "ceiling_attachment",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Top of vertical arm, x=0..40, y=100, z=0..40. Bolted ceiling attachment idealized as fully fixed over this face."
+   }
+  ],
+  "loads": [
+   {
+    "id": "end_pad_downward",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -500.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 500 N downward on right end face x=100, y=15..25, z=15..25; mid-depth z=40/2=20."
+   }
+  ],
+  "passive": [
+   {
+    "id": "upper_right_clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      40.0,
+      40.0,
+      0.0
+     ],
+     "max": [
+      100.0,
+      100.0,
+      40.0
+     ]
+    },
+    "note": "Another part occupies x > 40 and y > 40 through full depth; keep empty."
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 28.578758500050753,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

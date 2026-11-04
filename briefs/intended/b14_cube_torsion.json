@@ -1,0 +1,133 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b14 cube torsion",
+  "domain": {
+   "size": [
+    100,
+    100,
+    100
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "base",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "pad_front",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50,
+      5
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     100,
+     0,
+     0
+    ]
+   },
+   {
+    "id": "pad_right",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      95,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     100,
+     0
+    ]
+   },
+   {
+    "id": "pad_back",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50,
+      95
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -100,
+     0,
+     0
+    ]
+   },
+   {
+    "id": "pad_left",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      5,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -100,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "3D torsion benchmark family (Michell-type torsion in a box domain)",
+ "oracle": [],
+ "admissible": [],
+ "notes": "Pad centres are 45 mm from the axis: 4 x 45 mm x F = 18000 N*mm gives F = 100 N. M_z = r_x F_y - r_y F_x.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Four 45 mm moment arms at 100 N give +18000 N mm with zero net force. Generic family description is treated as an engineering example, not verified historical provenance."
+ }
+}

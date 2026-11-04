@@ -1,0 +1,194 @@
+{
+ "task": "b30_bridge_clearance",
+ "cond": "G",
+ "rep": 1,
+ "t": "2026-10-30T08:48:41",
+ "n_tool_calls": 10,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_passive",
+  "add_passive",
+  "add_load",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\G\\b30_bridge_clearance_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 33.058543199906126,
+ "usage": {
+  "input_tokens": 80022,
+  "cached_input_tokens": 64128,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 885,
+  "reasoning_output_tokens": 165
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: steel E = 210 GPa, \u03bd = 0.30; right roller restrains y and z, allowing x motion; 5 kN shared equally among top-surface nodes; volume fraction 0.2 applies to non-passive volume. list_regions and validate_spec passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Bridge over a clearance",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    320.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "left_pin",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      80.0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full-width pinned bottom edge, translations restrained; no rotational degrees of freedom prescribed."
+   },
+   {
+    "id": "right_roller",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      320.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      80.0
+     ]
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Full-width roller guided along x: x translation free, y and z restrained."
+   }
+  ],
+  "loads": [
+   {
+    "id": "deck_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0.0,
+     -5000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 5 kN downward, distributed equally among all nodes on the entire top deck surface."
+   }
+  ],
+  "passive": [
+   {
+    "id": "solid_deck",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      0.0,
+      76.0,
+      0.0
+     ],
+     "max": [
+      320.0,
+      80.0,
+      80.0
+     ]
+    },
+    "note": "Top 4 mm must remain solid."
+   },
+   {
+    "id": "clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      100.0,
+      0.0,
+      0.0
+     ],
+     "max": [
+      220.0,
+      40.0,
+      80.0
+     ]
+    },
+    "note": "Full-width clearance under mid-span must remain empty."
+   }
+  ],
+  "description": "Bridge: full-width pinned left bottom edge; full-width right bottom roller free in x and restrained in y and z. Solid 4 mm deck, total uniformly distributed downward 5000 N top-surface load, and full-width under-span clearance. Volume fraction 0.2 applies to non-passive design volume.",
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 33.712728899903595,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (160, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

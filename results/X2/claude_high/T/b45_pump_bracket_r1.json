@@ -1,0 +1,135 @@
+{
+ "task": "b45_pump_bracket",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:27:23",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 14.941209399839863,
+ "usage": {
+  "input_tokens": 8605,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 7954,
+  "output_tokens": 973
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"pump_bracket\",\"description\":\"Wall-mounted pump bracket: back face (z=0) bolted to wall over full area, pump weight acting downward (-y) on a 60x40 mm footprint on the top face (y=100) centred at x=80, z=35.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[160,100,60]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.25,\"supports\":[{\"id\":\"wall_bolted_back_face\",\"region\":{\"kind\":\"face\",\"face\":\"z-\"},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"Back face bolted to wall over its full area\"}],\"loads\":[{\"id\":\"pump_weight\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[80,35],\"size\":[60,40]},\"force\":[0,-1000,0],\"distribution\":\"uniform_nodes\",\"note\":\"Pump weight, gravity -y (y up). Magnitude NOT given in brief; 1000 N is a nominal placeholder. Compliance-optimal topology is independent of load magnitude in linear elasticity, so replace with actual pump weight/factored load for sizing checks.\"}],\"passive\":[],\"resolution\":{\"h\":2.0},\"meta\":{\"assumptions\":[\"Pump load magnitude not specified; nominal 1000 N downward used (topology unaffected by scaling).\",\"Load taken as pure gravity (-y); no dynamic, torque or vibration loads specified.\",\"Steel properties defaulted to E=210000 MPa, nu=0.3.\"],\"open_questions\":[\"Pump mass or design load (including any dynamic/safety factor)?\"]}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "pump_bracket",
+  "description": "Wall-mounted pump bracket: back face (z=0) bolted to wall over full area, pump weight acting downward (-y) on a 60x40 mm footprint on the top face (y=100) centred at x=80, z=35.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    160,
+    100,
+    60
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "wall_bolted_back_face",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Back face bolted to wall over its full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "pump_weight",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80,
+      35
+     ],
+     "size": [
+      60,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Pump weight, gravity -y (y up). Magnitude NOT given in brief; 1000 N is a nominal placeholder. Compliance-optimal topology is independent of load magnitude in linear elasticity, so replace with actual pump weight/factored load for sizing checks."
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 2.0
+  },
+  "meta": {
+   "assumptions": [
+    "Pump load magnitude not specified; nominal 1000 N downward used (topology unaffected by scaling).",
+    "Load taken as pure gravity (-y); no dynamic, torque or vibration loads specified.",
+    "Steel properties defaulted to E=210000 MPa, nu=0.3."
+   ],
+   "open_questions": [
+    "Pump mass or design load (including any dynamic/safety factor)?"
+   ]
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 15.140763200121,
+ "cwe": {
+  "value": -5.912859091239397e-11,
+  "c_pred_under_intended": 0.009375557967597932,
+  "c_intended_opt": 0.009375557968152296,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (80, 50, 30)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

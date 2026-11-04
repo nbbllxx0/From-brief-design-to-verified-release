@@ -1,0 +1,139 @@
+{
+ "task": "b02_mbb_half",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "wall_s": 93.41887119994499,
+ "usage": {
+  "input_tokens": 421991,
+  "cached_input_tokens": 409856,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1576,
+  "reasoning_output_tokens": 313
+ },
+ "returncode": 0,
+ "final": "DONE, c11b3c456043, compliance 100.08156078834772",
+ "n_tool_calls": 22,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_load",
+  "ladder",
+  "ask_clarification",
+  "set_params",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "field_stats",
+  "solve",
+  "wait_job",
+  "solve",
+  "wait_job",
+  "export_stl",
+  "export_report"
+ ],
+ "questions": 1,
+ "stages": {
+  "spec_s": 12.33299994468689,
+  "solve_h2.0": {
+   "wall_s": 5.108999967575073,
+   "compute_s": 3.9138226995710284,
+   "iterations": 76,
+   "n_elem": 24000,
+   "warm": false,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h1.0": {
+   "wall_s": 4.523000001907349,
+   "compute_s": 4.395655499771237,
+   "iterations": 61,
+   "n_elem": 192000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.5": {
+   "wall_s": 9.549999952316284,
+   "compute_s": 9.404618601081893,
+   "iterations": 61,
+   "n_elem": 1536000,
+   "warm": true,
+   "status": "converged",
+   "certified": false
+  },
+  "solve_h0.25": {
+   "wall_s": 32.884000062942505,
+   "compute_s": 32.03932830016129,
+   "iterations": 61,
+   "n_elem": 12288000,
+   "warm": true,
+   "status": "converged",
+   "certified": true
+  },
+  "export_s": 1.6452,
+  "total_s": 76.79099988937378
+ },
+ "released": true,
+ "exports": [
+  {
+   "triangles": 1116008,
+   "bytes": 55800484,
+   "sha256": "e52ca85fa8c5f4cd004acb962304eebae43c446e9dbc6b470e0c10bf5e324d62",
+   "path": "results\\X3\\b02_mbb_half\\session\\exports\\Simply_supported_6061_beam_left_symmetric_half_c11b3c456043.stl",
+   "pool": 1,
+   "vertices": 557984,
+   "t_surface_s": 0.95,
+   "t_write_s": 0.401,
+   "mesh": {
+    "closed": true,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "volume": 57593.17054091147
+   },
+   "job": "c11b3c456043",
+   "certified": true,
+   "released": true
+  },
+  {
+   "job": "c11b3c456043",
+   "certified": true,
+   "json": "results\\X3\\b02_mbb_half\\session\\exports\\Simply_supported_6061_beam_left_symmetric_half_c11b3c456043_report.json",
+   "markdown": "results\\X3\\b02_mbb_half\\session\\exports\\Simply_supported_6061_beam_left_symmetric_half_c11b3c456043_report.md",
+   "stl": "results\\X3\\b02_mbb_half\\session\\exports\\Simply_supported_6061_beam_left_symmetric_half_c11b3c456043.stl"
+  }
+ ],
+ "release_spec_match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "replay": {
+  "ok": true,
+  "calls": 22,
+  "solves_replayed": 4,
+  "skipped": 4,
+  "mismatches": [],
+  "final_spec_hash": "3552ff61b9e1cd4e"
+ }
+}

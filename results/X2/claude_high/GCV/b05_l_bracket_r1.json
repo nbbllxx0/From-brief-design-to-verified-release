@@ -1,0 +1,169 @@
+{
+ "task": "b05_l_bracket",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T17:58:51",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 42491,
+  "cached_input_tokens": 36346,
+  "cache_write_input_tokens": 6139,
+  "output_tokens": 1428
+ },
+ "gc_wall_s": 21.69215380004607,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14592,
+  "cached_input_tokens": 8674,
+  "cache_write_input_tokens": 5914,
+  "output_tokens": 939
+ },
+ "verify_wall_s": 11.515814400045201,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 57083,
+  "cached_input_tokens": 45020,
+  "output_tokens": 2367,
+  "cache_write_input_tokens": 12053
+ },
+ "wall_s": 33.20796820009127,
+ "questions": 0,
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "L-bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    100.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "ceiling_bolt",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Top face of vertical arm bolted to ceiling"
+   }
+  ],
+  "loads": [
+   {
+    "id": "tip_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0.0,
+     -500.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "500 N downward on 10x10 pad, right end of horizontal arm"
+   }
+  ],
+  "passive": [
+   {
+    "id": "corner_void",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      40.0,
+      40.0,
+      0.0
+     ],
+     "max": [
+      100.0,
+      100.0,
+      40.0
+     ]
+    },
+    "note": "Occupied by another part, keep empty through full depth"
+   }
+  ],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 11.962410199921578,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

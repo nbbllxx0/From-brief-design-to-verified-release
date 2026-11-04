@@ -1,0 +1,190 @@
+{
+ "task": "b14_cube_torsion",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:27:40",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 16.265265400055796,
+ "usage": {
+  "input_tokens": 21963,
+  "cached_input_tokens": 12416,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 731,
+  "reasoning_output_tokens": 131
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"block_in_torsion\",\n  \"description\": \"100 mm steel cube fixed over its bottom face, with an 18 N*m torque about +z applied through four top-edge pads.\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [100, 100, 100]\n  },\n  \"material\": {\n    \"name\": \"steel\",\n    \"E\": 210000,\n    \"nu\": 0.3\n  },\n  \"volume_fraction\": 0.15,\n  \"supports\": [\n    {\n      \"id\": \"bottom_fixed\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"z-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"top_pad_y_minus\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"z+\",\n        \"center\": [50, 5],\n        \"size\": [10, 10]\n      },\n      \"force\": [100, 0, 0],\n      \"distribution\": \"uniform_nodes\"\n    },\n    {\n      \"id\": \"top_pad_x_plus\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"z+\",\n        \"center\": [95, 50],\n        \"size\": [10, 10]\n      },\n      \"force\": [0, 100, 0],\n      \"distribution\": \"uniform_nodes\"\n    },\n    {\n      \"id\": \"top_pad_y_plus\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"z+\",\n        \"center\": [50, 95],\n        \"size\": [10, 10]\n      },\n      \"force\": [-100, 0, 0],\n      \"distribution\": \"uniform_nodes\"\n    },\n    {\n      \"id\": \"top_pad_x_minus\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"z+\",\n        \"center\": [5, 50],\n        \"size\": [10, 10]\n      },\n      \"force\": [0, -100, 0],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"passive\": [],\n  \"resolution\": {\n    \"h\": 1\n  },\n  \"meta\": {\n    \"torque_N_mm\": [0, 0, 18000],\n    \"force_calculation\": \"Each pad centroid has a 45 mm moment arm: 18000 / (4 * 45) = 100 N per pad.\"\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "block_in_torsion",
+  "description": "100 mm steel cube fixed over its bottom face, with an 18 N*m torque about +z applied through four top-edge pads.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100,
+    100,
+    100
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "bottom_fixed",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_pad_y_minus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50,
+      5
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     100,
+     0,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   },
+   {
+    "id": "top_pad_x_plus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      95,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     100,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   },
+   {
+    "id": "top_pad_y_plus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      50,
+      95
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     -100,
+     0,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   },
+   {
+    "id": "top_pad_x_minus",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      5,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     -100,
+     0
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1
+  },
+  "meta": {
+   "torque_N_mm": [
+    0,
+    0,
+    18000
+   ],
+   "force_calculation": "Each pad centroid has a 45 mm moment arm: 18000 / (4 * 45) = 100 N per pad."
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 16.327438100008294,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 100, 100)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,4583 @@
+{
+ "summary": [
+  {
+   "class": "admissibility",
+   "fault": "zero force",
+   "applied": 50,
+   "caught": 50,
+   "applied_base_clean": 47,
+   "caught_base_clean": 47,
+   "codes": {
+    "R004": 50
+   }
+  },
+  {
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "applied": 48,
+   "caught": 45,
+   "applied_base_clean": 46,
+   "caught_base_clean": 43,
+   "codes": {
+    "R005": 45
+   }
+  },
+  {
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "applied": 50,
+   "caught": 48,
+   "applied_base_clean": 47,
+   "caught_base_clean": 47,
+   "codes": {
+    "R003": 48
+   }
+  },
+  {
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "applied": 50,
+   "caught": 0,
+   "applied_base_clean": 47,
+   "caught_base_clean": 0,
+   "codes": {}
+  },
+  {
+   "class": "intent",
+   "fault": "force sign flipped",
+   "applied": 50,
+   "caught": 0,
+   "applied_base_clean": 47,
+   "caught_base_clean": 0,
+   "codes": {}
+  },
+  {
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "applied": 50,
+   "caught": 0,
+   "applied_base_clean": 47,
+   "caught_base_clean": 0,
+   "codes": {}
+  },
+  {
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "applied": 50,
+   "caught": 6,
+   "applied_base_clean": 47,
+   "caught_base_clean": 6,
+   "codes": {
+    "R007": 6
+   }
+  },
+  {
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "applied": 50,
+   "caught": 0,
+   "applied_base_clean": 47,
+   "caught_base_clean": 0,
+   "codes": {}
+  },
+  {
+   "class": "intent",
+   "fault": "support on opposite face",
+   "applied": 40,
+   "caught": 16,
+   "applied_base_clean": 38,
+   "caught_base_clean": 15,
+   "codes": {
+    "R005": 16
+   }
+  },
+  {
+   "class": "admissibility",
+   "fault": "load inside keep-out",
+   "applied": 9,
+   "caught": 8,
+   "applied_base_clean": 8,
+   "caught_base_clean": 8,
+   "codes": {
+    "R008": 8
+   }
+  },
+  {
+   "class": "outside rule set",
+   "fault": "load straddling a keep-out face",
+   "applied": 5,
+   "caught": 0,
+   "applied_base_clean": 5,
+   "caught_base_clean": 0,
+   "codes": {}
+  }
+ ],
+ "rows": [
+  {
+   "task": "b01_cantilever_block",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b01_cantilever_block",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b01_cantilever_block",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b01_cantilever_block",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b01_cantilever_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b01_cantilever_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b01_cantilever_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b01_cantilever_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b01_cantilever_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b02_mbb_half",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b02_mbb_half",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b02_mbb_half",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b02_mbb_half",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b02_mbb_half",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b02_mbb_half",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b02_mbb_half",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b03_bridge_deck",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b03_bridge_deck",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b03_bridge_deck",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b03_bridge_deck",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b03_bridge_deck",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b03_bridge_deck",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b03_bridge_deck",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b03_bridge_deck",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b04_torsion_shaft",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b04_torsion_shaft",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b04_torsion_shaft",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b04_torsion_shaft",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b04_torsion_shaft",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b04_torsion_shaft",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b04_torsion_shaft",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b04_torsion_shaft",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b04_torsion_shaft",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b05_l_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b05_l_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b05_l_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load inside keep-out",
+   "base_errors": [],
+   "new_errors": [
+    "R008"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b05_l_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b05_l_bracket",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b05_l_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b05_l_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b05_l_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [
+    "R007"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b05_l_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b05_l_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b06_motor_mount",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b06_motor_mount",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b06_motor_mount",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b06_motor_mount",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b06_motor_mount",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b06_motor_mount",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b06_motor_mount",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b06_motor_mount",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b06_motor_mount",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b07_sensor_arm",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b07_sensor_arm",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b07_sensor_arm",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b07_sensor_arm",
+   "expected": "clarify",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b07_sensor_arm",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b07_sensor_arm",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b07_sensor_arm",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b07_sensor_arm",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b07_sensor_arm",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b08_slider_bracket",
+   "expected": "refuse",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b08_slider_bracket",
+   "expected": "refuse",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b08_slider_bracket",
+   "expected": "refuse",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b08_slider_bracket",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b08_slider_bracket",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b08_slider_bracket",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b08_slider_bracket",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b08_slider_bracket",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b09_duct_bridge",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b09_duct_bridge",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b09_duct_bridge",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load inside keep-out",
+   "base_errors": [],
+   "new_errors": [
+    "R008"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b09_duct_bridge",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b09_duct_bridge",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b09_duct_bridge",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b09_duct_bridge",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b09_duct_bridge",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [
+    "R007"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b09_duct_bridge",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b10_hook_plate",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b10_hook_plate",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b10_hook_plate",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b10_hook_plate",
+   "expected": "clarify",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b10_hook_plate",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b10_hook_plate",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b10_hook_plate",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b10_hook_plate",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b10_hook_plate",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b11_cantilever_line_load",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b11_cantilever_line_load",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b11_cantilever_line_load",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b11_cantilever_line_load",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b11_cantilever_line_load",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b11_cantilever_line_load",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b11_cantilever_line_load",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b11_cantilever_line_load",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b11_cantilever_line_load",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b12_wheel",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b12_wheel",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b12_wheel",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b12_wheel",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b12_wheel",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b12_wheel",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b12_wheel",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b12_wheel",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b12_wheel",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b13_cantilever_end_traction",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b13_cantilever_end_traction",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b13_cantilever_end_traction",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b13_cantilever_end_traction",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b13_cantilever_end_traction",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b13_cantilever_end_traction",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b13_cantilever_end_traction",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b13_cantilever_end_traction",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b13_cantilever_end_traction",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b14_cube_torsion",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b14_cube_torsion",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b14_cube_torsion",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b14_cube_torsion",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b14_cube_torsion",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b14_cube_torsion",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b14_cube_torsion",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b14_cube_torsion",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b14_cube_torsion",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b15_corner_plate",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b15_corner_plate",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b15_corner_plate",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b15_corner_plate",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b15_corner_plate",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b15_corner_plate",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b15_corner_plate",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b15_corner_plate",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b15_corner_plate",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b16_column",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b16_column",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b16_column",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b16_column",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b16_column",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b16_column",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b16_column",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b16_column",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b16_column",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b17_arch_bridge",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b17_arch_bridge",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b17_arch_bridge",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b17_arch_bridge",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b17_arch_bridge",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b17_arch_bridge",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b17_arch_bridge",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b17_arch_bridge",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b18_cantilever_hole",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b18_cantilever_hole",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b18_cantilever_hole",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load inside keep-out",
+   "base_errors": [],
+   "new_errors": [
+    "R008"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b18_cantilever_hole",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b18_cantilever_hole",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b18_cantilever_hole",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b18_cantilever_hole",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b18_cantilever_hole",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [
+    "R007"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b18_cantilever_hole",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b18_cantilever_hole",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b19_engine_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b19_engine_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b19_engine_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b19_engine_bracket",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b19_engine_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b19_engine_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b19_engine_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b19_engine_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b19_engine_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b20_quarter_plate",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b20_quarter_plate",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b20_quarter_plate",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b20_quarter_plate",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b20_quarter_plate",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b20_quarter_plate",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b20_quarter_plate",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b20_quarter_plate",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b20_quarter_plate",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b21_mbb_z_up",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b21_mbb_z_up",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b21_mbb_z_up",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b21_mbb_z_up",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b21_mbb_z_up",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b21_mbb_z_up",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b21_mbb_z_up",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b21_mbb_z_up",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b22_cantilever_slab",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b22_cantilever_slab",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b22_cantilever_slab",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b22_cantilever_slab",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b22_cantilever_slab",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b22_cantilever_slab",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b22_cantilever_slab",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b22_cantilever_slab",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b22_cantilever_slab",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b23_clamped_beam",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b23_clamped_beam",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b23_clamped_beam",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b23_clamped_beam",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b23_clamped_beam",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b23_clamped_beam",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b23_clamped_beam",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b23_clamped_beam",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b23_clamped_beam",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b24_shear_block",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b24_shear_block",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b24_shear_block",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b24_shear_block",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b24_shear_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b24_shear_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b24_shear_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b24_shear_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b24_shear_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b25_cantilever_metres",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b25_cantilever_metres",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b25_cantilever_metres",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b25_cantilever_metres",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b25_cantilever_metres",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b25_cantilever_metres",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b25_cantilever_metres",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b25_cantilever_metres",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b25_cantilever_metres",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b26_canopy",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b26_canopy",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b26_canopy",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b26_canopy",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b26_canopy",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b26_canopy",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b26_canopy",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b26_canopy",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b26_canopy",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b27_eccentric_cantilever",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b27_eccentric_cantilever",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b27_eccentric_cantilever",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b27_eccentric_cantilever",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b27_eccentric_cantilever",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b27_eccentric_cantilever",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b27_eccentric_cantilever",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b27_eccentric_cantilever",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b27_eccentric_cantilever",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b28_stool",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b28_stool",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b28_stool",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load inside keep-out",
+   "base_errors": [],
+   "new_errors": [
+    "R008"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b28_stool",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b28_stool",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "load straddling a keep-out face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b28_stool",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b28_stool",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b28_stool",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b28_stool",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [
+    "R007"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b28_stool",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b28_stool",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b29_michell_cantilever",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b29_michell_cantilever",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b29_michell_cantilever",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b29_michell_cantilever",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b29_michell_cantilever",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b29_michell_cantilever",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b29_michell_cantilever",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b29_michell_cantilever",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b30_bridge_clearance",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b30_bridge_clearance",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b30_bridge_clearance",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load inside keep-out",
+   "base_errors": [],
+   "new_errors": [
+    "R008"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b30_bridge_clearance",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b30_bridge_clearance",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "load straddling a keep-out face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b30_bridge_clearance",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b30_bridge_clearance",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b30_bridge_clearance",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b30_bridge_clearance",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [
+    "R007"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b30_bridge_clearance",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b31_pillow_block",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b31_pillow_block",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b31_pillow_block",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b31_pillow_block",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b31_pillow_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b31_pillow_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b31_pillow_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b31_pillow_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b31_pillow_block",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b32_drone_arm",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b32_drone_arm",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b32_drone_arm",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b32_drone_arm",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b32_drone_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b32_drone_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b32_drone_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b32_drone_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b32_drone_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b33_shelf_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b33_shelf_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b33_shelf_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b33_shelf_bracket",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b33_shelf_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b33_shelf_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b33_shelf_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b33_shelf_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b33_shelf_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b34_antenna_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b34_antenna_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b34_antenna_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b34_antenna_bracket",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b34_antenna_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b34_antenna_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b34_antenna_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b34_antenna_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b34_antenna_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b35_padeye",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b35_padeye",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b35_padeye",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b35_padeye",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b35_padeye",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b35_padeye",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b35_padeye",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b35_padeye",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b35_padeye",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b36_pedal_arm",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b36_pedal_arm",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b36_pedal_arm",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b36_pedal_arm",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b36_pedal_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b36_pedal_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b36_pedal_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b36_pedal_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b37_battery_crossmember",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b37_battery_crossmember",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b37_battery_crossmember",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b37_battery_crossmember",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b37_battery_crossmember",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b37_battery_crossmember",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b37_battery_crossmember",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b37_battery_crossmember",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b37_battery_crossmember",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b38_peek_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b38_peek_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b38_peek_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b38_peek_bracket",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b38_peek_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b38_peek_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b38_peek_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b38_peek_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b38_peek_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b39_tv_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b39_tv_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b39_tv_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b39_tv_bracket",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b39_tv_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b39_tv_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b39_tv_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b39_tv_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b39_tv_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b40_crank_arm",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b40_crank_arm",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b40_crank_arm",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b40_crank_arm",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b40_crank_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b40_crank_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b40_crank_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b40_crank_arm",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b41_hinge_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b41_hinge_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b41_hinge_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load inside keep-out",
+   "base_errors": [],
+   "new_errors": [
+    "R008"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b41_hinge_bracket",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b41_hinge_bracket",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "load straddling a keep-out face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b41_hinge_bracket",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b41_hinge_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b41_hinge_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b41_hinge_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [
+    "R007"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b41_hinge_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b41_hinge_bracket",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b42_snap_hook",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b42_snap_hook",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b42_snap_hook",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b42_snap_hook",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b42_snap_hook",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b42_snap_hook",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b42_snap_hook",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b42_snap_hook",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b42_snap_hook",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b43_press_riser",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b43_press_riser",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b43_press_riser",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "load inside keep-out",
+   "base_errors": [],
+   "new_errors": [
+    "R008"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b43_press_riser",
+   "expected": "solve",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b43_press_riser",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "load straddling a keep-out face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b43_press_riser",
+   "expected": "solve",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b43_press_riser",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b43_press_riser",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b43_press_riser",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b43_press_riser",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b43_press_riser",
+   "expected": "solve",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b44_gearbox_bracket",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b44_gearbox_bracket",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b44_gearbox_bracket",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b44_gearbox_bracket",
+   "expected": "clarify",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b44_gearbox_bracket",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b44_gearbox_bracket",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b44_gearbox_bracket",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b44_gearbox_bracket",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b44_gearbox_bracket",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b45_pump_bracket",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b45_pump_bracket",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b45_pump_bracket",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b45_pump_bracket",
+   "expected": "clarify",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b45_pump_bracket",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b45_pump_bracket",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b45_pump_bracket",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b45_pump_bracket",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b45_pump_bracket",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b46_sensor_housing",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b46_sensor_housing",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b46_sensor_housing",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "load inside keep-out",
+   "base_errors": [],
+   "new_errors": [
+    "R008"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b46_sensor_housing",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b46_sensor_housing",
+   "expected": "clarify",
+   "class": "outside rule set",
+   "fault": "load straddling a keep-out face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b46_sensor_housing",
+   "expected": "clarify",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b46_sensor_housing",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b46_sensor_housing",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b46_sensor_housing",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b46_sensor_housing",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b46_sensor_housing",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b47_camera_mount",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b47_camera_mount",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b47_camera_mount",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b47_camera_mount",
+   "expected": "clarify",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b47_camera_mount",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b47_camera_mount",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b47_camera_mount",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b47_camera_mount",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b47_camera_mount",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b48_cable_anchor",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b48_cable_anchor",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b48_cable_anchor",
+   "expected": "clarify",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b48_cable_anchor",
+   "expected": "clarify",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b48_cable_anchor",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b48_cable_anchor",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b48_cable_anchor",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b48_cable_anchor",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b48_cable_anchor",
+   "expected": "clarify",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b49_hinged_arm",
+   "expected": "refuse",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b49_hinged_arm",
+   "expected": "refuse",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b49_hinged_arm",
+   "expected": "refuse",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b49_hinged_arm",
+   "expected": "refuse",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b49_hinged_arm",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b49_hinged_arm",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b49_hinged_arm",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b49_hinged_arm",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [
+    "R003"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b50_valve_bracket",
+   "expected": "refuse",
+   "class": "admissibility",
+   "fault": "zero force",
+   "base_errors": [
+    "R008"
+   ],
+   "new_errors": [
+    "R004"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b50_valve_bracket",
+   "expected": "refuse",
+   "class": "admissibility",
+   "fault": "load on supported nodes",
+   "base_errors": [
+    "R008"
+   ],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b50_valve_bracket",
+   "expected": "refuse",
+   "class": "admissibility",
+   "fault": "load inside keep-out",
+   "base_errors": [
+    "R008"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b50_valve_bracket",
+   "expected": "refuse",
+   "class": "admissibility",
+   "fault": "rigid-body motion free",
+   "base_errors": [
+    "R008"
+   ],
+   "new_errors": [
+    "R003"
+   ],
+   "caught": true
+  },
+  {
+   "task": "b50_valve_bracket",
+   "expected": "refuse",
+   "class": "outside rule set",
+   "fault": "modulus divided by 1000 (GPa/MPa slip)",
+   "base_errors": [
+    "R008"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b50_valve_bracket",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "force sign flipped",
+   "base_errors": [
+    "R008"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b50_valve_bracket",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "kN/N unit slip (x1000)",
+   "base_errors": [
+    "R008"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b50_valve_bracket",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "invented keep-in pad",
+   "base_errors": [
+    "R008"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b50_valve_bracket",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "volume fraction changed",
+   "base_errors": [
+    "R008"
+   ],
+   "new_errors": [],
+   "caught": false
+  },
+  {
+   "task": "b50_valve_bracket",
+   "expected": "refuse",
+   "class": "intent",
+   "fault": "support on opposite face",
+   "base_errors": [
+    "R008"
+   ],
+   "new_errors": [
+    "R005"
+   ],
+   "caught": true
+  }
+ ]
+}

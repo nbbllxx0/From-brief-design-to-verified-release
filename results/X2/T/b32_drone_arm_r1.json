@@ -1,0 +1,136 @@
+{
+ "task": "b32_drone_arm",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:31:14",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 10.631159400101751,
+ "usage": {
+  "input_tokens": 20016,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 435,
+  "reasoning_output_tokens": 92
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Drone arm\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [150, 20, 20]\n  },\n  \"material\": {\n    \"name\": \"Aluminium 7075\",\n    \"E\": 71700,\n    \"nu\": 0.33\n  },\n  \"volume_fraction\": 0.2,\n  \"supports\": [\n    {\n      \"id\": \"root_clamp\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x-\"\n      },\n      \"fix\": [\"x\", \"y\", \"z\"]\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"motor_thrust\",\n      \"region\": {\n        \"kind\": \"patch\",\n        \"face\": \"z+\",\n        \"center\": [140, 10],\n        \"size\": [20, 20]\n      },\n      \"force\": [0, 0, 15],\n      \"distribution\": \"uniform_nodes\"\n    }\n  ],\n  \"passive\": [\n    {\n      \"id\": \"motor_mount_pad\",\n      \"kind\": \"solid\",\n      \"region\": {\n        \"kind\": \"box\",\n        \"min\": [130, 0, 15],\n        \"max\": [150, 20, 20]\n      }\n    }\n  ],\n  \"resolution\": {\n    \"h\": 0.5\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Drone arm",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150,
+    20,
+    20
+   ]
+  },
+  "material": {
+   "name": "Aluminium 7075",
+   "E": 71700,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "root_clamp",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  ],
+  "loads": [
+   {
+    "id": "motor_thrust",
+    "region": {
+     "kind": "patch",
+     "face": "z+",
+     "center": [
+      140,
+      10
+     ],
+     "size": [
+      20,
+      20
+     ]
+    },
+    "force": [
+     0,
+     0,
+     15
+    ],
+    "distribution": "uniform_nodes"
+   }
+  ],
+  "passive": [
+   {
+    "id": "motor_mount_pad",
+    "kind": "solid",
+    "region": {
+     "kind": "box",
+     "min": [
+      130,
+      0,
+      15
+     ],
+     "max": [
+      150,
+      20,
+      20
+     ]
+    }
+   }
+  ],
+  "resolution": {
+   "h": 0.5
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 10.693315800046548,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=0.5, grid (300, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

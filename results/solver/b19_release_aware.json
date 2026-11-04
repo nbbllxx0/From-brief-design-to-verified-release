@@ -1,0 +1,15 @@
+{
+ "rule": "aware",
+ "grid": [560, 200, 320],
+ "padded": [576, 256, 320],
+ "levels": 7,
+ "status": "converged",
+ "iterations": 61,
+ "compute_s": 212,
+ "pcg_iters_mean": 24,
+ "compliance": 121.26050741902088,
+ "certified": true,
+ "note": "recorded from the first run's printed line (2026-10-30); the script now writes this file itself",
+ "x3_voxfem_rule": {"iterations": 61, "compute_s": 1507.6, "compliance": 121.26051525896641, "certified": true,
+                    "source": "results/X3/b19_engine_bracket.json"}
+}

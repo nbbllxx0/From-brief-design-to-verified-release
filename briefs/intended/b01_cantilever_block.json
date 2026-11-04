@@ -1,0 +1,70 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b01 cantilever block",
+  "domain": {
+   "size": [
+    200,
+    100,
+    100
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "wall",
+    "region": {
+     "kind": "face",
+     "face": "x-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "pad",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      50,
+      50
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  }
+ },
+ "expected": "solve",
+ "source": "restates the voxfem solver's 3D cantilever benchmark (after Sigmund) in physical units",
+ "oracle": [],
+ "admissible": [],
+ "notes": "",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "N",
+  "comment": "Dimensions, fixed face, centred patch, -1000 N and E conversion agree. FEAD/Sigmund is not a traceable article citation."
+ }
+}

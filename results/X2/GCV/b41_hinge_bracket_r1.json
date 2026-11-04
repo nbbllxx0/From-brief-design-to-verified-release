@@ -1,0 +1,213 @@
+{
+ "task": "b41_hinge_bracket",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T10:36:46",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 166270,
+  "cached_input_tokens": 151808,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1974,
+  "reasoning_output_tokens": 479
+ },
+ "gc_wall_s": 50.84954329999164,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 17708,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 561,
+  "reasoning_output_tokens": 518
+ },
+ "verify_wall_s": 20.073463200125843,
+ "repaired": false,
+ "usage": {
+  "reasoning_output_tokens": 997,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2535,
+  "input_tokens": 183978,
+  "cached_input_tokens": 151808
+ },
+ "wall_s": 70.92300650011748,
+ "questions": 3,
+ "n_tool_calls": 13,
+ "n_failed_calls": 0,
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Door hinge bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    140.0,
+    80.0,
+    30.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bolt_left",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      20.0,
+      15.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Clamped 12 mm diameter washer contact, as clarified."
+   },
+   {
+    "id": "bolt_right",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      120.0,
+      15.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Clamped 12 mm diameter washer contact, as clarified."
+   }
+  ],
+  "loads": [
+   {
+    "id": "door_load",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      70.0,
+      65.0
+     ],
+     "radius": 10.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "force": [
+     300.0,
+     -800.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Simultaneous resultant, shared uniformly over boss nodes; centred through thickness, as clarified."
+   }
+  ],
+  "passive": [
+   {
+    "id": "hinge_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      70.0,
+      65.0
+     ],
+     "radius": 10.0,
+     "span": [
+      0.0,
+      30.0
+     ]
+    },
+    "note": "Required solid boss, diameter 20 mm, full thickness; no pin bore specified."
+   },
+   {
+    "id": "cable_slot",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      40.0,
+      20.0,
+      0.0
+     ],
+     "max": [
+      100.0,
+      35.0,
+      30.0
+     ]
+    },
+    "note": "Required empty cable slot through full thickness."
+   }
+  ],
+  "description": "Door hinge bracket; y up. Envelope 140 x 80 x 30 mm. Two bottom bolt washer supports; kept solid boss at (70,65), diameter 20 mm, full z thickness; cable slot x=40..100, y=20..35 through thickness. Boss resultant force (+300,-800,0) N.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 20.462102300021797,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (140, 80, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

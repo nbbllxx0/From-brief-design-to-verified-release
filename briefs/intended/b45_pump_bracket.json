@@ -1,0 +1,75 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b45 pump bracket",
+  "domain": {
+   "size": [
+    160,
+    100,
+    60
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "wall",
+    "region": {
+     "kind": "face",
+     "face": "z-"
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "pump",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      80,
+      35
+     ],
+     "size": [
+      60,
+      40
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -250,
+     0
+    ]
+   }
+  ],
+  "resolution": {
+   "h": 2.0
+  }
+ },
+ "expected": "clarify",
+ "source": "engineering",
+ "oracle": [
+  {
+   "about": "the pump's load",
+   "answer": "The pump weighs 25 kg: use 250 N downward (-y) spread over the footprint. Nothing else acts on it."
+  }
+ ],
+ "admissible": [],
+ "notes": "Gap: the load. Its size alone does not change a compliance design, but whether it has a sideways part (vibration, pipe pull) does; a correct agent asks rather than guessing a direction and size.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "Y",
+  "source": "n.a.",
+  "comment": "Y after oracle: (0,-250,0) N only. Load magnitude and other components are missing from the original brief. Uniform load scaling does not validate an invented engineering load."
+ }
+}

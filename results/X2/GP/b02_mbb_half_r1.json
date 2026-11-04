@@ -1,0 +1,210 @@
+{
+ "task": "b02_mbb_half",
+ "cond": "GP",
+ "rep": 1,
+ "t": "2026-11-01T01:28:24",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief gives lengths in mm and forces in kN."
+   },
+   {
+    "key": "domain",
+    "source": "derived",
+    "note": "Full beam 240 x 40 x 40 mm; left symmetric half is x=0..240/2=120 mm, y=0..40 mm, z=0..40 mm."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Aluminium 6061 is stated; assume isotropic linear elasticity with E=69 kN/mm^2 (69 GPa), nu=0.33 because elastic constants and temper are unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.3."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h=1 mm."
+   },
+   {
+    "key": "support:left_bottom_support",
+    "source": "stated",
+    "note": "End bottom edge across full width at x=0, y=0; vertical y and sideways z restraint only, axial x free."
+   },
+   {
+    "key": "support:midspan_symmetry",
+    "source": "derived",
+    "note": "Requested mid-span symmetry at x=240/2=120 mm implies ux=0 on the entire cut face, with uy and uz free."
+   },
+   {
+    "key": "load:midspan_top_half_load",
+    "source": "derived",
+    "note": "Top mid-span full-width line at x=120, y=40, z=0..40 mm. Reflection-symmetric half receives 2/2=1 kN downward (-y); total edge force [0,-1,0] kN."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GP\\b02_mbb_half_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 33.76132559985854,
+ "usage": {
+  "input_tokens": 115173,
+  "cached_input_tokens": 102016,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1145,
+  "reasoning_output_tokens": 197
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumed isotropic aluminium 6061 with E = 69 GPa and \u03bd = 0.33; no passive regions. Validation passed, render confirmed placement, and every spec item is source-tagged.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Simply supported beam \u2014 left symmetric half",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    40.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061 (isotropic)",
+   "E": 69.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "left_bottom_support",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Physical end support at x=0, y=0, across full width; vertical and sideways restraint only."
+   },
+   {
+    "id": "midspan_symmetry",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x"
+    ],
+    "note": "Symmetry at x=120 mm: zero displacement normal to cut, tangential displacement free."
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_top_half_load",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120.0,
+      40.0
+     ],
+     "span": [
+      0.0,
+      40.0
+     ]
+    },
+    "force": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Full beam mid-span top line force is 2 kN downward. Half model carries 1 kN across full width at x=120, y=40."
+   }
+  ],
+  "passive": [],
+  "description": "Left half of 240 x 40 x 40 mm beam. End bottom edge restrains vertical y and sideways z only; x=120 symmetry face restrains x. Half of full mid-span line force applied at top symmetry edge.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 33.98612089990638,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

@@ -1,0 +1,137 @@
+{
+ "task": "b02_mbb_half",
+ "cond": "T",
+ "rep": 2,
+ "t": "2026-10-30T10:42:14",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 12.682242499897256,
+ "usage": {
+  "input_tokens": 20001,
+  "cached_input_tokens": 14976,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 513,
+  "reasoning_output_tokens": 121
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Simply supported aluminium beam \u2014 symmetric left half\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [120, 40, 40]\n  },\n  \"material\": {\n    \"name\": \"Aluminium 6061\",\n    \"E\": 68900,\n    \"nu\": 0.33\n  },\n  \"volume_fraction\": 0.3,\n  \"supports\": [\n    {\n      \"id\": \"left_end_support\",\n      \"region\": {\n        \"kind\": \"edge\",\n        \"axis\": \"z\",\n        \"at\": [0, 0],\n        \"span\": [0, 40]\n      },\n      \"fix\": [\"y\", \"z\"],\n      \"note\": \"Bottom edge support carries vertical and sideways forces.\"\n    },\n    {\n      \"id\": \"midspan_symmetry\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"x+\"\n      },\n      \"fix\": [\"x\"],\n      \"note\": \"Symmetry plane at x = 120 mm.\"\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"midspan_top_line_load\",\n      \"region\": {\n        \"kind\": \"edge\",\n        \"axis\": \"z\",\n        \"at\": [120, 40],\n        \"span\": [0, 40]\n      },\n      \"force\": [0, -1000, 0],\n      \"distribution\": \"uniform_nodes\",\n      \"note\": \"Half of the full beam's 2000 N downward load acts on the half model.\"\n    }\n  ],\n  \"resolution\": {\n    \"h\": 1\n  }\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Simply supported aluminium beam \u2014 symmetric left half",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120,
+    40,
+    40
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 68900,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "left_end_support",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      0,
+      0
+     ],
+     "span": [
+      0,
+      40
+     ]
+    },
+    "fix": [
+     "y",
+     "z"
+    ],
+    "note": "Bottom edge support carries vertical and sideways forces."
+   },
+   {
+    "id": "midspan_symmetry",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x"
+    ],
+    "note": "Symmetry plane at x = 120 mm."
+   }
+  ],
+  "loads": [
+   {
+    "id": "midspan_top_line_load",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120,
+      40
+     ],
+     "span": [
+      0,
+      40
+     ]
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Half of the full beam's 2000 N downward load acts on the half model."
+   }
+  ],
+  "resolution": {
+   "h": 1
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 12.740778899984434,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": false,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 40, 40)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

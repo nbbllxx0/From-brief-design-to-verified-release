@@ -1,0 +1,133 @@
+{
+ "task": "b10_hook_plate",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T15:08:08",
+ "gc_correct": false,
+ "gc_usage": {
+  "input_tokens": 41686,
+  "cached_input_tokens": 35972,
+  "cache_write_input_tokens": 5708,
+  "output_tokens": 1223
+ },
+ "gc_wall_s": 15.712626700056717,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14392,
+  "cached_input_tokens": 6236,
+  "cache_write_input_tokens": 8152,
+  "output_tokens": 441
+ },
+ "verify_wall_s": 7.608197499997914,
+ "repaired": false,
+ "usage": {
+  "output_tokens": 1664,
+  "cached_input_tokens": 42208,
+  "cache_write_input_tokens": 13860,
+  "input_tokens": 56078
+ },
+ "wall_s": 23.32082420005463,
+ "questions": 0,
+ "n_tool_calls": 7,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Hook plate",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120.0,
+    80.0,
+    20.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "beam_bolted_top",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "bolted to beam along top face y=80"
+   }
+  ],
+  "loads": [
+   {
+    "id": "hanging_load",
+    "region": {
+     "kind": "edge",
+     "axis": "z",
+     "at": [
+      120.0,
+      0.0
+     ],
+     "span": null
+    },
+    "force": [
+     0.0,
+     -1500.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "1.5 kN hanging (-y) from lower corner x=120,y=0, through thickness"
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 8.046464700018987,
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": false,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 80, 20)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

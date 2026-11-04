@@ -1,0 +1,233 @@
+{
+ "task": "b39_tv_bracket",
+ "cond": "GCV",
+ "rep": 3,
+ "t": "2026-10-30T12:00:32",
+ "gc_correct": true,
+ "gc_usage": {
+  "input_tokens": 140025,
+  "cached_input_tokens": 121088,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1576,
+  "reasoning_output_tokens": 366
+ },
+ "gc_wall_s": 45.92091029998846,
+ "verify": {
+  "match": false,
+  "issues": [
+   "The plate load is reversed: it points upward (+y) and toward the wall (\u2212x), instead of 400 N downward (\u2212y) and 50 N away from the wall (+x)."
+  ]
+ },
+ "verify_usage": {
+  "input_tokens": 117000,
+  "cached_input_tokens": 104960,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 1675,
+  "reasoning_output_tokens": 1356
+ },
+ "verify_wall_s": 60.65935800014995,
+ "repaired": true,
+ "repair_usage": {
+  "input_tokens": 88153,
+  "cached_input_tokens": 64768,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 281,
+  "reasoning_output_tokens": 79
+ },
+ "repair_final": "DONE, no changes needed: the plate load is already (+50, \u2212400, 0) N on x=300, y=50\u2013150, z=0\u201340 mm. The reviewer\u2019s reversal claim is incorrect. Validation passed.",
+ "usage": {
+  "input_tokens": 345178,
+  "cached_input_tokens": 290816,
+  "cache_write_input_tokens": 0,
+  "reasoning_output_tokens": 1801,
+  "output_tokens": 3532
+ },
+ "wall_s": 125.13968280004337,
+ "questions": 2,
+ "n_tool_calls": 17,
+ "n_failed_calls": 0,
+ "session_log": "results\\X2\\GCV\\b39_tv_bracket_r3\\session\\session.jsonl",
+ "provider": "codex",
+ "model": null,
+ "effort": null,
+ "cli_version": null,
+ "returncode": 0,
+ "final": "DONE, no changes needed: the plate load is already (+50, \u2212400, 0) N on x=300, y=50\u2013150, z=0\u201340 mm. The reviewer\u2019s reversal claim is incorrect. Validation passed.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "TV wall bracket",
+  "description": "Steel TV wall bracket. Four fully fixed circular 12 mm outside-diameter washer footprints at x=0, (y,z)=(30,10),(30,30),(170,10),(170,30). External TV mounting plate represented by total force (50,-400,0) N distributed over x=300, y=50..150, z=0..40. No explicit screw bores or passive mounting plate. Minimum member size 5 mm; 2 mm elements; design volume fraction 0.15.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    300.0,
+    200.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.15,
+  "supports": [
+   {
+    "id": "wall_screw_y30_z10",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30.0,
+      10.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed 12 mm outside-diameter washer footprint representing lag-screw attachment; no explicit bore."
+   },
+   {
+    "id": "wall_screw_y30_z30",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      30.0,
+      30.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed 12 mm outside-diameter washer footprint representing lag-screw attachment; no explicit bore."
+   },
+   {
+    "id": "wall_screw_y170_z10",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170.0,
+      10.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed 12 mm outside-diameter washer footprint representing lag-screw attachment; no explicit bore."
+   },
+   {
+    "id": "wall_screw_y170_z30",
+    "region": {
+     "kind": "patch",
+     "face": "x-",
+     "center": [
+      170.0,
+      30.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "shape": "ellipse"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fully fixed 12 mm outside-diameter washer footprint representing lag-screw attachment; no explicit bore."
+   }
+  ],
+  "loads": [
+   {
+    "id": "tv_plate_load",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      100.0,
+      20.0
+     ],
+     "size": [
+      100.0,
+      40.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     50.0,
+     -400.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "External mounting plate represented by distributed total force over its full footprint."
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 2.0,
+   "cells_short_edge": null
+  },
+  "min_feature": 5.0,
+  "meta": {}
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 80.15997739997692,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=2, grid (150, 100, 20)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

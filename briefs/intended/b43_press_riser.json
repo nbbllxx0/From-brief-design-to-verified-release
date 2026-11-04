@@ -1,0 +1,321 @@
+{
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "name": "b43 press riser",
+  "domain": {
+   "size": [
+    300,
+    100,
+    150
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "bed_front",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      150,
+      22.5
+     ],
+     "size": [
+      300,
+      45
+     ]
+    }
+   },
+   {
+    "id": "bed_back",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      150,
+      127.5
+     ],
+     "size": [
+      300,
+      45
+     ]
+    }
+   }
+  ],
+  "loads": [
+   {
+    "id": "tool",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      150,
+      75
+     ],
+     "size": [
+      100,
+      50
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     0,
+     -20000,
+     2000
+    ]
+   }
+  ],
+  "passive": [
+   {
+    "id": "coolant",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      0,
+      0,
+      45
+     ],
+     "max": [
+      300,
+      30,
+      105
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "resolution": {
+   "cells_short_edge": 50
+  }
+ },
+ "expected": "solve",
+ "source": "engineering",
+ "oracle": [],
+ "admissible": [
+  {
+   "reading": "Support only y- strips z=0..45 and 105..150 across x=0..300.",
+   "why": "Physically appropriate remaining footprint beside open channel. Supplied consequence ~1.4e-10 at equal mass supports negligible numerical effect; correct b43 reference footprint.",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "from_run": "claude_high/T/b43_press_riser_r1",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "name": "press_riser_block",
+    "description": "Press riser block 300x100x150 mm (y up), steel. Bottom face bolted to press bed, full-length coolant channel kept void, tool pad load at top centre.",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "domain": {
+     "kind": "box",
+     "size": [
+      300,
+      100,
+      150
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "volume_fraction": 0.3,
+    "supports": [
+     {
+      "id": "bed_bolted_front",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        150,
+        22.5
+       ],
+       "size": [
+        300,
+        45
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Bottom face bolted to press bed, portion z 0-45 (beside coolant channel opening)"
+     },
+     {
+      "id": "bed_bolted_back",
+      "region": {
+       "kind": "patch",
+       "face": "y-",
+       "center": [
+        150,
+        127.5
+       ],
+       "size": [
+        300,
+        45
+       ]
+      },
+      "fix": [
+       "x",
+       "y",
+       "z"
+      ],
+      "note": "Bottom face bolted to press bed, portion z 105-150 (beside coolant channel opening)"
+     }
+    ],
+    "loads": [
+     {
+      "id": "tool_pad",
+      "region": {
+       "kind": "patch",
+       "face": "y+",
+       "center": [
+        150,
+        75
+       ],
+       "size": [
+        100,
+        50
+       ]
+      },
+      "force": [
+       0,
+       -20000,
+       2000
+      ],
+      "distribution": "uniform_nodes",
+      "note": "Tool pad 100 (x) x 50 (z) mm at top-face centre: 20 kN downward (-y) and 2 kN along +z"
+     }
+    ],
+    "passive": [
+     {
+      "id": "coolant_channel",
+      "kind": "void",
+      "region": {
+       "kind": "box",
+       "min": [
+        0,
+        0,
+        45
+       ],
+       "max": [
+        300,
+        30,
+        105
+       ]
+      },
+      "note": "Coolant channel along full length in x, z 45-105, y 0-30, must stay empty"
+     }
+    ],
+    "resolution": {
+     "cells_short_edge": 50
+    },
+    "meta": {
+     "up_axis": "y",
+     "pad_orientation_assumption": "100 mm along x, 50 mm along z"
+    }
+   }
+  },
+  {
+   "reading": "the full bottom face fixed, including the open channel",
+   "counts": true,
+   "adjudicated": "2026-10-31",
+   "why": "the brief says bolted over its full area; the extra fixed nodes over the open channel touch only void elements, so the solved problem is the same (consequence about 1e-10). Intended reading corrected to the two strips in adjudication; this reading kept by author decision.",
+   "spec": {
+    "schema_version": "agentto.spec/v0",
+    "units": {
+     "length": "mm",
+     "force": "N"
+    },
+    "name": "b43 press riser",
+    "domain": {
+     "size": [
+      300,
+      100,
+      150
+     ]
+    },
+    "material": {
+     "name": "steel",
+     "E": 210000.0,
+     "nu": 0.3
+    },
+    "volume_fraction": 0.3,
+    "supports": [
+     {
+      "id": "bed",
+      "region": {
+       "kind": "face",
+       "face": "y-"
+      }
+     }
+    ],
+    "loads": [
+     {
+      "id": "tool",
+      "region": {
+       "kind": "patch",
+       "face": "y+",
+       "center": [
+        150,
+        75
+       ],
+       "size": [
+        100,
+        50
+       ],
+       "shape": "rect"
+      },
+      "force": [
+       0,
+       -20000,
+       2000
+      ]
+     }
+    ],
+    "passive": [
+     {
+      "id": "coolant",
+      "kind": "void",
+      "region": {
+       "kind": "box",
+       "min": [
+        0,
+        0,
+        45
+       ],
+       "max": [
+        300,
+        30,
+        105
+       ]
+      },
+      "note": ""
+     }
+    ],
+    "resolution": {
+     "cells_short_edge": 50
+    }
+   }
+  }
+ ],
+ "notes": "Adjudication 2026-10-31: support corrected to the two bottom strips beside the open channel.",
+ "adjudication": {
+  "by": "J. Wang",
+  "date": "2026-10-31",
+  "intended": "N",
+  "source": "n.a.",
+  "comment": "Correct the support region to the two remaining bottom strips beside the open coolant channel. The problem is solvable; this is a footprint clarification, not a refusal. h=100/50=2 mm."
+ }
+}

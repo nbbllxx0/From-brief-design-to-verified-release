@@ -1,0 +1,153 @@
+{
+ "task": "b40_crank_arm",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:26:21",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 12.084819100098684,
+ "usage": {
+  "input_tokens": 8695,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8044,
+  "output_tokens": 1092
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"crank_arm\",\"description\":\"Bicycle crank arm 180x40x30 mm in 7075 aluminium. Axle end fixed inside a 20 mm diameter spindle circle through the thickness at (x=20, y=20). Pedal boss of 16 mm diameter at (x=160, y=20) kept solid through the full thickness. A 1.2 kN downward (-y) rider load acts on the boss's outer face at z=30 over the 16 mm circle.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[180,40,30]},\"material\":{\"name\":\"aluminium 7075\",\"E\":71700.0,\"nu\":0.33},\"volume_fraction\":0.3,\"supports\":[{\"id\":\"spindle\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"z\",\"center\":[20,20],\"radius\":10,\"span\":[0,30]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"keyed 20 mm diameter spindle through the thickness; everything inside the circle is fixed\"}],\"loads\":[{\"id\":\"pedal_push\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"z\",\"center\":[160,20],\"radius\":8,\"span\":[29.5,30]},\"force\":[0,-1200,0],\"distribution\":\"uniform_nodes\",\"note\":\"1.2 kN downward rider push on the boss's outer face (z=30) over the 16 mm circle; the thin span captures only the z=30 node layer\"}],\"passive\":[{\"id\":\"pedal_boss\",\"kind\":\"solid\",\"region\":{\"kind\":\"cylinder\",\"axis\":\"z\",\"center\":[160,20],\"radius\":8,\"span\":[0,30]},\"note\":\"threaded pedal boss of 16 mm diameter, kept solid through the full thickness\"}],\"resolution\":{\"h\":1.0},\"min_feature\":null,\"meta\":{\"source_brief\":\"Crank arm\"}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "crank_arm",
+  "description": "Bicycle crank arm 180x40x30 mm in 7075 aluminium. Axle end fixed inside a 20 mm diameter spindle circle through the thickness at (x=20, y=20). Pedal boss of 16 mm diameter at (x=160, y=20) kept solid through the full thickness. A 1.2 kN downward (-y) rider load acts on the boss's outer face at z=30 over the 16 mm circle.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    180,
+    40,
+    30
+   ]
+  },
+  "material": {
+   "name": "aluminium 7075",
+   "E": 71700.0,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.3,
+  "supports": [
+   {
+    "id": "spindle",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      20,
+      20
+     ],
+     "radius": 10,
+     "span": [
+      0,
+      30
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "keyed 20 mm diameter spindle through the thickness; everything inside the circle is fixed"
+   }
+  ],
+  "loads": [
+   {
+    "id": "pedal_push",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      160,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      29.5,
+      30
+     ]
+    },
+    "force": [
+     0,
+     -1200,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "1.2 kN downward rider push on the boss's outer face (z=30) over the 16 mm circle; the thin span captures only the z=30 node layer"
+   }
+  ],
+  "passive": [
+   {
+    "id": "pedal_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "z",
+     "center": [
+      160,
+      20
+     ],
+     "radius": 8,
+     "span": [
+      0,
+      30
+     ]
+    },
+    "note": "threaded pedal boss of 16 mm diameter, kept solid through the full thickness"
+   }
+  ],
+  "resolution": {
+   "h": 1.0
+  },
+  "min_feature": null,
+  "meta": {
+   "source_brief": "Crank arm"
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 12.290020399959758,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (180, 40, 30)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

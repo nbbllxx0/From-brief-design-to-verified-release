@@ -1,0 +1,176 @@
+{
+ "task": "b24_shear_block",
+ "cond": "GPC",
+ "rep": 1,
+ "t": "2026-11-01T01:06:58",
+ "sources": {
+  "sources": [
+   {
+    "key": "units",
+    "source": "stated",
+    "note": "Brief uses mm for length and kN for force; use mm and kN throughout."
+   },
+   {
+    "key": "domain",
+    "source": "stated",
+    "note": "80 mm cube in x, y, z; y is up. Domain runs from (0,0,0) to (80,80,80) under the tool origin convention."
+   },
+   {
+    "key": "material",
+    "source": "assumed",
+    "note": "Steel is stated. Assume isotropic linear elastic steel with E = 210 kN/mm^2 (210 GPa), nu = 0.30 because the grade and elastic constants are unspecified."
+   },
+   {
+    "key": "volume_fraction",
+    "source": "stated",
+    "note": "Brief specifies volume fraction 0.2."
+   },
+   {
+    "key": "resolution",
+    "source": "stated",
+    "note": "Brief specifies 1 mm elements; h = 1 mm."
+   },
+   {
+    "key": "support:fixed_bottom",
+    "source": "stated",
+    "note": "Whole bottom face y = 0 fully fixed in x, y, z."
+   },
+   {
+    "key": "load:top_shear",
+    "source": "stated",
+    "note": "Total 4 kN horizontal force along +x, spread uniformly over the whole top face y = 80 mm."
+   }
+  ],
+  "untagged": [],
+  "assumed": [
+   "material"
+  ]
+ },
+ "n_tool_calls": 15,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "set_source",
+  "list_regions",
+  "validate_spec",
+  "render",
+  "list_sources"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GPC\\b24_shear_block_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 19.94010080001317,
+ "usage": {
+  "input_tokens": 90101,
+  "cached_input_tokens": 76672,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 693,
+  "reasoning_output_tokens": 52
+ },
+ "returncode": 0,
+ "final": "DONE \u2014 Assumed isotropic linear elastic steel with E = 210 GPa and \u03bd = 0.30.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Block in shear",
+  "units": {
+   "length": "mm",
+   "force": "kN"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    80.0,
+    80.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "fixed_bottom",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Whole bottom face at y = 0 fully fixed."
+   }
+  ],
+  "loads": [
+   {
+    "id": "top_shear",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     4.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 4 kN along +x distributed uniformly over the whole top face at y = 80 mm."
+   }
+  ],
+  "passive": [],
+  "volume_fraction": 0.2,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 20.132697599940002,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": false,
+  "notes": [
+   "compared on h=1, grid (80, 80, 80)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

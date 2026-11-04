@@ -1,0 +1,159 @@
+{
+ "task": "b20_quarter_plate",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T17:23:03",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "claude",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "cli_version": "2.1.312 (Claude Code)",
+ "wall_s": 10.804221299942583,
+ "usage": {
+  "input_tokens": 8652,
+  "cached_input_tokens": 649,
+  "cache_write_input_tokens": 8001,
+  "output_tokens": 890
+ },
+ "returncode": 0,
+ "final": "{\"schema_version\":\"agentto.spec/v0\",\"name\":\"quarter_plate_center_load\",\"description\":\"Quarter model (x,z in [0,120]) of a 240 x 24 x 240 mm steel plate, y up, pinned at four 8x8 mm corner pads on the bottom face, 4 kN downward on a 20x20 mm centre pad on the top face. Symmetry planes at x=120 and z=120.\",\"units\":{\"length\":\"mm\",\"force\":\"N\"},\"domain\":{\"kind\":\"box\",\"size\":[120,24,120]},\"material\":{\"name\":\"steel\",\"E\":210000.0,\"nu\":0.3},\"volume_fraction\":0.25,\"supports\":[{\"id\":\"corner_pad_pin\",\"region\":{\"kind\":\"patch\",\"face\":\"y-\",\"center\":[4,4],\"size\":[8,8]},\"fix\":[\"x\",\"y\",\"z\"],\"note\":\"The one 8x8 mm bottom corner pad that lies in this quarter, pinned in all directions\"},{\"id\":\"symmetry_x\",\"region\":{\"kind\":\"face\",\"face\":\"x+\"},\"fix\":[\"x\"],\"note\":\"Symmetry plane x=120: no x displacement\"},{\"id\":\"symmetry_z\",\"region\":{\"kind\":\"face\",\"face\":\"z+\"},\"fix\":[\"z\"],\"note\":\"Symmetry plane z=120: no z displacement\"}],\"loads\":[{\"id\":\"centre_load_quarter\",\"region\":{\"kind\":\"patch\",\"face\":\"y+\",\"center\":[115,115],\"size\":[10,10]},\"force\":[0,-1000,0],\"distribution\":\"uniform_nodes\",\"note\":\"Quarter of the 20x20 mm centre pad carrying a quarter of the 4 kN load, downward (-y)\"}],\"passive\":[],\"resolution\":{\"h\":1.0},\"meta\":{\"symmetry\":\"quarter model, symmetry planes x=120 and z=120\",\"full_plate_size\":[240,24,240],\"full_load_N\":4000}}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "quarter_plate_center_load",
+  "description": "Quarter model (x,z in [0,120]) of a 240 x 24 x 240 mm steel plate, y up, pinned at four 8x8 mm corner pads on the bottom face, 4 kN downward on a 20x20 mm centre pad on the top face. Symmetry planes at x=120 and z=120.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    120,
+    24,
+    120
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "volume_fraction": 0.25,
+  "supports": [
+   {
+    "id": "corner_pad_pin",
+    "region": {
+     "kind": "patch",
+     "face": "y-",
+     "center": [
+      4,
+      4
+     ],
+     "size": [
+      8,
+      8
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "The one 8x8 mm bottom corner pad that lies in this quarter, pinned in all directions"
+   },
+   {
+    "id": "symmetry_x",
+    "region": {
+     "kind": "face",
+     "face": "x+"
+    },
+    "fix": [
+     "x"
+    ],
+    "note": "Symmetry plane x=120: no x displacement"
+   },
+   {
+    "id": "symmetry_z",
+    "region": {
+     "kind": "face",
+     "face": "z+"
+    },
+    "fix": [
+     "z"
+    ],
+    "note": "Symmetry plane z=120: no z displacement"
+   }
+  ],
+  "loads": [
+   {
+    "id": "centre_load_quarter",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      115,
+      115
+     ],
+     "size": [
+      10,
+      10
+     ]
+    },
+    "force": [
+     0,
+     -1000,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Quarter of the 20x20 mm centre pad carrying a quarter of the 4 kN load, downward (-y)"
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1.0
+  },
+  "meta": {
+   "symmetry": "quarter model, symmetry planes x=120 and z=120",
+   "full_plate_size": [
+    240,
+    24,
+    240
+   ],
+   "full_load_N": 4000
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 11.005668400088325,
+ "cwe": {
+  "value": 0.0,
+  "note": "equivalent to the intended spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": true
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (120, 24, 120)"
+  ],
+  "matched": "intended"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}

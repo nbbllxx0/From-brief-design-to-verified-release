@@ -1,0 +1,126 @@
+{
+ "task": "b33_shelf_bracket",
+ "cond": "T",
+ "rep": 1,
+ "t": "2026-10-30T08:31:25",
+ "n_tool_calls": 0,
+ "n_failed_calls": 0,
+ "questions": 0,
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 22.87144700018689,
+ "usage": {
+  "input_tokens": 21962,
+  "cached_input_tokens": 17024,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 763,
+  "reasoning_output_tokens": 307
+ },
+ "returncode": 0,
+ "final": "{\n  \"schema_version\": \"agentto.spec/v0\",\n  \"name\": \"Shelf bracket\",\n  \"description\": \"Aluminium shelf bracket with two fixed washer footprints on the wall face and a uniformly distributed downward shelf load on the top face.\",\n  \"units\": {\n    \"length\": \"mm\",\n    \"force\": \"N\"\n  },\n  \"domain\": {\n    \"kind\": \"box\",\n    \"size\": [150, 150, 20]\n  },\n  \"material\": {\n    \"name\": \"Aluminium 6061\",\n    \"E\": 69000,\n    \"nu\": 0.33\n  },\n  \"volume_fraction\": 0.2,\n  \"supports\": [\n    {\n      \"id\": \"lower_screw\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [20, 10],\n        \"radius\": 5,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Fixed circular footprint of the 10 mm diameter washer on x = 0.\"\n    },\n    {\n      \"id\": \"upper_screw\",\n      \"region\": {\n        \"kind\": \"cylinder\",\n        \"axis\": \"x\",\n        \"center\": [130, 10],\n        \"radius\": 5,\n        \"span\": [0, 0]\n      },\n      \"fix\": [\"x\", \"y\", \"z\"],\n      \"note\": \"Fixed circular footprint of the 10 mm diameter washer on x = 0.\"\n    }\n  ],\n  \"loads\": [\n    {\n      \"id\": \"shelf_load\",\n      \"region\": {\n        \"kind\": \"face\",\n        \"face\": \"y+\"\n      },\n      \"force\": [0, -600, 0],\n      \"distribution\": \"uniform_nodes\",\n      \"note\": \"Total downward force distributed across the whole top face.\"\n    }\n  ],\n  \"passive\": [],\n  \"resolution\": {\n    \"h\": 1\n  },\n  \"min_feature\": 3\n}",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Shelf bracket",
+  "description": "Aluminium shelf bracket with two fixed washer footprints on the wall face and a uniformly distributed downward shelf load on the top face.",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    150,
+    150,
+    20
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000,
+   "nu": 0.33
+  },
+  "volume_fraction": 0.2,
+  "supports": [
+   {
+    "id": "lower_screw",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      20,
+      10
+     ],
+     "radius": 5,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fixed circular footprint of the 10 mm diameter washer on x = 0."
+   },
+   {
+    "id": "upper_screw",
+    "region": {
+     "kind": "cylinder",
+     "axis": "x",
+     "center": [
+      130,
+      10
+     ],
+     "radius": 5,
+     "span": [
+      0,
+      0
+     ]
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Fixed circular footprint of the 10 mm diameter washer on x = 0."
+   }
+  ],
+  "loads": [
+   {
+    "id": "shelf_load",
+    "region": {
+     "kind": "face",
+     "face": "y+"
+    },
+    "force": [
+     0,
+     -600,
+     0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total downward force distributed across the whole top face."
+   }
+  ],
+  "passive": [],
+  "resolution": {
+   "h": 1
+  },
+  "min_feature": 3
+ },
+ "stderr_tail": "",
+ "asked_when_expected": null,
+ "harness_s": 22.92723949998617,
+ "cwe": {
+  "value": Infinity,
+  "note": "no valid spec"
+ },
+ "expected": "solve",
+ "refused": false,
+ "schema_valid": false,
+ "schema_error": "2 validation errors for Spec\nsupports.0.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kind': 'cylinder', 'axi...ius': 5, 'span': [0, 0]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nsupports.1.region.cylinder\n  Value error, cylinder span start must be < end [type=value_error, input_value={'kin",
+ "correct_spec": false,
+ "behaviour_ok": false
+}

@@ -1,0 +1,162 @@
+{
+ "task": "b46_sensor_housing",
+ "cond": "GNR",
+ "rep": 1,
+ "t": "2026-10-31T22:43:24",
+ "n_tool_calls": 8,
+ "n_failed_calls": 0,
+ "tools_used": [
+  "new_spec",
+  "set_params",
+  "add_support",
+  "add_load",
+  "add_passive",
+  "list_regions",
+  "validate_spec",
+  "render"
+ ],
+ "questions": 0,
+ "oracle_hits": 0,
+ "replay_ok": true,
+ "session_log": "results\\X2\\GNR\\b46_sensor_housing_r1\\session\\session.jsonl",
+ "provider": "codex",
+ "model": "gpt-6.1-sol",
+ "effort": "high",
+ "cli_version": "codex-cli 0.165.0",
+ "wall_s": 26.16923200013116,
+ "usage": {
+  "input_tokens": 79585,
+  "cached_input_tokens": 72576,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 853,
+  "reasoning_output_tokens": 179
+ },
+ "returncode": 0,
+ "final": "DONE\nAssumptions: fully clamped bottom; aluminium E = 69 GPa, \u03bd = 0.33; front is z = 40, with a centered 20 \u00d7 16 mm connector clearance, 10 mm deep. Region checks and validation passed; render confirmed support and load placement.",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "Sensor housing bracket",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    80.0,
+    50.0,
+    40.0
+   ]
+  },
+  "material": {
+   "name": "Aluminium 6061",
+   "E": 69000.0,
+   "nu": 0.33
+  },
+  "supports": [
+   {
+    "id": "chassis_bottom",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Full-area bolted chassis attachment idealized as a fully fixed bottom face y=0."
+   }
+  ],
+  "loads": [
+   {
+    "id": "sensor_force",
+    "region": {
+     "kind": "patch",
+     "face": "x+",
+     "center": [
+      25.0,
+      20.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "shape": "rect"
+    },
+    "force": [
+     -200.0,
+     0.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "Total 200 N along -x; 10 x 10 mm pad centered at (80,25,20)."
+   }
+  ],
+  "passive": [
+   {
+    "id": "connector_clearance",
+    "kind": "void",
+    "region": {
+     "kind": "box",
+     "min": [
+      30.0,
+      17.0,
+      30.0
+     ],
+     "max": [
+      50.0,
+      33.0,
+      40.0
+     ]
+    },
+    "note": "Assumed front z=40: centered 20 x 16 mm connector opening with 10 mm inward clearance."
+   }
+  ],
+  "description": "Sensor housing bracket; y is up. Bottom y=0 fully clamped to chassis. Total 200 N along -x on centered 10 x 10 mm x=80 pad. Assumed front is z=40; connector clearance is a 20 x 16 mm opening, 10 mm deep, centered at x=40,y=25. Linear isotropic aluminium: E=69000 N/mm^2, nu=0.33. Volume fraction applies to non-passive design volume.",
+  "volume_fraction": 0.3,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": false,
+ "harness_s": 26.403971299994737,
+ "cwe": {
+  "value": -0.02808398901732989,
+  "c_pred_under_intended": 0.07069460152304866,
+  "c_intended_opt": 0.07273735664830938,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {
+   "keep_out_filled": 0.23644444444444446
+  },
+  "mass_ratio": 1.0384104251861572
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": false,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (80, 50, 40)"
+  ],
+  "matched": null
+ },
+ "correct_spec": false,
+ "behaviour_ok": false
+}

@@ -1,0 +1,165 @@
+{
+ "task": "b48_cable_anchor",
+ "cond": "GCV",
+ "rep": 1,
+ "t": "2026-10-30T18:09:21",
+ "gc_correct": false,
+ "gc_usage": {
+  "input_tokens": 72040,
+  "cached_input_tokens": 65156,
+  "cache_write_input_tokens": 6874,
+  "output_tokens": 2010
+ },
+ "gc_wall_s": 26.471259200014174,
+ "verify": {
+  "match": true,
+  "issues": []
+ },
+ "verify_usage": {
+  "input_tokens": 14503,
+  "cached_input_tokens": 8575,
+  "cache_write_input_tokens": 5924,
+  "output_tokens": 1068
+ },
+ "verify_wall_s": 13.777983100153506,
+ "repaired": false,
+ "usage": {
+  "input_tokens": 86543,
+  "cached_input_tokens": 73731,
+  "output_tokens": 3078,
+  "cache_write_input_tokens": 12798
+ },
+ "wall_s": 40.24924230016768,
+ "questions": 1,
+ "n_tool_calls": 9,
+ "n_failed_calls": 0,
+ "provider": "claude",
+ "model": null,
+ "effort": "high",
+ "cli_version": null,
+ "returncode": 0,
+ "final": "",
+ "spec": {
+  "schema_version": "agentto.spec/v0",
+  "name": "guy-cable-anchor",
+  "units": {
+   "length": "mm",
+   "force": "N"
+  },
+  "domain": {
+   "kind": "box",
+   "size": [
+    100.0,
+    60.0,
+    60.0
+   ]
+  },
+  "material": {
+   "name": "steel",
+   "E": 210000.0,
+   "nu": 0.3
+  },
+  "supports": [
+   {
+    "id": "bolted_base",
+    "region": {
+     "kind": "face",
+     "face": "y-"
+    },
+    "fix": [
+     "x",
+     "y",
+     "z"
+    ],
+    "note": "Bottom face bolted down over full area"
+   }
+  ],
+  "loads": [
+   {
+    "id": "cable_pull",
+    "region": {
+     "kind": "patch",
+     "face": "y+",
+     "center": [
+      50.0,
+      30.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "shape": "ellipse"
+    },
+    "force": [
+     4000.0,
+     3000.0,
+     0.0
+    ],
+    "distribution": "uniform_nodes",
+    "note": "5 kN guy cable at 3:4 slope (rise:run), running toward +x, on 16 mm boss at top-face centre"
+   }
+  ],
+  "passive": [
+   {
+    "id": "anchor_boss",
+    "kind": "solid",
+    "region": {
+     "kind": "cylinder",
+     "axis": "y",
+     "center": [
+      50.0,
+      30.0
+     ],
+     "radius": 8.0,
+     "span": [
+      57.0,
+      60.0
+     ]
+    },
+    "note": "Keep-in material under the 16 mm anchor boss face"
+   }
+  ],
+  "volume_fraction": 0.25,
+  "resolution": {
+   "h": 1.0,
+   "cells_short_edge": null
+  }
+ },
+ "stderr_tail": "",
+ "asked_when_expected": true,
+ "harness_s": 14.190631000092253,
+ "cwe": {
+  "value": -0.003212162874033142,
+  "c_pred_under_intended": 16.64236850107115,
+  "c_intended_opt": 16.6959987684601,
+  "h": 1.0,
+  "pred_status": "converged",
+  "passive_violation": {},
+  "mass_ratio": 1.0052001476287842
+ },
+ "expected": "clarify",
+ "refused": false,
+ "schema_valid": true,
+ "rules_ok": true,
+ "match": {
+  "same": true,
+  "fields": {
+   "domain": true,
+   "material": true,
+   "volume_fraction": true,
+   "resolution": true,
+   "min_feature": true,
+   "supports": true,
+   "loads": true,
+   "passive": false
+  },
+  "material_exact": true,
+  "units_same": true,
+  "notes": [
+   "compared on h=1, grid (100, 60, 60)"
+  ],
+  "matched": "admissible:0"
+ },
+ "correct_spec": true,
+ "behaviour_ok": true
+}
