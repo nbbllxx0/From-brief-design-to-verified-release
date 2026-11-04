@@ -14,6 +14,7 @@ authors:
 repository-code: "https://github.com/nbbllxx0/From-brief-design-to-verified-release"
 license:
   - MIT
+  - BSD-3-Clause
   - CC-BY-4.0
 keywords:
   - topology optimization

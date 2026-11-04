@@ -16,6 +16,7 @@ What is in this repository:
 
 - `src/agentto/`: the spec schema, the rule base (deterministic checks R001-R013), the tool contract, the session
   solver built on voxfem, the GPU worker, STL and report export, replay, the MCP server and the GUI backend;
+- `src/voxfem/`: the voxfem GPU finite-element and SIMP solver from the authors' earlier work (BSD 3-Clause);
 - `web/`: the GUI front end (React, three.js, Vite);
 - `briefs/`: the 50-brief task suite with intended readings;
 - `scripts/`: every study, table and figure script;
@@ -37,7 +38,7 @@ The shorter user guide with GUI screenshots is [`docs/USER_GUIDE.md`](docs/USER_
 | GPU | NVIDIA RTX 4090, 24 GB | Any CUDA 12 GPU. GPU memory bounds the largest grid; rule R013 estimates it before a solve. |
 | OS | Windows 11 | Plain Python and TypeScript; other platforms are untested. The spill monitor uses `pywin32` (Windows). |
 | Python | 3.10 | numpy, cupy (CUDA 12), scipy, pydantic 2, fastapi, uvicorn, mcp, vtk, Pillow, websockets, pytest |
-| voxfem | 0.1.0 | The GPU finite-element and SIMP solver. Distributed separately; see below. |
+| voxfem | 0.1.0 | The GPU finite-element and SIMP solver; included in `src/voxfem/` (BSD 3-Clause). |
 | Node.js | 22 | Only for the web front end |
 | Codex CLI (optional) | 0.165, ChatGPT login | The built-in assistant and the benchmark runs |
 | Claude Code (optional) | claude.ai login | Second provider for MCP sessions and benchmarks |
@@ -67,25 +68,21 @@ The scripts run from the repository root without installing the package (they ad
 it instead, after the dependencies above: `pip install -e . --no-deps` (the `cupy` entry in `pyproject.toml` would
 otherwise make pip build CuPy from source).
 
-## The voxfem dependency
+## The voxfem solver
 
-The solver, `voxfem`, is not part of this repository. It is the GPU finite-element and SIMP code of the authors'
-earlier work and is distributed separately. agentto uses it read-only and extends it only by subclassing and
-composition (`src/agentto/solver.py`).
+The solver, `voxfem` 0.1.0, is the authors' GPU finite-element and SIMP code. It ships with this repository in
+`src/voxfem/`, unchanged and under its own BSD 3-Clause license (`src/voxfem/LICENSE`). agentto uses it read-only
+and extends it only by subclassing and composition (`src/agentto/solver.py`).
 
 agentto finds voxfem in this order (`src/agentto/_voxfem.py`):
 
 1. the directory named by the environment variable `VOXFEM_SRC` (older name: `AGENTTO_VOXFEM_SRC`), which must
-   contain the `voxfem/` package folder;
-2. an installed package (`import voxfem`).
-
-```bash
-export VOXFEM_SRC=/path/to/voxfem/src            # PowerShell: $env:VOXFEM_SRC = "D:/path/to/voxfem/src"
-```
+   contain a `voxfem/` package folder; set it only to use another copy of the solver;
+2. a plain `import voxfem`, which finds `src/voxfem/` when `src/` is on the path (the scripts and tests add it) or
+   when the repository is installed with `pip install -e . --no-deps`.
 
 If neither works, importing `agentto.problem`, `agentto.rules` or anything that builds on them raises an
-`ImportError` that says voxfem is distributed separately. Without voxfem you can still read every record, rebuild
-the tables and most figures from the records (see below), and run the tests listed under "Tests".
+`ImportError` that says how to put the solver on the path.
 
 ## Quick start
 
@@ -116,7 +113,7 @@ an `mcp.json` such as
 {"mcpServers": {"agentto": {
   "command": "python",
   "args": ["-B", "-m", "agentto.mcp_server", "--profile", "full", "--attach", "http://127.0.0.1:8765"],
-  "env": {"PYTHONPATH": "/path/to/this/repository/src", "VOXFEM_SRC": "/path/to/voxfem/src"}}}}
+  "env": {"PYTHONPATH": "/path/to/this/repository/src"}}}}
 ```
 
 and run `claude --mcp-config mcp.json`. Use the full path of the environment's Python as `command` if `python` is
@@ -145,20 +142,12 @@ python -B -m pytest -q
 ```
 
 The full suite has 140 tests. `tests/test_session.py`, `tests/test_worker.py` and
-`tests/test_tools.py::test_session_solve_warm_and_replay_bit_exact` run solves on the GPU and need voxfem and a free
-CUDA GPU. To run everything except those:
+`tests/test_tools.py::test_session_solve_warm_and_replay_bit_exact` run solves on the GPU and need a free CUDA GPU.
+To run everything except those:
 
 ```bash
 python -B -m pytest -q --ignore=tests/test_session.py --ignore=tests/test_worker.py \
     --deselect tests/test_tools.py::test_session_solve_warm_and_replay_bit_exact
-```
-
-Most other tests also need voxfem (on the CPU), because the problem builder and the rule base use its grid and
-problem classes. Without voxfem, only `tests/test_agent.py`, `tests/test_export.py` and `tests/test_shape.py` can be
-collected, and two of their tests still stop with the voxfem `ImportError`:
-
-```bash
-python -B -m pytest -q tests/test_agent.py tests/test_export.py tests/test_shape.py
 ```
 
 ## Reproducing the paper
@@ -172,7 +161,7 @@ python -B scripts/make_tables.py       # paper/tables/*.md and *.tex
 python -B scripts/make_figures.py      # results/figures/*.pdf and *.png
 ```
 
-Re-running a study regenerates its records. Marks: **GPU** = needs voxfem and a CUDA GPU (one job at a time; nothing
+Re-running a study regenerates its records. Marks: **GPU** = needs a CUDA GPU (one job at a time; nothing
 else on the GPU), **GPU-heavy** = grids of 10^7-10^8 elements, hours in total on a 24 GB card, **LLM** = runs Codex
 or Claude Code on a subscription login, **CPU** = neither.
 
@@ -188,8 +177,8 @@ or Claude Code on a subscription login, **CPU** = neither.
 | X5 why 10^8 (T9, Fig. x5_resolution_path, x5_bridge_3d) | `results/X5/` | `x5_resolution.py`, `x5_chain.py` (GPU-heavy) | `make_tables.py` -> `t9_x5_resolution`; `make_figures.py`; `make_renders.py x5` |
 | Multigrid on padded grids (Fig. solver_padding) | `results/solver/` | `mg_padding_study.py` (GPU), `b19_release_aware.py` (GPU-heavy) | `make_figures.py` |
 | X6a latency (T11, Fig. x6a_latency) | `results/X6/latency/` | `x6a_latency.py` with `serve.py` running (GPU) | `make_tables.py` -> `t11_x6a_latency`; `make_figures.py` |
-| X6b interaction cost (T10, Fig. x6b_klm) | `results/X6/klm.json` | `x6b_klm.py` (CPU, needs voxfem) | `make_tables.py` -> `t10_x6b_klm`; `make_figures.py` |
-| X6c action cards | `results/X6/cards.json` | `x6c_cards.py` (CPU, needs voxfem) | ledger |
+| X6b interaction cost (T10, Fig. x6b_klm) | `results/X6/klm.json` | `x6b_klm.py` (CPU) | `make_tables.py` -> `t10_x6b_klm`; `make_figures.py` |
+| X6c action cards | `results/X6/cards.json` | `x6c_cards.py` (CPU) | ledger |
 | C4 gate ablation (T12) | `results/C4/` | `c4_gate_ablation.py` (census: CPU; rules_off: GPU, minutes) | `make_tables.py` -> `t12_gates` |
 | GUI screenshots (gui_overview, gui_assistant, gui_clarify) | `results/figures/` | `gui_screenshots.py` with backend and front end running (GPU, LLM, Chrome) | - |
 | Manuscript Figure 1 (workflow), graphical abstract | `paper/V5/figures/fig1_data/` | - | drawn figures; the PDFs are in `paper/V5/figures/` (the drawing scripts are not published) |
@@ -235,9 +224,9 @@ Left out: density fields, meshes and session renders (several GB). They regenera
 
 ## License
 
-Code: MIT License ([`LICENSE`](LICENSE)). Data, records and documentation: CC BY 4.0. The scope of each license and
-what neither covers (third-party dependencies, the separately distributed voxfem solver) are set out in
-[`LICENSE-DATA.md`](LICENSE-DATA.md).
+Code: MIT License ([`LICENSE`](LICENSE)), except the voxfem solver in `src/voxfem/`, which keeps its BSD 3-Clause
+License ([`src/voxfem/LICENSE`](src/voxfem/LICENSE)). Data, records and documentation: CC BY 4.0. The scope of each
+license and what none covers (third-party dependencies) are set out in [`LICENSE-DATA.md`](LICENSE-DATA.md).
 
 ## Citation
 

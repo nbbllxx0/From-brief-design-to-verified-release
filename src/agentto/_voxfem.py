@@ -1,12 +1,13 @@
 """Access to the voxfem solver package.
 
-voxfem (the GPU finite-element and SIMP solver this project builds on) is distributed separately and is not part of
-this repository. agentto uses it read-only and extends it only by composition or subclassing.
+voxfem (the GPU finite-element and SIMP solver this project builds on) ships with this repository in src/voxfem/,
+under its own BSD 3-Clause license. agentto uses it read-only and extends it only by composition or subclassing.
 
 agentto looks for voxfem in this order:
 1. the source directory named by the environment variable VOXFEM_SRC (or its older name AGENTTO_VOXFEM_SRC): the
    folder that contains the `voxfem/` package directory;
-2. an installed package, found by a plain `import voxfem`.
+2. a plain `import voxfem`: the copy in src/voxfem/ when src/ is on the path (the scripts and tests do this) or the
+   repository is installed with `pip install -e . --no-deps`.
 """
 from __future__ import annotations
 
@@ -17,10 +18,10 @@ from pathlib import Path
 _ENV_VARS = ("VOXFEM_SRC", "AGENTTO_VOXFEM_SRC")
 
 _MISSING = (
-    "agentto needs the voxfem solver, which is distributed separately and is not included in this repository. "
-    "Either install voxfem so that `import voxfem` works, or set the environment variable VOXFEM_SRC to the "
-    "directory that contains the voxfem package (the folder holding voxfem/__init__.py). "
-    "See README.md, section 'The voxfem dependency'."
+    "agentto could not import the voxfem solver, which ships in src/voxfem/. Put src/ on the Python path, "
+    "install the repository with `pip install -e . --no-deps`, or set the environment variable VOXFEM_SRC to the "
+    "directory that contains another copy of the voxfem package (the folder holding voxfem/__init__.py). "
+    "See README.md, section 'The voxfem solver'."
 )
 
 

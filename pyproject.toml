@@ -7,7 +7,7 @@ name = "agentto"
 version = "0.0.1"
 description = "Knowledge-grounded, agent-assisted topology optimization at up to 1e8 elements on the voxfem solver"
 requires-python = ">=3.10"
-license = {text = "MIT"}
+license = {text = "MIT AND BSD-3-Clause"}
 dependencies = ["numpy", "scipy", "cupy", "pydantic>=2.8,<3", "fastapi", "uvicorn", "mcp", "vtk", "matplotlib"]
 
 [tool.setuptools.packages.find]
