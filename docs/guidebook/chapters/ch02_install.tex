@@ -16,7 +16,7 @@ Operating system & Windows 11 & The spill guard reads the Windows GPU-memory cou
 tested. \\
 Python & 3.10 or newer (a conda environment) & See Section~\ref{sec:pyenv} for packages. \\
 Node.js & 22 & Only for the web front end. \\
-Solver & \code{voxfem} & Distributed separately; configured by you (Section~\ref{sec:voxfem}). \\
+Solver & \code{voxfem} & Included in \code{src/voxfem/} (BSD 3-Clause; Section~\ref{sec:voxfem}). \\
 Browser & Chrome & The workspace has been tested in Chrome with one user per session. \\
 Codex CLI (optional) & 0.165.0, ChatGPT login & Runs the built-in assistant. \\
 Claude Code (optional) & 2.1.312, claude.ai login & An external agent over MCP. \\
@@ -68,33 +68,33 @@ This installs React, three.js and Vite at the versions pinned in \code{web/packa
 \section{Connecting the solver}\label{sec:voxfem}
 \index{voxfem@\code{voxfem}}\index{AGENTTO_VOXFEM_SRC@\code{AGENTTO\_VOXFEM\_SRC}}
 AgenticTO runs on \code{voxfem}, the GPU solver of the authors' companion work on fused matrix-free operators,
-Galerkin multigrid and guarded state solves. \code{voxfem} is distributed separately from AgenticTO; it is not part of
-the AgenticTO repository, and you configure its location yourself. AgenticTO imports it read-only, never writes into
+Galerkin multigrid and guarded state solves. \code{voxfem} ships with the AgenticTO repository in \code{src/voxfem/}, unchanged and
+under its own BSD 3-Clause License, and is found automatically when \code{src/} is on the path. AgenticTO imports it read-only, never writes into
 it (no bytecode caches either), and extends it only by subclassing.
 
-Point AgenticTO at the directory that contains the \code{voxfem} package (the directory you would put on
-\code{PYTHONPATH} to make \code{import voxfem} work):
+To use another copy of the solver, point AgenticTO at the directory that contains that \code{voxfem} package (the
+directory you would put on \code{PYTHONPATH} to make \code{import voxfem} work):
 
 \begin{shell}
 # POSIX shell
-export AGENTTO_VOXFEM_SRC=/path/to/solver/src
+export VOXFEM_SRC=/path/to/other/src
 # Windows PowerShell
-$env:AGENTTO_VOXFEM_SRC = "D:/solver/src"
+$env:VOXFEM_SRC = "D:/other/src"
 \end{shell}
 
-Set the variable in the shell that starts the backend, the MCP server or a script. The GPU worker inherits it.
+Set the variable in the shell that starts the backend, the MCP server or a script; the GPU worker inherits it.
+The older name \code{AGENTTO\_VOXFEM\_SRC} still works.
 
-\begin{warnbox}[Without the solver]
-Without \code{voxfem} you can still read the code, the briefs, the logs and every result file, and regenerate the
-paper's tables and figures from those files (Chapter~\ref{ch:reproduce}). The backend, the rules and every solve need
-the solver: the rules import its grid class, and the GPU worker imports its SIMP implementation.
+\begin{warnbox}[Without a GPU]
+Without a CUDA GPU you can still read the code, the briefs, the logs and every result file, and regenerate the
+paper's tables and data figures from those files (Chapter~\ref{ch:reproduce}). Every solve needs a CUDA GPU.
 \end{warnbox}
 
 \section{Checking the installation}
 \begin{shell}
 python -B -m pytest -q
 \end{shell}
-The tests that solve on the GPU need the solver and a free GPU. Run one GPU job at a time: another CUDA program on the
+The tests that solve on the GPU need a free GPU. Run one GPU job at a time: another CUDA program on the
 same card can push a solve into shared memory, and the spill guard will then stop it.
 
 \section{Optional: language agents on a subscription}\label{sec:agents}

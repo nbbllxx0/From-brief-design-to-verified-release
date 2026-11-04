@@ -18,7 +18,7 @@ Reproduction works at three levels of cost. Each later level includes the earlie
   files. Needs Python with \code{matplotlib}; no solver, no GPU, no language model. Takes seconds.
   \item[Replay] \needs{gpu}. Re-run a saved session log without a language model (Section~\ref{sec:replay}). Needs the
   solver and a free GPU; the solves must reproduce bit for bit under the recorded configuration.
-  \item[Re-run] \needs{heavy} \needs{llm}. Repeat an experiment from scratch. The numerical studies need the solver and
+  \item[Re-run] \needs{heavy} \needs{llm}. Repeat an experiment from scratch. The numerical studies need
   long, exclusive use of a 24~GB GPU; the agent studies need subscription CLIs logged in as in
   Section~\ref{sec:agents}. A fresh agent run makes fresh decisions, so its counts can differ from the paper's.
 \end{description}

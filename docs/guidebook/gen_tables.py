@@ -793,6 +793,8 @@ def scripts_tex():
     rows = [r"\begin{reftable}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}X@{}}",
             r"Script & What it does (from its docstring) \\ \midrule"]
     for p in sorted((ROOT / "scripts").glob("*.py")):
+        if p.name in {"make_fig_architecture.py"}:       # author-side diagram script, not published
+            continue
         doc = ast.get_docstring(parse(p)) or ""
         doc = scrub(doc)
         first = doc.split("\n\n")[0].replace("\n", " ").strip()

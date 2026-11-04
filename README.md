@@ -141,7 +141,7 @@ print(replay("runs/demo/session.jsonl", root="runs/replayed"))
 python -B -m pytest -q
 ```
 
-The full suite has 140 tests. `tests/test_session.py`, `tests/test_worker.py` and
+The full suite has 145 tests. `tests/test_session.py`, `tests/test_worker.py` and
 `tests/test_tools.py::test_session_solve_warm_and_replay_bit_exact` run solves on the GPU and need a free CUDA GPU.
 To run everything except those:
 

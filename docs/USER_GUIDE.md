@@ -57,7 +57,7 @@ The assistant is optional. Every design in the paper's task suite can be built a
 | OS | Windows 11 | The code is plain Python and TypeScript. Other platforms have not been tested. |
 | Python | 3.10+ (conda env `agentto`) | numpy, cupy (CUDA 12), pydantic 2, fastapi, uvicorn, mcp, vtk, Pillow |
 | Node.js | 22 | Only needed to run the web front end |
-| Solver (`voxfem`) | distributed separately | Imported read-only. Set its location with `AGENTTO_VOXFEM_SRC` (section 2.3). |
+| Solver (`voxfem`) | included in `src/voxfem/` (BSD 3-Clause) | Imported read-only; found automatically (section 2.3). |
 | Codex CLI (optional) | 0.165, ChatGPT login | Runs the built-in assistant |
 | Claude Code (optional) | claude.ai login | A second agent for MCP sessions and benchmarks |
 
@@ -74,20 +74,20 @@ cd web
 npm install
 cd ..
 
-# 3. Check the installation (140 tests; the GPU tests need the solver and a free GPU)
+# 3. Check the installation (145 tests; the GPU tests need a free GPU)
 python -B -m pytest -q
 ```
 
-### 2.3 Point AgenticTO at the solver
+### 2.3 The solver
 
-AgenticTO imports the `voxfem` package, which is distributed separately, and never modifies it.
+AgenticTO imports the `voxfem` package, which ships with the repository in `src/voxfem/` under its own BSD 3-Clause license, and never modifies it. The scripts, the tests and the backend find it with `src/` on the path; nothing needs to be set. To use another copy of the solver, point `VOXFEM_SRC` (older name: `AGENTTO_VOXFEM_SRC`) at the directory that contains its `voxfem/` folder:
 
 ```bash
-# Windows (PowerShell): $env:AGENTTO_VOXFEM_SRC = "D:/path/to/voxfem/src"
-export AGENTTO_VOXFEM_SRC=/path/to/voxfem/src
+# Windows (PowerShell): $env:VOXFEM_SRC = "D:/path/to/other/src"
+export VOXFEM_SRC=/path/to/other/src
 ```
 
-> **Availability.** The AgenticTO code, the 50-brief task suite with its adjudicated reference readings, and all session logs are available at https://github.com/nbbllxx0/From-brief-design-to-verified-release. The `voxfem` solver is distributed separately.
+> **Availability.** The AgenticTO code, the `voxfem` solver, the 50-brief task suite with its adjudicated reference readings, and all session logs are available at https://github.com/nbbllxx0/From-brief-design-to-verified-release.
 
 ### 2.4 Optional: the AI agents (subscription only)
 
@@ -533,7 +533,7 @@ Every tool returns compact JSON. `render` returns a picture of the supports and 
 
 | Symptom | Cause and fix |
 |---|---|
-| The **GPU** pill stays *starting* or turns *dead* | The worker could not load CuPy or `voxfem`. Check `AGENTTO_VOXFEM_SRC` and the CUDA 12 install, then look at the backend console. |
+| The **GPU** pill stays *starting* or turns *dead* | The worker could not load CuPy or `voxfem`. Check that `src/` is on the path (or `VOXFEM_SRC`, if set) and the CUDA 12 install, then look at the backend console. |
 | The ladder is missing or greyed out | The spec has an error. Fix what **Checks** lists in red. |
 | A release stops with a spill message | Another program is holding GPU memory and the solve would spill into shared memory. Close GPU-heavy applications (browsers with hardware acceleration, games, other CUDA jobs) or release a coarser rung. Run one GPU job at a time. |
 | The first sketch of a new spec takes several seconds | Expected: the first solve of a spec builds its multigrid hierarchy (2.5–7 s); repeated sketches take 1–3 s. |
